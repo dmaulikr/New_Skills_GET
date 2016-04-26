@@ -1,0 +1,43 @@
+{\rtf1\ansi\ansicpg936\cocoartf1343\cocoasubrtf140
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset134 STHeitiSC-Light;}
+{\colortbl;\red255\green255\blue255;\red170\green13\blue145;\red243\green235\blue0;\red255\green173\blue23;
+\red59\green16\blue143;\red46\green13\blue110;\red100\green56\blue32;\red28\green0\blue207;\red92\green38\blue153;
+\red0\green116\blue0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww15080\viewh11720\viewkind0
+\deftab674
+\pard\tx674\pardeftab674\pardirnatural
+
+\f0\fs28 \cf2 \CocoaLigature0 typedef\cf0  \cf2 NS_ENUM\cf0 (NSInteger, UIActivityIndicatorViewStyle) \{\
+    UIActivityIndicatorViewStyleWhiteLarge,\
+    UIActivityIndicatorViewStyleWhite,\
+    UIActivityIndicatorViewStyleGray,\
+\};\
+\
+ \cb3    \cf4 UIActivityIndicatorView\cf0  * ac=[[\cf4 UIActivityIndicatorView\cf0  \cf5 alloc\cf0 ]\cf5 initWithActivityIndicatorStyle\cf0 :\cf6 UIActivityIndicatorViewStyleWhiteLarge\cf0 ];\cb1 \
+\pard\tx674\pardeftab674\pardirnatural
+\cf7 NS_CLASS_AVAILABLE_IOS\cf0 (\cf8 2\cf0 _0) \cf2 @interface\cf0  UIActivityIndicatorView : \cf4 UIView\cf0  <\cf4 NSCoding\cf0 >\
+\{ \
+  \cf2 @package\cf0 \
+    \cf9 CFTimeInterval\cf0                _duration;\
+    \cf2 BOOL\cf0                          _animating;\
+    \cf9 UIActivityIndicatorViewStyle\cf0  _activityIndicatorViewStyle;\
+    \cf9 UIActivityIndicatorViewStyle\cf0  _actualActivityIndicatorViewStyle;\
+    \cf2 BOOL\cf0                          _hidesWhenStopped;\
+\}\
+\
+- (\cf2 instancetype\cf0 )initWithActivityIndicatorStyle:(\cf9 UIActivityIndicatorViewStyle\cf0 )style;     \cf10 // sizes the view according to the style\cf0 \
+\
+\pard\tx674\pardeftab674\pardirnatural
+\cf2 @property\cf0 (\cf2 nonatomic\cf0 ) \cf9 UIActivityIndicatorViewStyle\cf0  activityIndicatorViewStyle; \cf10 // default is UIActivityIndicatorViewStyleWhite\cf0 \
+\cf2 @property\cf0 (\cf2 nonatomic\cf0 ) \cf2 BOOL\cf0                          hidesWhenStopped;           \cf10 // default is YES. calls -setHidden when animating gets set to NO\cf0 \
+\
+\cf2 @property\cf0  (\cf2 readwrite\cf0 , \cf2 nonatomic\cf0 , \cf2 retain\cf0 ) \cf4 UIColor\cf0  *color \cf7 NS_AVAILABLE_IOS\cf0 (\cf8 5\cf0 _0) \cf7 UI_APPEARANCE_SELECTOR\cf0 ;\
+\
+- (\cf2 void\cf0 )startAnimating;
+\f1 \'bf\'aa\'ca\'bc\'d7\'aa
+\f0 \
+- (\cf2 void\cf0 )stopAnimating;
+\f1 \'cd\'a3\'d6\'b9\'d7\'aa
+\f0 \
+- (\cf2 BOOL\cf0 )isAnimating;
+\f1 \'c5\'d0\'b6\'cf\'ca\'c7\'b7\'f1\'d7\'aa}

@@ -1,0 +1,100 @@
+{\rtf1\ansi\ansicpg936\cocoartf1347\cocoasubrtf570
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset134 STHeitiSC-Light;\f2\fnil\fcharset0 Verdana;
+\f3\fmodern\fcharset0 CourierNewPSMT;}
+{\colortbl;\red255\green255\blue255;\red255\green39\blue18;\red38\green38\blue38;\red217\green11\blue0;
+\red0\green186\blue251;\red107\green0\blue1;\red15\green112\blue1;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs48 \cf0 \
+
+\f1 \'d4\'da\'bd\'a8\'c1\'a2\'b5\'c4\'c4\'a3\'d0\'cd\'d0\'e8\'d2\'aa\'d3\'d0\'cd\'f8\'c2\'e7\'c9\'cf\'bd\'d3\'ca\'d5\'b5\'c4json\'ca\'fd\'be\'dd\'c9\'fa\'b3\'c9\'b5\'c4\'d7\'d6\'b5\'e4\'c0\'b4\'b3\'f5\'ca\'bc\'bb\'af\'b5\'c4\'ca\'b1\'ba\'f2\'a3\'ac\'ce\'d2\'c3\'c7\'bf\'c9\'d2\'d4\'d3\'c3\'b5\'bdkvc\'b5\'c4\'d5\'e2\'d6\'d6\'b7\'bd\'b7\'a8\'a3\'ac\
+\'d4\'dainit\'b3\'f5\'ca\'bc\'bb\'af\'ba\'af\'ca\'fd\'d6\'d0\'ce\'d2\'c3\'c7\'bf\'c9\'d2\'d4\'d6\'b1\'bd\'d3\'b4\'ab\'c8\'eb\'d7\'d6\'b5\'e4\'a3\'ac\
+\cb2 [self setValuedForKeysWithDictionary :dict];
+\f0\fs24 \
+\cb1 \
+\
+\
+#import <Foundation/Foundation.h>\
+\
+@interface Student : NSObject\
+\{\
+    NSString *name;\
+\}\
+@end\
+\
+\pard\pardeftab720\sl480
+
+\f2\fs26 \cf3 \cb4 \expnd0\expndtw0\kerning0
+.m
+\f1 \'ce\'c4\'bc\'fe\'d2\'b2\'c3\'bb\'d3\'d0\'ca\'b5\'cf\'d6\'a1\'a3
+\f2 name
+\f1 \'ca\'f4\'d0\'d4\'c3\'bb\'d3\'d0\'bc\'d3
+\f2 property
+\f1 \'a3\'ac\'d4\'ad\'c0\'b4\'b5\'c4\'b7\'c3\'ce\'ca\'b7\'bd\'b7\'a8\'be\'cd\'b7\'c3\'ce\'ca\'b2\'bb\'c1\'cb
+\f2 name
+\f1 \'ca\'f4\'d0\'d4\'c1\'cb\'a1\'a3\'d4\'f5\'c3\'b4\'b0\'ec\'c4\'d8\'a3\'bf\'d3\'c3
+\f2 kvc
+\f1 \'be\'cd\'bf\'c9\'d2\'d4\'c1\'cb\
+\cb1 \
+#import "Student.h"\
+\
+int main(int argc, const char * argv[])\
+\{\
+    @autoreleasepool \{\
+        Student *student = [[[Student alloc]init ]autorelease];\
+\cb5         [student setValue:@"\'d5\'c5\'c8\'fd" forKey:@"name"];\
+        NSString *name = [student valueForKey:@"name"];\
+\cb1         NSLog(@"\'d1\'a7\'c9\'fa\'d0\'d5\'c3\'fb:%@",name);\
+    \}\
+    return 0;\
+\}\
+\'c8\'e7\'b9\'fb\'c0\'e0\'d6\'d0\'bb\'b9\'d3\'d0\'c0\'e0\'bf\'c9\'d2\'d4\
+\pard\pardeftab720\sl360
+
+\f3\fs24 \cf0 \expnd0\expndtw0\kerning0
+      Course *course = [[[Course alloc]init] autorelease];\
+        [course setValue:\cf6 \expnd0\expndtw0\kerning0
+@"
+\f1 \'d3\'ef\'ce\'c4\'bf\'ce
+\f3 "\cf0 \expnd0\expndtw0\kerning0
+ forKey:\cf6 \expnd0\expndtw0\kerning0
+@"CourseName"\cf0 \expnd0\expndtw0\kerning0
+];\
+        [student setValue:course forKey:\cf6 \expnd0\expndtw0\kerning0
+@"course"\cf0 \expnd0\expndtw0\kerning0
+];\
+        NSString *courseName = [student valueForKeyPath:\cf6 \expnd0\expndtw0\kerning0
+@"course.CourseName"\cf0 \expnd0\expndtw0\kerning0
+];\
+        NSLog(\cf6 \expnd0\expndtw0\kerning0
+@"
+\f1 \'bf\'ce\'b3\'cc\'c3\'fb\'b3\'c6
+\f3 :%@"\cf0 \expnd0\expndtw0\kerning0
+, courseName);\
+        \
+        \cf7 \expnd0\expndtw0\kerning0
+//
+\f1 \'d2\'b2\'bf\'c9\'d2\'d4\'d5\'e2\'d1\'f9\'b4\'e6\'d6\'b5
+\f3 \cf0 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\sl432
+\cf0 \expnd0\expndtw0\kerning0
+        [student setValue:\cf6 \expnd0\expndtw0\kerning0
+@"
+\f1 \'ca\'fd\'d1\'a7\'bf\'ce
+\f3 "\cf0 \expnd0\expndtw0\kerning0
+ forKeyPath:\cf6 \expnd0\expndtw0\kerning0
+@"course.CourseName"\cf0 \expnd0\expndtw0\kerning0
+];\
+\pard\pardeftab720\sl360
+\cf0 \expnd0\expndtw0\kerning0
+        courseName = [student valueForKeyPath:\cf6 \expnd0\expndtw0\kerning0
+@"course.CourseName"\cf0 \expnd0\expndtw0\kerning0
+];\
+\pard\pardeftab720\sl480
+
+\f1\fs26 \cf3 \expnd0\expndtw0\kerning0
+\
+\
+}

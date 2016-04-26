@@ -1,0 +1,114 @@
+{\rtf1\ansi\ansicpg936\cocoartf1343\cocoasubrtf140
+{\fonttbl\f0\fnil\fcharset134 STHeitiSC-Light;\f1\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red255\green39\blue18;\red170\green13\blue145;\red255\green173\blue23;
+\red59\green16\blue143;\red196\green26\blue22;\red0\green116\blue0;\red92\green38\blue153;\red46\green13\blue110;
+\red28\green0\blue207;\red100\green56\blue32;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww19740\viewh8060\viewkind0
+\deftab674
+\pard\tx674\pardeftab674\pardirnatural
+
+\f0\fs48 \cf0 \cb2 \CocoaLigature0 \'ca\'b9\'d3\'c3
+\f1\fs28 \cf3 \cb1 \
+\pard\tx674\pardeftab674\pardirnatural
+\cf4 UIActionSheet\cf0  * as =[[\cf4 UIActionSheet\cf0  \cf5 alloc\cf0 ] \cf5 initWithTitle\cf0 :\cf6 @"
+\f0 \cf6 \'b7\'d6\'cf\'ed\'b5\'bd
+\f1 \cf6 "\cf0  \cf5 delegate\cf0 :\cf3 self\cf0  \cf5 cancelButtonTitle\cf0 :\cf6 @"
+\f0 \cf6 \'c8\'a1\'cf\'fb
+\f1 \cf6 "\cf0  \cf5 destructiveButtonTitle\cf0 :\cf3 nil\cf0  \cf5 otherButtonTitles\cf0 :\cf6 @"
+\f0 \cf6 \'ce\'a2\'b2\'a9
+\f1 \cf6 "\cf0 ,\cf6 @"QQ"\cf0 ,\cf6 @"
+\f0 \cf6 \'bf\'d5\'bc\'e4
+\f1 \cf6 "\cf0 ,\cf3 nil\cf0 ];\
+\pard\tx674\pardeftab674\pardirnatural
+\cf7 //    as.frame=CGRectMake(30, 150, 100, 300);\cf0 \
+    \cf7 //
+\f0 \cf7 \'cc\'ed\'bc\'d3\'b5\'bd\'d6\'b8\'b6\'a8\'ca\'d3\'cd\'bc\'c9\'cf
+\f1 \cf0 \
+    as.\cf8 actionSheetStyle\cf0  = \cf9 UIActionSheetStyleBlackTranslucent\cf0 ;\
+    \cf4 UIWindow\cf0 * window =[[\cf4 UIApplication\cf0  \cf5 sharedApplication\cf0 ] \cf5 keyWindow\cf0 ];\
+    \
+    [as \cf5 showInView\cf0 :window];\cf3 \
+\
+\
+typedef\cf0  \cf3 NS_ENUM\cf0 (NSInteger, UIActionSheetStyle) \{\
+    UIActionSheetStyleAutomatic        = -\cf10 1\cf0 ,       \cf7 // take appearance from toolbar style otherwise uses 'default'\cf0 \
+    UIActionSheetStyleDefault          = \cf9 UIBarStyleDefault\cf0 ,\
+    UIActionSheetStyleBlackTranslucent = \cf9 UIBarStyleBlackTranslucent\cf0 ,\
+    UIActionSheetStyleBlackOpaque      = \cf9 UIBarStyleBlackOpaque\cf0 ,\
+\};\
+\
+\cf7 // UIActionSheet is deprecated. Use UIAlertController with a preferredStyle of UIAlertControllerStyleActionSheet instead\cf0 \
+\pard\tx674\pardeftab674\pardirnatural
+\cf11 NS_CLASS_AVAILABLE_IOS\cf0 (\cf10 2\cf0 _0) \cf3 @interface\cf0  UIActionSheet : \cf4 UIView\cf0 \
+\
+- (\cf3 instancetype\cf0 )initWithTitle:\
+(\cf4 NSString\cf0  *)title delegate\
+:(\cf3 id\cf0 <\cf4 UIActionSheetDelegate\cf0 >)delegate     self\
+cancelButtonTitle:(\cf4 NSString\cf0  *)cancelButtonTitle   
+\f0 \'c8\'a1\'cf\'fb\'b0\'b4\'c5\'a5
+\f1 \
+ destructiveButtonTitle:(\cf4 NSString\cf0  *)destructiveButtonTitle   
+\f0 \'d2\'bb\'b8\'f6\'ba\'ec\'c9\'ab\'b5\'c4\'b0\'b4\'c5\'a5\'bf\'c9\'d2\'d4\'ce\'aanil,\'d6\'bb\'ca\'c7\'c6\'f0\'b5\'bd\'d2\'bb\'b8\'f6\'be\'af\'ca\'be\'cc\'e1\'ca\'be\'b5\'c4\'d7\'f7\'d3\'c3
+\f1 \
+ otherButtonTitles:(\cf4 NSString\cf0  *)otherButtonTitles, ...(\cf6 "Use UIAlertController instead."\cf0 );\
+\
+\
+\
+\
+\pard\tx674\pardeftab674\pardirnatural
+\cf3 @property\cf0 (\cf3 nonatomic\cf0 ,\cf3 assign\cf0 ) \cf3 id\cf0 <\cf4 UIActionSheetDelegate\cf0 > delegate;    \cf7 // weak reference\cf0 \
+\cf3 @property\cf0 (\cf3 nonatomic\cf0 ,\cf3 copy\cf0 ) \cf4 NSString\cf0  *title;\
+\cf3 @property\cf0 (\cf3 nonatomic\cf0 ) \cf8 UIActionSheetStyle\cf0  actionSheetStyle; \cf7 // default is UIActionSheetStyleAutomatic. ignored if alert is visible\cf0 \
+\
+\cf7 // adds a button with the title. returns the index (0 based) of where it was added. buttons are displayed in the order added except for the\cf0 \
+\cf7 // destructive and cancel button which will be positioned based on HI requirements. buttons cannot be customized.\cf0 \
+- (\cf8 NSInteger\cf0 )addButtonWithTitle:(\cf4 NSString\cf0  *)title;    \cf7 // returns index of button. 0 based.\cf0 \
+- (\cf4 NSString\cf0  *)buttonTitleAtIndex:(\cf8 NSInteger\cf0 )buttonIndex;\
+\cf3 @property\cf0 (\cf3 nonatomic\cf0 ,\cf3 readonly\cf0 ) \cf8 NSInteger\cf0  numberOfButtons;\
+\cf3 @property\cf0 (\cf3 nonatomic\cf0 ) \cf8 NSInteger\cf0  cancelButtonIndex;      \cf7 // if the delegate does not implement -actionSheetCancel:, we pretend this button was clicked on. default is -1\cf0 \
+\cf3 @property\cf0 (\cf3 nonatomic\cf0 ) \cf8 NSInteger\cf0  destructiveButtonIndex;        \cf7 // sets destructive (red) button. -1 means none set. default is -1. ignored if only one button\cf0 \
+\
+\cf3 @property\cf0 (\cf3 nonatomic\cf0 ,\cf3 readonly\cf0 ) \cf8 NSInteger\cf0  firstOtherButtonIndex;	\cf7 // -1 if no otherButtonTitles or initWithTitle:... not used\cf0 \
+\cf3 @property\cf0 (\cf3 nonatomic\cf0 ,\cf3 readonly\cf0 ,\cf3 getter\cf0 =isVisible) \cf3 BOOL\cf0  visible;\
+\
+- (\cf3 void\cf0 )showFromToolbar:(\cf4 UIToolbar\cf0  *)view;\
+- (\cf3 void\cf0 )showFromTabBar:(\cf4 UITabBar\cf0  *)view;\
+- (\cf3 void\cf0 )showFromBarButtonItem:(\cf4 UIBarButtonItem\cf0  *)item animated:(\cf3 BOOL\cf0 )animated \cf11 NS_AVAILABLE_IOS\cf0 (\cf10 3\cf0 _2);\
+- (\cf3 void\cf0 )showFromRect:(\cf8 CGRect\cf0 )rect inView:(\cf4 UIView\cf0  *)view animated:(\cf3 BOOL\cf0 )animated \cf11 NS_AVAILABLE_IOS\cf0 (\cf10 3\cf0 _2);\
+- (\cf3 void\cf0 )showInView:(\cf4 UIView\cf0  *)view;\
+\
+\cf7 // hides alert sheet or popup. use this method when you need to explicitly dismiss the alert.\cf0 \
+\cf7 // it does not need to be called if the user presses on a button\cf0 \
+- (\cf3 void\cf0 )dismissWithClickedButtonIndex:(\cf8 NSInteger\cf0 )buttonIndex animated:(\cf3 BOOL\cf0 )animated;\
+\
+\cf3 @end\cf0 \
+\
+\
+\cf3 @protocol\cf0  UIActionSheetDelegate <\cf4 NSObject\cf0 >\
+\cf3 @optional\cf0 \
+\
+- (\cf3 void\cf0 )actionSheet:(\cf4 UIActionSheet\cf0  *)actionSheet clickedButtonAtIndex:(\cf8 NSInteger\cf0 )buttonIndex;\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f0 \cf0 \'b0\'b4\'c5\'a5\'b4\'a5\'c3\'fe\'ca\'b1\'b4\'a5\'b7\'a2
+\f1 \
+\
+- (\cf3 void\cf0 )actionSheetCancel:(\cf4 UIActionSheet\cf0  *)actionSheet;\
+
+\f0 \'c8\'a1\'cf\'fb\'df\'c2\'b0\'b4\'ca\'b1\'b4\'a5\'b7\'a2
+\f1 \
+\
+- (\cf3 void\cf0 )willPresentActionSheet:(\cf4 UIActionSheet\cf0  *)actionSheet;  \cf7 // before animation and showing view\cf0 \
+- (\cf3 void\cf0 )didPresentActionSheet:(\cf4 UIActionSheet\cf0  *)actionSheet;  \cf7 // after animation\cf0 \
+
+\f0 \'b3\'f6\'cf\'d6
+\f1 actionSheet
+\f0 \'ca\'b1\'b4\'a5\'b7\'a2
+\f1 \
+- (\cf3 void\cf0 )actionSheet:(\cf4 UIActionSheet\cf0  *)actionSheet willDismissWithButtonIndex:(\cf8 NSInteger\cf0 )buttonIndex; \cf7 // before animation and hiding view\cf0 \
+- (\cf3 void\cf0 )actionSheet:(\cf4 UIActionSheet\cf0  *)actionSheet didDismissWithButtonIndex:(\cf8 NSInteger\cf0 )buttonIndex; \
+actionSheet
+\f0 \'cf\'fb\'ca\'a7\'ca\'b1\'b4\'a5\'b7\'a2
+\f1 \
+ \cf7 // after animation\cf0 \
+}

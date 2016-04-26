@@ -1,0 +1,237 @@
+{\rtf1\ansi\ansicpg936\cocoartf1347\cocoasubrtf570
+{\fonttbl\f0\fnil\fcharset134 STHeitiSC-Light;\f1\fswiss\fcharset0 Helvetica;\f2\fnil\fcharset0 AndaleMono;
+\f3\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red217\green11\blue0;\red228\green124\blue72;\red255\green44\blue56;
+\red211\green24\blue149;\red0\green160\blue255;\red255\green255\blue0;\red255\green128\blue0;\red254\green73\blue64;
+}
+\paperw11900\paperh16840\margl1440\margr1440\vieww13900\viewh10940\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs48 \cf0 \cb2 \'ca\'d7\'cf\'c8
+\f1  
+\f0 \'bd\'a8\'c1\'a2\'d2\'bb\'b8\'f6\'d3\'c3\'c0\'b4\'b9\'dc\'c0\'ed\'cf\'c2\'d4\'d8\'b5\'c4\'c0\'e0\'a3\'ac
+\f1\fs24 \cb1 \
+\pard\tx672\pardeftab672\pardirnatural
+
+\f2\fs28 \cf1 \cb0 \CocoaLigature0 \
+
+\f3 \cf3 #import \cf4 <Foundation/Foundation.h>\cf3 \
+\cf5 @protocol
+\f2 \cf1  downloadDelegate <\cf6 NSObject\cf1 >\
+-(
+\f3 \cf5 void
+\f2 \cf1 )downloadWithIndex:(\cf6 NSInteger\cf1 )index andProgress:(
+\f3 \cf5 double
+\f2 \cf1 )progress;\
+
+\f3 \cf5 @end
+\f2 \cf1 \
+
+\f3 \cf5 @interface
+\f2 \cf1  manager : \cf6 NSObject\cf1  <\cf6 NSURLSessionDownloadDelegate\cf1 >\
+
+\f3 \cf5 @property
+\f2 \cf1  \cf6 NSMutableArray\cf1  * taskArr;\
+
+\f3 \cf5 @property
+\f2 \cf1  
+\f3 \cf5 id
+\f2 \cf1 <\cf7 downloadDelegate\cf1 > delegate;\
+\
++(
+\f3 \cf5 instancetype
+\f2 \cf1 )shareManager;\
+\
+-(
+\f3 \cf5 void
+\f2 \cf1 )cacheVideoWithUrl:(\cf6 NSString\cf1  *)url;\
+
+\f3 \cf5 @end\
+\
+\
+@implementation
+\f2 \cf1  manager\
++(
+\f3 \cf5 instancetype
+\f2 \cf1 )shareManager\
+\{\
+    
+\f3 \cf5 static
+\f2 \cf1  
+\f3 \cf7 manager
+\f2 \cf1  * manager = 
+\f3 \cf5 nil
+\f2 \cf1 ;\
+    
+\f3 \cf5 if
+\f2 \cf1  (manager == 
+\f3 \cf5 nil
+\f2 \cf1 )\
+    \{\
+        manager = [[
+\f3 \cf5 self
+\f2 \cf1  
+\f3 \cf6 alloc
+\f2 \cf1 ]
+\f3 \cf6 init
+\f2 \cf1 ];\
+    \}\
+    
+\f3 \cf5 return
+\f2 \cf1  manager;\
+\}\
+-(
+\f3 \cf5 void
+\f2 \cf1 )cacheVideoWithUrl:(
+\f3 \cf6 NSString
+\f2 \cf1  *)url\
+\{\
+    
+\f3 \cf5 if
+\f2 \cf1  (
+\f3 \cf8 _taskArr
+\f2 \cf1  == 
+\f3 \cf5 nil
+\f2 \cf1 )\
+    \{\
+        
+\f3 \cf8 _taskArr
+\f2 \cf1  = [[
+\f3 \cf6 NSMutableArray
+\f2 \cf1  
+\f3 \cf6 alloc
+\f2 \cf1 ]
+\f3 \cf6 init
+\f2 \cf1 ];\
+    \}\
+    
+\f3 \cf6 NSURLSessionConfiguration
+\f2 \cf1  * config =[
+\f3 \cf6 NSURLSessionConfiguration
+\f2 \cf1  
+\f3 \cf6 defaultSessionConfiguration
+\f2 \cf1 ];\
+    
+\f3 \cf6 NSURLSession
+\f2 \cf1  * session = [
+\f3 \cf6 NSURLSession
+\f2 \cf1  
+\f3 \cf6 sessionWithConfiguration
+\f2 \cf1 :config 
+\f3 \cf6 delegate
+\f2 \cf1 :
+\f3 \cf5 self
+\f2 \cf1  
+\f3 \cf6 delegateQueue
+\f2 \cf1 :
+\f3 \cf5 nil
+\f2 \cf1 ];\
+    
+\f3 \cf6 NSURLSessionDownloadTask
+\f2 \cf1  * downLoad= [session 
+\f3 \cf6 downloadTaskWithURL
+\f2 \cf1 :[
+\f3 \cf6 NSURL
+\f2 \cf1  
+\f3 \cf6 URLWithString
+\f2 \cf1 :url]];\
+    [
+\f3 \cf8 _taskArr
+\f2 \cf1  
+\f3 \cf6 addObject
+\f2 \cf1 :downLoad];\
+    [downLoad 
+\f3 \cf6 resume
+\f2 \cf1 ];\
+\}\
+
+\f3 \cf3 #pragma NSURLSessionDownloadDelegate\
+
+\f2 \cf1 -(
+\f3 \cf5 void
+\f2 \cf1 )URLSession:(
+\f3 \cf6 NSURLSession
+\f2 \cf1  *)session downloadTask:(
+\f3 \cf6 NSURLSessionDownloadTask
+\f2 \cf1  *)downloadTask didWriteData:(
+\f3 \cf6 int64_t
+\f2 \cf1 )bytesWritten totalBytesWritten:(
+\f3 \cf6 int64_t
+\f2 \cf1 )totalBytesWritten totalBytesExpectedToWrite:(
+\f3 \cf6 int64_t
+\f2 \cf1 )totalBytesExpectedToWrite\
+\{\
+      
+\f3 \cf6 NSLog
+\f2 \cf1 (
+\f3 \cf4 @"%f"
+\f2 \cf1 ,(
+\f3 \cf5 float
+\f2 \cf1 )totalBytesWritten/totalBytesExpectedToWrite);\
+        
+\f3 \cf6 dispatch_async
+\f2 \cf1 (
+\f3 \cf6 dispatch_get_main_queue
+\f2 \cf1 (), ^\{\
+            \
+            
+\f3 \cf6 NSInteger
+\f2 \cf1  index =  [
+\f3 \cf8 _taskArr
+\f2 \cf1  
+\f3 \cf6 indexOfObject
+\f2 \cf1 :downloadTask];\
+            
+\f3 \cf6 NSLog
+\f2 \cf1 (
+\f3 \cf4 @"%ld--%f"
+\f2 \cf1 ,index,(
+\f3 \cf5 float
+\f2 \cf1 )totalBytesWritten/totalBytesExpectedToWrite);\
+            
+\f3 \cf5 if
+\f2 \cf1  ([
+\f3 \cf5 self
+\f2 \cf1 .\cf8 delegate\cf1  \cf6 respondsToSelector\cf1 :
+\f3 \cf5 @selector
+\f2 \cf1 (downloadWithIndex:andProgress:)])\
+            \{\
+                [
+\f3 \cf5 self
+\f2 \cf1 .\cf8 delegate\cf1  \cf7 downloadWithIndex\cf1 :(\cf6 NSInteger\cf1 )index \cf7 andProgress\cf1 :(
+\f3 \cf5 double
+\f2 \cf1 )totalBytesWritten/totalBytesExpectedToWrite];\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs24 \cf0 \cb2 \CocoaLigature1 \'d4\'da
+\fs28 \cf1 \CocoaLigature0 \'d5\'e2\'c0\'ef\'ca\'b5\'cf\'d6\'bd\'f8\'b6\'c8\'cc\'f5\'bd\'e7\'c3\'e6\'b5\'c4\'d6\'b5\'b5\'c3\'b2\'d9\'d7\'f7\'a3\'ac\'d2\'aa\'cc\'ed\'bc\'d3\'bd\'f8\'d6\'f7\'cf\'df\'b3\'cc\'d6\'d0
+\f2 \cb0 \
+\pard\tx672\pardeftab672\pardirnatural
+\cf1             \}\
+            \
+        \});\
+    \
+\}\
+\
+- (
+\f3 \cf5 void
+\f2 \cf1 )URLSession:(\cf6 NSURLSession\cf1  *)session downloadTask:(\cf6 NSURLSessionDownloadTask\cf1  *)downloadTask\
+didFinishDownloadingToURL:(\cf6 NSURL\cf1  *)location\
+\{\
+    \cf6 NSLog\cf1 (
+\f3 \cf4 @"qweqwesd"
+\f2 \cf1 );\
+
+\f0 \cb9 \'d4\'da\'cf\'c2\'d4\'d8\'bd\'e1\'ca\'f8\'b5\'c4\'ca\'b1\'ba\'f2\'b2\'c5\'bb\'e1\'b5\'f7\'d3\'c3\'d5\'e2\'c0\'ef\'a1\'a3
+\f2 \cb0 \
+\}\
+- (
+\f3 \cf5 void
+\f2 \cf1 )URLSession:(\cf6 NSURLSession\cf1  *)session downloadTask:(\cf6 NSURLSessionDownloadTask\cf1  *)downloadTask\
+ didResumeAtOffset:(\cf6 int64_t\cf1 )fileOffset\
+expectedTotalBytes:(\cf6 int64_t\cf1 )expectedTotalBytes\
+\{\
+    \cf6 NSLog\cf1 (
+\f3 \cf4 @"aasdad"
+\f2 \cf1 );\
+\}}

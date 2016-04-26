@@ -1,0 +1,107 @@
+{\rtf1\ansi\ansicpg936\cocoartf1343\cocoasubrtf140
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset134 STHeitiSC-Light;\f2\fnil\fcharset0 AppleColorEmoji;
+}
+{\colortbl;\red255\green255\blue255;\red0\green116\blue0;\red255\green39\blue18;\red170\green13\blue145;
+\red63\green110\blue116;\red255\green173\blue23;\red59\green16\blue143;\red196\green26\blue22;\red28\green0\blue207;
+\red92\green38\blue153;\red46\green13\blue110;\red38\green71\blue75;\red29\green48\blue13;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww19640\viewh8400\viewkind0
+\deftab674
+\pard\tx674\pardeftab674\pardirnatural
+
+\f0\fs48 \cf2 \cb3 \CocoaLigature0 //
+\f1 \'d2\'ec\'b2\'bd\'b5\'c4\'cf\'c2\'d4\'d8
+\f0 \cf0 \
+
+\fs28 \cb1 -(\cf4 void\cf0 )beginConnection\
+\{\
+    \cf5 _downloadData\cf0  = [[\cf6 NSMutableData\cf0  \cf7 alloc\cf0 ]\cf7 init\cf0 ];\
+    \cf5 _userInfo\cf0  = [[\cf6 NSMutableArray\cf0  \cf7 alloc\cf0 ]\cf7 init\cf0 ];\
+    \cf6 NSURL\cf0  *url = [\cf6 NSURL\cf0  \cf7 URLWithString\cf0 :\cf8 @"http://10.0.8.8/sns/my/user_list.php?number=20&page=1"\cf0 ];\
+    \cf6 NSURLRequest\cf0  *req = [\cf6 NSURLRequest\cf0  \cf7 requestWithURL\cf0 :url \cf7 cachePolicy\cf0 :\cf9 0\cf0  \cf7 timeoutInterval\cf0 :\cf9 15.0f\cf0 ];\
+\cf2 //    
+\f1 \'bf\'aa\'c6\'f4\'d2\'bb\'b8\'f6\'d0\'c2\'b5\'c4\'cf\'df\'b3\'cc\'ba\'f3\'d4\'da\'d0\'c2\'b5\'c4\'cf\'df\'b3\'cc\'c0\'ef\'b7\'a2\'cb\'cd\'a3\'bb
+\f0 \cf0 \
+    [\cf6 NSURLConnection\cf0  \cf7 connectionWithRequest\cf0 :req \cf7 delegate\cf0 :\cf4 self\cf0 ];\
+\
+\cf2 //    
+\f1 \'bf\'aa\'c6\'f4\'be\'d5\'bb\'a8\'b5\'c4\'d7\'aa\'b6\'af
+\f0 \cf0 \
+    [\cf6 UIApplication\cf0  \cf7 sharedApplication\cf0  ].\cf10 networkActivityIndicatorVisible\cf0  = \cf4 YES\cf0 ;\
+    \
+\}\
+\cf2 //
+\f2 \uc0\u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 
+\f0 \cf0 \
+\cf2 //
+\f1 \'bf\'aa\'ca\'bc\'cf\'ec\'d3\'a6\'ca\'b1\'b5\'f7\'d3\'c3
+\f0 \cf0 \
+-(\cf4 void\cf0 )connection:(\cf6 NSURLConnection\cf0  *)connection didReceiveResponse:(\cf6 NSURLResponse\cf0  *)response\
+\{\
+    \cf7 NSLog\cf0 (\cf8 @"
+\f1 \'bf\'aa\'ca\'bc\'cf\'ec\'d3\'a6
+\f0 "\cf0 );\
+    \
+    \cf5 _downloadData\cf0 .\cf10 length\cf0  = \cf9 0\cf0 ;\
+\}\
+\
+-(\cf4 void\cf0 )connection:(\cf6 NSURLConnection\cf0  *)connection didReceiveData:(\cf6 NSData\cf0  *)data\
+\{\
+    \cf7 NSLog\cf0 (\cf8 @"
+\f1 \'d5\'fd\'d4\'da\'bc\'d3\'d4\'d8\'ca\'fd\'be\'dd
+\f0 "\cf0 );\
+    [\cf5 _downloadData\cf0  \cf7 appendData\cf0 :data];\
+    \
+\}\
+-(\cf4 void\cf0 )connectionDidFinishLoading:(\cf6 NSURLConnection\cf0  *)connection\
+\{\
+    \cf7 NSLog\cf0 (\cf8 @"
+\f1 \'bd\'e1\'ca\'f8\'ba\'f3\'b5\'f7\'d3\'c3
+\f0 "\cf0 );\
+    [\cf6 UIApplication\cf0  \cf7 sharedApplication\cf0 ].\cf10 networkActivityIndicatorVisible\cf0  = \cf4 NO\cf0 ;\
+      \cf7 NSLog\cf0 (\cf8 @"
+\f1 \'ca\'fd\'be\'dd\'cf\'c2\'d4\'d8\'cd\'ea\'b3\'c9
+\f0 "\cf0 );\
+    \
+    \cf6 NSDictionary\cf0  *dic = [\cf6 NSJSONSerialization\cf0  \cf7 JSONObjectWithData\cf0 :\cf5 _downloadData\cf0  \cf7 options\cf0 :\cf11 NSJSONReadingMutableContainers\cf0  \cf7 error\cf0 :\cf4 nil\cf0 ];\
+   \
+    \cf5 _userInfo\cf0 .\cf7 array\cf0  = dic[\cf8 @"users"\cf0 ];\
+\cf7 NSLog\cf0 (\cf8 @"%@"\cf0 ,\cf5 _userInfo\cf0 );\
+\cf2 //    [_tableView reloadData];\cf0 \
+    [\cf4 self\cf0  \cf12 createTableview\cf0 ]; 
+\fs36 \cb3  
+\f1 \'d5\'e2\'c0\'ef\'d4\'da\'ca\'fd\'be\'dd\'b6\'c1\'c8\'a1\'cd\'ea\'b3\'c9\'ca\'b1\'b2\'c5\'c8\'a5\'b3\'f5\'ca\'bc\'bb\'aftableView\'a3\'ac\'d5\'e2\'d1\'f9\'b2\'c5\'bf\'c9\'d2\'d4\'ca\'b1TableView\'d6\'d0\'d3\'d0\'ca\'fd\'be\'dd\'b2\'bb\'d3\'c3reloadData;
+\f0\fs28 \cb1 \
+\}\
+\
+-(\cf4 void\cf0 )connection:(\cf6 NSURLConnection\cf0  *)connection didFailWithError:(\cf6 NSError\cf0  *)error\
+\{\
+    [\cf6 UIApplication\cf0  \cf7 sharedApplication\cf0 ].\cf10 networkActivityIndicatorVisible\cf0  = \cf4 NO\cf0 ;\
+    \cf7 NSLog\cf0 (\cf8 @"
+\f1 \'ca\'a7\'b0\'dc
+\f0 "\cf0 );\
+\}\
+\
+\cf2 //
+\f2 \uc0\u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \
+
+\f1\fs48 \cf13 \cb3 \'cd\'ac\'b2\'bd\'cf\'c2\'d4\'d8
+\f0\fs28 \cf0 \cb1 \
+-(\cf4 void\cf0 )getData\
+\{\
+    \cf6 NSURL\cf0  * url = [\cf6 NSURL\cf0  \cf7 URLWithString\cf0 :\cf8 @"http://10.0.8.8/sns/my/user_list.php?number=20&page=1"\cf0 ];\
+    \
+    \cf6 NSData\cf0  * data = [\cf6 NSData\cf0  \cf7 dataWithContentsOfURL\cf0 :url];\
+    \
+    \
+    \cf6 NSDictionary\cf0  * dic = [\cf6 NSJSONSerialization\cf0 \
+                          \cf7 JSONObjectWithData\cf0 :data \cf7 options\cf0 :\cf11 NSJSONReadingMutableContainers\cf0  \cf7 error\cf0 :\cf4 nil\cf0 ];\
+    \cf5 _userInfo\cf0  = dic[\cf8 @"users"\cf0 ];\
+    \
+    \cf7 NSLog\cf0 (\cf8 @"%@"\cf0 ,\cf5 _userInfo\cf0 );\
+\cf2 //    NSJSONReadingMutableContainers = (1UL << 0)\cf0 \
+\cf2 //    NSJSONReadingMutableLeaves = (1UL << 1)\cf0 \
+\cf2 //    NSJSONReadingAllowFragments = (1UL << 2)\cf0 \
+\
+\}\
+\
+}

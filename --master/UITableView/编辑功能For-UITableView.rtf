@@ -1,0 +1,263 @@
+{\rtf1\ansi\ansicpg936\cocoartf1343\cocoasubrtf140
+{\fonttbl\f0\fnil\fcharset134 STHeitiSC-Light;\f1\fswiss\fcharset0 Helvetica;\f2\fnil\fcharset0 Menlo-Regular;
+}
+{\colortbl;\red255\green255\blue255;\red255\green173\blue23;\red170\green13\blue145;\red59\green16\blue143;
+\red255\green39\blue18;\red0\green116\blue0;\red63\green110\blue116;\red92\green38\blue153;\red46\green13\blue110;
+\red255\green249\blue89;\red217\green11\blue0;\red196\green26\blue22;\red0\green186\blue251;\red102\green177\blue50;
+\red28\green0\blue207;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww21640\viewh11100\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs36 \cf0 \'ca\'d7\'cf\'c8\'d3\'c3\'cf\'b5\'cd\'b3\'b5\'c4
+\f1 edit
+\f0 \'b0\'b4\'c5\'a5\'c0\'b4\'b3\'f5\'ca\'bc\'bb\'af\'d2\'bb\'b8\'f6
+\f2\fs28 \CocoaLigature0   \
+ \cf2 UIBarButtonItem\cf0  *biEdit=\cf3 self\cf0 .\cf4 editButtonItem\cf0 ;
+\f0 \'d5\'e2\'b8\'f6\'b0\'b4\'c5\'a5\'bb\'e1\'d7\'d4\'b6\'af\'bb\'d8\'b5\'f7
+\f2 setEditing:(\cf3 BOOL\cf0 )editing animated:(\cf3 BOOL\cf0 )animated\
+\
+
+\f0\fs36 \CocoaLigature1 \'c8\'bb\'ba\'f3\'ca\'b5\'cf\'d6\'bc\'b8\'b8\'f6\'ba\'af\'ca\'fd\
+\cb5 1st\
+\cb1 \
+\pard\tx674\pardeftab674\pardirnatural
+
+\fs28 \cf6 \CocoaLigature0 \'ca\'b9\'b0\'b4\'c5\'a5\'bd\'f8\'c8\'eb\'b1\'e0\'bc\'ad\'d7\'b4\'cc\'ac\
+
+\f2 \cf0 \
+\pard\tx674\pardeftab674\pardirnatural
+\cf6 //
+\f0 \'d7\'a2\'d2\'e2\'a3\'ba\'d4\'da\'ca\'d3\'cd\'bc\'d6\'d0\'a3\'ac\'b7\'b2\'ca\'c7\'d2\'aa\'bd\'f8\'c8\'eb\'b1\'e0\'bc\'ad\'d7\'b4\'cc\'ac\'a3\'ac\'cf\'c2\'c3\'e6\'b5\'c4\'b4\'fa\'c2\'eb\'ca\'c7\'b9\'cc\'b6\'a8\'d0\'b4\'b7\'a8\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f2 \cf0 \
+-(\cf3 void\cf0 ) setEditing:(\cf3 BOOL\cf0 )editing animated:(\cf3 BOOL\cf0 )animated\
+\{\
+    \cf6 //
+\f0 \'ca\'d7\'cf\'c8\'b5\'f7\'d3\'c3\'b8\'b8\'c0\'e0\'b5\'c4\'b1\'e0\'bc\'ad\'ba\'af\'ca\'fd
+\f2 \cf0 \
+    [\cf3 super\cf0  \cf4 setEditing\cf0 :editing \cf4 animated\cf0 :\cf3 YES\cf0 ];\
+    \cf6 //
+\f0 \'c6\'e4\'b4\'ce\'b9\'d8\'c1\'aa\'d2\'aa\'b1\'e0\'bc\'ad\'b5\'c4\'b6\'d4\'cf\'f3
+\f2 \cf0 \
+    [\cf7 tv\cf0  \cf4 setEditing\cf0 :editing \cf4 animated\cf0 :\cf3 YES\cf0 ];\
+\}\
+\
+\pard\tx674\pardeftab674\pardirnatural
+
+\fs36 \cf0 \cb5 2nd\
+\pard\tx674\pardeftab674\pardirnatural
+
+\fs28 \cf0 \cb1 \
+
+\f0 \cf6 \'ca\'b9\'b1\'ed\'b8\'f1\'bd\'f8\'c8\'eb\'d7\'d4\'b6\'a8\'d2\'e5\'b5\'c4\'b1\'e0\'bc\'ad\'d7\'b4\'cc\'ac\
+\pard\tx674\tx2420\pardeftab674\pardirnatural
+\cf6 \
+\pard\tx674\pardeftab674\pardirnatural
+
+\f2 \cf0 \
+-(\cf8 UITableViewCellEditingStyle\cf0 ) tableView:(\cf2 UITableView\cf0  *)tableView editingStyleForRowAtIndexPath:(\cf2 NSIndexPath\cf0  *)indexPath\
+\{\
+    \cf3 if\cf0  (!indexPath.\cf8 section\cf0 ) \{\
+        \cf3 return\cf0  \cf9 UITableViewCellEditingStyleInsert\cf0 ;
+\f0 \'d7\'f3\'b1\'df\'cf\'d4\'ca\'be\'c2\'cc\'c9\'ab\'bc\'d3\'ba\'c5
+\f2 \
+    \}\
+    \cf3 else\cf0 \
+    \{\
+        \cf3 return\cf0  \cf9 UITableViewCellEditingStyleDelete\cf0 ;\
+    \}\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f0 \cf0 \'d2\'bb\'b9\'b2\'c8\'fd\'b8\'f6\'ca\'f4\'d0\'d4 
+\f2 \
+\cb10     UITableViewCellEditingStyleNone,\cb1 \
+\cb10     UITableViewCellEditingStyleDelete,\cb1 \
+\cb10     UITableViewCellEditingStyleInsert\cb1 \
+\}\
+\
+
+\fs36 \cb11 3rd\
+\pard\tx674\pardeftab674\pardirnatural
+
+\fs28 \cf0 \cb1 \
+-(\cf2 NSString\cf0  *) tableView:(\cf2 UITableView\cf0  *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(\cf2 NSIndexPath\cf0  *)indexPath\
+\{\
+    \cf3 return\cf0  \cf12 @"
+\f0 \'c8\'b7\'b6\'a8\'d2\'aa\'c9\'be\'b3\'fd\'a3\'bf
+\f2 \'94\cf0 ;//
+\f0 \'d7\'f3\'c3\'e6\'b5\'c4\'bb\'e1\'bb\'ae\'b3\'f6\'b5\'c4\'cc\'e1\'ca\'be\'b0\'b4\'c5\'a5\'a3\'ac\'c0\'ef\'c3\'e6\'b5\'c4\'c4\'da\'c8\'dd
+\f2 \
+\}\
+\
+4th 
+\f0 \'ca\'b5\'cf\'d6\'cd\'ea\'b3\'c9\'be\'df\'cc\'e5\'b5\'c4\'b1\'e0\'bc\'ad\'b2\'d9\'d7\'f7
+\f2 \
+\pard\tx674\pardeftab674\pardirnatural
+
+\f0\fs48 \cf0 \cb5 \'b2\'e5\'c8\'eb  \'c9\'be\'b3\'fd\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f2\fs28 \cf0 \cb1 \
+-(\cf3 void\cf0 ) tableView:(\cf2 UITableView\cf0  *)tableView commitEditingStyle:(\cf8 UITableViewCellEditingStyle\cf0 )editingStyle forRowAtIndexPath:(\cf2 NSIndexPath\cf0  *)indexPath\
+\{\
+    \cf6 //
+\f0 \'c5\'d0\'b6\'cf\'be\'df\'cc\'e5\'ca\'c7\'c4\'c4\'d6\'d6\'b1\'e0\'bc\'ad\'b2\'d9\'d7\'f7
+\f2 \cf0 \
+    \cf3 if\cf0  (editingStyle==\cf9 UITableViewCellEditingStyleDelete\cf0 ) \{\
+        \cf6 //
+\f0 \'c9\'be\'b3\'fd\'b2\'d9\'d7\'f7\'a3\'ac\'b7\'d6\'c1\'bd\'b2\'bd\'a3\'ba
+\f2 A
+\f0 \'b4\'d3\'ca\'fd\'d7\'e9\'c9\'be\'b3\'fd
+\f2   B
+\f0 \'b4\'d3
+\f2 cell
+\f0 \'c0\'ef\'c9\'be\'b3\'fd
+\f2 \cf0 \
+        [\cf7 dataAry\cf0 [indexPath.\cf8 section\cf0 ] \cf4 removeObjectAtIndex\cf0 :indexPath.\cf8 row\cf0 ];\
+        \
+        [tableView \cf4 deleteRowsAtIndexPaths\cf0 :[\cf2 NSArray\cf0  \cf4 arrayWithObject\cf0 :indexPath ] \cf4 withRowAnimation\cf0 :\cf9 UITableViewRowAnimationBottom\cf0 ];\
+    \}\
+    \cf3 else\cf0  \cf3 if\cf0  (editingStyle==\cf9 UITableViewCellEditingStyleInsert\cf0 )\
+    \{\
+        \cf6 //
+\f0 \'cc\'ed\'bc\'d3\'b2\'d9\'d7\'f7
+\f2 \cf0 \
+        \cf6 //
+\f0 \'cf\'c8\'cc\'ed\'bc\'d3\'b5\'bd\'ca\'fd\'d7\'e9\'c0\'ef
+\f2 \cf0 \
+        \cf7 qfStudent\cf0  *xiaowang=[[\cf7 qfStudent\cf0  \cf4 alloc\cf0 ] \cf4 init\cf0 ];\
+        xiaowang.\cf7 stuName\cf0 =\cf12 @"
+\f0 \'d0\'a1\'cd\'f5
+\f2 "\cf0 ;\
+        xiaowang.\cf7 stuNo\cf0 =\cf12 @"1066"\cf0 ;\
+        [\cf7 dataAry\cf0 [indexPath.\cf8 section\cf0 ] \cf4 addObject\cf0 :xiaowang];\
+        [tableView \cf4 insertRowsAtIndexPaths\cf0 :[\cf2 NSArray\cf0  \cf4 arrayWithObject\cf0 :indexPath] \cf4 withRowAnimation\cf0 :\cf9 UITableViewRowAnimationBottom\cf0 ];\
+    \}\
+\}\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f0\fs48 \cf0 \cb5 \'d2\'c6\'b6\'af\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f2\fs28 \cf0 \cb1 \
+\pard\tx674\pardeftab674\pardirnatural
+\cf6 //
+\f0 \'b4\'cb\'ba\'af\'ca\'fd\'ca\'b5\'cf\'d6\'d2\'c6\'b6\'af\'b9\'a6\'c4\'dc
+\f2 \cf0 \
+\cf6 //
+\f0 \'b2\'ce\'ca\'fd
+\f2 2sourceIndexPath
+\f0 \'a3\'ac\'d2\'aa\'d2\'c6\'b6\'af\'b6\'d4\'cf\'f3\'b5\'c4\'b7\'d6\'c7\'f8\'a1\'a2\'cb\'f7\'d2\'fd
+\f2 \cf0 \
+\cf6 //
+\f0 \'b2\'ce\'ca\'fd
+\f2 3destinationIndexPath  
+\f0 \'d2\'aa\'d2\'c6\'b6\'af\'b5\'bd\'b5\'c4\'b7\'d6\'c7\'f8\'a1\'a2\'cb\'f7\'d2\'fd
+\f2 \cf0 \
+-(\cf3 void\cf0 ) tableView:(\cf2 UITableView\cf0  *)tableView moveRowAtIndexPath:(\cf2 NSIndexPath\cf0  *)sourceIndexPath toIndexPath:(\cf2 NSIndexPath\cf0  *)destinationIndexPath\
+\{\
+    \cf6 //
+\f0 \'cf\'c8\'b0\'d1\'d2\'aa\'d2\'c6\'b6\'af\'b5\'c4\'ca\'fd\'be\'dd\'d3\'c3\'b5\'da\'c8\'fd\'b7\'bd\'b1\'e4\'c1\'bf\'b8\'f8\'b4\'e6\'b7\'c5\'c6\'f0\'c0\'b4
+\f2 \cf0 \
+    \cf7 qfStudent\cf0  *temp=\cf7 dataAry\cf0 [sourceIndexPath.\cf8 section\cf0 ][sourceIndexPath.\cf8 row\cf0 ];\
+    \
+    \cf6 //
+\f0 \'b4\'d3\'d4\'ad\'ce\'bb\'d6\'c3\'b0\'d1\'d2\'aa\'d2\'c6\'b6\'af\'b5\'c4\'ca\'fd\'be\'dd\'c9\'be\'b3\'fd\'b5\'f4
+\f2 \cf0 \
+    \cf2 NSMutableArray\cf0  *tempAry=\cf7 dataAry\cf0 [sourceIndexPath.\cf8 section\cf0 ];\
+    [tempAry \cf4 removeObjectAtIndex\cf0 :sourceIndexPath.\cf8 row\cf0 ];\
+    \
+    \cf6 //
+\f0 \'b0\'d1\'d2\'aa\'d2\'c6\'b6\'af\'b5\'c4\'ca\'fd\'be\'dd\'a3\'ac\'b2\'e5\'c8\'eb\'b5\'bd\'d2\'c6\'b6\'af\'b5\'c4\'ce\'bb\'d6\'c3
+\f2 \cf0 \
+    [tempAry \cf4 insertObject\cf0 :temp \cf4 atIndex\cf0 :destinationIndexPath.\cf8 row\cf0 ];\
+    \
+    \
+\}\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f0\fs48 \cf0 \cb11 \'b6\'e0\'d1\'a1\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f2\fs28 \cf0 \cb1 \
+\pard\tx674\pardeftab674\pardirnatural
+
+\f0\fs36 \cf0 \cb13 \'bd\'f8\'c8\'eb\'b6\'e0\'d1\'a1\'d7\'b4\'cc\'ac
+\fs28 \cb1 \
+\pard\tx674\pardeftab674\pardirnatural
+
+\f2 \cf0 -(\cf8 UITableViewCellEditingStyle\cf0 )tableView:(\cf2 UITableView\cf0  *)tableView editingStyleForRowAtIndexPath:(\cf2 NSIndexPath\cf0  *)indexPath\
+\{\
+    \cf3 return\cf0   \cf9 UITableViewCellEditingStyleDelete\cf0 |\
+    \cf9 UITableViewCellEditingStyleInsert\cf0 ;\
+\}\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f0\fs36 \cf0 \cb13 \'b1\'e0\'bc\'ad\'b0\'b4\'c5\'a5\'b5\'c4\'bc\'e0\'cc\'fd
+\fs28 \cb1 \
+\pard\tx674\pardeftab674\pardirnatural
+
+\f2 \cf0 -(\cf3 void\cf0 )editClick\
+\{\
+    \cf7 _isEditState\cf0  = !\cf7 _isEditState\cf0 ;
+\f0 \cb5 \'cc\'ed\'bc\'d3\'d2\'bb\'b8\'f6\'ca\'f4\'d0\'d4\'a3\'ac
+\f2 \cf14 _isEditState
+\f0 \cf0 \'c5\'d0\'b6\'cf\'ca\'c7\'b7\'f1\'ca\'b1\'bd\'f8\'c8\'eb\'c1\'cb\'b1\'e0\'bc\'ad\'b5\'c4\'d7\'b4\'cc\'ac\'a3\'ac\'d3\'c3\'c6\'e4\'c0\'b4\'bf\'d8\'d6\'c6\'b0\'b4\'c5\'a5\'b5\'c4\'c9\'be\'b3\'fd\'b0\'b4\'c5\'a5\'b5\'c4\'b3\'f6\'cf\'d6\'ba\'cd\'c1\'d9\'ca\'b1\'ca\'fd\'d7\'e9\'b5\'c4\'b3\'f5\'ca\'bc\'bb\'af
+\f2 \cb1     \
+    [\cf7 _tableView\cf0  \cf4 setEditing\cf0 :\cf7 _isEditState\cf0  \cf4 animated\cf0 :\cf3 YES\cf0 ];\
+    \cf3 if\cf0  (\cf7 _isEditState\cf0 )\
+    \{\
+        \cf7 _tempArray\cf0  = [[\cf2 NSMutableArray\cf0  \cf4 alloc\cf0 ]\cf4 init\cf0 ];\
+    \}\
+    \cf3 else\cf0 \
+        \cf7 _tempArray\cf0 =\cf3 nil\cf0 ;\
+ \
+    \cf3 if\cf0  (\cf7 _isEditState\cf0  == \cf3 YES\cf0 ) \{\
+        \cf3 self\cf0 .\cf8 navigationItem\cf0 .\cf8 rightBarButtonItem\cf0  = [[\cf2 UIBarButtonItem\cf0  \cf4 alloc\cf0 ]\cf4 initWithBarButtonSystemItem\cf0 :\cf9 UIBarButtonSystemItemTrash\cf0  \cf4 target\cf0 :\cf3 self\cf0  \cf4 action\cf0 :\cf3 @selector\cf0 (delete)];\
+    \}\cf3 else\cf0 \
+        \cf3 self\cf0 .\cf8 navigationItem\cf0 .\cf8 rightBarButtonItem\cf0  = \cf3 nil\cf0 ;\
+    \
+\}
+\f0 \
+\pard\tx674\pardeftab674\pardirnatural
+
+\fs36 \cf0 \cb13 \'ce\'aa\'c1\'d9\'ca\'b1\'b5\'c4\'b4\'e6\'b4\'a2\'ca\'fd\'d7\'e9\'d4\'f6\'bc\'d3\'bb\'f2\'bc\'f5\'c9\'d9\'d4\'aa\'cb\'d8
+\fs28 \cb1 \
+\pard\tx674\pardeftab674\pardirnatural
+
+\f2 \cf0 -(\cf3 void\cf0 )tableView:(\cf2 UITableView\cf0  *)tableView didSelectRowAtIndexPath:(\cf2 NSIndexPath\cf0  *)indexPath\
+\{\
+    \cf3 if\cf0  (\cf7 _isEditState\cf0 )\
+    \{\
+        [\cf7 _tempArray\cf0  \cf4 addObject\cf0 :\cf7 _dataSource\cf0 [indexPath.\cf8 row\cf0 ]];\
+    \}\
+    \
+\}\
+-(\cf3 void\cf0 )tableView:(\cf2 UITableView\cf0  *)tableView didDeselectRowAtIndexPath:(\cf2 NSIndexPath\cf0  *)indexPath\
+\{\
+    \cf3 if\cf0  (\cf7 _isEditState\cf0 )\
+    \{\
+        [\cf7 _tempArray\cf0  \cf4 removeObject\cf0 :\cf7 _dataSource\cf0 [indexPath.\cf8 row\cf0 ]];\
+    \}\
+\}
+\f0 \
+\pard\tx674\pardeftab674\pardirnatural
+
+\fs36 \cf0 \cb13 \'d4\'da\'ca\'fd\'be\'dd\'d4\'b4\'d6\'d0\'c9\'be\'b3\'fd\'d1\'a1\'d6\'d0\'b5\'c4cell\'b6\'d4\'d3\'a6\'b5\'c4\'ca\'fd\'be\'dd
+\fs28 \cb1 \
+\pard\tx674\pardeftab674\pardirnatural
+
+\f2 \cf0 -(\cf3 void\cf0 )delete\
+\{\
+    [\cf2 UIView\cf0  \cf4 animateWithDuration\cf0 :\cf15 0.5\cf0  \cf4 animations\cf0 :^\{ [\cf7 _dataSource\cf0  \cf4 removeObjectsInArray\cf0 :\cf7 _tempArray\cf0 ];\
+        [\cf7 _tableView\cf0  \cf4 reloadData\cf0 ];\}];\
+   \
+    [\cf7 _tempArray\cf0  \cf4 removeAllObjects\cf0 ];\
+\}
+\f0 \
+\
+\
+\
+\
+}

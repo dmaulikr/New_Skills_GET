@@ -1,0 +1,254 @@
+{\rtf1\ansi\ansicpg936\cocoartf1347\cocoasubrtf570
+{\fonttbl\f0\fnil\fcharset134 STHeitiSC-Light;\f1\fswiss\fcharset0 Helvetica;\f2\fnil\fcharset0 Menlo-Regular;
+\f3\froman\fcharset0 Times-Roman;\f4\fswiss\fcharset0 ArialMT;}
+{\colortbl;\red255\green255\blue255;\red255\green39\blue18;\red255\green255\blue0;\red228\green124\blue72;
+\red255\green44\blue56;\red211\green24\blue149;\red65\green204\blue69;\red0\green160\blue255;\red255\green128\blue0;
+\red217\green11\blue0;\red120\green109\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww19240\viewh13640\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs48 \cf1 \cb2 \'c7\'a9\'c3\'fb\'b9\'e6\'d4\'f2\'bc\'fb\'d6\'a7\'b8\'b6\'b1\'a6\'ce\'c4\'b5\'b5\
+\'ce\'a2\'d0\'c5\'d6\'a7\'b8\'b6
+\f1 \cf0 \
+
+\fs24 \cb0 \
+
+\f0 \cf1 \'d4\'da\'b3\'cc\'d0\'f2\'c8\'eb\'bf\'da\'cf\'f2\'ce\'a2\'d0\'c5\'d7\'a2\'b2\'e1
+\f2\fs28 \CocoaLigature0 [\cf3 WXApi\cf1  \cf3 registerApp\cf1 :\cf4 APP_ID\cf1  \cf3 withDescription\cf1 :\cf5 @"demo 2.0"\cf1 ];\
+
+\f1\fs24 \cf0 \CocoaLigature1 \
+\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f2\fs28 \cf1 \CocoaLigature0 - (\cf6 void\cf1 )sendPay_demo\
+\{\
+    \cf7 //\{\{\{\cf1 \
+    \cf7 //
+\f0 \'b1\'be\'ca\'b5\'c0\'fd\'d6\'bb\'ca\'c7\'d1\'dd\'ca\'be\'c7\'a9\'c3\'fb\'b9\'fd\'b3\'cc\'a3\'ac
+\f2  
+\f0 \'c7\'eb\'bd\'ab\'b8\'c3\'b9\'fd\'b3\'cc\'d4\'da\'c9\'cc\'bb\'a7\'b7\'fe\'ce\'f1\'c6\'f7\'c9\'cf\'ca\'b5\'cf\'d6
+\f2 \cf1 \
+    \
+    \cf7 //
+\f0 \'b4\'b4\'bd\'a8\'d6\'a7\'b8\'b6\'c7\'a9\'c3\'fb\'b6\'d4\'cf\'f3
+\f2 \cf1 \
+    \cf3 payRequsestHandler\cf1  *req = [[\cf3 payRequsestHandler\cf1  \cf8 alloc\cf1 ] \cf8 autorelease\cf1 ];\
+    \cf7 //
+\f0 \'b3\'f5\'ca\'bc\'bb\'af\'d6\'a7\'b8\'b6\'c7\'a9\'c3\'fb\'b6\'d4\'cf\'f3
+\f2 \cf1 \
+    [req \cf3 init\cf1 :\cf4 APP_ID\cf1  \cf3 mch_id\cf1 :\cf4 MCH_ID\cf1 ];\
+    \cf7 //
+\f0 \'c9\'e8\'d6\'c3\'c3\'dc\'d4\'bf
+\f2 \cf1 \
+    [req \cf3 setKey\cf1 :\cf4 PARTNER_ID\cf1 ];\
+    \
+    \cf7 //\}\}\}\cf1 \
+    \
+    \cf7 //
+\f0 \'bb\'f1\'c8\'a1\'b5\'bd\'ca\'b5\'bc\'ca\'b5\'f7\'c6\'f0\'ce\'a2\'d0\'c5\'d6\'a7\'b8\'b6\'b5\'c4\'b2\'ce\'ca\'fd\'ba\'f3\'a3\'ac\'d4\'da
+\f2 app
+\f0 \'b6\'cb\'b5\'f7\'c6\'f0\'d6\'a7\'b8\'b6
+\f2 \cf1 \
+    \cf8 NSMutableDictionary\cf1  *dict = [req \cf3 sendPay_demo\cf1 ];\
+    \
+    \cf6 if\cf1 (dict == \cf6 nil\cf1 )\{\
+        \cf7 //
+\f0 \'b4\'ed\'ce\'f3\'cc\'e1\'ca\'be
+\f2 \cf1 \
+        \cf8 NSString\cf1  *debug = [req \cf3 getDebugifo\cf1 ];\
+        \
+        [\cf6 self\cf1  \cf3 alert\cf1 :\cf5 @"
+\f0 \'cc\'e1\'ca\'be\'d0\'c5\'cf\'a2
+\f2 "\cf1  \cf3 msg\cf1 :debug];\
+        \
+        \cf8 NSLog\cf1 (\cf5 @"%@\\n\\n"\cf1 ,debug);\
+    \}\cf6 else\cf1 \{\
+        \cf8 NSLog\cf1 (\cf5 @"%@\\n\\n"\cf1 ,[req \cf3 getDebugifo\cf1 ]);\
+        \cf7 //[self alert:@"
+\f0 \'c8\'b7\'c8\'cf
+\f2 " msg:@"
+\f0 \'cf\'c2\'b5\'a5\'b3\'c9\'b9\'a6\'a3\'ac\'b5\'e3\'bb\'f7
+\f2 OK
+\f0 \'ba\'f3\'b5\'f7\'c6\'f0\'d6\'a7\'b8\'b6\'a3\'a1
+\f2 "];\cf1 \
+        \
+        \cf8 NSMutableString\cf1  *stamp  = [dict \cf8 objectForKey\cf1 :\cf5 @"timestamp"\cf1 ];\
+        \
+        \cf7 //
+\f0 \'b5\'f7\'c6\'f0\'ce\'a2\'d0\'c5\'d6\'a7\'b8\'b6
+\f2 \cf1 \
+        \cf3 PayReq\cf1 * req             = [[[\cf3 PayReq\cf1  \cf8 alloc\cf1 ] \cf8 init\cf1 ]\cf8 autorelease\cf1 ];\
+        req.\cf9 openID\cf1               = [dict \cf8 objectForKey\cf1 :\cf5 @"appid"\cf1 ];\
+        req.\cf9 partnerId\cf1            = [dict \cf8 objectForKey\cf1 :\cf5 @"partnerid"\cf1 ];\
+        req.\cf9 prepayId\cf1             = [dict \cf8 objectForKey\cf1 :\cf5 @"prepayid"\cf1 ];\
+        req.\cf9 nonceStr\cf1             = [dict \cf8 objectForKey\cf1 :\cf5 @"noncestr"\cf1 ];\
+        req.\cf9 timeStamp\cf1            = stamp.\cf8 intValue\cf1 ;\
+        req.\cf9 package\cf1              = [dict \cf8 objectForKey\cf1 :\cf5 @"package"\cf1 ];\
+        req.\cf9 sign\cf1                 = [dict \cf8 objectForKey\cf1 :\cf5 @"sign"\cf1 ];\
+        \
+        [\cf3 WXApi\cf1  \cf3 sendReq\cf1 :req];\
+    \}\
+\}\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f1\fs24 \cf0 \CocoaLigature1 \
+\
+\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f2\fs28 \cf1 \CocoaLigature0 -(\cf6 void\cf1 ) onResp:(\cf3 BaseResp\cf1 *)resp\
+\{\
+    \cf8 NSString\cf1  *strMsg = [\cf8 NSString\cf1  \cf8 stringWithFormat\cf1 :\cf5 @"errcode:%d"\cf1 , resp.\cf9 errCode\cf1 ];\
+    \cf8 NSString\cf1  *strTitle;\
+    \
+    \cf6 if\cf1 ([resp \cf8 isKindOfClass\cf1 :[\cf3 SendMessageToWXResp\cf1  \cf8 class\cf1 ]])\
+    \{\
+        strTitle = [\cf8 NSString\cf1  \cf8 stringWithFormat\cf1 :\cf5 @"
+\f0 \'b7\'a2\'cb\'cd\'c3\'bd\'cc\'e5\'cf\'fb\'cf\'a2\'bd\'e1\'b9\'fb
+\f2 "\cf1 ];\
+    \}\
+    \
+    \cf6 if\cf1 ([resp \cf8 isKindOfClass\cf1 :[\cf3 PayResp\cf1  \cf8 class\cf1 ]])\{\
+        \cf7 //
+\f0 \'d6\'a7\'b8\'b6\'b7\'b5\'bb\'d8\'bd\'e1\'b9\'fb\'a3\'ac\'ca\'b5\'bc\'ca\'d6\'a7\'b8\'b6\'bd\'e1\'b9\'fb\'d0\'e8\'d2\'aa\'c8\'a5\'ce\'a2\'d0\'c5\'b7\'fe\'ce\'f1\'c6\'f7\'b6\'cb\'b2\'e9\'d1\'af
+\f2 \cf1 \
+        strTitle = [\cf8 NSString\cf1  \cf8 stringWithFormat\cf1 :\cf5 @"
+\f0 \'d6\'a7\'b8\'b6\'bd\'e1\'b9\'fb
+\f2 "\cf1 ];\
+        \
+        \cf6 switch\cf1  (resp.\cf9 errCode\cf1 ) \{\
+            \cf6 case\cf1  \cf9 WXSuccess\cf1 :\
+                strMsg = \cf5 @"
+\f0 \'d6\'a7\'b8\'b6\'bd\'e1\'b9\'fb\'a3\'ba\'b3\'c9\'b9\'a6\'a3\'a1
+\f2 "\cf1 ;\
+                \cf8 NSLog\cf1 (\cf5 @"
+\f0 \'d6\'a7\'b8\'b6\'b3\'c9\'b9\'a6\'a3\'ad
+\f2 PaySuccess
+\f0 \'a3\'ac
+\f2 retcode = %d"\cf1 , resp.\cf9 errCode\cf1 );\
+                \cf6 break\cf1 ;\
+                \
+            \cf6 default\cf1 :\
+                strMsg = [\cf8 NSString\cf1  \cf8 stringWithFormat\cf1 :\cf5 @"
+\f0 \'d6\'a7\'b8\'b6\'bd\'e1\'b9\'fb\'a3\'ba\'ca\'a7\'b0\'dc\'a3\'a1
+\f2 retcode = %d, retstr = %@"\cf1 , resp.\cf9 errCode\cf1 ,resp.\cf9 errStr\cf1 ];\
+                \cf8 NSLog\cf1 (\cf5 @"
+\f0 \'b4\'ed\'ce\'f3\'a3\'ac
+\f2 retcode = %d, retstr = %@"\cf1 , resp.\cf9 errCode\cf1 ,resp.\cf9 errStr\cf1 );\
+                \cf6 break\cf1 ;\
+        \}\
+    \}\
+    \cf8 UIAlertView\cf1  *alert = [[\cf8 UIAlertView\cf1  \cf8 alloc\cf1 ] \cf8 initWithTitle\cf1 :strTitle \cf8 message\cf1 :strMsg \cf8 delegate\cf1 :\cf6 self\cf1  \cf8 cancelButtonTitle\cf1 :\cf5 @"OK"\cf1  \cf8 otherButtonTitles\cf1 :\cf6 nil\cf1 , \cf6 nil\cf1 ];\
+    [alert \cf8 show\cf1 ];\
+    [alert \cf8 release\cf1 ];\
+\}\
+\
+\cb10 \
+
+\f0\fs48 \'d6\'a7\'b8\'b6\'b1\'a6
+\f2\fs28 \
+\cb0 - (\cf6 IBAction\cf1 )fukuan:(\cf6 id\cf1 )sender\
+\{\
+
+\f0 \'ca\'d7\'cf\'c8\'cf\'c8\'d7\'d4\'bc\'ba\'b5\'c4\'b7\'fe\'ce\'f1\'c6\'f7\'b7\'a2\'cb\'cd\'b6\'a8\'b5\'e3\'c7\'a9\'c3\'fb\'b5\'c4\'c7\'eb\'c7\'f3\'a3\'ac\'bb\'f1\'b5\'c3\'cf\'f2\'d6\'a7\'b8\'b6\'b1\'a6\'b7\'a2\'cb\'cd\'b5\'c4\'c7\'a9\'c3\'fb\'d0\'c5\'cf\'a2\'a1\'be\'d0\'e8\'d2\'aa\'c3\'d8\'d4\'bf\'ba\'cd\'b9\'ab\'d4\'bf\'a1\'bf
+\f2 \
+    \cf8 NSString\cf1  * url = [\cf8 NSString\cf1  \cf8 stringWithFormat\cf1 :\cf5 @"%@%@"\cf1 ,\cf4 IPUrl\cf1 ,\cf4 alipaycreateorder\cf1 ];\
+    \
+    \cf8 NSDictionary\cf1  * dic = \cf11 @\{\cf4 order_id\cf1 :\cf6 self\cf1 .\cf9 dataSource\cf1 [\cf5 @"order_id"\cf1 ]\cf11 \}\cf1 ;\
+    \
+    \cf3 AFHTTPRequestOperationManager\cf1  *manager =[\cf3 AFHTTPRequestOperationManager\cf1  \cf3 manager\cf1 ];\
+    manager.\cf9 responseSerializer\cf1 .\cf9 acceptableContentTypes\cf1 =[\cf8 NSSet\cf1  \cf8 setWithObject\cf1 :\cf5 @"text/html"\cf1 ];\
+    \cf7 //    manager.responseSerializer = [AFHTTPResponseSerializer serializer];\cf1 \
+    \
+    [manager \cf3 POST\cf1 :url \cf3 parameters\cf1 :dic \cf3 success\cf1 :^(\cf3 AFHTTPRequestOperation\cf1  *operation, \cf6 id\cf1  responseObject)\
+    \{\
+        \cf8 NSLog\cf1 (\cf5 @""\cf1 );\
+\cf7 \
+\cf1 \
+        
+\f0 \'bd\'ab\'b7\'fe\'ce\'f1\'c6\'f7\'c7\'eb\'c7\'f3\'bb\'d8\'c0\'b4\'b5\'c4\'ca\'fd\'be\'dd\'b7\'a8\'b7\'c7\'d6\'a7\'b8\'b6\'b1\'a6\'d7\'f6\'c7\'eb\'c7\'f3
+\f2 \
+
+\f0 \'d2\'b3\'c3\'e6\'cd\'ac\'ca\'c2\'cc\'f8\'d7\'aa
+\f2 \
+        \cf8 NSString\cf1  *strSignData = [responseObject \cf8 objectForKey\cf1 :\cf5 @"signData"\cf1 ];\
+        \
+        \cf8 NSMutableString\cf1  * str = [\cf8 NSMutableString\cf1  \cf8 stringWithString\cf1 :strSignData];\
+        [str \cf8 replaceCharactersInRange\cf1 :[strSignData \cf8 rangeOfString\cf1 :\cf5 @"total_fee=\\"0.1\\""\cf1 ] \cf8 withString\cf1 :\cf5 @"total_fee=\\"0.01\\""\cf1 ];\
+        \
+\cf7 //        NSMutableString * str = [str replaceCharactersInRange:<#(NSRange)#> withString:<#(NSString *)#> [strSignData rangeOfString:@"total_fee=\\"0.1\\""] ];\cf1 \
+        \
+        [[\cf3 AlipaySDK\cf1  \cf3 defaultService\cf1 ] \cf3 payOrder\cf1 :strSignData \cf3 fromScheme\cf1 :\cf5 @"alisdkdemo"\cf1  \cf3 callback\cf1 :^(\cf8 NSDictionary\cf1  *resultDic)\
+         \{\
+            \
+            \cf8 NSLog\cf1 (\cf5 @"reslut = %@"\cf1 ,resultDic);\
+            \
+    \
+           \cf8 NSString\cf1  * url = [\cf8 NSString\cf1  \cf8 stringWithFormat\cf1 :\cf5 @"%@%@"\cf1 ,\cf4 IPUrl\cf1 ,\cf4 alipayfinishedverify\cf1 ];\
+            
+\f0 \'d4\'da\'bb\'d8\'b5\'f7\'d6\'d0\'cf\'f2\'b3\'cc\'d0\'f2\'d7\'d4\'c9\'ed\'b5\'c4\'b7\'fe\'ce\'f1\'c6\'f7\'b7\'a2\'cb\'cd\'c7\'eb\'c8\'b7\'c8\'cf\'b8\'b6\'bf\'ee\'d7\'b4\'cc\'ac\'a3\'bb
+\f2 \
+     \
+            [manager \cf3 POST\cf1 :url \cf3 parameters\cf1 :resultDic \cf3 success\cf1 :^(\cf3 AFHTTPRequestOperation\cf1  *operation, \cf6 id\cf1  responseObject)\
+             \{\
+\
+                    \cf8 NSLog\cf1 (\cf5 @"alipayfinishedverify response data: %@"\cf1 , responseObject);\
+             \}\
+                  \cf3 failure\cf1 :^(\cf3 AFHTTPRequestOperation\cf1  *operation, \cf8 NSError\cf1  *error)\
+             \{\
+                 \
+                 \
+                 \
+             \}];\
+            \
+            \
+        \}];\
+\
+        \
+    \}\
+          \cf3 failure\cf1 :^(\cf3 AFHTTPRequestOperation\cf1  *operation, \cf8 NSError\cf1  *error)\
+    \{\
+        \
+     \
+        \
+    \}];\
+
+\f0 \'cd\'ea\'b3\'c9\'d6\'a7\'b8\'b6\'ba\'f3\'b5\'f7\'bb\'d8\'b3\'cc\'d0\'f2\'a3\'ac\'d6\'b4\'d0\'d0\'bb\'d8\'b5\'f7
+\f2 \
+
+\f0 \'cf\'f2\'d6\'a7\'b8\'b6\'b1\'a6\'c7\'eb\'c7\'f3\'bd\'e1\'b9\'fb\'cd\'ac\'ca\'b1\'bb\'e1\'bb\'d8\'b5\'f7
+\f3\fs24 \cf0 \cb1 \expnd0\expndtw0\kerning0
+\CocoaLigature1 {{\NeXTGraphic page8image4672.png \width16 \height80
+}¬}\expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\sa240
+
+\f4 \cf0 \expnd0\expndtw0\kerning0
+- (void)payOrder:(NSString *)orderStr fromScheme:(NSString *)schemeStr callback:(PaymentCallbackBlock)callbackBlock; 
+\f3 \expnd0\expndtw0\kerning0
+\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f0\fs28 \cf1 \cb0 \kerning1\expnd0\expndtw0 \CocoaLigature0 \'d6\'d0\'b5\'c4
+\f4\fs24 \cf0 \cb1 \expnd0\expndtw0\kerning0
+\CocoaLigature1 callbackBlock
+\f2\fs28 \cf1 \cb0 \kerning1\expnd0\expndtw0 \CocoaLigature0 \
+\}- (\cf6 BOOL\cf1 )application:(\cf8 UIApplication\cf1  *)application\
+            openURL:(\cf8 NSURL\cf1  *)url\
+  sourceApplication:(\cf8 NSString\cf1  *)sourceApplication\
+         annotation:(\cf6 id\cf1 )annotation \{\
+    \
+    \
+    [[\cf3 AlipaySDK\cf1  \cf3 defaultService\cf1 ] \cf3 processOrderWithPaymentResult\cf1 :url \cf3 standbyCallback\cf1 :^(\cf8 NSDictionary\cf1  *resultDic)\
+    \{\
+        \
+        \cf8 NSLog\cf1 (\cf5 @"%@"\cf1 ,resultDic);\
+    \}];\
+    \
+ \
+    \cf6 return\cf1  \cf6 YES\cf1 ;\
+\}\
+\
+\
+\
+}

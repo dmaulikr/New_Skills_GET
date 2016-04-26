@@ -1,0 +1,516 @@
+{\rtf1\ansi\ansicpg936\cocoartf1347\cocoasubrtf570
+{\fonttbl\f0\fnil\fcharset134 STHeitiSC-Light;\f1\fswiss\fcharset0 Helvetica;\f2\fnil\fcharset0 AndaleMono;
+\f3\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red255\green39\blue18;\red65\green204\blue69;\red52\green52\blue52;
+\red0\green160\blue255;\red255\green44\blue56;\red211\green24\blue149;\red255\green255\blue0;\red255\green128\blue0;
+\red65\green100\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs48 \cf0 \cb2 \'b1\'be\'b5\'d8APP\'b5\'c4\'b0\'e6\'b1\'be\'ba\'c5\'b5\'c4\'bb\'f1\'c8\'a1\'d3\'eb
+\f1 AppStore
+\f0 \'d6\'d0\'b5\'c4\'b0\'e6\'b1\'be\'ba\'c5\'bb\'f1\'c8\'a1
+\f1\fs24 \cb1 \
+\
+\pard\tx672\pardeftab672\pardirnatural
+
+\f2\fs28 \cf1 \CocoaLigature0     \
+
+\f3 \cf3 \cb4 //    
+\f0 \'bb\'f1\'c8\'a1\'b1\'be\'b5\'d8\'b3\'cc\'d0\'f2\'b5\'c4\'b0\'e6\'b1\'be
+\f2 \cf1 \
+    
+\f3 \cf5 NSDictionary
+\f2 \cf1  *infoDictionary = [[
+\f3 \cf5 NSBundle
+\f2 \cf1  
+\f3 \cf5 mainBundle
+\f2 \cf1 ] 
+\f3 \cf5 infoDictionary
+\f2 \cf1 ];\
+    \
+    
+\f3 \cf5 NSLog
+\f2 \cf1 (
+\f3 \cf6 @"%@"
+\f2 \cf1 ,[infoDictionary 
+\f3 \cf5 objectForKey
+\f2 \cf1 :
+\f3 \cf6 @"CFBundleVersion"
+\f2 \cf1 ]);\
+
+\f3 \cf3 //  ---------------------\
+
+\f2 \cf1 \
+
+\f3 \cf3 //    
+\f0 \'c7\'eb\'c7\'f3\'cd\'f8\'c2\'e7\'ca\'fd\'be\'dd\'a3\'ac
+\f3 iTunes
+\f0 \'d6\'d0\'b5\'c4\'d3\'ce\'cf\'b7\'b0\'e6\'b1\'be\'ba\'c5\'a3\'ac\'b1\'c8\'bd\'cf
+\f2 \cf1 \
+    \
+    
+\f3 \cf7 __block
+\f2 \cf1  
+\f3 \cf5 NSString
+\f2 \cf1  *version = 
+\f3 \cf6 @""
+\f2 \cf1 ;\
+    
+\f3 \cf8 AFHTTPRequestOperationManager
+\f2 \cf1  * manager = [
+\f3 \cf8 AFHTTPRequestOperationManager
+\f2 \cf1  
+\f3 \cf8 manager
+\f2 \cf1 ];\
+    \
+    manager.
+\f3 \cf9 responseSerializer
+\f2 \cf1  = [
+\f3 \cf8 AFHTTPResponseSerializer
+\f2 \cf1  
+\f3 \cf8 serializer
+\f2 \cf1 ];\
+    
+\f3 \cf7 __block
+\f2 \cf1  
+\f3 \cf5 NSDictionary
+\f2 \cf1  * dic;\
+    [manager 
+\f3 \cf8 GET
+\f2 \cf1 :
+\f3 \cf6 @"http://itunes.apple.com/lookup?id=456107545"
+\f2 \cf1  
+\f3 \cf8 parameters
+\f2 \cf1 :
+\f3 \cf7 nil
+\f2 \cf1  
+\f3 \cf8 success
+\f2 \cf1 :^(
+\f3 \cf8 AFHTTPRequestOperation
+\f2 \cf1  *operation, 
+\f3 \cf7 id
+\f2 \cf1  responseObject) \{\
+        dic = [
+\f3 \cf5 NSJSONSerialization
+\f2 \cf1  
+\f3 \cf5 JSONObjectWithData
+\f2 \cf1 :responseObject 
+\f3 \cf5 options
+\f2 \cf1 :
+\f3 \cf5 NSJSONReadingMutableContainers
+\f2 \cf1  
+\f3 \cf5 error
+\f2 \cf1 :
+\f3 \cf7 nil
+\f2 \cf1 ];\
+
+\f3 \cf3 //        
+\f0 \'c7\'eb\'c7\'f3\'bb\'d8\'c0\'b4\'b5\'c4
+\f3 json
+\f0 \'ca\'fd\'be\'dd\'b8\'f1\'ca\'bd\'ce\'aa\'cf\'c2\'c3\'e6
+\f2 \cf1 \
+
+\f3 \cf3 //        
+\f0 \'c8\'a1\'b3\'f6\'ca\'fd\'be\'dd
+\f2 \cf1 \
+        
+\f3 \cf5 NSArray
+\f2 \cf1  *configData = [dic 
+\f3 \cf5 valueForKey
+\f2 \cf1 :
+\f3 \cf6 @"results"
+\f2 \cf1 ];\
+        \
+        
+\f3 \cf7 for
+\f2 \cf1  (
+\f3 \cf7 id
+\f2 \cf1  config 
+\f3 \cf7 in
+\f2 \cf1  configData)\
+        \{\
+            version = [config 
+\f3 \cf5 valueForKey
+\f2 \cf1 :
+\f3 \cf6 @"version"
+\f2 \cf1 ];\
+        \}\
+        \
+        \
+        
+\f3 \cf3 //Check your version with the version in app store
+\f2 \cf1 \
+        
+\f3 \cf7 if
+\f2 \cf1  (![version 
+\f3 \cf5 isEqualToString
+\f2 \cf1 :[infoDictionary 
+\f3 \cf5 objectForKey
+\f2 \cf1 :
+\f3 \cf6 @"CFBundleVersion"
+\f2 \cf1 ]])\
+        \{\
+            
+\f3 \cf5 UIAlertView
+\f2 \cf1  *createUserResponseAlert = [[
+\f3 \cf5 UIAlertView
+\f2 \cf1  
+\f3 \cf5 alloc
+\f2 \cf1 ] 
+\f3 \cf5 initWithTitle
+\f2 \cf1 :
+\f3 \cf6 @"New Version!!"
+\f2 \cf1  
+\f3 \cf5 message
+\f2 \cf1 : 
+\f3 \cf6 @"A new version of app is available to download"
+\f2 \cf1  
+\f3 \cf5 delegate
+\f2 \cf1 :
+\f3 \cf7 self
+\f2 \cf1  
+\f3 \cf5 cancelButtonTitle
+\f2 \cf1 :
+\f3 \cf6 @"Cancel"
+\f2 \cf1  
+\f3 \cf5 otherButtonTitles
+\f2 \cf1 : 
+\f3 \cf6 @"Download"
+\f2 \cf1 , 
+\f3 \cf7 nil
+\f2 \cf1 ];\
+            [createUserResponseAlert 
+\f3 \cf5 show
+\f2 \cf1 ];\
+            \
+        \}\
+    \} 
+\f3 \cf8 failure
+\f2 \cf1 :^(
+\f3 \cf8 AFHTTPRequestOperation
+\f2 \cf1  *operation, 
+\f3 \cf5 NSError
+\f2 \cf1  *error) \{\
+        
+\f3 \cf5 NSLog
+\f2 \cf1 (
+\f3 \cf6 @"shibai"
+\f2 \cf1 );\
+    \}];\
+    \
+   \
+    
+\f3 \cf3 // Do any additional setup after loading the view, typically from a nib.
+\f2 \cf1 \
+\}\
+\
+- (
+\f3 \cf7 void
+\f2 \cf1 )alertView:(\cf5 UIAlertView\cf1  *)alertView clickedButtonAtIndex:(
+\f3 \cf5 NSInteger
+\f2 \cf1 )buttonIndex\
+\{\
+    
+\f3 \cf5 NSLog
+\f2 \cf1 (
+\f3 \cf6 @"%ld"
+\f2 \cf1 ,buttonIndex);\
+\}\
+\
+
+\f3 \cf3 //        \{
+\f2 \cf1 \
+
+\f3 \cf3 //            "resultCount": 1,
+\f2 \cf1 \
+
+\f3 \cf3 //            "results": [
+\f2 \cf1 \
+
+\f3 \cf3 //                        \{
+\f2 \cf1 \
+
+\f3 \cf3 //                            "screenshotUrls": [
+\f2 \cf1 \
+
+\f3 \cf3 //                                               "{\field{\*\fldinst{HYPERLINK "http://a1.mzstatic.com/us/r30/Purple/v4/51/67/ac/5167ac0b-5492-c531-7916-8d3ccdc6bcf8/screen320x480.jpeg"}}{\fldrslt \cf10 http://a1.mzstatic.com/us/r30/Purple/v4/51/67/ac/5167ac0b-5492-c531-7916-8d3ccdc6bcf8/screen320x480.jpeg}}",
+\f2 \cf1 \
+
+\f3 \cf3 //                                               "{\field{\*\fldinst{HYPERLINK "http://a3.mzstatic.com/us/r30/Purple/v4/4f/55/ff/4f55ff46-f7d4-fd9f-0f45-56d65a7c736e/screen320x480.jpeg"}}{\fldrslt \cf10 http://a3.mzstatic.com/us/r30/Purple/v4/4f/55/ff/4f55ff46-f7d4-fd9f-0f45-56d65a7c736e/screen320x480.jpeg}}",
+\f2 \cf1 \
+
+\f3 \cf3 //                                               "{\field{\*\fldinst{HYPERLINK "http://a1.mzstatic.com/us/r30/Purple/v4/b3/17/9f/b3179fc4-1984-0306-71b7-44fe6a23e449/screen320x480.jpeg"}}{\fldrslt \cf10 http://a1.mzstatic.com/us/r30/Purple/v4/b3/17/9f/b3179fc4-1984-0306-71b7-44fe6a23e449/screen320x480.jpeg}}",
+\f2 \cf1 \
+
+\f3 \cf3 //                                               "{\field{\*\fldinst{HYPERLINK "http://a3.mzstatic.com/us/r30/Purple/v4/14/c4/87/14c4878c-ee94-263f-0487-f74a48cc4ab3/screen320x480.jpeg"}}{\fldrslt \cf10 http://a3.mzstatic.com/us/r30/Purple/v4/14/c4/87/14c4878c-ee94-263f-0487-f74a48cc4ab3/screen320x480.jpeg}}",
+\f2 \cf1 \
+
+\f3 \cf3 //                                               "{\field{\*\fldinst{HYPERLINK "http://a1.mzstatic.com/us/r30/Purple/v4/6b/14/3e/6b143ee1-ef7b-6bc8-c668-4931d361eeee/screen320x480.jpeg"}}{\fldrslt \cf10 http://a1.mzstatic.com/us/r30/Purple/v4/6b/14/3e/6b143ee1-ef7b-6bc8-c668-4931d361eeee/screen320x480.jpeg}}"
+\f2 \cf1 \
+
+\f3 \cf3 //                                               ],
+\f2 \cf1 \
+
+\f3 \cf3 //                            "ipadScreenshotUrls": [
+\f2 \cf1 \
+
+\f3 \cf3 //                                                   "{\field{\*\fldinst{HYPERLINK "http://a4.mzstatic.com/us/r30/Purple/v4/2f/46/bc/2f46bc5c-13e8-bf4e-aa26-26f3fbddaa4d/screen480x480.jpeg"}}{\fldrslt \cf10 http://a4.mzstatic.com/us/r30/Purple/v4/2f/46/bc/2f46bc5c-13e8-bf4e-aa26-26f3fbddaa4d/screen480x480.jpeg}}",
+\f2 \cf1 \
+
+\f3 \cf3 //                                                   "{\field{\*\fldinst{HYPERLINK "http://a1.mzstatic.com/us/r30/Purple/v4/03/02/8a/03028a6d-3ede-096d-d651-b5e62fd22f2b/screen480x480.jpeg"}}{\fldrslt \cf10 http://a1.mzstatic.com/us/r30/Purple/v4/03/02/8a/03028a6d-3ede-096d-d651-b5e62fd22f2b/screen480x480.jpeg}}",
+\f2 \cf1 \
+
+\f3 \cf3 //                                                   "{\field{\*\fldinst{HYPERLINK "http://a2.mzstatic.com/us/r30/Purple/v4/40/ce/46/40ce46dd-6896-aebc-9644-2bba91e97380/screen480x480.jpeg"}}{\fldrslt \cf10 http://a2.mzstatic.com/us/r30/Purple/v4/40/ce/46/40ce46dd-6896-aebc-9644-2bba91e97380/screen480x480.jpeg}}",
+\f2 \cf1 \
+
+\f3 \cf3 //                                                   "{\field{\*\fldinst{HYPERLINK "http://a5.mzstatic.com/us/r30/Purple/v4/61/6a/27/616a27ea-93c4-5a1f-bfe8-cb1563f0d355/screen480x480.jpeg"}}{\fldrslt \cf10 http://a5.mzstatic.com/us/r30/Purple/v4/61/6a/27/616a27ea-93c4-5a1f-bfe8-cb1563f0d355/screen480x480.jpeg}}",
+\f2 \cf1 \
+
+\f3 \cf3 //                                                   "{\field{\*\fldinst{HYPERLINK "http://a5.mzstatic.com/us/r30/Purple/v4/b2/4d/db/b24ddbd8-ddc5-d962-9cfe-380808974ef3/screen480x480.jpeg"}}{\fldrslt \cf10 http://a5.mzstatic.com/us/r30/Purple/v4/b2/4d/db/b24ddbd8-ddc5-d962-9cfe-380808974ef3/screen480x480.jpeg}}"
+\f2 \cf1 \
+
+\f3 \cf3 //                                                   ],
+\f2 \cf1 \
+
+\f3 \cf3 //                            "artworkUrl60": "{\field{\*\fldinst{HYPERLINK "http://is1.mzstatic.com/image/pf/us/r30/Purple/ec/24/8e/mzi.lclebftj.png"}}{\fldrslt \cf10 http://is1.mzstatic.com/image/pf/us/r30/Purple/ec/24/8e/mzi.lclebftj.png}}",
+\f2 \cf1 \
+
+\f3 \cf3 //                            "artworkUrl512": "{\field{\*\fldinst{HYPERLINK "http://is2.mzstatic.com/image/pf/us/r30/Purple/dd/0b/0a/mzl.pdnosvsb.png"}}{\fldrslt \cf10 http://is2.mzstatic.com/image/pf/us/r30/Purple/dd/0b/0a/mzl.pdnosvsb.png}}",
+\f2 \cf1 \
+
+\f3 \cf3 //                            "artistViewUrl": "{\field{\*\fldinst{HYPERLINK "https://itunes.apple.com/us/artist/appinthebox/id475933300?uo=4"}}{\fldrslt \cf10 https://itunes.apple.com/us/artist/appinthebox/id475933300?uo=4}}",
+\f2 \cf1 \
+
+\f3 \cf3 //                            "kind": "software",
+\f2 \cf1 \
+
+\f3 \cf3 //                            "features": [
+\f2 \cf1 \
+
+\f3 \cf3 //                                         "gameCenter",
+\f2 \cf1 \
+
+\f3 \cf3 //                                         "iosUniversal"
+\f2 \cf1 \
+
+\f3 \cf3 //                                         ],
+\f2 \cf1 \
+
+\f3 \cf3 //                            "supportedDevices": [
+\f2 \cf1 \
+
+\f3 \cf3 //                                                 "iPad23G",
+\f2 \cf1 \
+
+\f3 \cf3 //                                                 "iPhone5",
+\f2 \cf1 \
+
+\f3 \cf3 //                                                 "iPhone4S",
+\f2 \cf1 \
+
+\f3 \cf3 //                                                 "iPodTouchFourthGen",
+\f2 \cf1 \
+
+\f3 \cf3 //                                                 "iPod-touch-with-mic",
+\f2 \cf1 \
+
+\f3 \cf3 //                                                 "iPadMini",
+\f2 \cf1 \
+
+\f3 \cf3 //                                                 "iPhone5s",
+\f2 \cf1 \
+
+\f3 \cf3 //                                                 "iPhone5c",
+\f2 \cf1 \
+
+\f3 \cf3 //                                                 "iPad3G",
+\f2 \cf1 \
+
+\f3 \cf3 //                                                 "iPad2Wifi",
+\f2 \cf1 \
+
+\f3 \cf3 //                                                 "iPhone6",
+\f2 \cf1 \
+
+\f3 \cf3 //                                                 "iPadWifi",
+\f2 \cf1 \
+
+\f3 \cf3 //                                                 "iPhone-3GS",
+\f2 \cf1 \
+
+\f3 \cf3 //                                                 "iPadMini4G",
+\f2 \cf1 \
+
+\f3 \cf3 //                                                 "iPadThirdGen",
+\f2 \cf1 \
+
+\f3 \cf3 //                                                 "iPodTouchFifthGen",
+\f2 \cf1 \
+
+\f3 \cf3 //                                                 "iPadThirdGen4G",
+\f2 \cf1 \
+
+\f3 \cf3 //                                                 "iPhone-3G",
+\f2 \cf1 \
+
+\f3 \cf3 //                                                 "iPhone4",
+\f2 \cf1 \
+
+\f3 \cf3 //                                                 "iPodTouchThirdGen",
+\f2 \cf1 \
+
+\f3 \cf3 //                                                 "iPadFourthGen",
+\f2 \cf1 \
+
+\f3 \cf3 //                                                 "iPhone6Plus",
+\f2 \cf1 \
+
+\f3 \cf3 //                                                 "iPadFourthGen4G"
+\f2 \cf1 \
+
+\f3 \cf3 //                                                 ],
+\f2 \cf1 \
+
+\f3 \cf3 //                            "advisories": [],
+\f2 \cf1 \
+
+\f3 \cf3 //                            "isGameCenterEnabled": true,
+\f2 \cf1 \
+
+\f3 \cf3 //                            "artworkUrl100": "{\field{\*\fldinst{HYPERLINK "http://is2.mzstatic.com/image/pf/us/r30/Purple/dd/0b/0a/mzl.pdnosvsb.png"}}{\fldrslt \cf10 http://is2.mzstatic.com/image/pf/us/r30/Purple/dd/0b/0a/mzl.pdnosvsb.png}}",
+\f2 \cf1 \
+
+\f3 \cf3 //                            "trackViewUrl": "{\field{\*\fldinst{HYPERLINK "https://itunes.apple.com/us/app/bouncy-bug/id456107545?mt=8&uo=4"}}{\fldrslt \cf10 https://itunes.apple.com/us/app/bouncy-bug/id456107545?mt=8&uo=4}}",
+\f2 \cf1 \
+
+\f3 \cf3 //                            "trackCensoredName": "Bouncy Bug",
+\f2 \cf1 \
+
+\f3 \cf3 //                            "languageCodesISO2A": [
+\f2 \cf1 \
+
+\f3 \cf3 //                                                   "EN"
+\f2 \cf1 \
+
+\f3 \cf3 //                                                   ],
+\f2 \cf1 \
+
+\f3 \cf3 //                            "fileSizeBytes": "39382227",
+\f2 \cf1 \
+
+\f3 \cf3 //                            "sellerUrl": "{\field{\*\fldinst{HYPERLINK "http://www.appinthebox.com.au"}}{\fldrslt \cf10 http://www.appinthebox.com.au}}",
+\f2 \cf1 \
+
+\f3 \cf3 //                            "contentAdvisoryRating": "4+",
+\f2 \cf1 \
+
+\f3 \cf3 //                            "averageUserRatingForCurrentVersion": 4,
+\f2 \cf1 \
+
+\f3 \cf3 //                            "userRatingCountForCurrentVersion": 89,
+\f2 \cf1 \
+
+\f3 \cf3 //                            "trackContentRating": "4+",
+\f2 \cf1 \
+
+\f3 \cf3 //                            "currency": "USD",
+\f2 \cf1 \
+
+\f3 \cf3 //                            "wrapperType": "software",
+\f2 \cf1 \
+
+\f3 \cf3 //                            "version": "1.03",
+\f2 \cf1 \
+
+\f3 \cf3 //                            "artistId": 475933300,
+\f2 \cf1 \
+
+\f3 \cf3 //                            "artistName": "AppInTheBox",
+\f2 \cf1 \
+
+\f3 \cf3 //                            "genres": [
+\f2 \cf1 \
+
+\f3 \cf3 //                                       "Games",
+\f2 \cf1 \
+
+\f3 \cf3 //                                       "Action",
+\f2 \cf1 \
+
+\f3 \cf3 //                                       "Entertainment",
+\f2 \cf1 \
+
+\f3 \cf3 //                                       "Arcade"
+\f2 \cf1 \
+
+\f3 \cf3 //                                       ],
+\f2 \cf1 \
+
+\f3 \cf3 //                            "price": 0.99,
+\f2 \cf1 \
+
+\f3 \cf3 //                            "description": "Bouncy Bug is a mega juicy bouncy action game from the team that brought you 'Drop The Chicken'.  The game features flexible liquid environments, and awesome trampoline style action like nothing you have played before.  \\n\\n\uc0\u9733 \u9733  THE STORY \u9733 \u9733 \\nWhile traveling across the jelly fields of his home world with his son Larry, Clyde and his son were pulled into a black, dark and mysterious jello cave by a sudden juicy eruption.  Clyde's only hope is to collapse one bubble after another by collecting all the fruit along the way in an effort to reunite with his son and then bounce his way out of the caverns to freedom. Your job is to help our heroes on their journey, the more you bounce the more fruit you will need to give you energy to stay alive. There is no time limit, just the most awesome fruity bouncy action ever, only the most skilful will make it through.\\n\\n\u9733 \u9733  THE GAME PLAY \u9733 \u9733  \\nPress the jello walls to bounce Clyde around the levels while trying to collect all the fruit.  Press the floor and walls to bounce our hero into every twisty, bouncy corner.  Swipe the jelly to create waves in the jello. Carefully time your bounces to get more height and speed with each bounce. Bubbles give you a much needed boost, twirls change your direction and portholes transport you elsewhere within the jello bubble.  The most successful level clearing will earn you some much needed power ups which you can use to give you an advantage in the trickiest levels including energy boosts, jump boosts and tornadoes. Get through 30 levels to unlock Larry who can help you on your journey. Successfully navigate 50 unique bubble levels to escape to freedom.\\n\\nThe game and levels are beautifully designed and dynamically loading so they\'92re different each time you play, creating challenging game play which is always unique and engaging.\\n\\n\u9733 \u9733  KEY FEATURES \u9733 \u9733 \\n\u10004   Unique control method - touch walls to bounce and create jello waves. \\n\u10004   Loads of tricky levels and cool power ups\\n\u10004   Game Center & stacks of achievements\\n\u10004   Universal: iPhone & iPad cross compatible\\n\u10004   Great for all ages, easy to learn\\n\u10004   Very addictive, exciting game play\\n\u10004   Full community on Facebook and Twitter\\n\u10004   Play your own music in the background while you play\\n\\n\\n\u9733 \u9733  CHECK OUT THE PROMO VIDEO \u9733 \u9733 \\nVisit www.AppInTheBox.com.au/BouncyBug for more info and to watch the promo video.\\n\\n\\nWe hope you enjoy the game!!!",
+\f2 \cf1 \
+
+\f3 \cf3 //                            "bundleId": "com.sharp.BouncyBug",
+\f2 \cf1 \
+
+\f3 \cf3 //                            "genreIds": [
+\f2 \cf1 \
+
+\f3 \cf3 //                                         "6014",
+\f2 \cf1 \
+
+\f3 \cf3 //                                         "7001",
+\f2 \cf1 \
+
+\f3 \cf3 //                                         "6016",
+\f2 \cf1 \
+
+\f3 \cf3 //                                         "7003"
+\f2 \cf1 \
+
+\f3 \cf3 //                                         ],
+\f2 \cf1 \
+
+\f3 \cf3 //                            "releaseDate": "2011-09-05T07:00:00Z",
+\f2 \cf1 \
+
+\f3 \cf3 //                            "sellerName": "APP IN THE BOX PTY LTD",
+\f2 \cf1 \
+
+\f3 \cf3 //                            "trackId": 456107545,
+\f2 \cf1 \
+
+\f3 \cf3 //                            "trackName": "Bouncy Bug",
+\f2 \cf1 \
+
+\f3 \cf3 //                            "primaryGenreName": "Games",
+\f2 \cf1 \
+
+\f3 \cf3 //                            "primaryGenreId": 6014,
+\f2 \cf1 \
+
+\f3 \cf3 //                            "releaseNotes": "Now works on ipod2G and iphone3G! Sorry for the delay getting this working and thanks for your patience.\\n\\nNOTE: Facebook integration doesn't work on older devices(ie ipod2G, iphone3G).\\n\\nIncreased memory efficiency.\\n\\nReduced memory footprint.",
+\f2 \cf1 \
+
+\f3 \cf3 //                            "minimumOsVersion": "3.2",
+\f2 \cf1 \
+
+\f3 \cf3 //                            "formattedPrice": "$0.99",
+\f2 \cf1 \
+
+\f3 \cf3 //                            "averageUserRating": 3.5,
+\f2 \cf1 \
+
+\f3 \cf3 //                            "userRatingCount": 161
+\f2 \cf1 \
+
+\f3 \cf3 //                        \}
+\f2 \cf1 \
+
+\f3 \cf3 //                        ]
+\f2 \cf1 \
+
+\f3 \cf3 //        \}}

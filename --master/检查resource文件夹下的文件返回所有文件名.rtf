@@ -1,0 +1,40 @@
+{\rtf1\ansi\ansicpg936\cocoartf1343\cocoasubrtf140
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red63\green110\blue116;\red255\green173\blue23;\red59\green16\blue143;
+\red255\green39\blue18;\red217\green11\blue0;\red170\green13\blue145;\red28\green0\blue207;\red92\green38\blue153;
+\red196\green26\blue22;\red38\green71\blue75;\red46\green13\blue110;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww20780\viewh9220\viewkind0
+\deftab674
+\pard\tx674\pardeftab674\pardirnatural
+
+\f0\fs28 \cf2 \CocoaLigature0 \
+\
+\
+_photoArray\cf0  = [[\cf3 NSMutableArray\cf0  \cf4 alloc\cf0 ]\cf4 init\cf0 ];\
+\
+\pard\tx674\pardeftab674\pardirnatural
+\cf0 \cb5    \cb1  \cf3 NSString\cf0  * path = [[\cf3 NSBundle\cf0  \cf4 mainBundle\cf0 ]\cf4 resourcePath\cf0 ];\
+\cb5    \cb1  \cf3 NSFileManager\cf0  * FM = [\cf3 NSFileManager\cf0  \cf4 defaultManager\cf0 ];\
+\pard\tx674\pardeftab674\pardirnatural
+\cf0 \cb6    \cb1  \cf3 NSArray\cf0  * array = [FM \cf4 contentsOfDirectoryAtPath\cf0 :path \cf4 error\cf0 :\cf7 nil\cf0 ];\
+    \
+    \cf7 for\cf0  (\cf7 int\cf0  i = \cf8 0\cf0 ; i<array.\cf9 count\cf0 ; i++)\
+    \{\
+        \cf7 if\cf0  ([array[i] \cf4 hasSuffix\cf0 :\cf10 @"jpg"\cf0 ]==\cf7 NO\cf0 )\
+        \{\
+            \cf7 break\cf0 ;\
+        \}\
+        \cf3 NSData\cf0  *data = [[\cf3 NSData\cf0  \cf4 alloc\cf0 ]\cf4 initWithContentsOfFile\cf0 :[[\cf3 NSBundle\cf0  \cf4 mainBundle\cf0 ]\cf4 pathForResource\cf0 :array[i] \cf4 ofType\cf0 :\cf7 nil\cf0 ]];\
+        \cf3 UIImage\cf0  * img= [\cf3 UIImage\cf0  \cf4 imageWithData\cf0 :data];\
+        \cf2 MyimageView\cf0  * photo = [[\cf2 MyimageView\cf0  \cf4 alloc\cf0 ]\cf11 initWithwidth\cf0 :\cf7 self\cf0 .\cf9 view\cf0 .\cf9 bounds\cf0 .\cf9 size\cf0 .\cf9 width\cf0 /\cf8 3\cf0 ];\
+        photo.\cf9 frame\cf0  = \cf4 CGRectMake\cf0 (i%\cf8 3\cf0 *\cf7 self\cf0 .\cf9 view\cf0 .\cf9 bounds\cf0 .\cf9 size\cf0 .\cf9 width\cf0 /\cf8 3\cf0 , i/\cf8 3\cf0 *\cf8 160\cf0 ,\cf7 self\cf0 .\cf9 view\cf0 .\cf9 bounds\cf0 .\cf9 size\cf0 .\cf9 width\cf0 /\cf8 3\cf0  , \cf8 160\cf0 );\
+        photo.\cf9 image\cf0  = img;\
+        photo.\cf2 namelable\cf0 .\cf9 text\cf0  = array[i];\
+        photo.\cf2 namelable\cf0 .\cf9 textAlignment\cf0  = \cf12 NSTextAlignmentCenter\cf0 ;\
+        [photo \cf4 setUserInteractionEnabled\cf0 :\cf7 YES\cf0 ];\
+        \cf3 UITapGestureRecognizer\cf0  *tap=[[\cf3 UITapGestureRecognizer\cf0  \cf4 alloc\cf0 ]\cf4 initWithTarget\cf0 :\cf7 self\cf0  \cf4 action\cf0 :\cf7 @selector\cf0 (Tap:)];\
+        [photo \cf4 addGestureRecognizer\cf0 :tap];\
+        [\cf2 _photoArray\cf0  \cf4 addObject\cf0 :photo];\
+        [\cf2 _scroll\cf0  \cf4 addSubview\cf0 :photo];\
+    \}\
+}

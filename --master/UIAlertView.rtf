@@ -1,0 +1,197 @@
+{\rtf1\ansi\ansicpg936\cocoartf1343\cocoasubrtf140
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset134 STHeitiSC-Light;}
+{\colortbl;\red255\green255\blue255;\red255\green173\blue23;\red59\green16\blue143;\red196\green26\blue22;
+\red170\green13\blue145;\red28\green0\blue207;\red0\green116\blue0;\red100\green56\blue32;\red92\green38\blue153;
+}
+\paperw11900\paperh16840\margl1440\margr1440\vieww14160\viewh11820\viewkind0
+\deftab674
+\pard\tx674\pardeftab674\pardirnatural
+
+\f0\fs28 \cf0 \CocoaLigature0 \
+\
+ \cf2 UIAlertView\cf0  * aler = [[\cf2 UIAlertView\cf0  \cf3 alloc\cf0 ]\cf3 initWithTitle\cf0 :\cf4 @"
+\f1 \'c3\'bb\'d0\'b4\'b0\'a1
+\f0 "\cf0  \cf3 message\cf0 :\cf4 @"aaa"\cf0  \cf3 delegate\cf0 :\cf5 self\cf0  \cf3 cancelButtonTitle\cf0 :\cf4 @"
+\f1 \'ba\'c3\'b5\'c4
+\f0 "\cf0  \cf3 otherButtonTitles\cf0 :\cf4 @"qusibu"\cf0 , \cf5 nil\cf0 ];\
+        [aler \cf3 show\cf0 ];\
+        \cf5 return\cf0 ;\
+\
+\
+\
+\
+\cf5 typedef\cf0  \cf5 NS_ENUM\cf0 (NSInteger, UIAlertViewStyle) \{\
+    UIAlertViewStyleDefault = \cf6 0\cf0 ,\
+    UIAlertViewStyleSecureTextInput,\
+    UIAlertViewStylePlainTextInput,\
+    UIAlertViewStyleLoginAndPasswordInput\
+\};\
+\
+- (void)viewDidLoad\
+\{\
+    [super viewDidLoad];\
+    // Do any additional setup after loading the view from its nib\
+    \
+    //
+\f1 \'b3\'f5\'ca\'bc\'bb\'af
+\f0 AlertView\
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"AlertViewTest"\
+                                                   message:@"message"\
+                                                  delegate:self\
+                                         cancelButtonTitle:@"Cancel"\
+                                         otherButtonTitles:@"OtherBtn",nil];\
+    //
+\f1 \'c9\'e8\'d6\'c3\'b1\'ea\'cc\'e2\'d3\'eb\'d0\'c5\'cf\'a2\'a3\'ac\'cd\'a8\'b3\'a3\'d4\'da\'ca\'b9\'d3\'c3
+\f0 frame
+\f1 \'b3\'f5\'ca\'bc\'bb\'af
+\f0 AlertView
+\f1 \'ca\'b1\'ca\'b9\'d3\'c3
+\f0 \
+    alert.title = @"AlertViewTitle";\
+    alert.message = @"AlertViewMessage";\
+    \
+    //
+\f1 \'d5\'e2\'b8\'f6\'ca\'f4\'d0\'d4\'bc\'cc\'b3\'d0\'d7\'d4
+\f0 UIView
+\f1 \'a3\'ac\'b5\'b1\'d2\'bb\'b8\'f6\'ca\'d3\'cd\'bc\'d6\'d0\'d3\'d0\'b6\'e0\'b8\'f6
+\f0 AlertView
+\f1 \'ca\'b1\'a3\'ac\'bf\'c9\'d2\'d4\'d3\'c3\'d5\'e2\'b8\'f6\'ca\'f4\'d0\'d4\'c0\'b4\'c7\'f8\'b7\'d6
+\f0 \
+    alert.tag = 0;\
+    //
+\f1 \'d6\'bb\'b6\'c1\'ca\'f4\'d0\'d4\'a3\'ac\'bf\'b4
+\f0 AlertView
+\f1 \'ca\'c7\'b7\'f1\'bf\'c9\'bc\'fb
+\f0 \
+    NSLog(@"%d",alert.visible);\
+    //
+\f1 \'cd\'a8\'b9\'fd\'b8\'f8\'b6\'a8\'b1\'ea\'cc\'e2\'cc\'ed\'bc\'d3\'b0\'b4\'c5\'a5
+\f0 \
+    [alert addButtonWithTitle:@"addButton"];\
+    //
+\f1 \'b0\'b4\'c5\'a5\'d7\'dc\'ca\'fd
+\f0 \
+    NSLog(@"number Of Buttons :%d",alert.numberOfButtons);\
+    //
+\f1 \'bb\'f1\'c8\'a1\'d6\'b8\'b6\'a8\'cb\'f7\'d2\'fd\'b5\'c4\'b0\'b4\'c5\'a5\'b1\'ea\'cc\'e2
+\f0 \
+    NSLog(@"buttonTitleAtIndex1:%@",[alert buttonTitleAtIndex:1]);\
+    NSLog(@"buttonTitleAtIndex2:%@",[alert buttonTitleAtIndex:2]);\
+    //
+\f1 \'bb\'f1\'c8\'a1\'c8\'a1\'cf\'fb\'b0\'b4\'c5\'a5\'b5\'c4\'cb\'f7\'d2\'fd
+\f0 \
+    NSLog(@"cancelButtonIndex:%d",alert.cancelButtonIndex);\
+    //
+\f1 \'bb\'f1\'c8\'a1\'b5\'da\'d2\'bb\'b8\'f6\'c6\'e4\'cb\'fb\'b0\'b4\'c5\'a5\'b5\'c4\'cb\'f7\'d2\'fd
+\f0 \
+    NSLog(@"firstOtherButtonIndex:%d",alert.firstOtherButtonIndex);\
+    //
+\f1 \'cf\'d4\'ca\'be
+\f0 AlertView\
+    [alert show];\
+    [alert release];\
+\}\
+\
+#pragma marks -- UIAlertViewDelegate --\
+//
+\f1 \'b8\'f9\'be\'dd\'b1\'bb\'b5\'e3\'bb\'f7\'b0\'b4\'c5\'a5\'b5\'c4\'cb\'f7\'d2\'fd\'b4\'a6\'c0\'ed\'b5\'e3\'bb\'f7\'ca\'c2\'bc\'fe
+\f0 \
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex\
+\{\
+    NSLog(@"clickButtonAtIndex:%d",buttonIndex);\
+\}\
+\
+//AlertView
+\f1 \'d2\'d1\'be\'ad\'cf\'fb\'ca\'a7\'ca\'b1\'d6\'b4\'d0\'d0\'b5\'c4\'ca\'c2\'bc\'fe
+\f0 \
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex\
+\{\
+    NSLog(@"didDismissWithButtonIndex");\
+\}\
+\
+//ALertView
+\f1 \'bc\'b4\'bd\'ab\'cf\'fb\'ca\'a7\'ca\'b1\'b5\'c4\'ca\'c2\'bc\'fe
+\f0 \
+-(void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex\
+\{\
+    NSLog(@"willDismissWithButtonIndex");\
+\}\
+\
+//AlertView
+\f1 \'b5\'c4\'c8\'a1\'cf\'fb\'b0\'b4\'c5\'a5\'b5\'c4\'ca\'c2\'bc\'fe
+\f0 \
+-(void)alertViewCancel:(UIAlertView *)alertView\
+\{\
+    NSLog(@"alertViewCancel");\
+\}\
+\
+//AlertView
+\f1 \'d2\'d1\'be\'ad\'cf\'d4\'ca\'be\'ca\'b1\'b5\'c4\'ca\'c2\'bc\'fe
+\f0 \
+-(void)didPresentAlertView:(UIAlertView *)alertView\
+\{\
+    NSLog(@"didPresentAlertView");\
+\}\
+\
+//AlertView
+\f1 \'bc\'b4\'bd\'ab\'cf\'d4\'ca\'be\'ca\'b1
+\f0 \
+-(void)willPresentAlertView:(UIAlertView *)alertView\
+\{\
+    NSLog(@"willPresentAlertView");\
+\}\
+\
+- (void)viewDidUnload\
+\{\
+    [super viewDidUnload];\
+    // Release any retained subviews of the main view.\
+    // e.g. self.myOutlet = nil;\
+\}\
+\
+\
+\
+\cf5 @protocol\cf0  \cf2 UIAlertViewDelegate\cf0 ;\
+\cf5 @class\cf0  \cf2 UILabel\cf0 , \cf2 UIToolbar\cf0 , \cf2 UITabBar\cf0 , \cf2 UIWindow\cf0 , \cf2 UIBarButtonItem\cf0 , \cf2 UIPopoverController\cf0 ;\
+\
+\cf7 // UIAlertView is deprecated. Use UIAlertController with a preferredStyle of UIAlertControllerStyleAlert instead\cf0 \
+\pard\tx674\pardeftab674\pardirnatural
+\cf8 NS_CLASS_AVAILABLE_IOS\cf0 (\cf6 2\cf0 _0) \cf5 @interface\cf0  UIAlertView : \cf2 UIView\cf0 \
+\
+- (\cf5 instancetype\cf0 )initWithTitle:(\cf2 NSString\cf0  *)title message:(\cf2 NSString\cf0  *)message delegate:(\cf5 id\cf0  \cf7 /*<UIAlertViewDelegate>*/\cf0 )delegate cancelButtonTitle:(\cf2 NSString\cf0  *)cancelButtonTitle otherButtonTitles:(\cf2 NSString\cf0  *)otherButtonTitles, ... \cf8 NS_REQUIRES_NIL_TERMINATION\cf0  \cf8 NS_EXTENSION_UNAVAILABLE_IOS\cf0 (\cf4 "Use UIAlertController instead."\cf0 );\
+\
+\pard\tx674\pardeftab674\pardirnatural
+\cf5 @property\cf0 (\cf5 nonatomic\cf0 ,\cf5 assign\cf0 ) \cf5 id\cf0  \cf7 /*<UIAlertViewDelegate>*/\cf0  delegate;    \cf7 // weak reference\cf0 \
+\cf5 @property\cf0 (\cf5 nonatomic\cf0 ,\cf5 copy\cf0 ) \cf2 NSString\cf0  *title;\
+\cf5 @property\cf0 (\cf5 nonatomic\cf0 ,\cf5 copy\cf0 ) \cf2 NSString\cf0  *message;   \cf7 // secondary explanation text\cf0 \
+\
+\
+\cf7 // adds a button with the title. returns the index (0 based) of where it was added. buttons are displayed in the order added except for the\cf0 \
+\cf7 // cancel button which will be positioned based on HI requirements. buttons cannot be customized.\cf0 \
+- (\cf9 NSInteger\cf0 )addButtonWithTitle:(\cf2 NSString\cf0  *)title;    \cf7 // returns index of button. 0 based.\cf0 \
+- (\cf2 NSString\cf0  *)buttonTitleAtIndex:(\cf9 NSInteger\cf0 )buttonIndex;\
+\cf5 @property\cf0 (\cf5 nonatomic\cf0 ,\cf5 readonly\cf0 ) \cf9 NSInteger\cf0  numberOfButtons;\
+\cf5 @property\cf0 (\cf5 nonatomic\cf0 ) \cf9 NSInteger\cf0  cancelButtonIndex;      \cf7 // if the delegate does not implement -alertViewCancel:, we pretend this button was clicked on. default is -1\cf0 \
+\
+\cf5 @property\cf0 (\cf5 nonatomic\cf0 ,\cf5 readonly\cf0 ) \cf9 NSInteger\cf0  firstOtherButtonIndex;	\cf7 // -1 if no otherButtonTitles or initWithTitle:... not used\cf0 \
+\cf5 @property\cf0 (\cf5 nonatomic\cf0 ,\cf5 readonly\cf0 ,\cf5 getter\cf0 =isVisible) \cf5 BOOL\cf0  visible;\
+\
+\cf7 // shows popup alert animated.\cf0 \
+- (\cf5 void\cf0 )show;\
+\
+\cf7 // hides alert sheet or popup. use this method when you need to explicitly dismiss the alert.\cf0 \
+\cf7 // it does not need to be called if the user presses on a button\cf0 \
+- (\cf5 void\cf0 )dismissWithClickedButtonIndex:(\cf9 NSInteger\cf0 )buttonIndex animated:(\cf5 BOOL\cf0 )animated;\
+\
+\cf7 // Alert view style - defaults to UIAlertViewStyleDefault\cf0 \
+\cf5 @property\cf0 (\cf5 nonatomic\cf0 ,\cf5 assign\cf0 ) \cf9 UIAlertViewStyle\cf0  alertViewStyle \cf8 NS_AVAILABLE_IOS\cf0 (\cf6 5\cf0 _0);\
+\
+\cf7 /* Retrieve a text field at an index - raises NSRangeException when textFieldIndex is out-of-bounds. \
+   The field at index 0 will be the first text field (the single field or the login field), the field at index 1 will be the password field. */\cf0 \
+- (\cf2 UITextField\cf0  *)textFieldAtIndex:(\cf9 NSInteger\cf0 )textFieldIndex \cf8 NS_AVAILABLE_IOS\cf0 (\cf6 5\cf0 _0);\
+\
+\
+\cf5 @end\cf0 \
+\
+\
+\
+}

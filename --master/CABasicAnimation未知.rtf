@@ -1,0 +1,18 @@
+{\rtf1\ansi\ansicpg936\cocoartf1343\cocoasubrtf140
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red255\green173\blue23;\red59\green16\blue143;\red196\green26\blue22;
+\red92\green38\blue153;\red28\green0\blue207;\red0\green116\blue0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab674
+\pard\tx674\pardeftab674\pardirnatural
+
+\f0\fs28 \cf0 \CocoaLigature0  \cf2 CABasicAnimation\cf0  *shake = [\cf2 CABasicAnimation\cf0  \cf3 animationWithKeyPath\cf0 :\cf4 @"transform.rotation.z"\cf0 ];\
+    shake.\cf5 fromValue\cf0  = [\cf2 NSNumber\cf0  \cf3 numberWithFloat\cf0 :-\cf6 0.1\cf0 ];\
+    shake.\cf5 toValue\cf0  = [\cf2 NSNumber\cf0  \cf3 numberWithFloat\cf0 :+\cf6 0.1\cf0 ];\
+\pard\tx674\pardeftab674\pardirnatural
+\cf7 //    shake.autoreverses = YES;\cf0 \
+    shake.\cf5 duration\cf0  = \cf6 0.1\cf0 ;\
+    shake.\cf5 repeatCount\cf0  = \cf6 3\cf0 ;\
+    [lp.\cf5 view\cf0 .\cf5 layer\cf0  \cf3 addAnimation\cf0 :shake \cf3 forKey\cf0 :\cf4 @"imageShake"\cf0 ];\
+\
+}

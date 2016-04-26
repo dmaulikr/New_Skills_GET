@@ -1,0 +1,151 @@
+{\rtf1\ansi\ansicpg936\cocoartf1347\cocoasubrtf570
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;\f2\fnil\fcharset134 STHeitiSC-Light;
+\f3\fnil\fcharset0 AndaleMono;\f4\fswiss\fcharset0 ArialMT;}
+{\colortbl;\red255\green255\blue255;\red243\green235\blue0;\red255\green39\blue18;\red0\green160\blue255;
+\red65\green204\blue69;\red211\green24\blue149;\red120\green109\blue255;\red26\green26\blue26;\red255\green249\blue89;
+\red217\green11\blue0;\red92\green38\blue153;\red28\green0\blue207;\red46\green13\blue110;\red59\green16\blue143;
+\red100\green56\blue32;\red41\green34\blue32;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww14940\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs24 \cf0 \cb2 \
+\pard\tx672\pardeftab672\pardirnatural
+
+\f1\fs36 \cf0 \cb3 \CocoaLigature0 sizeToFit,
+\f2 \'d5\'e2\'b8\'f6\'b7\'bd\'b7\'a8\'ba\'cd 
+\f3 lineBreakMode,
+\f2 \'bf\'c9\'d2\'d4\'c8\'c3
+\f3 label 
+\f2 \'d7\'d4\'ca\'ca\'d3\'a6
+\f3  
+\f2 \'ce\'c4\'d7\'d6\'b5\'c4\'c4\'da\'c8\'dd\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f1\fs28 \cf1 \cb0  \cf4 UIFont\cf1  *font = titleLabel.\cf4 font\cf1 ;\
+            \
+            \
+             \cf5 //
+\f2 \'b8\'f9\'be\'dd\'d7\'d6\'ca\'fd\'bb\'f1\'c8\'a1
+\f1 label
+\f2 \'b4\'f3\'d0\'a1
+\f1 \cf1 \
+\cf4 CGSize\cf1  size = [str \cf4 sizeWithAttributes\cf1 :[\cf4 NSDictionary\cf1  \cf4 dictionaryWithObjectsAndKeys\cf1 :font,\cf4 NSFontAttributeName\cf1 , \cf6 nil\cf1 ]];\
+
+\f0\fs24 \cf0 \CocoaLigature1 \
+
+\f1\fs28 \cf1 \CocoaLigature0  titleLabel.\cf4 frame\cf1  = \cf4 CGRectMake\cf1 (label.\cf4 frame\cf1 .\cf4 origin\cf1 .\cf4 x\cf1  + label.\cf4 bounds\cf1 .\cf4 size\cf1 .\cf4 width\cf1  + \cf7 20\cf1  , \cf7 0\cf1 , size.\cf4 width\cf1 , \cf7 30\cf1 ) ;
+\f2\fs36 \cf0 \cb8 \
+\pard\tx672\pardeftab672\pardirnatural
+\cf0 \cb3 \
+\
+
+\f0\fs24 \cb1 \CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \cb9 \
+\cb1 \
+\pard\tx674\pardeftab674\pardirnatural
+
+\f1\fs28 \cf0 \CocoaLigature0 \
+
+\fs48 \cb10 UILable
+\f2 \'b8\'df\'b6\'c8\'d7\'d4\'ca\'ca\'d3\'a6\'ce\'c4\'d7\'d6\'c4\'da\'c8\'dd\'a3\'bb
+\f1\fs28 \cb1 \
+description.\cf11 numberOfLines\cf0  = \cf12 0\cf0 ;\
+description.\cf11 lineBreakMode\cf0  = \cf13 NSLineBreakByWordWrapping\cf0 ;\
+\
+\
+\cf11 CGSize\cf0  size = [description \cf14 sizeThatFits\cf0 :\cf14 CGSizeMake\cf0 (description.\cf11 frame\cf0 .\cf11 size\cf0 .\cf11 width\cf0 , \cf15 MAXFLOAT\cf0 )];\
+\
+\
+description.\cf11 frame\cf0  = \cf14 CGRectMake\cf0 (description.\cf11 frame\cf0 .\cf11 origin\cf0 .\cf11 x\cf0 , description.\cf11 frame\cf0 .\cf11 origin\cf0 .\cf11 y\cf0 , description.\cf11 frame\cf0 .\cf11 size\cf0 .\cf11 width\cf0 , size.\cf11 height\cf0 );\
+\
+\pard\pardeftab720\sl520
+
+\f4\fs36 \cf16 \cb3 \expnd0\expndtw0\kerning0
+\CocoaLigature1 UILabel
+\f2 \'b8\'df\'b6\'c8\'b2\'bb\'b1\'e4\'a3\'ac\'b8\'f9\'be\'dd\'d7\'d6\'cc\'e5\'b6\'e0\'c9\'d9\'a3\'ac\'d7\'d4\'b6\'af\'b5\'f7\'d5\'fb
+\f4 UILabel
+\f2 \'b5\'c4\'bf\'ed\'b6\'c8\'a3\'ac\'b2\'a2\'d5\'db\'d0\'d0\'cf\'d4\'ca\'be
+\f1\fs28 \cf0 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 \
+\pard\tx674\pardeftab674\pardirnatural
+\cf0 \
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, 20, 20)];\
+    label.font = [UIFont boldSystemFontOfSize:20.0f];  //UILabel
+\f2 \'b5\'c4\'d7\'d6\'cc\'e5\'b4\'f3\'d0\'a1
+\f1 \
+    label.numberOfLines = 0;  //
+\f2 \'b1\'d8\'d0\'eb\'b6\'a8\'d2\'e5\'d5\'e2\'b8\'f6\'ca\'f4\'d0\'d4\'a3\'ac\'b7\'f1\'d4\'f2
+\f1 UILabel
+\f2 \'b2\'bb\'bb\'e1\'bb\'bb\'d0\'d0
+\f1 \
+    label.textColor = [UIColor whiteColor]; \
+    label.textAlignment = NSTextAlignmentLeft;  //
+\f2 \'ce\'c4\'b1\'be\'b6\'d4\'c6\'eb\'b7\'bd\'ca\'bd
+\f1 \
+    [label setBackgroundColor:[UIColor redColor]];\
+    \
+    //
+\f2 \'b8\'df\'b6\'c8\'b9\'cc\'b6\'a8\'b2\'bb\'d5\'db\'d0\'d0\'a3\'ac\'b8\'f9\'be\'dd\'d7\'d6\'b5\'c4\'b6\'e0\'c9\'d9\'bc\'c6\'cb\'e3
+\f1 label
+\f2 \'b5\'c4\'bf\'ed\'b6\'c8
+\f1 \
+    NSString *str = @"
+\f2 \'b8\'df\'b6\'c8\'b2\'bb\'b1\'e4\'bb\'f1\'c8\'a1\'bf\'ed\'b6\'c8\'a3\'ac\'bb\'f1\'c8\'a1\'d7\'d6\'b7\'fb\'b4\'ae\'b2\'bb\'d5\'db\'d0\'d0\'b5\'a5\'d0\'d0\'cf\'d4\'ca\'be\'ca\'b1\'cb\'f9\'d0\'e8\'d2\'aa\'b5\'c4\'b3\'a4\'b6\'c8
+\f1 ";\
+    CGSize size = [str sizeWithFont:label.font constrainedToSize:CGSizeMake(MAXFLOAT, label.frame.size.height)];\
+    NSLog(@"size.width=%f, size.height=%f", size.width, size.height);\
+    //
+\f2 \'b8\'f9\'be\'dd\'bc\'c6\'cb\'e3\'bd\'e1\'b9\'fb\'d6\'d8\'d0\'c2\'c9\'e8\'d6\'c3
+\f1 UILabel
+\f2 \'b5\'c4\'b3\'df\'b4\'e7
+\f1 \
+    [label setFrame:CGRectMake(0, 10, size.width, 20)];\
+    label.text = str;\
+    \
+    [self.view addSubview:label];\
+    [label release];\
+\
+\pard\pardeftab720\sl520
+
+\f4\fs48 \cf16 \cb3 \expnd0\expndtw0\kerning0
+\CocoaLigature1 UILabel
+\f2 \'bf\'ed\'b6\'c8\'b2\'bb\'b1\'e4\'a3\'ac\'b8\'f9\'be\'dd\'d7\'d6\'cc\'e5\'b6\'e0\'c9\'d9\'a3\'ac\'d7\'d4\'b6\'af\'b5\'f7\'d5\'fb
+\f4 UILabel
+\f2 \'b5\'c4\'b8\'df\'b6\'c8\'a3\'ac\'b2\'a2\'d5\'db\'d0\'d0\'cf\'d4\'ca\'be\'a1\'a3
+\f1\fs28 \cf0 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 \
+\pard\tx674\pardeftab674\pardirnatural
+\cf0 \
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, 200, 20)];\
+    label.font = [UIFont boldSystemFontOfSize:20.0f];  //UILabel
+\f2 \'b5\'c4\'d7\'d6\'cc\'e5\'b4\'f3\'d0\'a1
+\f1 \
+    label.numberOfLines = 0;  //
+\f2 \'b1\'d8\'d0\'eb\'b6\'a8\'d2\'e5\'d5\'e2\'b8\'f6\'ca\'f4\'d0\'d4\'a3\'ac\'b7\'f1\'d4\'f2
+\f1 UILabel
+\f2 \'b2\'bb\'bb\'e1\'bb\'bb\'d0\'d0
+\f1 \
+    label.textColor = [UIColor whiteColor]; \
+    label.textAlignment = NSTextAlignmentLeft;  //
+\f2 \'ce\'c4\'b1\'be\'b6\'d4\'c6\'eb\'b7\'bd\'ca\'bd
+\f1 \
+    [label setBackgroundColor:[UIColor redColor]];\
+    \
+    //
+\f2 \'bf\'ed\'b6\'c8\'b2\'bb\'b1\'e4\'a3\'ac\'b8\'f9\'be\'dd\'d7\'d6\'b5\'c4\'b6\'e0\'c9\'d9\'bc\'c6\'cb\'e3
+\f1 label
+\f2 \'b5\'c4\'b8\'df\'b6\'c8
+\f1 \
+    NSString *str = @"
+\f2 \'bf\'c9\'d2\'d4\'b8\'fc\'b8\'c4\'b4\'cb\'c4\'da\'c8\'dd\'bd\'f8\'d0\'d0\'b2\'e2\'ca\'d4\'a3\'ac\'bf\'ed\'b6\'c8\'b2\'bb\'b1\'e4\'a3\'ac\'b8\'df\'b6\'c8\'b8\'f9\'be\'dd\'c4\'da\'c8\'dd\'d7\'d4\'b6\'af\'b5\'f7\'bd\'da
+\f1 ";\
+    CGSize size = [str sizeWithFont:label.font constrainedToSize:CGSizeMake(label.frame.size.width, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping];\
+    //
+\f2 \'b8\'f9\'be\'dd\'bc\'c6\'cb\'e3\'bd\'e1\'b9\'fb\'d6\'d8\'d0\'c2\'c9\'e8\'d6\'c3
+\f1 UILabel
+\f2 \'b5\'c4\'b3\'df\'b4\'e7
+\f1 \
+    [label setFrame:CGRectMake(0, 10, 200, size.height)];\
+    label.text = str;\
+    \
+    [self.view addSubview:label];\
+    [label release];}

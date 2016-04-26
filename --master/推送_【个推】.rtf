@@ -1,0 +1,173 @@
+{\rtf1\ansi\ansicpg936\cocoartf1347\cocoasubrtf570
+{\fonttbl\f0\fnil\fcharset134 STHeitiSC-Light;\f1\fswiss\fcharset0 Helvetica;\f2\fnil\fcharset0 Menlo-Regular;
+\f3\fnil\fcharset134 STSongti-SC-Regular;}
+{\colortbl;\red255\green255\blue255;\red217\green11\blue0;\red211\green24\blue149;\red0\green160\blue255;
+\red120\green109\blue255;\red255\green44\blue56;\red228\green124\blue72;\red255\green39\blue18;\red65\green204\blue69;
+\red38\green38\blue38;\red255\green128\blue0;\red255\green255\blue0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww21040\viewh14240\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs24 \cf0 \'b3\'a3\'b9\'e6\'b5\'c4\'cd\'c6\'cb\'cd\'b7\'d6\'ce\'aa\'c1\'bd\'d6\'d6
+\f1 \
+
+\f0\fs48 \cb2 \'a1\'be\'b1\'be\'b5\'d8\'cd\'c6\'cb\'cd\'a1\'bf\'d4\'daiOS8.0\'d6\'ae\'c7\'b0\'ca\'b1\'b2\'bb\'d3\'c3\'d7\'a2\'b2\'e1\'b5\'c4
+\fs24 \cb1 \
+\pard\tx674\pardeftab674\pardirnatural
+
+\f2\fs28 \cf1 \cb0 \CocoaLigature0 -(\cf3 void\cf1 )addLocalNotification\
+\{\
+    \cf4 UILocalNotification\cf1  * notification = [[\cf4 UILocalNotification\cf1  \cf4 alloc\cf1 ]\cf4 init\cf1 ];\
+    \
+    \cf3 if\cf1  (notification != \cf3 nil\cf1 )\
+    \{\
+        \cf4 NSDate\cf1  * data = [\cf4 NSDate\cf1  \cf4 date\cf1 ];\
+        notification.\cf4 fireDate\cf1  = [data \cf4 dateByAddingTimeInterval\cf1 :\cf5 3\cf1 ];\
+        \
+        notification.\cf4 timeZone\cf1  = [\cf4 NSTimeZone\cf1  \cf4 defaultTimeZone\cf1 ];\
+        \
+        notification.\cf4 alertBody\cf1  = \cf6 @"AAAAAAAA"\cf1 ;\
+        \
+        notification.\cf4 alertAction\cf1  = \cf7 NSLocalizedString\cf1 (\cf6 @"AAA"\cf1 , \cf3 nil\cf1 );\
+        \
+        notification.\cf4 soundName\cf1  = \cf4 UILocalNotificationDefaultSoundName\cf1 ;\
+        notification.\cf4 applicationIconBadgeNumber\cf1  = [\cf4 UIApplication\cf1  \cf4 sharedApplication\cf1 ].\cf4 applicationIconBadgeNumber\cf1 +\cf5 2\cf1 ;\
+        [[\cf4 UIApplication\cf1  \cf4 sharedApplication\cf1 ]  \cf4 scheduleLocalNotification\cf1 :notification];\
+     \
+    \}\
+\}\
+\
+
+\f0 \cb8 \'cb\'f9\'d2\'d4\'d4\'da\'b3\'cc\'d0\'f2\'d6\'d0\'d2\'aa\'d5\'e2\'d1\'f9\'d0\'b4\'d4\'daappdelegate\'d6\'d0\
+
+\f2 \cb0 \
+\cf3 if\cf1 ([[[\cf4 UIDevice\cf1  \cf4 currentDevice\cf1 ] \cf4 systemVersion\cf1 ] \cf4 floatValue\cf1 ] >= \cf5 8.0\cf1 )\
+    \{\
+        \cf4 UIUserNotificationSettings\cf1  * uns =[\cf4 UIUserNotificationSettings\cf1  \cf4 settingsForTypes\cf1 :(\cf4 UIUserNotificationTypeAlert\cf1 |\cf4 UIUserNotificationTypeBadge\cf1 |\cf4 UIUserNotificationTypeSound\cf1 ) \cf4 categories\cf1 :\cf3 nil\cf1 ];\
+        \
+        [[\cf4 UIApplication\cf1  \cf4 sharedApplication\cf1 ] \cf4 registerUserNotificationSettings\cf1 :uns];\
+        \
+        [[\cf4 UIApplication\cf1  \cf4 sharedApplication\cf1 ] \cf4 registerForRemoteNotifications\cf1 ];\
+        \
+    \}\cf3 else\cf1 \
+    \{\
+        \cf4 UIRemoteNotificationType\cf1   apn_type =(\cf4 UIRemoteNotificationType\cf1 )(\cf4 UIUserNotificationTypeAlert\cf1 |\cf4 UIUserNotificationTypeBadge\cf1 |\cf4 UIUserNotificationTypeSound\cf1 ) ;\
+        [[\cf4 UIApplication\cf1  \cf4 sharedApplication\cf1 ]\cf4 registerForRemoteNotificationTypes\cf1 :apn_type];\
+    \}\
+\
+\pard\tx674\pardeftab674\pardirnatural
+
+\fs48 \cf9 \cb2 //
+\f0 \'bb\'d8\'b5\'f7\'ba\'af\'ca\'fd
+\f2\fs28 \cf1 \cb0 \
+-(\cf3 void\cf1 )application:(\cf4 UIApplication\cf1  *)application didReceiveLocalNotification:(\cf4 UILocalNotification\cf1  *)notification\
+\{\
+     \cf4 NSLog\cf1 (\cf6 @"
+\f0 \'b9\'fe\'b9\'fe\'b9\'fe\'b9\'fe
+\f2 %s"\cf1 ,__func__);\
+\}\
+\
+\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f0 \cf1 \'a1\'be\'d4\'b6\'b3\'cc\'cd\'c6\'cb\'cd\'a1\'bf
+\f2 \
+\
+[[\cf4 UIApplication\cf1  \cf4 sharedApplication\cf1 ] \cf4 registerForRemoteNotifications\cf1 ];\
+\
+
+\f0 \cb2 \ul //
+\f3 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \'bd\'f8\'c8\'eb\'d3\'a6\'d3\'c3\'ba\'f3\'c8\'e7\'b9\'fb\'c3\'bb\'d3\'d0\'d7\'a2\'b2\'e1\'cd\'a8\'d6\'aa\'a3\'ac\'d0\'e8\'d2\'aa\'ca\'d7\'cf\'c8\'d7\'a2\'b2\'e1\'cd\'a8\'d6\'aa\'c7\'eb\'c7\'f3\'d3\'c3\'bb\'a7\'d4\'ca\'d0\'ed\'cd\'a8\'d6\'aa\'a3\'bb\'d2\'bb\'b5\'a9\'b5\'f7\'d3\'c3\'cd\'ea\'d7\'a2\'b2\'e1\'b7\'bd\'b7\'a8\'a3\'ac\'ce\'de\'c2\'db\'d3\'c3\'bb\'a7\'ca\'c7\'b7\'f1\'d1\'a1\'d4\'f1\'d4\'ca\'d0\'ed\'cd\'a8\'d6\'aa\'b4\'cb\'bf\'cc\'b6\'bc\'bb\'e1\'b5\'f7\'d3\'c3\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'b5\'c4
+\f2 \kerning1\expnd0\expndtw0 \CocoaLigature0 \
+\cb0 \ulnone  - (\cf3 void\cf1 )application:(\cf4 UIApplication\cf1  *)application didRegisterUserNotificationSettings:(\cf4 UIUserNotificationSettings\cf1  *)notificationSettings \cf7 NS_AVAILABLE_IOS\cf1 (\cf5 8\cf1 _0);\
+
+\f0 \cb2 //\'d4\'da\'d4\'b6\'b3\'cc\'cd\'c6\'cb\'cd\'d7\'a2\'b2\'e1\'b3\'c9\'b9\'a6\'ba\'f3\'bb\'d8\'d7\'d4\'b6\'af\'b5\'f7\'d3\'c3\'d5\'e2\'b8\'f6\'ba\'af\'ca\'fd\'a3\'acdeviceToken\'ca\'b1\'c9\'e8\'b1\'b8\'d3\'c3\'c0\'b4\'cf\'e0\'d3\'a6\'cd\'c6\'cb\'cd\'b5\'c4\'ce\'a8\'d2\'bb\'b1\'ea\'ca\'b6
+\f2 \cb0 \
+- (\cf3 void\cf1 )application:(\cf4 UIApplication\cf1  *)application didRegisterForRemoteNotificationsWithDeviceToken:(\cf4 NSData\cf1  *)deviceToken \
+\cf7 NS_AVAILABLE_IOS\cf1 (\cf5 3\cf1 _0);\
+
+\f0 \cb2 //\'d4\'b6\'b3\'cc\'cd\'a8\'d6\'aa\'d7\'a2\'b2\'e1\'ca\'a7\'b0\'dc\'ba\'f3\'bb\'e1\'b5\'f7\'d3\'c3
+\f2 \cb0 \
+- (\cf3 void\cf1 )application:(\cf4 UIApplication\cf1  *)application didFailToRegisterForRemoteNotificationsWithError:(\cf4 NSError\cf1  *)error \cf7 NS_AVAILABLE_IOS\cf1 (\cf5 3\cf1 _0);\
+
+\f0 //
+\f2 \
+- (\cf3 void\cf1 )application:(\cf4 UIApplication\cf1  *)application didReceiveRemoteNotification:(\cf4 NSDictionary\cf1  *)userInfo \cf7 NS_AVAILABLE_IOS\cf1 (\cf5 3\cf1 _0);\
+\
+- (\cf3 void\cf1 )application:(\cf4 UIApplication\cf1  *)application didReceiveLocalNotification:(\cf4 UILocalNotification\cf1  *)notification \cf7 NS_AVAILABLE_IOS\cf1 (\cf5 4\cf1 _0);\
+\
+\
+\
+
+\f0 \'a1\'be\'b8\'f6\'cd\'c6\'b5\'c4\'ca\'b9\'d3\'c3\'a1\'bf\
+\
+
+\f2 \cf7 #pragma 
+\f0 \'b8\'f6\'cd\'c6
+\f2 \
+\cf1 -(\cf3 void\cf1 )startGetui\
+\{\
+    \cf3 if\cf1  (\cf3 nil\cf1  == \cf11 _gexinSdk\cf1 )\
+    \{\
+        \cf4 NSError\cf1  * error = \cf3 nil\cf1 ;\
+        \cf11 _gexinSdk\cf1  = [\cf12 GexinSdk\cf1  \cf12 createSdkWithAppId\cf1 :\cf6 @"F84d2DtT68AhFEnBrzio83"\cf1  \cf12 appKey\cf1 :\cf6 @"OFymP7ka9J6s0ZkdeiSLS9"\cf1  \cf12 appSecret\cf1 :\cf6 @"FM0eZU7lCE7FK7wa1r9JD9"\cf1  \cf12 appVersion\cf1 :\cf6 @"1.0"\cf1  \cf12 delegate\cf1 :\cf3 self\cf1  \cf12 error\cf1 :&error];\
+        \cf3 while\cf1  (\cf3 nil\cf1  != error)\
+        \{\
+            error = \cf3 nil\cf1 ;\
+             \cf11 _gexinSdk\cf1  = [\cf12 GexinSdk\cf1  \cf12 createSdkWithAppId\cf1 :\cf6 @"F84d2DtT68AhFEnBrzio83"\cf1  \cf12 appKey\cf1 :\cf6 @"OFymP7ka9J6s0ZkdeiSLS9"\cf1  \cf12 appSecret\cf1 :\cf6 @"FM0eZU7lCE7FK7wa1r9JD9"\cf1  \cf12 appVersion\cf1 :\cf6 @"1.0"\cf1  \cf12 delegate\cf1 :\cf3 self\cf1  \cf12 error\cf1 :&error];\
+        \}\
+    \}\
+    \
+\}\
+-(\cf3 void\cf1 )stopGetui\
+\{\
+    \cf3 if\cf1  (\cf3 nil\cf1  != \cf11 _gexinSdk\cf1 )\
+    \{\
+\
+        [\cf11 _gexinSdk\cf1  \cf12 destroy\cf1 ];\
+        \
+        \cf11 _gexinSdk\cf1  =\cf3 nil\cf1 ;\
+    \}\
+\}\
+\cf7 #pragma 
+\f0 \'b8\'f6\'cd\'c6
+\f2  delegate\
+\cf1 - (\cf3 void\cf1 )GexinSdkDidRegisterClient:(\cf4 NSString\cf1  *)clientId\
+\{\
+
+\f0 //\'d5\'e2\'b8\'f6\'ca\'c7\'c7\'eb\'c7\'f3\'bb\'d8\'c0\'b4\'b5\'c4pushID,
+\f2 \
+    [[\cf4 NSUserDefaults\cf1  \cf4 standardUserDefaults\cf1 ]\cf4 setObject\cf1 :clientId \cf4 forKey\cf1 :\cf7 userDefaultPushUserId\cf1 ];\
+    \
+\}\
+- (\cf3 void\cf1 )GexinSdkDidReceivePayload:(\cf4 NSString\cf1  *)payloadId fromApplication:(\cf4 NSString\cf1  *)appId\
+\{\
+    \cf4 NSLog\cf1 (\cf6 @"%@"\cf1 ,payloadId);\
+\
+    \cf4 NSData\cf1  * payload = [\cf11 _gexinSdk\cf1  \cf12 retrivePayloadById\cf1 :payloadId];\
+\
+    \cf4 NSString\cf1  * payloadMsg = \cf3 nil\cf1 ;\
+\
+    \cf3 if\cf1  (payloadId)\
+    \{\
+\
+        payloadMsg = [[\cf4 NSString\cf1  \cf4 alloc\cf1 ]\cf4 initWithBytes\cf1 :payload.\cf4 bytes\cf1  \cf4 length\cf1 :payload.\cf4 length\cf1  \cf4 encoding\cf1 :\cf4 NSUTF8StringEncoding\cf1 ];\
+\
+        \cf4 NSLog\cf1 (\cf6 @"%@"\cf1 ,payloadMsg);\
+\
+    \}\
+\}\
+- (\cf3 void\cf1 )GexinSdkDidSendMessage:(\cf4 NSString\cf1  *)messageId result:(\cf3 int\cf1 )result\
+\{\
+    \cf4 NSLog\cf1 (\cf6 @"%s"\cf1 ,__func__);\
+\}\
+- (\cf3 void\cf1 )GexinSdkDidOccurError:(\cf4 NSError\cf1  *)error\
+\{\
+     \cf4 NSLog\cf1 (\cf6 @"%s"\cf1 ,__func__);\
+\}
+\f0 \
+\
+
+\f2 \
+\
+}

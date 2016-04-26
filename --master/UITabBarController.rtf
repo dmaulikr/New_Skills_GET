@@ -1,0 +1,201 @@
+{\rtf1\ansi\ansicpg936\cocoartf1347\cocoasubrtf570
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset134 STHeitiSC-Light;\f2\fnil\fcharset0 HelveticaNeue;
+\f3\fswiss\fcharset0 ArialMT;\f4\fnil\fcharset0 AndaleMono;}
+{\colortbl;\red255\green255\blue255;\red170\green13\blue145;\red255\green173\blue23;\red255\green39\blue18;
+\red255\green255\blue51;\red0\green116\blue0;\red92\green38\blue153;\red100\green56\blue32;\red28\green0\blue207;
+\red63\green110\blue116;\red59\green16\blue143;\red38\green38\blue38;\red0\green68\blue254;\red26\green26\blue26;
+\red252\green77\blue84;\red57\green57\blue57;\red217\green11\blue0;\red26\green26\blue26;\red0\green160\blue255;
+\red255\green44\blue56;\red120\green109\blue255;\red65\green204\blue69;\red211\green24\blue149;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww15840\viewh12300\viewkind0
+\deftab674
+\pard\tx674\pardeftab674\pardirnatural
+
+\f0\fs28 \cf2 \CocoaLigature0 \
+\
+\
+@property\cf0 (\cf2 nonatomic\cf0 ,\cf2 copy\cf0 ) \cf3 NSArray\cf0  *viewControllers;\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f1\fs36 \cf0 \cb4 \'bf\'c9\'d2\'d4\'cd\'a8\'b9\'fd\'d2\'bb\'b8\'f6\'b4\'e6\'b7\'c5
+\f0 ViewControll
+\f1 \'b5\'c4\'ca\'fd\'d7\'e9\'d6\'b1\'bd\'d3\'b8\'f8viewControll
+\f0 s
+\f1 \'d6\'b1\'bd\'d3\'bd\'f8\'d0\'d0\'b8\'b3\'d6\'b5\'a3\'ac
+\fs28 \cb1 \
+\pard\tx674\pardeftab674\pardirnatural
+
+\f0 \cf0 \
+\pard\tx674\pardeftab674\pardirnatural
+
+\f1 \cf4 \cb5 \'ce\'b4\'d6\'aa
+\f0 \cf0 \cb1 - (\cf2 void\cf0 )setViewControllers:(\cf3 NSArray\cf0  *)viewControllers animated:(\cf2 BOOL\cf0 )animated;\
+\
+\pard\tx674\pardeftab674\pardirnatural
+\cf2 @property\cf0 (\cf2 nonatomic\cf0 ,\cf2 assign\cf0 ) \cf3 UIViewController\cf0  *selectedViewController; \cf6 // This may return the "More" navigation controller if it exists.\cf0 \
+\pard\tx674\pardeftab674\pardirnatural
+
+\f1 \cf4 \cb5 \'ce\'b4\'d6\'aa
+\f0 \cf2 \cb1 @property\cf0 (\cf2 nonatomic\cf0 ) \cf7 NSUInteger\cf0  selectedIndex;
+\f1 \'d5\'e2\'b8\'f6\'ca\'f4\'d0\'d4\'ba\'cd
+\f0 selectedViewController
+\f1 \'cf\'e0\'bb\'a5\'b9\'d8\'c1\'aa\'a3\'ac\'cd\'a8\'b9\'fd\'c9\'e8\'d6\'c3
+\f0 selectedIndex
+\f1 \'bf\'c9\'d2\'d4\'cc\'f8\'d7\'aa\'b5\'bd\'d3\'eb
+\f0 index
+\f1 \'d6\'b5\'b6\'d4\'d3\'a6\'b5\'c4\'d2\'b3\'c3\'e6\'c9\'cf\'a3\'bb
+\f0 \
+\
+
+\f1 \cf4 \cb5 \'ce\'b4\'d6\'aa
+\f0 \cf2 \cb1 @property\cf0 (\cf2 nonatomic\cf0 ,\cf2 readonly\cf0 ) \cf3 UINavigationController\cf0  *moreNavigationController; \cf6 // Returns the "More" navigation controller, creating it if it does not already exist.\cf0 \
+
+\f1 \cf4 \cb5 \'ce\'b4\'d6\'aa
+\f0 \cf2 \cb1 @property\cf0 (\cf2 nonatomic\cf0 ,\cf2 copy\cf0 ) \cf3 NSArray\cf0  *customizableViewControllers; \cf6 // If non-nil, then the "More" view will include an "Edit" button that displays customization UI for the specified controllers. By default, all view controllers are customizable.\cf0 \
+\
+\pard\tx674\pardeftab674\pardirnatural
+\cf2 @property\cf0 (\cf2 nonatomic\cf0 ,\cf2 readonly\cf0 ) \cf3 UITabBar\cf0  *tabBar \cf8 NS_AVAILABLE_IOS\cf0 (\cf9 3\cf0 _0); \
+\
+\pard\tx674\pardeftab674\pardirnatural
+\cf10 _tbc\cf0 .\cf7 tabBar\cf0 .\cf7 shadowImage\cf0 =[[\cf3 UIImage\cf0  \cf11 alloc\cf0 ] \cf11 init\cf0 ];\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f1 \cf0 \'bf\'c9\'d2\'d4\'c8\'a5\'b5\'f4\'c3\'bf\'d2\'bb\'b8\'f6
+\f0 item
+\f1 \'c9\'cf\'b5\'c4\'d2\'f5\'d3\'b0\'d1\'d5\'c9\'ab\'a3\'ac\'ca\'b9\'d6\'ae\'cf\'d4\'ca\'be\'ce\'d2\'c3\'c7\'b6\'a8\'d6\'c6\'b5\'c4\'cd\'bc\'c6\'ac\'b6\'f8\'b2\'bb\'ca\'c7\'c2\'d6\'c0\'aa
+\f0 \
+\pard\pardeftab720\sl500
+
+\f2 \cf12 \cb13 \CocoaLigature1 \'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97
+\f0 \cf0 \cb1 \CocoaLigature0 \
+\pard\tx674\pardeftab674\pardirnatural
+
+\f1 \cf0 \'b4\'b4\'bd\'a8\'d2\'bb\'b8\'f6
+\f0 \cf3 UITabBarItem
+\f1 \cf0 \'b5\'c4\'ca\'b1\'ba\'f2\'d2\'aa\'a3\'ac\'cf\'c8\'ca\'fd\'d7\'e9\'b6\'d4\'c6\'e4
+\f0 \cf3 NSArray\cf0  *viewControllers;
+\f1 \'ca\'f4\'d0\'d4\'bd\'f8\'d0\'d0\'b8\'b3\'d6\'b5\'a3\'ac\'d5\'e2\'b8\'f6\'ca\'b1\'ba\'f2\'b8\'f9\'be\'dd\'ca\'fd\'d7\'e9\'d6\'d0vc\'b5\'c4\'ca\'fd\'c1\'bf\'bb\'e1\'d3\'b0\'cf\'ec\'b5\'bd
+\f0 \cf2 self\cf0 .\cf7 tabBar\cf0 .\cf7 items\cf0 .\cf7 count\
+\
+
+\f1 \cf0 \'bc\'f2\'b5\'a5\'b5\'c4\'b6\'a8\'d6\'c6\'d2\'bb\'b8\'f6
+\f0 \cf3 UITabBarItem
+\f1 \cf3 \'cd\'a8\'b9\'fd
+\f0 \cf0   
+\f1 \'b6\'a8\'d6\'c6tabBar\'b5\'c4\'b1\'b3\'be\'b0\'cd\'bc\'c6\'ac 
+\f0 \cf10 self\cf0 .\cf7 tabBar\cf0 .\cf7 backgroundImage\cf0 =[\cf3 UIImage\cf0  \cf11 imageNamed\cf0 :xxxx];\
+
+\f1 \'b6\'a8\'d6\'c6\'c3\'bf\'d2\'bb\'b0\'b4\'c5\'a5\'b5\'c4\'cd\'bc\'c6\'ac
+\f0 \cf7 \
+\pard\tx674\pardeftab674\pardirnatural
+\cf10 _tbc\cf0 .\cf7 tabBar\cf0 .\cf7 items\cf0 [i]; item=[item \cf11 initWithTitle\cf0 :xxxx \cf11 image\cf0 :xxxx \cf11 selectedImage\cf0 :xxxx];\cf7 \
+\
+\pard\tx674\pardeftab674\pardirnatural
+\cf3 UITabBarItem\cf0 ,
+\f1 \'c8\'bb\'ba\'f3\'bd\'ab\'b6\'a8\'d6\'c6\'ba\'c3\'b5\'c4
+\f0 \cf3 UITabBarItem
+\f1 \cf14 .view \'bc\'d3\'c8\'eb\'b5\'bdsubview\'d6\'d0\'c8\'a5\'bb\'e1\'b5\'c3\'b5\'bd\'b3\'ca\'cf\'d6
+\f0 \cf7 \
+\
+\pard\pardeftab720\sl440
+
+\f3 \cf15 \expnd0\expndtw0\kerning0
+\CocoaLigature1 //
+\f1 \'d0\'a1\'ba\'ec\'c8\'a6\'cc\'e1\'ca\'be
+\f3 \cf16 \expnd0\expndtw0\kerning0
+\'a0 \
+\'a0 UITabBarItem * barItem1 = [[UITabBarItem alloc]initWithTabBarSystemItem:UITabBarSystemItemContacts tag:0];\
+\pard\pardeftab720\sl440\sa100
+\cf16 \'a0 \'a0 barItem1.badgeValue = @"1";\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f0 \cf7 \kerning1\expnd0\expndtw0 \CocoaLigature0 \
+
+\f1 \cf0 \cb17 \'b6\'a8\'d6\'c6\'b5\'c4
+\f0 b 
+\f4 UIBarButtonItem
+\f0 \cf7 \cb18 \
+\pard\tx672\pardeftab672\pardirnatural
+
+\f4 \cf1     \cf19 UIButton\cf1  * btn = [\cf19 UIButton\cf1  \cf19 buttonWithType\cf1 :\cf19 UIButtonTypeCustom\cf1 ];\
+    [btn  \cf19 setBackgroundImage\cf1 :[\cf19 UIImage\cf1  \cf19 imageNamed\cf1 :
+\f0 \cf20 @"buttonbar_action"
+\f4 \cf1 ] \cf19 forState\cf1 :\cf19 UIControlStateNormal\cf1  ];\
+    btn.\cf19 frame\cf1  = \cf19 CGRectMake\cf1 (
+\f0 \cf21 0
+\f4 \cf1 , 
+\f0 \cf21 0
+\f4 \cf1 , 
+\f0 \cf21 60
+\f4 \cf1 , 
+\f0 \cf21 30
+\f4 \cf1 );\
+    \
+    [btn \cf19 setTitle\cf1 :
+\f0 \cf20 @"
+\f1 \'b7\'d6\'c0\'e0
+\f0 "
+\f4 \cf1  \cf19 forState\cf1 :\cf19 UIControlStateNormal\cf1 ];\
+    \
+    btn.\cf19 titleLabel\cf1 .\cf19 textColor\cf1  = [\cf19 UIColor\cf1  \cf19 blackColor\cf1 ];
+\f0 \cf22 //
+\f1 \'c3\'bb\'d3\'c3
+\f4 \cf1 \
+    \
+    [btn \cf19 setTitleColor\cf1 :[\cf19 UIColor\cf1  \cf19 blackColor\cf1 ] \cf19 forState\cf1 :\cf19 UIControlStateNormal\cf1 ];\
+    \
+    [btn \cf19 addTarget\cf1 :
+\f0 \cf23 self
+\f4 \cf1  \cf19 action\cf1 :
+\f0 \cf23 @selector
+\f4 \cf1 (btn:) \cf19 forControlEvents\cf1 :\cf19 UIControlEventTouchUpInside\cf1 ];\
+    \
+    
+\f0 \cf23 self
+\f4 \cf1 .\cf19 navigationItem\cf1 .\cf19 leftBarButtonItem\cf1  = [[\cf19 UIBarButtonItem\cf1  \cf19 alloc\cf1 ]\cf19 initWithCustomView\cf1 :btn];\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f0 \cf7 \
+\
+\
+\cb1 \
+\
+\
+\
+\pard\pardeftab720\sl500
+
+\f2 \cf12 \cb13 \CocoaLigature1 \'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97
+\f0 \cf0 \cb1 \CocoaLigature0 \
+\pard\tx674\pardeftab674\pardirnatural
+\cf2 @property\cf0 (\cf2 nonatomic\cf0 ,\cf2 assign\cf0 ) \cf2 id\cf0 <\cf3 UITabBarControllerDelegate\cf0 > delegate;\
+\
+\cf2 @end\cf0 \
+\
+\cf2 @protocol\cf0  UITabBarControllerDelegate <\cf3 NSObject\cf0 >\
+\cf2 @optional\cf0 \
+- (\cf2 BOOL\cf0 )tabBarController:(\cf3 UITabBarController\cf0  *)tabBarController shouldSelectViewController:(\cf3 UIViewController\cf0  *)viewController \cf8 NS_AVAILABLE_IOS\cf0 (\cf9 3\cf0 _0);\
+\
+- (\cf2 void\cf0 )tabBarController:(\cf3 UITabBarController\cf0  *)tabBarController didSelectViewController:(\cf3 UIViewController\cf0  *)viewController;\
+\
+- (\cf2 void\cf0 )tabBarController:(\cf3 UITabBarController\cf0  *)tabBarController willBeginCustomizingViewControllers:(\cf3 NSArray\cf0  *)viewControllers \cf8 NS_AVAILABLE_IOS\cf0 (\cf9 3\cf0 _0);\
+- (\cf2 void\cf0 )tabBarController:(\cf3 UITabBarController\cf0  *)tabBarController willEndCustomizingViewControllers:(\cf3 NSArray\cf0  *)viewControllers changed:(\cf2 BOOL\cf0 )changed \cf8 NS_AVAILABLE_IOS\cf0 (\cf9 3\cf0 _0);\
+- (\cf2 void\cf0 )tabBarController:(\cf3 UITabBarController\cf0  *)tabBarController didEndCustomizingViewControllers:(\cf3 NSArray\cf0  *)viewControllers changed:(\cf2 BOOL\cf0 )changed;\
+\
+- (\cf7 NSUInteger\cf0 )tabBarControllerSupportedInterfaceOrientations:(\cf3 UITabBarController\cf0  *)tabBarController \cf8 NS_AVAILABLE_IOS\cf0 (\cf9 7\cf0 _0);\
+- (\cf7 UIInterfaceOrientation\cf0 )tabBarControllerPreferredInterfaceOrientationForPresentation:(\cf3 UITabBarController\cf0  *)tabBarController \cf8 NS_AVAILABLE_IOS\cf0 (\cf9 7\cf0 _0);\
+\
+- (\cf2 id\cf0  <\cf3 UIViewControllerInteractiveTransitioning\cf0 >)tabBarController:(\cf3 UITabBarController\cf0  *)tabBarController\
+                      interactionControllerForAnimationController: (\cf2 id\cf0  <\cf3 UIViewControllerAnimatedTransitioning\cf0 >)animationController \cf8 NS_AVAILABLE_IOS\cf0 (\cf9 7\cf0 _0);\
+\
+- (\cf2 id\cf0  <\cf3 UIViewControllerAnimatedTransitioning\cf0 >)tabBarController:(\cf3 UITabBarController\cf0  *)tabBarController\
+            animationControllerForTransitionFromViewController:(\cf3 UIViewController\cf0  *)fromVC\
+                                              toViewController:(\cf3 UIViewController\cf0  *)toVC  \cf8 NS_AVAILABLE_IOS\cf0 (\cf9 7\cf0 _0);\
+\
+\cf2 @end\cf0 \
+\
+\cf2 @interface\cf0  UIViewController (UITabBarControllerItem)\
+\
+\cf2 @property\cf0 (\cf2 nonatomic\cf0 ,\cf2 retain\cf0 ) \cf3 UITabBarItem\cf0  *tabBarItem; \cf6 // Automatically created lazily with the view controller's title if it's not set explicitly.\cf0 \
+\
+\cf2 @property\cf0 (\cf2 nonatomic\cf0 ,\cf2 readonly\cf0 ,\cf2 retain\cf0 ) \cf3 UITabBarController\cf0  *tabBarController; \cf6 // If the view controller has a tab bar controller as its ancestor, return it. Returns nil otherwise.\cf0 \
+\
+}

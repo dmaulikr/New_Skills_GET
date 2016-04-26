@@ -1,0 +1,23 @@
+{\rtf1\ansi\ansicpg936\cocoartf1343\cocoasubrtf140
+{\fonttbl\f0\fnil\fcharset134 STHeitiSC-Light;\f1\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red100\green56\blue32;\red196\green26\blue22;\red170\green13\blue145;
+\red63\green110\blue116;\red255\green173\blue23;\red59\green16\blue143;\red38\green71\blue75;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs24 \cf0 \'c9\'f9\'c3\'f7\'d2\'bb\'b8\'f6\'c0\'e0\
+
+\f1\fs28 \cf2 \CocoaLigature0 #import \cf3 "JSONModel.h"\cf2 \
+\pard\tx674\pardeftab674\pardirnatural
+\cf4 @interface\cf0  model : \cf5 JSONModel\
+\
+\cf4 @property\cf0  (\cf4 strong\cf0 ,\cf4 nonatomic\cf0 )
+\f0 \'ca\'f4\'d0\'d4\'c3\'fb\'d7\'d6\'d2\'bb\'b6\'a8\'d2\'aa\'d3\'ebjson\'d6\'d0\'b6\'d4\'d3\'a6\'b5\'c4key\'d6\'b5\'ca\'c7\'d2\'aa\'d2\'bb\'c4\'a3\'d2\'bb\'d1\'f9\
+\
+
+\f1  \cf6 NSData\cf0  * data = [[\cf6 NSData\cf0  \cf7 alloc\cf0 ]\cf7 initWithContentsOfURL\cf0 :[\cf6 NSURL\cf0  \cf7 URLWithString\cf0 :\cf3 @"http://iappfree.candou.com:8080/free/applications/limited?currency=rmb&page=1"\cf0 ]];\
+    \
+    \cf5 model\cf0  * testModel = [[\cf5 model\cf0  \cf7 alloc\cf0 ]\cf8 initWithData\cf0 :data \cf8 error\cf0 :\cf4 nil\cf0 ];\
+\
+
+\f0 \'c8\'bb\'ba\'f3\'bd\'ab\'c7\'eb\'c7\'f3\'b5\'c4\'ca\'fd\'be\'dd\'d3\'c3data\'b3\'f5\'ca\'bc\'bb\'af\'a3\'ac\'d4\'d9\'c8\'a5\'bd\'f8\'d0\'d0\'b3\'f5\'ca\'bc\'bb\'af\'a1\'a3}

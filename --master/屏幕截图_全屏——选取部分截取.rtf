@@ -1,0 +1,201 @@
+{\rtf1\ansi\ansicpg936\cocoartf1347\cocoasubrtf570
+{\fonttbl\f0\fnil\fcharset134 STHeitiSC-Light;\f1\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red255\green39\blue18;\red59\green16\blue143;\red170\green13\blue145;
+\red92\green38\blue153;\red255\green173\blue23;\red0\green116\blue0;\red211\green24\blue149;\red65\green204\blue69;
+\red0\green160\blue255;\red255\green255\blue0;\red120\green109\blue255;\red255\green44\blue56;\red255\green128\blue0;
+}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab674
+\pard\tx674\pardeftab674\pardirnatural
+
+\f0\fs48 \cf0 \cb2 \CocoaLigature0 \'bd\'d8\'c8\'a1\'c8\'ab\'c6\'c1
+\f1   
+\fs28 \cb1 \
+\
+\cf3 UIGraphicsBeginImageContext\cf0 (\cf4 self\cf0 .\cf5 view\cf0 .\cf5 bounds\cf0 .\cf5 size\cf0 );\
+    \
+    [\cf4 self\cf0 .\cf5 view\cf0 .\cf5 layer\cf0  \cf3 renderInContext\cf0 :\cf3 UIGraphicsGetCurrentContext\cf0 ()];\
+    \
+    \cf6 UIImage\cf0  *image=\cf3 UIGraphicsGetImageFromCurrentImageContext\cf0 ();\
+\pard\tx674\pardeftab674\pardirnatural
+\cf7 //    
+\f0 \'b8\'e6\'cb\'df\'cf\'b5\'cd\'b3\'bb\'e6\'d6\'c6\'bd\'e1\'ca\'f8
+\f1 \cf0 \
+    \cf3 UIGraphicsEndImageContext\cf0 ();\
+    \
+\cf7 //    
+\f0 \'b1\'a3\'b4\'e6\'cd\'bc\'c6\'ac\'b5\'bd\'cf\'e0\'b2\'e1
+\f1 \cf0 \
+    \cf3 UIImageWriteToSavedPhotosAlbum\cf0 (image,\cf4 self\cf0 , \cf4 nil\cf0 , \cf4 nil\cf0 );\
+    \
+\pard\tx674\pardeftab674\pardirnatural
+\cf0 \cb0 \
+\pard\tx674\pardeftab674\pardirnatural
+\cf1 - (\cf8 IBAction\cf1 )camera:(\cf8 id\cf1 )sender\
+\{\
+    \cf9 //
+\f0 \'cf\'c8\'c9\'e8\'b6\'a8
+\f1 sourceType
+\f0 \'ce\'aa\'cf\'e0\'bb\'fa\'a3\'ac\'c8\'bb\'ba\'f3\'c5\'d0\'b6\'cf\'cf\'e0\'bb\'fa\'ca\'c7\'b7\'f1\'bf\'c9\'d3\'c3\'a3\'a8
+\f1 ipod
+\f0 \'a3\'a9\'c3\'bb\'cf\'e0\'bb\'fa\'a3\'ac\'b2\'bb\'bf\'c9\'d3\'c3\'bd\'ab
+\f1 sourceType
+\f0 \'c9\'e8\'b6\'a8\'ce\'aa\'cf\'e0\'c6\'ac\'bf\'e2
+\f1 \cf1 \
+    \
+    \cf10 UIImagePickerControllerSourceType\cf1  sourceType = \cf10 UIImagePickerControllerSourceTypeCamera\cf1 ;\
+    \
+    \cf9 //    if (![UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera]) \{\cf1 \
+    \cf9 //        sourceType = UIImagePickerControllerSourceTypePhotoLibrary;\cf1 \
+    \cf9 //    \}\cf1 \
+    \cf9 //sourceType = UIImagePickerControllerSourceTypeCamera; //
+\f0 \'d5\'d5\'cf\'e0\'bb\'fa
+\f1 \cf1 \
+    \cf9 //sourceType = UIImagePickerControllerSourceTypePhotoLibrary; //
+\f0 \'cd\'bc\'c6\'ac\'bf\'e2
+\f1 \cf1 \
+    \cf9 //sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum; //
+\f0 \'b1\'a3\'b4\'e6\'b5\'c4\'cf\'e0\'c6\'ac
+\f1 \cf1 \
+    \
+    \cf10 UIImagePickerController\cf1  *picker = [[\cf10 UIImagePickerController\cf1  \cf10 alloc\cf1 ] \cf10 init\cf1 ];\cf9 //
+\f0 \'b3\'f5\'ca\'bc\'bb\'af
+\f1 \cf1 \
+    picker.\cf10 delegate\cf1  = \cf8 self\cf1 ;\
+    picker.\cf10 allowsEditing\cf1  = \cf8 YES\cf1 ;\cf9 //
+\f0 \'c9\'e8\'d6\'c3\'bf\'c9\'b1\'e0\'bc\'ad
+\f1 \cf1 \
+    picker.\cf10 sourceType\cf1  = sourceType;\
+ \
+    \
+    [\cf8 self\cf1  \cf10 presentViewController\cf1 :picker \cf10 animated\cf1 :\cf8 YES\cf1  \cf10 completion\cf1 :\cf8 nil\cf1 ];  \cf9 //
+\f0 \'bd\'f8\'c8\'eb\'d5\'d5\'cf\'e0\'bd\'e7\'c3\'e6
+\f1 \cf1 \
+    \
+\}\
+\
+- (\cf8 IBAction\cf1 )fullscreenshot:(\cf8 id\cf1 )sender\
+\{\
+    [\cf8 self\cf1  \cf11 screenShot\cf1 :\cf8 self\cf1 .\cf10 view\cf1 ];\
+\
+\}\
+- (\cf8 IBAction\cf1 )FreeShot:(\cf8 id\cf1 )sender\
+\{\
+    \
+    \cf10 UIImageView\cf1  * lable = [[\cf10 UIImageView\cf1  \cf10 alloc\cf1 ]\cf10 initWithFrame\cf1 :\cf10 CGRectMake\cf1 (\cf12 50\cf1 , \cf12 50\cf1 , \cf12 200\cf1 , \cf12 200\cf1 )];\
+    \
+    lable.\cf10 image\cf1  = [\cf10 UIImage\cf1  \cf10 imageNamed\cf1 :\cf13 @"q.png"\cf1 ];\
+    lable.\cf10 backgroundColor\cf1  = [\cf10 UIColor\cf1  \cf10 clearColor\cf1 ];\
+    [lable \cf10 setUserInteractionEnabled\cf1 :\cf8 YES\cf1 ];\
+\
+    \cf10 UIPanGestureRecognizer\cf1  *pan = [[\cf10 UIPanGestureRecognizer\cf1  \cf10 alloc\cf1 ]\cf10 initWithTarget\cf1 :\cf8 self\cf1  \cf10 action\cf1 :\cf8 @selector\cf1 (pan:)];\
+    \cf10 UIPinchGestureRecognizer\cf1  *pin = [[\cf10 UIPinchGestureRecognizer\cf1  \cf10 alloc\cf1 ]\cf10 initWithTarget\cf1 :\cf8 self\cf1  \cf10 action\cf1 :\cf8 @selector\cf1 (pin:)];\
+    \cf10 UITapGestureRecognizer\cf1  *singleTapGestureRecognizer = [[\cf10 UITapGestureRecognizer\cf1  \cf10 alloc\cf1 ]\cf10 initWithTarget\cf1 :\cf8 self\cf1  \cf10 action\cf1 :\cf8 @selector\cf1 (singleTap:)];\
+    [singleTapGestureRecognizer \cf10 setNumberOfTapsRequired\cf1 :\cf12 1\cf1 ];\
+    \cf10 UITapGestureRecognizer\cf1  *doubleTapGestureRecognizer = [[\cf10 UITapGestureRecognizer\cf1  \cf10 alloc\cf1 ]\cf10 initWithTarget\cf1 :\cf8 self\cf1  \cf10 action\cf1 :\cf8 @selector\cf1 (doubleTap:)];\
+    [doubleTapGestureRecognizer \cf10 setNumberOfTapsRequired\cf1 :\cf12 2\cf1 ];\
+\
+    \cf9 //
+\f0 \'d5\'e2\'d0\'d0\'ba\'dc\'b9\'d8\'bc\'fc\'a3\'ac\'d2\'e2\'cb\'bc\'ca\'c7\'d6\'bb\'d3\'d0\'b5\'b1\'c3\'bb\'d3\'d0\'bc\'ec\'b2\'e2\'b5\'bd
+\f1 doubleTapGestureRecognizer 
+\f0 \'bb\'f2\'d5\'df
+\f1  
+\f0 \'bc\'ec\'b2\'e2
+\f1 doubleTapGestureRecognizer
+\f0 \'ca\'a7\'b0\'dc\'a3\'ac
+\f1 singleTapGestureRecognizer
+\f0 \'b2\'c5\'d3\'d0\'d0\'a7
+\f1 \cf1 \
+    \
+    [singleTapGestureRecognizer \cf10 requireGestureRecognizerToFail\cf1 :doubleTapGestureRecognizer];\
+    [lable \cf10 addGestureRecognizer\cf1 :singleTapGestureRecognizer];\
+    [lable \cf10 addGestureRecognizer\cf1 :doubleTapGestureRecognizer];\
+    [lable \cf10 addGestureRecognizer\cf1 :pin];\
+    [lable \cf10 addGestureRecognizer\cf1 :pan];\
+    [\cf8 self\cf1 .\cf10 view\cf1  \cf10 addSubview\cf1 :lable];\
+    \
+    \
+\}\
+\
+-(\cf8 void\cf1 )screenShot:(\cf10 UIView\cf1 *)view\
+\{\
+    \
+    \cf10 UIGraphicsBeginImageContext\cf1 (\cf8 self\cf1 .\cf10 view\cf1 .\cf10 bounds\cf1 .\cf10 size\cf1 );\
+    \
+    [\cf8 self\cf1 .\cf10 view\cf1 .\cf10 layer\cf1  \cf10 renderInContext\cf1 :\cf10 UIGraphicsGetCurrentContext\cf1 ()];\
+    \
+    \cf10 UIImage\cf1  *image=\cf10 UIGraphicsGetImageFromCurrentImageContext\cf1 ();\
+    \
+    \cf8 if\cf1 (view != \cf8 self\cf1 .\cf10 view\cf1 )\
+    \{\
+        \cf10 CGImageRef\cf1  imageRef = \cf10 CGImageCreateWithImageInRect\cf1 ([image \cf10 CGImage\cf1 ], view.\cf10 frame\cf1 );\
+        image = [\cf10 UIImage\cf1  \cf10 imageWithCGImage\cf1 :imageRef];\
+    \}\
+    \cf9 //    
+\f0 \'b8\'e6\'cb\'df\'cf\'b5\'cd\'b3\'bb\'e6\'d6\'c6\'bd\'e1\'ca\'f8
+\f1 \cf1 \
+    \cf10 UIGraphicsEndImageContext\cf1 ();\
+    \
+    \cf14 _imgView\cf1 .\cf10 image\cf1  = image;\
+    \cf9 //    _imgView.layer.borderColor\cf1 \
+    \cf9 //    
+\f0 \'b1\'a3\'b4\'e6\'cd\'bc\'c6\'ac\'b5\'bd\'cf\'e0\'b2\'e1
+\f1 \cf1 \
+    \cf10 UIImageWriteToSavedPhotosAlbum\cf1 (image,\cf8 self\cf1 , \cf8 nil\cf1 , \cf8 nil\cf1 );\
+\}\
+\
+\
+-(\cf8 void\cf1 )doubleTap:(\cf10 UITapGestureRecognizer\cf1 *)doubleTap\
+\{\
+    [doubleTap.\cf10 view\cf1  \cf10 removeFromSuperview\cf1 ];\
+    \
+\}\
+- (\cf8 void\cf1 )singleTap:(\cf10 UITapGestureRecognizer\cf1  *)singleTap\
+\{\
+    [\cf8 self\cf1  \cf11 screenShot\cf1 :singleTap.\cf10 view\cf1 ];\
+\}\
+\
+- (\cf8 void\cf1 )pan:(\cf10 UIPanGestureRecognizer\cf1  *)panGR\
+\{\
+    \cf10 CGPoint\cf1  translation = [panGR \cf10 translationInView\cf1 :\cf8 self\cf1 .\cf10 view\cf1 ];\
+    \
+    panGR.\cf10 view\cf1 .\cf10 center\cf1  = \cf10 CGPointMake\cf1 (panGR.\cf10 view\cf1 .\cf10 center\cf1 .\cf10 x\cf1  + translation.\cf10 x\cf1 ,panGR.\cf10 view\cf1 .\cf10 center\cf1 .\cf10 y\cf1  + translation.\cf10 y\cf1 );\
+    \
+    [panGR \cf10 setTranslation\cf1 :\cf10 CGPointZero\cf1  \cf10 inView\cf1 :\cf8 self\cf1 .\cf10 view\cf1 ];\
+\}\
+\
+- (\cf8 void\cf1 )pin:(\cf10 UIPinchGestureRecognizer\cf1  *)pinchGr\
+\{\
+    \cf10 NSLog\cf1 (\cf13 @"
+\f0 \'cb\'f5\'b7\'c5
+\f1 "\cf1 );\
+    pinchGr.\cf10 view\cf1 .\cf10 transform\cf1  = \cf10 CGAffineTransformScale\cf1 (pinchGr.\cf10 view\cf1 .\cf10 transform\cf1 , pinchGr.\cf10 scale\cf1 , pinchGr.\cf10 scale\cf1 );\
+    pinchGr.\cf10 scale\cf1  = \cf12 1\cf1 ;\
+\}\
+\
+\
+\
+-(\cf8 void\cf1 )imagePickerController:(\cf10 UIImagePickerController\cf1  *)picker didFinishPickingMediaWithInfo:(\cf10 NSDictionary\cf1  *)info\
+\{\
+    \cf10 UIImage\cf1  * imageEdited = [info \cf10 objectForKey\cf1 :\cf13 @"UIImagePickerControllerEditedImage"\cf1 ];\
+    \
+    \cf10 UIImage\cf1  * imageOriginal = [info \cf10 objectForKey\cf1 :\cf13 @"UIImagePickerControllerOriginalImage"\cf1 ];\
+    \
+    \cf10 UIImageWriteToSavedPhotosAlbum\cf1 (imageEdited,\cf8 self\cf1 , \cf8 nil\cf1 , \cf8 nil\cf1 );\
+    \
+    \cf10 UIImageWriteToSavedPhotosAlbum\cf1 (imageOriginal,\cf8 self\cf1 , \cf8 nil\cf1 , \cf8 nil\cf1 );\
+    \
+    \cf14 _imgView\cf1 .\cf10 image\cf1  = imageEdited;\
+    \
+    [picker \cf10 dismissViewControllerAnimated\cf1 :\cf8 YES\cf1  \cf10 completion\cf1 :\cf8 nil\cf1 ];\
+\}\
+\
+\
+\
+-(\cf8 void\cf1 )imagePickerControllerDidCancel:(\cf10 UIImagePickerController\cf1  *)picker\
+\{\
+    \
+    [picker \cf10 dismissViewControllerAnimated\cf1 :\cf8 YES\cf1  \cf10 completion\cf1 :\cf8 nil\cf1 ];\
+\
+\}\
+}

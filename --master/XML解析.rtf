@@ -1,0 +1,240 @@
+{\rtf1\ansi\ansicpg936\cocoartf1343\cocoasubrtf140
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset134 STHeitiSC-Light;\f2\fnil\fcharset0 Menlo-Regular;
+\f3\fswiss\fcharset0 ArialMT;\f4\fnil\fcharset0 Verdana;\f5\fmodern\fcharset0 CourierNewPSMT;
+}
+{\colortbl;\red255\green255\blue255;\red255\green39\blue18;\red255\green173\blue23;\red170\green13\blue145;
+\red63\green110\blue116;\red59\green16\blue143;\red92\green38\blue153;\red0\green116\blue0;\red196\green26\blue22;
+\red28\green0\blue207;\red41\green34\blue32;\red46\green13\blue110;\red38\green71\blue75;\red217\green11\blue0;
+\red246\green246\blue246;\red26\green26\blue26;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww23440\viewh10820\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs24 \cf0 XML
+\f1 \'bd\'e2\'ce\'f6__
+\fs48 \cb2 \'cf\'b5\'cd\'b3
+\fs24 \cb1 \'b5\'ce\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f2\fs28 \cf0 \CocoaLigature0  
+\f1 \'bc\'cc\'b3\'d0
+\f2 <\cf3 NSXMLParserDelegate\cf0 >
+\f1\fs24 \CocoaLigature1 \
+
+\f2\fs28 \cf4 \CocoaLigature0 @property\cf0  \cf3 NSXMLParser\cf0  * myparser;\
+\cf4 @property\cf0  \cf3 NSMutableArray\cf0  * xmlArray;\
+\
+
+\f1 \'b3\'f5\'ca\'bc\'bb\'af\
+
+\f2 \
+ \cf5 _xmlArray\cf0  = [[\cf3 NSMutableArray\cf0  \cf6 alloc\cf0 ] \cf6 init\cf0 ];\
+ \cf5 _myparser\cf0  = [\cf3 NSXMLParser\cf0  \cf6 alloc\cf0 ];\
+ \cf5 book\cf0  = [[\cf5 Bookinfo\cf0  \cf6 alloc\cf0 ] \cf6 init\cf0 ];\
+ \cf5 tagPath\cf0  = [[\cf3 NSMutableString\cf0  \cf6 alloc\cf0 ] \cf6 init\cf0 ];\
+\
+-(\cf3 NSArray\cf0 *)startParse:(\cf3 NSString\cf0  *)filePath\
+\{\
+    \cf5 _myparser\cf0  = [\cf5 _myparser\cf0  \cf6 initWithContentsOfURL\cf0 :[\cf3 NSURL\cf0  \cf6 fileURLWithPath\cf0 :filePath]];\
+    \cf5 _myparser\cf0 .\cf7 delegate\cf0  = \cf4 self\cf0 ;\
+    [\cf5 _myparser\cf0  \cf6 parse\cf0 ];\cf8 //
+\f1 \'d5\'fb\'b8\'f6\'bd\'e2\'ce\'f6\'b9\'fd\'b3\'cc\'bf\'aa\'ca\'bc\'a1\'a3
+\f2 \cf0 \
+    \cf4 return\cf0  \cf5 _xmlArray\cf0 ;\
+\}\
+\cf8 //
+\f1 \'b5\'b1\'bf\'aa\'ca\'bc\'d3\'f6\'b5\'bd\'bf\'aa\'ca\'bc\'b5\'c4
+\f2 tag <elementName>
+\f1 \'b5\'c4\'ca\'b1\'ba\'f2\'bb\'e1\'bb\'e1\'bb\'d8\'b5\'f7\'d5\'e2\'d2\'bb\'ba\'af\'ca\'fd\'a1\'a3
+\f2 elementName
+\f1 \'be\'cd\'ca\'c7
+\f2 <>
+\f1 \'d6\'d0\'b5\'c4\'c4\'da\'c8\'dd
+\f2 \cf0 \
+\cf8 //attributeDict
+\f1 \'ca\'c7
+\f2 <book id="1" language="ch">
+\f1 \'d6\'d0\'b5\'c4
+\f2 id language
+\f1 \'d5\'e2\'d1\'f9\'b5\'c4\'ca\'f4\'d0\'d4\'d7\'d6\'b6\'ce\'a3\'ac\'cb\'fb\'bd\'ab\'c6\'e4\'d2\'d4
+\f2 key
+\f1 \'ba\'cd
+\f2 vaule
+\f1 \'b5\'c4\'d0\'ce\'ca\'bd
+\f2 \cf0 \
+\cf8 //
+\f1 \'b4\'e6\'d4\'da\'c1\'cb\'d7\'d6\'b5\'e4
+\f2 attributeDict
+\f1 \'d6\'d0
+\f2 \cf0 \
+-(\cf4 void\cf0 )parser:(\cf3 NSXMLParser\cf0  *)parser didStartElement:(\cf3 NSString\cf0  *)elementName namespaceURI:(\cf3 NSString\cf0  *)namespaceURI qualifiedName:(\cf3 NSString\cf0  *)qName attributes:(\cf3 NSDictionary\cf0  *)attributeDict\
+\{\
+    [\cf5 tagPath\cf0  \cf6 appendFormat\cf0 :\cf9 @"/%@"\cf0 ,elementName];\
+    \cf4 if\cf0  ([elementName \cf6 isEqualToString\cf0 :\cf9 @"book"\cf0 ])\
+    \{\
+        \cf5 book\cf0 .\cf5 bookID\cf0  = attributeDict[\cf9 @"id"\cf0 ];\
+        \cf5 book\cf0 .\cf5 language\cf0  =attributeDict[\cf9 @"language"\cf0 ];\
+    \}\
+\
+\}\
+\
+\cf8 //
+\f1 \'b5\'b1\'b6\'c1\'b5\'bd\'b1\'ea\'c7\'a9\'c0\'ef\'b5\'c4\'d6\'b5\'a1\'be
+\f2 string
+\f1 \'a1\'bf\'b5\'c4\'ca\'b1\'ba\'f2\'bb\'e1\'bb\'d8\'b5\'f7\'d5\'e2\'b8\'f6\'ba\'af\'ca\'fd
+\f2 \cf0 \
+-(\cf4 void\cf0 )parser:(\cf3 NSXMLParser\cf0  *)parser foundCharacters:(\cf3 NSString\cf0  *)string\
+\{\
+    \
+    \cf4 if\cf0  ([\cf5 tagPath\cf0  \cf6 hasSuffix\cf0 :\cf9 @"book/name"\cf0 ])\
+    \{\
+        \cf5 book\cf0 .\cf5 bookName\cf0  = string;\
+    \}\cf4 else\cf0  \cf4 if\cf0  ([\cf5 tagPath\cf0  \cf6 hasSuffix\cf0 :\cf9 @"auther/name"\cf0 ])\
+    \{\
+        \cf5 book\cf0 .\cf5 auther\cf0  = string;\
+    \}\cf4 else\cf0  \cf4 if\cf0  ([\cf5 tagPath\cf0  \cf6 hasSuffix\cf0 :\cf9 @"price"\cf0 ])\
+    \{\
+        \cf5 book\cf0 .\cf5 price\cf0  = string;\
+    \}\cf4 else\cf0  \cf4 if\cf0  ([\cf5 tagPath\cf0  \cf6 hasSuffix\cf0 :\cf9 @"summary"\cf0 ])\
+    \{\
+        \cf5 book\cf0 .\cf5 summary\cf0  = string;\
+    \}\
+    \
+\}\
+\
+\
+\cf8 //
+\f1 \'b5\'b1\'bf\'aa\'ca\'bc\'d3\'f6\'b5\'bd\'bd\'e1\'ca\'f8\'b5\'c4
+\f2 tag <elementName>
+\f1 \'b5\'c4\'ca\'b1\'ba\'f2\'bb\'e1\'bb\'e1\'bb\'d8\'b5\'f7\'d5\'e2\'d2\'bb\'ba\'af\'ca\'fd\'a1\'a3
+\f2 elementName
+\f1 \'be\'cd\'ca\'c7
+\f2 <>
+\f1 \'d6\'d0\'b5\'c4\'c4\'da\'c8\'dd
+\f2 \cf0 \
+-(\cf4 void\cf0 )parser:(\cf3 NSXMLParser\cf0  *)parser didEndElement:(\cf3 NSString\cf0  *)elementName namespaceURI:(\cf3 NSString\cf0  *)namespaceURI qualifiedName:(\cf3 NSString\cf0  *)qName\
+\{\
+    \cf4 if\cf0  ([elementName \cf6 isEqualToString\cf0 :\cf9 @"book"\cf0 ])\
+    \{\
+        [\cf5 _xmlArray\cf0  \cf6 addObject\cf0 :\cf5 book\cf0 ];\
+        \cf5 book\cf0  = [[\cf5 Bookinfo\cf0  \cf6 alloc\cf0 ] \cf6 init\cf0 ];\
+    \}\
+    [\cf5 tagPath\cf0  \cf6 deleteCharactersInRange\cf0 :\cf6 NSMakeRange\cf0 (\cf5 tagPath\cf0 .\cf7 length\cf0  - \cf10 1\cf0  - elementName.\cf7 length\cf0 , elementName.\cf7 length\cf0  + \cf10 1\cf0 )];\
+\}\
+\
+\
+-(\cf4 void\cf0 )parserDidStartDocument:(\cf3 NSXMLParser\cf0  *)parser\
+\{\
+    \cf6 NSLog\cf0 (\cf9 @"XML
+\f1 \'ce\'c4\'bc\'fe\'bf\'aa\'ca\'bc\'bd\'e2\'ce\'f6
+\f2 "\cf0 );\
+\}\
+-(\cf4 void\cf0 )parserDidEndDocument:(\cf3 NSXMLParser\cf0  *)parser\
+\{\
+    \cf6 NSLog\cf0 (\cf9 @"XML
+\f1 \'ce\'c4\'bc\'fe\'bd\'e2\'ce\'f6\'bd\'e1\'ca\'f8
+\f2 "\cf0 );\
+\}\
+\
+\pard\pardeftab720\sl520
+
+\f3\fs72 \cf11 \cb2 \expnd0\expndtw0\kerning0
+\CocoaLigature1 GDataXML\
+
+\f1 \'b7\'bd\'b7\'a8\'d2\'bb
+\f2\fs28 \cf0 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 \
+\pard\pardeftab720\sl520
+
+\f3 \cf11 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \'a0 \'a0 \'a01
+\f1 \'a1\'a2\'bb\'f1\'c8\'a1
+\f3 GDataXMLNode.h/m
+\f1 \'ce\'c4\'bc\'fe\'a3\'ac\'bd\'ab
+\f3 GDataXMLNode.h/m
+\f1 \'ce\'c4\'bc\'fe\'cc\'ed\'bc\'d3\'b5\'bd\'b9\'a4\'b3\'cc\'d6\'d0
+\f3 \
+\'a0 \'a0 \'a02
+\f1 \'a1\'a2\'cf\'f2\'b9\'a4\'b3\'cc\'d6\'d0\'d4\'f6\'bc\'d3
+\f3 \'93libxml2.dylib\'94
+\f1 \'bf\'e2
+\f3 \
+\'a0 \'a0 \'a03
+\f1 \'a1\'a2\'d4\'da\'b9\'a4\'b3\'cc\'b5\'c4
+\f3 \'93Build Settings\'94
+\f1 \'d2\'b3\'d6\'d0\'d5\'d2\'b5\'bd
+\f3 \'93Header Search Path\'94
+\f1 \'cf\'ee\'a3\'ac\'cc\'ed\'bc\'d3
+\f4\fs26 \cf0 \expnd0\expndtw0\kerning0
+$\{SDKROOT\}
+\f3\fs28 \cf11 \expnd0\expndtw0\kerning0
+/usr/include/libxml2"
+\f1 \'b5\'bd\'c2\'b7\'be\'b6\'d6\'d0
+\f3 \
+\'a0 \'a0 \'a04
+\f1 \'a1\'a2\'cc\'ed\'bc\'d3
+\f3 \'93GDataXMLNode.h\'94
+\f1 \'ce\'c4\'bc\'fe\'b5\'bd\'cd\'b7\'ce\'c4\'bc\'fe\'d6\'d0\'a3\'ac\'c8\'e7\'b9\'a4\'b3\'cc\'c4\'dc\'b1\'e0\'d2\'eb\'cd\'a8\'b9\'fd\'a3\'ac\'d4\'f2\'cb\'b5\'c3\'f7
+\f3 GDataXMLNode
+\f1 \'cc\'ed\'bc\'d3\'b3\'c9\'b9\'a6\
+\pard\pardeftab720\sl520
+
+\f4\fs26 \cf11 \expnd0\expndtw0\kerning0
+    5. Other Linker Flags 
+\f1 \'b6\'d4\'d3\'a6\'b5\'c4\'d6\'b5\'b8\'c4\'ce\'aa\'a3\'ba
+\f4 -lxml2
+\f3\fs28 \expnd0\expndtw0\kerning0
+\
+\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f2 \cf3 \kerning1\expnd0\expndtw0 \CocoaLigature0 NSString\cf0  * path = [[\cf3 NSBundle\cf0  \cf6 mainBundle\cf0 ] \cf6 pathForResource\cf0 :\cf9 @"sns"\cf0  \cf6 ofType\cf0 :\cf9 @"txt"\cf0 ];\
+\cf3 NSString\cf0  * contents =[\cf3 NSString\cf0  \cf6 stringWithContentsOfFile\cf0 :path \cf6 encoding\cf0 :\cf12 NSUTF8StringEncoding\cf0  \cf6 error\cf0 :\cf4 nil\cf0 ];\
+\cf5 GDataXMLDocument\cf0  * doc = [[\cf5 GDataXMLDocument\cf0  \cf6 alloc\cf0 ]\cf13 initWithXMLString\cf0 :contents \cf13 options\cf0 :\cf10 0\cf0  \cf13 error\cf0 :\cf4 nil\cf0 ];\
+\cf5 \{\
+	\cf0 [doc \cf13 nodesForXPath\cf0 :\cf9 @"//root/totalcount"\cf0  \cf13 error\cf0 :\cf4 nil\cf0 ]; 
+\f1 //
+\f2 \cf5 GDataXMLDocument 
+\f1 \cf0 \cb14 \'c8\'a1\'b5\'c3\'d5\'fb\'b8\'f6
+\f2 XML
+\f1 \'ce\'c4\'bc\'fe\'a3\'ac\'cd\'a8\'b9\'fd\'c2\'b7\'be\'b6\'b5\'c4\'b7\'bd\'ca\'bd\'bf\'c9\'d2\'d4\'d6\'b1\'bd\'d3\'b7\'c3\'ce\'ca\'b5\'bd\'c3\'bf\'d2\'bb\'b8\'f6
+\f2 \cf5 \cb1 GDataXMLElement\
+\}
+\f5\fs24 \cf0 \cb15 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+
+\f2\fs28 \cf5 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 GDataXMLElement\cf0  * rootElement = [doc \cf13 rootElement\cf0 ];\
+\cf3 NSArray\cf0  * array = [rootElement \cf13 children\cf0 ];
+\f1 //
+\f2 \cf13 children
+\f1 \cf16 \'bf\'c9\'d2\'d4\'bb\'f1\'c8\'a1\'d5\'e2\'b8\'f6
+\f2 \cf5 GDataXMLElement
+\f1 \cf0 \'cf\'c2\'b5\'c4\'cb\'f9\'d3\'d0\'b5\'c4\'d7\'d3\'bd\'da\'b5\'e3
+\f5\fs24 \cb15 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+
+\f2\fs28 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 [user \cf13 attributeForName\cf0 :\cf9 @"id"\cf0 ] \cf13 attributeForName
+\f1 \'bf\'c9\'d2\'d4\'bb\'f1\'b5\'c3
+\f2 \cf0 <user id ="1">
+\f1 \'d6\'d0id\'d5\'e2\'b8\'f6\'ca\'f4\'d0\'d4\'a3\'bb
+\f3 \cf11 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+
+\f2 \cf0 \kerning1\expnd0\expndtw0 \CocoaLigature0  \cf6 NSLog\cf0 (\cf9 @"%@"\cf0 ,[user \cf13 attributeForName\cf0 :\cf9 @"id"\cf0 ].\cf13 stringValue\cf0 ); \cf5 GDataXMLElement 
+\f1 \'b5\'c4
+\f2  \cf13 stringValue 
+\f1 \'bf\'c9\'d2\'d4\'c8\'a1\'b3\'f6\'b5\'b1\'c7\'b0\'bd\'da\'b5\'e3\'b5\'c4\'d6\'b5\
+\
+\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f3\fs48 \cf0 \cb2 \expnd0\expndtw0\kerning0
+\CocoaLigature1 xpath
+\f1 \'b7\'bd\'ca\'bd\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f3\fs28 \cf11 \cb1 \expnd0\expndtw0\kerning0
+\
+\
+\pard\pardeftab720\sl520
+\cf11 \expnd0\expndtw0\kerning0
+\
+}

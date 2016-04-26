@@ -1,0 +1,226 @@
+{\rtf1\ansi\ansicpg936\cocoartf1347\cocoasubrtf570
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset134 STHeitiSC-Light;}
+{\colortbl;\red255\green255\blue255;\red228\green124\blue72;\red255\green44\blue56;\red211\green24\blue149;
+\red0\green160\blue255;\red255\green255\blue0;\red255\green128\blue0;\red65\green204\blue69;\red255\green0\blue0;
+\red120\green109\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab674
+\pard\tx674\pardeftab674\pardirnatural
+
+\f0\fs28 \cf2 \cb0 \CocoaLigature0 #import \cf3 <Foundation/Foundation.h>\cf2 \
+#import \cf3 "AFNetworking.h"\cf2 \
+\cf1 \
+\
+\cf4 @interface\cf1  DownLoadOperation : \cf5 NSObject\cf1 \
+\
+\cf4 @property\cf1 (\cf4 nonatomic\cf1  , \cf4 strong\cf1 ) \cf5 NSURL\cf1 * url;\
+\cf4 @property\cf1 (\cf4 nonatomic\cf1  , \cf4 copy\cf1 ) \cf5 NSString\cf1 * (^cachePath)(\cf4 void\cf1 );\
+\cf4 @property\cf1 (\cf4 nonatomic\cf1  , \cf4 strong\cf1 ) \cf6 AFHTTPRequestOperation\cf1 * requestOperation;\
+\cf4 @property\cf1 (\cf4 nonatomic\cf1  , \cf4 copy\cf1 ) \cf4 void\cf1 (^progressBlock)(\cf5 NSUInteger\cf1  bytesRead, \cf4 long\cf1  \cf4 long\cf1  totalBytesRead, \cf4 long\cf1  \cf4 long\cf1  totalBytesExpectedToRead);\
+\
+\
+-(\cf4 void\cf1 )downloadWithUrl:(\cf4 id\cf1 )url\
+             cachePath:(\cf5 NSString\cf1 * (^) (\cf4 void\cf1 ))cacheBlock\
+         progressBlock:(\cf4 void\cf1  (^)(\cf5 NSUInteger\cf1  bytesRead, \cf4 long\cf1  \cf4 long\cf1  totalBytesRead, \cf4 long\cf1  \cf4 long\cf1  totalBytesExpectedToRead))progressBlock\
+               success:(\cf4 void\cf1  (^)(\cf6 AFHTTPRequestOperation\cf1  *operation, \cf4 id\cf1  responseObject))success\
+               failure:(\cf4 void\cf1  (^)(\cf6 AFHTTPRequestOperation\cf1  *operation, \cf5 NSError\cf1  *error))failure;\
+\
+\cf4 @end\cf1 \
+\cf2 #import \cf3 "DownLoadOperation.h"\cf2 \
+\cf1 \
+\cf4 @implementation\cf1  DownLoadOperation\
+\
+-(\cf4 void\cf1 )downloadWithUrl:(\cf4 id\cf1 )url\
+             cachePath:(\cf5 NSString\cf1 * (^) (\cf4 void\cf1 ))cacheBlock\
+         progressBlock:(\cf4 void\cf1  (^)(\cf5 NSUInteger\cf1  bytesRead, \cf4 long\cf1  \cf4 long\cf1  totalBytesRead, \cf4 long\cf1  \cf4 long\cf1  totalBytesExpectedToRead))progressBlock\
+               success:(\cf4 void\cf1  (^)(\cf6 AFHTTPRequestOperation\cf1  *operation, \cf4 id\cf1  responseObject))success\
+               failure:(\cf4 void\cf1  (^)(\cf6 AFHTTPRequestOperation\cf1  *operation, \cf5 NSError\cf1  *error))failure\
+\{\
+    \
+    \cf4 self\cf1 .\cf7 cachePath\cf1  = cacheBlock;\
+    \cf8 //
+\f1 \'bb\'f1\'c8\'a1\'bb\'ba\'b4\'e6\'b5\'c4\'b3\'a4\'b6\'c8
+\f0 \cf1 \
+    \cf4 long\cf1  \cf4 long\cf1  cacheLength = [[\cf4 self\cf1  \cf5 class\cf1 ] \cf6 cacheFileWithPath\cf1 :\cf4 self\cf1 .\cf7 cachePath\cf1 ()];\
+    \
+    \cf5 NSLog\cf1 (\cf3 @"cacheLength = %llu"\cf1 ,cacheLength);\
+    \
+    \cf8 //
+\f1 \'bb\'f1\'c8\'a1\'c7\'eb\'c7\'f3
+\f0 \cf1 \
+    \cf5 NSMutableURLRequest\cf1 * request = [[\cf4 self\cf1  \cf5 class\cf1 ] \cf6 requestWithUrl\cf1 :url \cf6 Range\cf1 :cacheLength];\
+    \
+    \
+    \cf4 self\cf1 .\cf7 requestOperation\cf1  = [[\cf6 AFHTTPRequestOperation\cf1  \cf5 alloc\cf1 ] \cf6 initWithRequest\cf1 :request];\
+    \
+    [\cf4 self\cf1 .\cf7 requestOperation\cf1  \cf6 setOutputStream\cf1 :[\cf5 NSOutputStream\cf1  \cf5 outputStreamToFileAtPath\cf1 :\cf4 self\cf1 .\cf7 cachePath\cf1 () \cf5 append\cf1 :\cf4 NO\cf1 ]];\
+    \
+    \cf8 //
+\f1 \'b4\'a6\'c0\'ed\'c1\'f7
+\f0 \cf1 \
+    [\cf4 self\cf1  \cf6 readCacheToOutStreamWithPath\cf1 :\cf4 self\cf1 .\cf7 cachePath\cf1 ()];\
+    \
+    \
+    [\cf4 self\cf1 .\cf7 requestOperation\cf1  \cf5 addObserver\cf1 :\cf4 self\cf1  \cf5 forKeyPath\cf1 :\cf3 @"isPaused"\cf1  \cf5 options\cf1 :\cf5 NSKeyValueObservingOptionNew\cf1 |\cf5 NSKeyValueObservingOptionOld\cf1  \cf5 context\cf1 :\cf4 nil\cf1 ];\
+  \
+    \
+    \cf8 //
+\f1 \'bb\'f1\'c8\'a1\'bd\'f8\'b6\'c8\'bf\'e9
+\f0 \cf1 \
+    \
+    \cf4 self\cf1 .\cf7 progressBlock\cf1  = progressBlock;\
+    \
+    \
+    \cf8 //
+\f1 \'d6\'d8\'d7\'e9\'bd\'f8\'b6\'c8
+\f0 block\cf1 \
+    [\cf4 self\cf1 .\cf7 requestOperation\cf1  \cf6 setDownloadProgressBlock\cf1 :[\cf4 self\cf1  \cf6 getNewProgressBlockWithCacheLength\cf1 :cacheLength]];\
+    \
+    \
+    \cf8 //
+\f1 \'bb\'f1\'c8\'a1\'b3\'c9\'b9\'a6\'bb\'d8\'b5\'f7\'bf\'e9
+\f0 \cf1 \
+    \cf4 void\cf1  (^newSuccess)(\cf6 AFHTTPRequestOperation\cf1  *operation, \cf4 id\cf1  responseObject) = ^(\cf6 AFHTTPRequestOperation\cf1  *operation, \cf4 id\cf1  responseObject)\{\
+        \cf5 NSLog\cf1 (\cf3 @"responseHead = %@"\cf1 ,[operation.\cf7 response\cf1  \cf5 allHeaderFields\cf1 ]);\
+        \
+        success(operation,responseObject);\
+    \};\
+\
+    \
+    [\cf4 self\cf1 .\cf7 requestOperation\cf1  \cf6 setCompletionBlockWithSuccess\cf1 :newSuccess\
+                                                 \cf6 failure\cf1 :failure];\
+    [\cf4 self\cf1 .\cf7 requestOperation\cf1  \cf5 start\cf1 ];\
+    \
+    \
+\}\
+\pard\tx674\pardeftab674\pardirnatural
+\cf9 ///\cf1 \
+\pard\tx674\pardeftab674\pardirnatural
+\cf2 #pragma mark - 
+\f1 \cf2 \'d6\'d8\'d7\'e9\'bd\'f8\'b6\'c8\'bf\'e9
+\f0 \cf2 \
+\cf1 -(\cf4 void\cf1 (^)(\cf5 NSUInteger\cf1  bytesRead, \cf4 long\cf1  \cf4 long\cf1  totalBytesRead, \cf4 long\cf1  \cf4 long\cf1  totalBytesExpectedToRead))getNewProgressBlockWithCacheLength:(\cf4 long\cf1  \cf4 long\cf1 )cachLength\
+\{\
+    \cf4 typeof\cf1 (\cf4 self\cf1 )newSelf = \cf4 self\cf1 ;\
+    \
+    \cf4 void\cf1 (^newProgressBlock)(\cf5 NSUInteger\cf1  bytesRead, \cf4 long\cf1  \cf4 long\cf1  totalBytesRead, \cf4 long\cf1  \cf4 long\cf1  totalBytesExpectedToRead) = ^(\cf5 NSUInteger\cf1  bytesRead, \cf4 long\cf1  \cf4 long\cf1  totalBytesRead, \cf4 long\cf1  \cf4 long\cf1  totalBytesExpectedToRead)\
+    \{\
+        \cf5 NSData\cf1 * data = [\cf5 NSData\cf1  \cf5 dataWithContentsOfFile\cf1 :\cf4 self\cf1 .\cf7 cachePath\cf1 ()];\
+        [\cf4 self\cf1 .\cf7 requestOperation\cf1  \cf5 setValue\cf1 :data \cf5 forKey\cf1 :\cf3 @"responseData"\cf1 ];\
+        \cf8 //        self.requestOperation.responseData = ;\cf1 \
+        newSelf.\cf7 progressBlock\cf1 (bytesRead,totalBytesRead + cachLength,totalBytesExpectedToRead + cachLength);\
+    \};\
+    \
+    \cf4 return\cf1  newProgressBlock;\
+\}\
+\
+\cf2 #pragma mark - 
+\f1 \cf2 \'bb\'f1\'c8\'a1\'b1\'be\'b5\'d8\'bb\'ba\'b4\'e6\'b5\'c4\'d7\'d6\'bd\'da
+\f0 \cf2 \
+\cf1 +(\cf4 long\cf1  \cf4 long\cf1 )cacheFileWithPath:(\cf5 NSString\cf1 *)path\
+\{\
+    \cf5 NSFileHandle\cf1 * fh = [\cf5 NSFileHandle\cf1  \cf5 fileHandleForReadingAtPath\cf1 :path];\
+    \
+    \cf5 NSData\cf1 * contentData = [fh \cf5 readDataToEndOfFile\cf1 ];\
+    \cf4 return\cf1  contentData ? contentData.\cf5 length\cf1  : \cf10 0\cf1 ;\
+    \
+\}\
+\
+\
+\
+\
+\cf2 #pragma mark - 
+\f1 \cf2 \'b6\'c1\'c8\'a1\'b1\'be\'b5\'d8\'bb\'ba\'b4\'e6\'c8\'eb\'c1\'f7
+\f0 \cf2 \
+\cf1 -(\cf4 void\cf1 )readCacheToOutStreamWithPath:(\cf5 NSString\cf1 *)path\
+\{\
+    \cf5 NSFileHandle\cf1 * fh = [\cf5 NSFileHandle\cf1  \cf5 fileHandleForReadingAtPath\cf1 :path];\
+    \cf5 NSData\cf1 * currentData = [fh \cf5 readDataToEndOfFile\cf1 ];\
+    \
+    \cf4 if\cf1  (currentData.\cf5 length\cf1 ) \{\
+        \cf8 //
+\f1 \'b4\'f2\'bf\'aa\'c1\'f7\'a3\'ac\'d0\'b4\'c8\'eb
+\f0 data 
+\f1 \'a3\'ac
+\f0  
+\f1 \'ce\'b4\'b4\'f2\'bf\'a8\'b2\'e9\'bf\'b4
+\f0  streamCode = NSStreamStatusNotOpen\cf1 \
+        [\cf4 self\cf1 .\cf7 requestOperation\cf1 .\cf7 outputStream\cf1  \cf5 open\cf1 ];\
+        \
+        \cf5 NSInteger\cf1        bytesWritten;\
+        \cf5 NSInteger\cf1        bytesWrittenSoFar;\
+        \
+        \cf5 NSInteger\cf1   dataLength = [currentData \cf5 length\cf1 ];\
+        \cf4 const\cf1  \cf5 uint8_t\cf1  * dataBytes  = [currentData \cf5 bytes\cf1 ];\
+        \
+        bytesWrittenSoFar = \cf10 0\cf1 ;\
+        \cf4 do\cf1  \{\
+            bytesWritten = [\cf4 self\cf1 .\cf7 requestOperation\cf1 .\cf7 outputStream\cf1  \cf5 write\cf1 :&dataBytes[bytesWrittenSoFar] \cf5 maxLength\cf1 :dataLength - bytesWrittenSoFar];\
+            \cf2 assert\cf1 (bytesWritten != \cf10 0\cf1 );\
+            \cf4 if\cf1  (bytesWritten == -\cf10 1\cf1 ) \{\
+                \cf4 break\cf1 ;\
+            \} \cf4 else\cf1  \{\
+                bytesWrittenSoFar += bytesWritten;\
+            \}\
+        \} \cf4 while\cf1  (bytesWrittenSoFar != dataLength);\
+        \
+        \
+    \}\
+\}\
+\
+\cf2 #pragma mark - 
+\f1 \cf2 \'bb\'f1\'c8\'a1\'c7\'eb\'c7\'f3
+\f0 \cf2 \
+\cf1 \
++(\cf5 NSMutableURLRequest\cf1 *)requestWithUrl:(\cf4 id\cf1 )url Range:(\cf4 long\cf1  \cf4 long\cf1 )length\
+\{\
+    \cf5 NSURL\cf1 * requestUrl = [url \cf5 isKindOfClass\cf1 :[\cf5 NSURL\cf1  \cf5 class\cf1 ]] ? url : [\cf5 NSURL\cf1  \cf5 URLWithString\cf1 :url];\
+    \
+    \cf5 NSMutableURLRequest\cf1 * request = [\cf5 NSMutableURLRequest\cf1  \cf5 requestWithURL\cf1 :requestUrl\
+                                                           \cf5 cachePolicy\cf1 :\cf5 NSURLRequestReloadIgnoringCacheData\cf1 \
+                                                       \cf5 timeoutInterval\cf1 :\cf10 5\cf1 *\cf10 60\cf1 ];\
+    \
+    \cf4 if\cf1  (length) \{\
+        [request \cf5 setValue\cf1 :[\cf5 NSString\cf1  \cf5 stringWithFormat\cf1 :\cf3 @"bytes=%lld-"\cf1 ,length] \cf5 forHTTPHeaderField\cf1 :\cf3 @"Range"\cf1 ];\
+    \}\
+    \
+    \cf5 NSLog\cf1 (\cf3 @"request.head = %@"\cf1 ,request.\cf5 allHTTPHeaderFields\cf1 );\
+    \
+    \cf4 return\cf1  request;\
+\
+\}\
+\
+\
+\
+\cf2 #pragma mark - 
+\f1 \cf2 \'bc\'e0\'cc\'fd\'d4\'dd\'cd\'a3
+\f0 \cf2 \
+\cf1 -(\cf4 void\cf1 )observeValueForKeyPath:(\cf5 NSString\cf1  *)keyPath ofObject:(\cf4 id\cf1 )object change:(\cf5 NSDictionary\cf1  *)change context:(\cf4 void\cf1  *)context\
+\{\
+    \cf5 NSLog\cf1 (\cf3 @"keypath = %@ changeDic = %@"\cf1 ,keyPath,change);\
+    \cf8 //
+\f1 \'d4\'dd\'cd\'a3\'d7\'b4\'cc\'ac
+\f0 \cf1 \
+    \cf4 if\cf1  ([keyPath \cf5 isEqualToString\cf1 :\cf3 @"isPaused"\cf1 ] && [[change \cf5 objectForKey\cf1 :\cf3 @"new"\cf1 ] \cf5 intValue\cf1 ] == \cf10 1\cf1 )\
+    \{\
+        \cf4 long\cf1  \cf4 long\cf1  cacheLength = [[\cf4 self\cf1  \cf5 class\cf1 ] \cf6 cacheFileWithPath\cf1 :\cf4 self\cf1 .\cf7 cachePath\cf1 ()];\
+        \cf8 //
+\f1 \'d4\'dd\'cd\'a3\'b6\'c1\'c8\'a1
+\f0 data 
+\f1 \'b4\'d3\'ce\'c4\'bc\'fe\'d6\'d0\'bb\'f1\'c8\'a1\'b5\'bd
+\f0 NSNumber\cf1 \
+        cacheLength = [[\cf4 self\cf1 .\cf7 requestOperation\cf1 .\cf7 outputStream\cf1  \cf5 propertyForKey\cf1 :\cf5 NSStreamFileCurrentOffsetKey\cf1 ] \cf5 unsignedLongLongValue\cf1 ];\
+        \cf5 NSLog\cf1 (\cf3 @"cacheLength = %lld"\cf1 ,cacheLength);\
+        [\cf4 self\cf1 .\cf7 requestOperation\cf1  \cf5 setValue\cf1 :\cf3 @"0"\cf1  \cf5 forKey\cf1 :\cf3 @"totalBytesRead"\cf1 ];\
+        \cf8 //
+\f1 \'d6\'d8\'d7\'e9\'bd\'f8\'b6\'c8
+\f0 block\cf1 \
+        [\cf4 self\cf1 .\cf7 requestOperation\cf1  \cf6 setDownloadProgressBlock\cf1 :[\cf4 self\cf1  \cf6 getNewProgressBlockWithCacheLength\cf1 :cacheLength]];\
+    \}\
+\}\
+\
+\
+\
+\
+\cf4 @end\cf1 \
+}

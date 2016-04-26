@@ -1,0 +1,564 @@
+{\rtf1\ansi\ansicpg936\cocoartf1343\cocoasubrtf140
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset0 AppleColorEmoji;\f2\fnil\fcharset0 HelveticaNeue;
+\f3\fnil\fcharset134 STHeitiSC-Light;}
+{\colortbl;\red255\green255\blue255;\red170\green13\blue145;\red0\green116\blue0;\red28\green0\blue207;
+\red38\green38\blue38;\red0\green68\blue254;\red100\green56\blue32;\red255\green173\blue23;\red92\green38\blue153;
+\red46\green13\blue110;\red254\green73\blue64;\red0\green186\blue251;\red255\green39\blue18;\red217\green11\blue0;
+\red98\green147\blue254;\red255\green255\blue51;\red71\green204\blue252;\red74\green0\blue230;\red205\green205\blue205;
+\red63\green110\blue116;\red59\green16\blue143;\red196\green26\blue22;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww19520\viewh12220\viewkind0
+\deftab674
+\pard\tx674\pardeftab674\pardirnatural
+
+\f0\fs28 \cf2 \CocoaLigature0 typedef\cf0  \cf2 NS_ENUM\cf0 (NSInteger, UITableViewStyle) \{\
+    UITableViewStylePlain,                  \cf3 // regular table view\cf0 \
+    UITableViewStyleGrouped                 \cf3 // preferences style table view\cf0 \
+\};\
+\
+\cf2 typedef\cf0  \cf2 NS_ENUM\cf0 (NSInteger, UITableViewScrollPosition) \{\
+    UITableViewScrollPositionNone,\
+    UITableViewScrollPositionTop,    \
+    UITableViewScrollPositionMiddle,   \
+    UITableViewScrollPositionBottom\
+\};                \cf3 // scroll so row of interest is completely visible at top/center/bottom of view\cf0 \
+\
+\cf2 typedef\cf0  \cf2 NS_ENUM\cf0 (NSInteger, UITableViewRowAnimation) \{\
+    UITableViewRowAnimationFade,\
+    UITableViewRowAnimationRight,           \cf3 // slide in from right (or out to right)\cf0 \
+    UITableViewRowAnimationLeft,\
+    UITableViewRowAnimationTop,\
+    UITableViewRowAnimationBottom,\
+    UITableViewRowAnimationNone,            \cf3 // available in iOS 3.0\cf0 \
+    UITableViewRowAnimationMiddle,          \cf3 // available in iOS 3.2.  attempts to keep cell centered in the space it will/did occupy\cf0 \
+    UITableViewRowAnimationAutomatic = \cf4 100\cf0   \cf3 // available in iOS 5.0.  chooses an appropriate animation style for you\cf0 \
+\};\
+\cf3 //
+\f1 \cf3 \uc0\u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 
+\f0 \cf0 \
+\pard\pardeftab720\sl500
+
+\f2 \cf5 \cb6 \CocoaLigature1 \'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97
+\f0 \cf0 \cb1 \CocoaLigature0 \
+\pard\tx674\pardeftab674\pardirnatural
+\cf3 // Including this constant string in the array of strings returned by sectionIndexTitlesForTableView: will cause a magnifying glass icon to be displayed at that location in the index.\cf0 \
+\cf3 // This should generally only be used as the first title in the index.\cf0 \
+\pard\tx674\pardeftab674\pardirnatural
+\cf7 UIKIT_EXTERN\cf0  \cf8 NSString\cf0  *\cf2 const\cf0  UITableViewIndexSearch \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 3\cf0 _0);\
+\
+\pard\tx674\pardeftab674\pardirnatural
+\cf3 // Returning this value from tableView:heightForHeaderInSection: or tableView:heightForFooterInSection: results in a height that fits the value returned from\cf0 \
+\cf3 // tableView:titleForHeaderInSection: or tableView:titleForFooterInSection: if the title is not nil.\cf0 \
+\pard\tx674\pardeftab674\pardirnatural
+\cf7 UIKIT_EXTERN\cf0  \cf2 const\cf0  \cf9 CGFloat\cf0  UITableViewAutomaticDimension \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 5\cf0 _0);\
+\
+\pard\tx674\pardeftab674\pardirnatural
+\cf2 @class\cf0  \cf8 UITableView\cf0 ;\
+\cf2 @class\cf0  \cf8 UINib\cf0 ;\
+\cf2 @protocol\cf0  \cf8 UITableViewDataSource\cf0 ;\
+\cf2 @class\cf0  \cf8 UILongPressGestureRecognizer\cf0 ;\
+\cf2 @class\cf0  \cf8 UITableViewHeaderFooterView\cf0 ;\
+\cf2 @class\cf0  \cf8 UIRefreshControl\cf0 ;\
+\cf2 @class\cf0  \cf8 UIVisualEffect\cf0 ;\
+\
+\cf2 typedef\cf0  \cf2 NS_ENUM\cf0 (NSInteger, UITableViewRowActionStyle) \{\
+    UITableViewRowActionStyleDefault = \cf4 0\cf0 ,\
+    UITableViewRowActionStyleDestructive = \cf10 UITableViewRowActionStyleDefault\cf0 ,\
+    UITableViewRowActionStyleNormal\
+\} \cf7 NS_ENUM_AVAILABLE_IOS\cf0 (\cf4 8\cf0 _0);\
+\
+\pard\tx674\pardeftab674\pardirnatural
+\cf7 NS_CLASS_AVAILABLE_IOS\cf0 (\cf4 8\cf0 _0) \cf2 @interface\cf0  UITableViewRowAction : \cf8 NSObject\cf0  <\cf8 NSCopying\cf0 >\
+\
++ (\cf2 instancetype\cf0 )rowActionWithStyle:(\cf9 UITableViewRowActionStyle\cf0 )style title:(\cf8 NSString\cf0  *)title handler:(\cf2 void\cf0  (^)(\cf8 UITableViewRowAction\cf0  *action, \cf8 NSIndexPath\cf0  *indexPath))handler;\
+\
+\pard\tx674\pardeftab674\pardirnatural
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 , \cf2 readonly\cf0 ) \cf9 UITableViewRowActionStyle\cf0  style;\
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 , \cf2 copy\cf0 ) \cf8 NSString\cf0  *title;\
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 , \cf2 copy\cf0 ) \cf8 UIColor\cf0  *backgroundColor; \cf3 // default background color is dependent on style\cf0 \
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 , \cf2 copy\cf0 ) \cf8 UIVisualEffect\cf0 * backgroundEffect;\
+\
+\cf2 @end\cf0 \
+\
+\cf3 //_______________________________________________________________________________________________________________\cf0 \
+\cf3 // this represents the display and behaviour of the cells.\cf0 \
+\
+\cf2 @protocol\cf0  UITableViewDelegate<\cf8 NSObject\cf0 , \cf8 UIScrollViewDelegate\cf0 >\
+\
+\cf2 @optional\cf0 \
+\
+\cf3 // Display customization\cf0 \
+\
+- (\cf2 void\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView willDisplayCell:(\cf8 UITableViewCell\cf0  *)cell forRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath;\
+- (\cf2 void\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView willDisplayHeaderView:(\cf8 UIView\cf0  *)view forSection:(\cf9 NSInteger\cf0 )section \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 6\cf0 _0);\
+- (\cf2 void\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView willDisplayFooterView:(\cf8 UIView\cf0  *)view forSection:(\cf9 NSInteger\cf0 )section \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 6\cf0 _0);\
+- (\cf2 void\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView didEndDisplayingCell:(\cf8 UITableViewCell\cf0  *)cell forRowAtIndexPath:(\cf8 NSIndexPath\cf0 *)indexPath \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 6\cf0 _0);\
+- (\cf2 void\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView didEndDisplayingHeaderView:(\cf8 UIView\cf0  *)view forSection:(\cf9 NSInteger\cf0 )section \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 6\cf0 _0);\
+- (\cf2 void\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView didEndDisplayingFooterView:(\cf8 UIView\cf0  *)view forSection:(\cf9 NSInteger\cf0 )section \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 6\cf0 _0);\
+\
+\cf3 // Variable height support\cf0 \
+\
+- (\cf9 CGFloat\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView heightForRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath;\
+- (\cf9 CGFloat\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView heightForHeaderInSection:(\cf9 NSInteger\cf0 )section;\
+- (\cf9 CGFloat\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView heightForFooterInSection:(\cf9 NSInteger\cf0 )section;\
+\
+\cf3 // Use the estimatedHeight methods to quickly calcuate guessed values which will allow for fast load times of the table.\cf0 \
+\cf3 // If these methods are implemented, the above -tableView:heightForXXX calls will be deferred until views are ready to be displayed, so more expensive logic can be placed there.\cf0 \
+- (\cf9 CGFloat\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView estimatedHeightForRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 7\cf0 _0);\
+- (\cf9 CGFloat\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView estimatedHeightForHeaderInSection:(\cf9 NSInteger\cf0 )section \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 7\cf0 _0);\
+- (\cf9 CGFloat\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView estimatedHeightForFooterInSection:(\cf9 NSInteger\cf0 )section \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 7\cf0 _0);\
+\
+\cf3 // Section header & footer information. Views are preferred over title should you decide to provide both\cf0 \
+\
+- (\cf8 UIView\cf0  *)tableView:(\cf8 UITableView\cf0  *)tableView viewForHeaderInSection:(\cf9 NSInteger\cf0 )section;   \cf3 // custom view for header. will be adjusted to default or specified header height\cf0 \
+- (\cf8 UIView\cf0  *)tableView:(\cf8 UITableView\cf0  *)tableView viewForFooterInSection:(\cf9 NSInteger\cf0 )section;   \cf3 // custom view for footer. will be adjusted to default or specified footer height\cf0 \
+\
+\cf3 // Accessories (disclosures). \cf0 \
+\
+- (\cf9 UITableViewCellAccessoryType\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView accessoryTypeForRowWithIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath \cf7 NS_DEPRECATED_IOS\cf0 (\cf4 2\cf0 _0, \cf4 3\cf0 _0);\
+- (\cf2 void\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView accessoryButtonTappedForRowWithIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath;\
+\
+\cf3 // Selection\cf0 \
+\
+\cf3 // -tableView:shouldHighlightRowAtIndexPath: is called when a touch comes down on a row. \cf0 \
+\cf3 // Returning NO to that message halts the selection process and does not cause the currently selected row to lose its selected look while the touch is down.\cf0 \
+- (\cf2 BOOL\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView shouldHighlightRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 6\cf0 _0);\
+- (\cf2 void\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView didHighlightRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 6\cf0 _0);\
+- (\cf2 void\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView didUnhighlightRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 6\cf0 _0);\
+\
+\cf3 // Called before the user changes the selection. Return a new indexPath, or nil, to change the proposed selection.\cf0 \
+- (\cf8 NSIndexPath\cf0  *)tableView:(\cf8 UITableView\cf0  *)tableView willSelectRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath;\
+- (\cf8 NSIndexPath\cf0  *)tableView:(\cf8 UITableView\cf0  *)tableView willDeselectRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 3\cf0 _0);\
+\cf3 // Called after the user changes the selection.\
+\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f3\fs36 \cf0 \cb11 \'b5\'b1\'d1\'a1\'d6\'d0\'c1\'cbcell\'b5\'c4\'ca\'b1\'ba\'f2\'bb\'e1\'b5\'f7\'d3\'c3
+\f0\fs28 \cb1 \
+- (\cf2 void\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView didSelectRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath;\
+- (\cf2 void\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView didDeselectRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 3\cf0 _0);\
+\
+\pard\tx674\pardeftab674\pardirnatural
+\cf3 // Editing\cf0 \
+\
+\cf3 // Allows customization of the editingStyle for a particular cell located at 'indexPath'. If not implemented, all editable cells will have UITableViewCellEditingStyleDelete set for them when the table has editing property set to YES.\cf0 \
+- (\cf9 UITableViewCellEditingStyle\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView editingStyleForRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath;\
+- (\cf8 NSString\cf0  *)tableView:(\cf8 UITableView\cf0  *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 3\cf0 _0);\
+- (\cf8 NSArray\cf0  *)tableView:(\cf8 UITableView\cf0  *)tableView editActionsForRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 8\cf0 _0); \cf3 // supercedes -tableView:titleForDeleteConfirmationButtonForRowAtIndexPath: if return value is non-nil\cf0 \
+\
+\cf3 // Controls whether the background is indented while editing.  If not implemented, the default is YES.  This is unrelated to the indentation level below.  This method only applies to grouped style table views.\cf0 \
+- (\cf2 BOOL\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView shouldIndentWhileEditingRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath;\
+\
+\cf3 // The willBegin/didEnd methods are called whenever the 'editing' property is automatically changed by the table (allowing insert/delete/move). This is done by a swipe activating a single row\cf0 \
+- (\cf2 void\cf0 )tableView:(\cf8 UITableView\cf0 *)tableView willBeginEditingRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath;\
+- (\cf2 void\cf0 )tableView:(\cf8 UITableView\cf0 *)tableView didEndEditingRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath;\
+\
+\cf3 // Moving/reordering\cf0 \
+\
+\cf3 // Allows customization of the target row for a particular row as it is being moved/reordered\cf0 \
+- (\cf8 NSIndexPath\cf0  *)tableView:(\cf8 UITableView\cf0  *)tableView targetIndexPathForMoveFromRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)sourceIndexPath toProposedIndexPath:(\cf8 NSIndexPath\cf0  *)proposedDestinationIndexPath;               \
+\
+\cf3 // Indentation\cf0 \
+\
+- (\cf9 NSInteger\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView indentationLevelForRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath; \cf3 // return 'depth' of row for hierarchies\cf0 \
+\
+\cf3 // Copy/Paste.  All three methods must be implemented by the delegate.\cf0 \
+\
+- (\cf2 BOOL\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView shouldShowMenuForRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 5\cf0 _0);\
+- (\cf2 BOOL\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView canPerformAction:(\cf2 SEL\cf0 )action forRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath withSender:(\cf2 id\cf0 )sender \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 5\cf0 _0);\
+- (\cf2 void\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView performAction:(\cf2 SEL\cf0 )action forRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath withSender:(\cf2 id\cf0 )sender \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 5\cf0 _0);\
+\
+\cf2 @end\cf0 \
+\
+\pard\tx674\pardeftab674\pardirnatural
+\cf7 UIKIT_EXTERN\cf0  \cf8 NSString\cf0  *\cf2 const\cf0  UITableViewSelectionDidChangeNotification;\
+\
+\
+\pard\tx674\pardeftab674\pardirnatural
+\cf3 //_______________________________________________________________________________________________________________\cf0 \
+\
+\pard\tx674\pardeftab674\pardirnatural
+\cf7 NS_CLASS_AVAILABLE_IOS\cf0 (\cf4 2\cf0 _0) \cf2 @interface\cf0  UITableView : \cf8 UIScrollView\cf0  <\cf8 NSCoding\cf0 >\
+\
+- (\cf2 instancetype\cf0 )initWithFrame:(\cf9 CGRect\cf0 )frame style:(\cf9 UITableViewStyle\cf0 )style;                \
+\
+\pard\tx674\pardeftab674\pardirnatural
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 , \cf2 readonly\cf0 ) \cf9 UITableViewStyle\cf0            style;\
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 , \cf2 assign\cf0 )   \cf2 id\cf0  <\cf8 UITableViewDataSource\cf0 > dataSource;\
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 , \cf2 assign\cf0 )   \cf2 id\cf0  <\cf8 UITableViewDelegate\cf0 >   delegate;\
+\pard\tx674\pardeftab674\pardirnatural
+\cf3 \cb12 _______________________________________________________________________\cf0 \cb1 \
+\pard\tx674\pardeftab674\pardirnatural
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 )          \cf9 CGFloat\cf0                      rowHeight;             \cf3 // will return the default value if unset\cf0 \
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 )          \cf9 CGFloat\cf0                      sectionHeaderHeight;   \cf3 // will return the default value if unset\cf0 \
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 )          \cf9 CGFloat\cf0                      sectionFooterHeight;   \cf3 // will return the default value if unset\cf0 \
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 )          \cf9 CGFloat\cf0                      estimatedRowHeight \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 7\cf0 _0); \cf3 // default is 0, which means there is no estimate\cf0 \
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 )          \cf9 CGFloat\cf0                      estimatedSectionHeaderHeight \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 7\cf0 _0); \cf3 // default is 0, which means there is no estimate\cf0 \
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 )          \cf9 CGFloat\cf0                      estimatedSectionFooterHeight \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 7\cf0 _0); \cf3 // default is 0, which means there is no estimate\
+\pard\tx674\pardeftab674\pardirnatural
+\cf3 \cb12 _______________________________________________________________________\cf0 \cb1 \
+\pard\tx674\pardeftab674\pardirnatural
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 )          \cf9 UIEdgeInsets\cf0                 separatorInset \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 7\cf0 _0) \cf7 UI_APPEARANCE_SELECTOR\cf0 ; \cf3 // allows customization of the frame of cell separators\cf0 \
+\
+\cf2 @property\cf0 (\cf2 nonatomic\cf0 , \cf2 readwrite\cf0 , \cf2 retain\cf0 ) \cf8 UIView\cf0  *backgroundView \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 3\cf0 _2); \cf3 // the background view will be automatically resized to track the size of the table view.  this will be placed as a subview of the table view behind all cells and headers/footers.  default may be non-nil for some devices.\cf0 \
+\
+\cf3 // Data\cf0 \
+\
+- (\cf2 void\cf0 )reloadData;
+\f3\fs48 \cb13 \'d6\'d8\'d0\'c2\'d4\'d8\'c8\'eb\'d5\'fb\'b8\'f6tableView,\'cb\'a2\'d0\'c2
+\f0\fs28 \cb1                 \
+ \cf3 // reloads everything from scratch. redisplays visible rows. because we only keep info about visible rows, this is cheap. will adjust offset if table shrinks\cf0 \
+- (\cf2 void\cf0 )reloadSectionIndexTitles \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 3\cf0 _0);
+\f3\fs48 \cb11 \'cb\'a2\'d0\'c2\'b5\'a5\'b8\'f6group;
+\f0 \cb1  
+\fs28   \
+\cf3 // reloads the index bar.\cf0 \
+\
+\cf3 // Info\cf0 \
+\
+- (\cf9 NSInteger\cf0 )numberOfSections;
+\f3 \'d7\'e9\'b5\'c4\'b8\'f6\'ca\'fd
+\f0 \
+- (\cf9 NSInteger\cf0 )numberOfRowsInSection:(\cf9 NSInteger\cf0 )section;
+\f3 \cb13 \'d2\'bb\'b8\'f6\'d7\'e9\'d6\'d0\'b5\'c4uiTableViewcell\'b5\'c4\'ca\'fd\'c1\'bf
+\f0 \cb1 \
+\
+- (\cf9 CGRect\cf0 )rectForSection:(\cf9 NSInteger\cf0 )section;                                    \cf3 // includes header, footer and all rows\cf0 \
+- (\cf9 CGRect\cf0 )rectForHeaderInSection:(\cf9 NSInteger\cf0 )section;\
+- (\cf9 CGRect\cf0 )rectForFooterInSection:(\cf9 NSInteger\cf0 )section;\
+- (\cf9 CGRect\cf0 )rectForRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath;\
+\
+- (\cf8 NSIndexPath\cf0  *)indexPathForRowAtPoint:(\cf9 CGPoint\cf0 )point;                         \cf3 // returns nil if point is outside of any row in the table\cf0 \
+- (\cf8 NSIndexPath\cf0  *)indexPathForCell:(\cf8 UITableViewCell\cf0  *)cell;                      \cf3 // returns nil if cell is not visible\cf0 \
+- (\cf8 NSArray\cf0  *)indexPathsForRowsInRect:(\cf9 CGRect\cf0 )rect;                              \cf3 // returns nil if rect not valid \cf0 \
+\pard\tx674\pardeftab674\pardirnatural
+
+\f3\fs48 \cf0 \cb13 \'b8\'f9\'be\'ddindexPath,\'c0\'b4\'bb\'f1\'c8\'a1tableview\'d6\'d0\'b5\'c4cell
+\f0\fs28 \cb1 \
+- (\cf8 UITableViewCell\cf0  *)cellForRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath;            \cf3 // returns nil if cell is not visible or index path is out of range\cf0 \
+- (\cf8 NSArray\cf0  *)visibleCells;\
+- (\cf8 NSArray\cf0  *)indexPathsForVisibleRows;\
+- (\cf8 UITableViewHeaderFooterView\cf0  *)headerViewForSection:(\cf9 NSInteger\cf0 )section \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 6\cf0 _0);\
+- (\cf8 UITableViewHeaderFooterView\cf0  *)footerViewForSection:(\cf9 NSInteger\cf0 )section \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 6\cf0 _0);\
+\
+- (\cf2 void\cf0 )scrollToRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath atScrollPosition:(\cf9 UITableViewScrollPosition\cf0 )scrollPosition animated:(\cf2 BOOL\cf0 )animated;\
+- (\cf2 void\cf0 )scrollToNearestSelectedRowAtScrollPosition:(\cf9 UITableViewScrollPosition\cf0 )scrollPosition animated:(\cf2 BOOL\cf0 )animated;\
+\
+\pard\tx674\pardeftab674\pardirnatural
+\cf3 // Row insertion/deletion/reloading.\cf0 \
+\
+- (\cf2 void\cf0 )beginUpdates;   \cf3 // allow multiple insert/delete of rows and sections to be animated simultaneously. Nestable\cf0 \
+- (\cf2 void\cf0 )endUpdates;     \cf3 // only call insert/delete/reload calls or change the editing state inside an update block.  otherwise things like row count, etc. may be invalid.\cf0 \
+\
+- (\cf2 void\cf0 )insertSections:(\cf8 NSIndexSet\cf0  *)sections withRowAnimation:(\cf9 UITableViewRowAnimation\cf0 )animation;\
+- (\cf2 void\cf0 )deleteSections:(\cf8 NSIndexSet\cf0  *)sections withRowAnimation:(\cf9 UITableViewRowAnimation\cf0 )animation;\
+- (\cf2 void\cf0 )reloadSections:(\cf8 NSIndexSet\cf0  *)sections withRowAnimation:(\cf9 UITableViewRowAnimation\cf0 )animation \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 3\cf0 _0);\
+- (\cf2 void\cf0 )moveSection:(\cf9 NSInteger\cf0 )section toSection:(\cf9 NSInteger\cf0 )newSection \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 5\cf0 _0);\
+\
+- (\cf2 void\cf0 )insertRowsAtIndexPaths:(\cf8 NSArray\cf0  *)indexPaths withRowAnimation:(\cf9 UITableViewRowAnimation\cf0 )animation;\
+- (\cf2 void\cf0 )deleteRowsAtIndexPaths:(\cf8 NSArray\cf0  *)indexPaths withRowAnimation:(\cf9 UITableViewRowAnimation\cf0 )animation;\
+- (\cf2 void\cf0 )reloadRowsAtIndexPaths:(\cf8 NSArray\cf0  *)indexPaths withRowAnimation:(\cf9 UITableViewRowAnimation\cf0 )animation \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 3\cf0 _0);\
+- (\cf2 void\cf0 )moveRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath toIndexPath:(\cf8 NSIndexPath\cf0  *)newIndexPath \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 5\cf0 _0);\
+\
+\cf3 // Editing. When set, rows show insert/delete/reorder controls based on data source queries\cf0 \
+\
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 , \cf2 getter\cf0 =isEditing) \cf2 BOOL\cf0  editing;                             \cf3 // default is NO. setting is not animated.\cf0 \
+- (\cf2 void\cf0 )setEditing:(\cf2 BOOL\cf0 )editing animated:(\cf2 BOOL\cf0 )animated;\
+\
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 ) \cf2 BOOL\cf0  allowsSelection \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 3\cf0 _0);  \cf3 // default is YES. Controls whether rows can be selected when not in editing mode\cf0 \
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 ) \cf2 BOOL\cf0  allowsSelectionDuringEditing;                                     \cf3 // default is NO. Controls whether rows can be selected when in editing mode\cf0 \
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 ) \cf2 BOOL\cf0  allowsMultipleSelection \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 5\cf0 _0);                 \cf3 // default is NO. Controls whether multiple rows can be selected simultaneously\cf0 \
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 ) \cf2 BOOL\cf0  allowsMultipleSelectionDuringEditing \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 5\cf0 _0);   \cf3 // default is NO. Controls whether multiple rows can be selected simultaneously in editing mode\cf0 \
+\
+\cf3 // Selection\cf0 \
+\
+- (\cf8 NSIndexPath\cf0  *)indexPathForSelectedRow;                                                \cf3 // returns nil or index path representing section and row of selection.\cf0 \
+- (\cf8 NSArray\cf0  *)indexPathsForSelectedRows \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 5\cf0 _0); \cf3 // returns nil or a set of index paths representing the sections and rows of the selection.\cf0 \
+\
+\cf3 // Selects and deselects rows. These methods will not call the delegate methods (-tableView:willSelectRowAtIndexPath: or tableView:didSelectRowAtIndexPath:), nor will it send out a notification.\cf0 \
+- (\cf2 void\cf0 )selectRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath animated:(\cf2 BOOL\cf0 )animated scrollPosition:(\cf9 UITableViewScrollPosition\cf0 )scrollPosition;\
+- (\cf2 void\cf0 )deselectRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath animated:(\cf2 BOOL\cf0 )animated;\
+\
+\cf3 // Appearance\cf0 \
+\
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 ) \cf9 NSInteger\cf0  sectionIndexMinimumDisplayRowCount;                                                      \cf3 // show special section index list on right when row count reaches this value. default is 0\cf0 \
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 , \cf2 retain\cf0 ) \cf8 UIColor\cf0  *sectionIndexColor \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 6\cf0 _0) \cf7 UI_APPEARANCE_SELECTOR\cf0 ;                   \cf3 // color used for text of the section index\cf0 \
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 , \cf2 retain\cf0 ) \cf8 UIColor\cf0  *sectionIndexBackgroundColor \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 7\cf0 _0) \cf7 UI_APPEARANCE_SELECTOR\cf0 ;         \cf3 // the background color of the section index while not being touched\cf0 \
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 , \cf2 retain\cf0 ) \cf8 UIColor\cf0  *sectionIndexTrackingBackgroundColor \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 6\cf0 _0) \cf7 UI_APPEARANCE_SELECTOR\cf0 ; \cf3 // the background color of the section index while it is being touched\cf0 \
+\
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 ) \cf9 UITableViewCellSeparatorStyle\cf0  separatorStyle; \cf3 // default is UITableViewCellSeparatorStyleSingleLine\cf0 \
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 , \cf2 retain\cf0 ) \cf8 UIColor\cf0               *separatorColor \cf7 UI_APPEARANCE_SELECTOR\cf0 ; \cf3 // default is the standard separator gray\cf0 \
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 , \cf2 copy\cf0 ) \cf8 UIVisualEffect\cf0                *separatorEffect \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 8\cf0 _0) \cf7 UI_APPEARANCE_SELECTOR\cf0 ; \cf3 // effect to apply to table separators\cf0 \
+\
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 , \cf2 retain\cf0 ) \cf8 UIView\cf0  *tableHeaderView;                           \cf3 // accessory view for above row content. default is nil. not to be confused with section header\cf0 \
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 , \cf2 retain\cf0 ) \cf8 UIView\cf0  *tableFooterView;                           \cf3 // accessory view below content. default is nil. not to be confused with section footer\cf0 \
+\
+- (\cf2 id\cf0 )dequeueReusableCellWithIdentifier:(\cf8 NSString\cf0  *)identifier;  \cf3 // Used by the delegate to acquire an already allocated cell, in lieu of allocating a new one.\cf0 \
+- (\cf2 id\cf0 )dequeueReusableCellWithIdentifier:(\cf8 NSString\cf0  *)identifier forIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 6\cf0 _0); \cf3 // newer dequeue method guarantees a cell is returned and resized properly, assuming identifier is registered\cf0 \
+- (\cf2 id\cf0 )dequeueReusableHeaderFooterViewWithIdentifier:(\cf8 NSString\cf0  *)identifier \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 6\cf0 _0);  \cf3 // like dequeueReusableCellWithIdentifier:, but for headers/footers\cf0 \
+\
+\cf3 // Beginning in iOS 6, clients can register a nib or class for each cell.\cf0 \
+\cf3 // If all reuse identifiers are registered, use the newer -dequeueReusableCellWithIdentifier:forIndexPath: to guarantee that a cell instance is returned.\cf0 \
+\cf3 // Instances returned from the new dequeue method will also be properly sized when they are returned.\cf0 \
+- (\cf2 void\cf0 )registerNib:(\cf8 UINib\cf0  *)nib forCellReuseIdentifier:(\cf8 NSString\cf0  *)identifier \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 5\cf0 _0);\
+- (\cf2 void\cf0 )registerClass:(Class)cellClass forCellReuseIdentifier:(\cf8 NSString\cf0  *)identifier \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 6\cf0 _0);\
+\
+- (\cf2 void\cf0 )registerNib:(\cf8 UINib\cf0  *)nib forHeaderFooterViewReuseIdentifier:(\cf8 NSString\cf0  *)identifier \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 6\cf0 _0);\
+- (\cf2 void\cf0 )registerClass:(Class)aClass forHeaderFooterViewReuseIdentifier:(\cf8 NSString\cf0  *)identifier \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 6\cf0 _0);\
+\
+\cf2 @end\cf0 \
+\cf3 _________________________________________________________________________________________________________\cf0 \
+\
+\cf2 @interface\cf0  NSIndexPath (UITableView)\
+\
++ (\cf8 NSIndexPath\cf0  *)indexPathForRow:(\cf9 NSInteger\cf0 )row inSection:(\cf9 NSInteger\cf0 )section;\
+\
+\cf2 @property\cf0 (\cf2 nonatomic\cf0 ,\cf2 readonly\cf0 ) \cf9 NSInteger\cf0  section;\
+\cf2 @property\cf0 (\cf2 nonatomic\cf0 ,\cf2 readonly\cf0 ) \cf9 NSInteger\cf0  row;\
+\
+\cf2 @end\
+\
+\
+\pard\tx674\pardeftab674\pardirnatural
+
+\fs128 \cf3 \cb12  \cf0 UITableViewDelegate
+\fs28 \cf2 \cb1 \
+\
+@protocol\cf0  UITableViewDelegate<\cf8 NSObject\cf0 , \cf8 UIScrollViewDelegate\cf0 >\
+\
+\pard\tx674\pardeftab674\pardirnatural
+\cf2 @optional\cf0 \
+\
+\cf3 // Display customization\cf0 \
+\
+- (\cf2 void\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView willDisplayCell:(\cf8 UITableViewCell\cf0  *)cell forRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath;\
+- (\cf2 void\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView willDisplayHeaderView:(\cf8 UIView\cf0  *)view forSection:(\cf9 NSInteger\cf0 )section \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 6\cf0 _0);\
+- (\cf2 void\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView willDisplayFooterView:(\cf8 UIView\cf0  *)view forSection:(\cf9 NSInteger\cf0 )section \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 6\cf0 _0);\
+- (\cf2 void\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView didEndDisplayingCell:(\cf8 UITableViewCell\cf0  *)cell forRowAtIndexPath:(\cf8 NSIndexPath\cf0 *)indexPath \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 6\cf0 _0);\
+- (\cf2 void\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView didEndDisplayingHeaderView:(\cf8 UIView\cf0  *)view forSection:(\cf9 NSInteger\cf0 )section \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 6\cf0 _0);\
+- (\cf2 void\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView didEndDisplayingFooterView:(\cf8 UIView\cf0  *)view forSection:(\cf9 NSInteger\cf0 )section \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 6\cf0 _0);\
+\
+\cf3 // Variable height support\cf0 \
+\
+- (\cf9 CGFloat\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView heightForRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath;\
+- (\cf9 CGFloat\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView heightForHeaderInSection:(\cf9 NSInteger\cf0 )section;\
+- (\cf9 CGFloat\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView heightForFooterInSection:(\cf9 NSInteger\cf0 )section;\
+\
+\cf3 // Use the estimatedHeight methods to quickly calcuate guessed values which will allow for fast load times of the table.\cf0 \
+\cf3 // If these methods are implemented, the above -tableView:heightForXXX calls will be deferred until views are ready to be displayed, so more expensive logic can be placed there.\cf0 \
+- (\cf9 CGFloat\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView estimatedHeightForRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 7\cf0 _0);\
+- (\cf9 CGFloat\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView estimatedHeightForHeaderInSection:(\cf9 NSInteger\cf0 )section \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 7\cf0 _0);\
+- (\cf9 CGFloat\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView estimatedHeightForFooterInSection:(\cf9 NSInteger\cf0 )section \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 7\cf0 _0);\
+\
+\cf3 // Section header & footer information. Views are preferred over title should you decide to provide both\cf0 \
+\
+- (\cf8 UIView\cf0  *)tableView:(\cf8 UITableView\cf0  *)tableView viewForHeaderInSection:(\cf9 NSInteger\cf0 )section;   \cf3 // custom view for header. will be adjusted to default or specified header height\cf0 \
+- (\cf8 UIView\cf0  *)tableView:(\cf8 UITableView\cf0  *)tableView viewForFooterInSection:(\cf9 NSInteger\cf0 )section;   \cf3 // custom view for footer. will be adjusted to default or specified footer height\cf0 \
+\
+\cf3 // Accessories (disclosures). \cf0 \
+\
+- (\cf9 UITableViewCellAccessoryType\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView accessoryTypeForRowWithIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath \cf7 NS_DEPRECATED_IOS\cf0 (\cf4 2\cf0 _0, \cf4 3\cf0 _0);\
+- (\cf2 void\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView accessoryButtonTappedForRowWithIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath;\
+\
+\cf3 // Selection\cf0 \
+\
+\cf3 // -tableView:shouldHighlightRowAtIndexPath: is called when a touch comes down on a row. \cf0 \
+\cf3 // Returning NO to that message halts the selection process and does not cause the currently selected row to lose its selected look while the touch is down.\cf0 \
+- (\cf2 BOOL\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView shouldHighlightRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 6\cf0 _0);\
+- (\cf2 void\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView didHighlightRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 6\cf0 _0);\
+- (\cf2 void\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView didUnhighlightRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 6\cf0 _0);\
+\
+\cf3 // Called before the user changes the selection. Return a new indexPath, or nil, to change the proposed selection.\cf0 \
+- (\cf8 NSIndexPath\cf0  *)tableView:(\cf8 UITableView\cf0  *)tableView willSelectRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath;\
+- (\cf8 NSIndexPath\cf0  *)tableView:(\cf8 UITableView\cf0  *)tableView willDeselectRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 3\cf0 _0);\
+\cf3 // Called after the user changes the selection.\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f3 \cf0 \cb14 \'b5\'b1\'d2\'bb\'b8\'f6
+\f0 cell
+\f3 \'b1\'bb\'d1\'a1\'d6\'d0\'b5\'c4\'ca\'b1\'ba\'f2\'bb\'e1\'b5\'f7\'d3\'c3
+\f0 \cb1 \
+- (\cf2 void\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView didSelectRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath;\
+
+\f3 \cb14 \'b5\'b1\'d2\'bb\'b8\'f6
+\f0 cell
+\f3 \'ca\'a7\'c8\'a5\'d1\'a1\'d6\'d0\'bd\'b9\'b5\'e3\'b5\'c4\'ca\'b1\'ba\'f2\'bb\'e1\'b5\'f7\'d3\'c3
+\f0 \cb1 \
+- (\cf2 void\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView didDeselectRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 3\cf0 _0);\
+\
+\pard\tx674\pardeftab674\pardirnatural
+\cf3 // Editing\cf0 \
+\
+\cf3 // Allows customization of the editingStyle for a particular cell located at 'indexPath'. If not implemented, all editable cells will have UITableViewCellEditingStyleDelete set for them when the table has editing property set to YES.\
+\
+//    typedef NS_ENUM(NSInteger, UITableViewCellEditingStyle) \{\cf0 \
+\cf3 //        UITableViewCellEditingStyleNone,\cf0 \
+\cf3 //        UITableViewCellEditingStyleDelete,\cf0 \
+\cf3 //        UITableViewCellEditingStyleInsert\cf0 \
+\cf3 //    \};\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f3 \cf0 \'c9\'e8\'d6\'c3\cb11 \'bd\'f8\'c8\'eb\'b1\'e0\'bc\'ad\'d7\'b4\'cc\'ac\'ca\'b1\'b5\'c4
+\f0 \cf9 \cb1 UITableViewCellEditingStyle
+\f3 \'d6\'b5\cf0 \cb13  \'b8\'f8\'d3\'e8\'b1\'e0\'bc\'ad\'d7\'b4\'cc\'ac\'cf\'c2\'b5\'c4\'b2\'bb\'cd\'ac\'b0\'b4\'c5\'a5\'b5\'c4\'cf\'d4\'ca\'be\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f0 \cf3 \cb15 UITableViewCellEditingStyleNone\cf3 \cb1 , \cf3 \cb11 UITableViewCellEditingStyleDelete\cf3 \cb1 , \cf3 \cb16 UITableViewCellEditingStyleInsert\cf0 \cb1 \
+- (\cf9 UITableViewCellEditingStyle\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView editingStyleForRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath;\
+\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f3 \cf0 \cb13 \'c9\'e8\'d6\'c3\'b5\'b1\'bd\'f8\'c8\'eb\'c9\'be\'b3\'fd\'b1\'e0\'bc\'ad\'d7\'b4\'cc\'ac\'ca\'b1\'b5\'e3\'bb\'f7\'c9\'be\'b3\'fd\'b0\'b4\'c5\'a5\'ba\'f3\'b5\'af\'b3\'f6\'b5\'c4\'c8\'b7\'c8\'cf\'b0\'b4\'c5\'a5\'b5\'c4\'b5\'c4\'c4\'da\'c8\'dd
+\f0 \cb1 \
+- (\cf8 NSString\cf0  *)tableView:(\cf8 UITableView\cf0  *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 3\cf0 _0);\
+\
+\pard\tx674\pardeftab674\pardirnatural
+\cf0 \cb12   \cb1 - (\cf8 NSArray\cf0  *)tableView:(\cf8 UITableView\cf0  *)tableView editActionsForRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 8\cf0 _0); \cf3 // supercedes -tableView:titleForDeleteConfirmationButtonForRowAtIndexPath: if return value is non-nil\cf0 \
+\
+\pard\tx674\pardeftab674\pardirnatural
+\cf3 // Controls whether the background is indented while editing.  If not implemented, the default is YES.  This is unrelated to the indentation level below.  This method only applies to grouped style table views.\cf0 \
+- (\cf2 BOOL\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView shouldIndentWhileEditingRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath;\
+\
+\cf3 // The willBegin/didEnd methods are called whenever the 'editing' property is automatically changed by the table (allowing insert/delete/move). This is done by a swipe activating a single row\cf0 \
+- (\cf2 void\cf0 )tableView:(\cf8 UITableView\cf0 *)tableView willBeginEditingRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath;\
+- (\cf2 void\cf0 )tableView:(\cf8 UITableView\cf0 *)tableView didEndEditingRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath;\
+\
+\cf3 // Moving/reordering\cf0 \
+\
+\cf3 // Allows customization of the target row for a particular row as it is being moved/reordered\
+\cf0 \
+- (\cf8 NSIndexPath\cf0  *)tableView:(\cf8 UITableView\cf0  *)tableView targetIndexPathForMoveFromRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)sourceIndexPath toProposedIndexPath:(\cf8 NSIndexPath\cf0  *)proposedDestinationIndexPath;               \
+\
+\cf3 // Indentation\cf0 \
+\
+- (\cf9 NSInteger\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView indentationLevelForRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath; \cf3 // return 'depth' of row for hierarchies\cf0 \
+\
+\cf3 // Copy/Paste.  All three methods must be implemented by the delegate.\cf0 \
+\
+- (\cf2 BOOL\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView shouldShowMenuForRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 5\cf0 _0);\
+- (\cf2 BOOL\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView canPerformAction:(\cf2 SEL\cf0 )action forRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath withSender:(\cf2 id\cf0 )sender \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 5\cf0 _0);\
+- (\cf2 void\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView performAction:(\cf2 SEL\cf0 )action forRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath withSender:(\cf2 id\cf0 )sender \cf7 NS_AVAILABLE_IOS\cf0 (\cf4 5\cf0 _0);\
+\
+\cf2 @end\cf0 \
+\
+\
+\pard\tx674\pardeftab674\pardirnatural
+
+\fs128 \cf0 \cb17 UITableViewDataSource
+\fs28 \cb1 \
+\
+\pard\tx674\pardeftab674\pardirnatural
+\cf2 @protocol\cf0  UITableViewDataSource<\cf8 NSObject\cf0 >\
+\
+\cf2 @required\cf0 \
+\pard\tx674\pardeftab674\pardirnatural
+
+\f3 \cf0 \cb13 \'c3\'bf\'d2\'bb\'d7\'e9\'d6\'d0\'b5\'c4
+\f0 cell
+\f3 \'b5\'c4\'ca\'fd\'c1\'bf
+\f0 \cb1 \
+- (\cf9 NSInteger\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView numberOfRowsInSection:(\cf9 NSInteger\cf0 )section;\
+\
+\
+
+\f3 \cb13 \'b8\'ba\'d4\'f0\'cf\'d4\'ca\'becell\'a3\'ac\'b9\'f6\'b6\'aftableview\'b5\'c4\'ca\'b1\'ba\'f2\'d3\'c9\'d3\'dacell\'b5\'c4\'d2\'c6\'b3\'f6\'ba\'cd\'d2\'c6\'c8\'eb\'a3\'ac\'b2\'c5\'bb\'e1\'b5\'f7\'d3\'c3\
+\'bb\'e1\'d4\'da\'b9\'ab\'b9\'b2\'bb\'ba\'b4\'e6\'d6\'d0\'d1\'b0\'d5\'d2\'ca\'c7\'b7\'f1\'d3\'d0\'d2\'e2\'be\'b3\'b2\'bb\'cf\'d4\'ca\'be\'b5\'c4cell\'c4\'c3\'b9\'fd\'c0\'b4\'d6\'d8\'b8\'b4\'ca\'b9\'d3\'c3\'a3\'ac
+\f0 \cb1 \
+- (\cf8 UITableViewCell\cf0  *)tableView:(\cf8 UITableView\cf0  *)tableView cellForRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath;\
+\
+\pard\tx674\pardeftab674\pardirnatural
+\cf2 @optional\cf0 \
+\pard\tx674\pardeftab674\pardirnatural
+
+\f3 \cf0 \cb14 \'b7\'b5\'bb\'d8\'b7\'d6\'d7\'e9\'b5\'c4\'ca\'fd\'c1\'bf\'a3\'ac\'c8\'e7\'b9\'fb\'b2\'bb\'c9\'e8\'d6\'c3\'b5\'c4\'bb\'b0\'a3\'ac\'d6\'bb\'c4\'dc\'cf\'d4\'ca\'be\'b3\'f6\'d2\'bb\'d7\'e9
+\f0 \cb1 \
+- (\cf9 NSInteger\cf0 )numberOfSectionsInTableView:(\cf8 UITableView\cf0  *)tableView;              \cf3 // Default is 1 if not implemented\
+\pard\tx674\pardeftab674\pardirnatural
+\cf3 \cb12 //
+\f1 \uc0\u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 \u10060 
+\f0 \cf0 \cb1 \
+\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f3 \cf0 \'c9\'e8\'d6\'c3\cb13 \'ca\'d7\'ce\'b2\'b5\'c4title
+\f0 \cb1 \
+- (\cf8 NSString\cf0  *)tableView:(\cf8 UITableView\cf0  *)tableView titleForHeaderInSection:(\cf9 NSInteger\cf0 )section;    \cf3 // fixed font style. use custom view (UILabel) if you want something different\cf0 \
+- (\cf8 NSString\cf0  *)tableView:(\cf8 UITableView\cf0  *)tableView titleForFooterInSection:(\cf9 NSInteger\cf0 )section;\
+\
+\pard\tx674\pardeftab674\pardirnatural
+\cf3 // Editing\cf0 \
+\
+\cf3 // Individual rows can opt out of having the -editing property set for them. If not implemented, all rows are assumed to be editable.\cf0 \
+\pard\tx674\pardeftab674\pardirnatural
+\cf0 \cb18 - \cb1 (\cf2 BOOL\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView canEditRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath;\
+\
+\pard\tx674\pardeftab674\pardirnatural
+\cf3 // Moving/reordering\cf0 \
+\
+\cf3 // Allows the reorder accessory view to optionally be shown for a particular row. By default, the reorder control will be shown only if the datasource implements -tableView:moveRowAtIndexPath:toIndexPath:\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f3 \cf0 \cb13 \'d2\'c6\'b6\'af\'d2\'bb\'b8\'f6cell\'ca\'b1\'d6\'b4\'d0\'d0\'b5\'c4\'ba\'af\'ca\'fd
+\f0 \cb1 \
+- (\cf2 BOOL\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView canMoveRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath;\
+\pard\tx674\pardeftab674\pardirnatural
+\cf0 \cb19 \{\
+    \cf20 Stu\cf0  * stu =\cf20 _dataSource\cf0 [sourceIndexPath.\cf9 section\cf0 ][sourceIndexPath.\cf9 row\cf0 ];\
+    \
+    [\cf20 _dataSource\cf0 [sourceIndexPath.\cf9 section\cf0 ] \cf21 removeObject\cf0 :stu];\
+    \
+    [\cf20 _dataSource\cf0 [destinationIndexPath.\cf9 section\cf0 ] \cf21 insertObject\cf0 :stu \cf21 atIndex\cf0 :destinationIndexPath.\cf9 row\cf0 ];\
+    [\cf20 _tableView\cf0  \cf21 reloadData\cf0 ];\
+    \
+\}\cb1 \
+\
+\pard\tx674\pardeftab674\pardirnatural
+\cf3 // Index\cf0 \
+\pard\tx674\pardeftab674\pardirnatural
+
+\f3 \cf0 \cb13 \'bc\'d3\'c8\'eb\'b2\'e0\'b1\'df\'cb\'d1\'cb\'f7\'c0\'b8
+\f0 \cb1 \
+- (\cf8 NSArray\cf0  *)sectionIndexTitlesForTableView:(\cf8 UITableView\cf0  *)tableView\
+\pard\tx674\pardeftab674\pardirnatural
+\cf3 \{\
+//   \cf0 \cb11  NSMutableArray * arr = [[NSMutableArray alloc]init];
+\f3 \'d5\'e2\'b8\'f6\'c7\'e9\'bf\'f6\'d2\'b2\'ca\'c7\'bf\'c9\'d2\'d4\'b5\'c4\'d6\'bb\'ca\'c7\'c3\'bb\'d3\'d0\'c9\'cf\'b1\'df\'b5\'c4\'d0\'a1\'b7\'c5\'b4\'f3\'be\'b5
+\f0 \cb1 \
+    \cf8 NSMutableArray\cf0  * arr = [\cf8 NSMutableArray\cf0  \cf21 arrayWithObject\cf0 :\cf9 UITableViewIndexSearch\cf0 ];\
+    \cf2 for\cf0  (\cf2 int\cf0  i = \cf4 'A'\cf0 ; i<=\cf4 'Z'\cf0 ; i++)\
+    \{\
+        \cf8 NSString\cf0  * str =[\cf8 NSString\cf0  \cf21 stringWithFormat\cf0 :\cf22 @"%c"\cf0 ,i];\
+        [arr \cf21 addObject\cf0 :str];\
+    \}\
+    \cf2 return\cf0  arr;  \
+\
+\}\
+                          \cf3 // return list of section titles to display in section index view (e.g. "ABCD...Z#")\cf0 \
+- (\cf9 NSInteger\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView sectionForSectionIndexTitle:(\cf8 NSString\cf0  *)title atIndex:(\cf9 NSInteger\cf0 )index\
+\{\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f3 \cf0 return index-1;
+\f0 \
+\}\
+\
+ \cf3 // tell table which section corresponds to section title/index (e.g. "B",1))\cf0 \
+\
+\pard\tx674\pardeftab674\pardirnatural
+\cf3 // Data manipulation - insert and delete support\cf0 \
+\
+\cf3 // After a row has the minus or plus button invoked (based on the UITableViewCellEditingStyle for the cell), the dataSource must commit the change\cf0 \
+\cf3 // Not called for edit actions using UITableViewRowAction - the action's handler will be invoked instead\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f3 \cf0 \cb13 \'be\'df\'cc\'e5\'b5\'c4\'b1\'e0\'bc\'ad\'b2\'d9\'d7\'f7\'d6\'b4\'d0\'d0\'b5\'c4\'c4\'da\'c8\'dd
+\f0 \cb1 \
+- (\cf2 void\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView commitEditingStyle:(\cf9 UITableViewCellEditingStyle\cf0 )editingStyle forRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)indexPath;\
+\
+\
+\pard\tx674\pardeftab674\pardirnatural
+\cf3 // Data manipulation - reorder / moving support\cf0 \
+\
+- (\cf2 void\cf0 )tableView:(\cf8 UITableView\cf0  *)tableView moveRowAtIndexPath:(\cf8 NSIndexPath\cf0  *)sourceIndexPath toIndexPath:(\cf8 NSIndexPath\cf0  *)destinationIndexPath;\
+\
+\cf2 @end\cf0 \
+}

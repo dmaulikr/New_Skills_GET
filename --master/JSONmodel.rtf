@@ -1,0 +1,655 @@
+{\rtf1\ansi\ansicpg936\cocoartf1347\cocoasubrtf570
+{\fonttbl\f0\fnil\fcharset134 STHeitiSC-Light;\f1\fswiss\fcharset0 Helvetica;\f2\fnil\fcharset0 Menlo-Regular;
+\f3\fnil\fcharset0 AndaleMono;\f4\fnil\fcharset0 HelveticaNeue;\f5\fnil\fcharset0 Consolas;
+\f6\fnil\fcharset0 Consolas-Bold;}
+{\colortbl;\red255\green255\blue255;\red211\green24\blue149;\red0\green160\blue255;\red217\green11\blue0;
+\red255\green255\blue0;\red38\green38\blue38;\red50\green98\blue178;\red245\green245\blue245;\red213\green213\blue213;
+\red243\green235\blue0;\red255\green39\blue18;\red132\green134\blue132;\red14\green114\blue164;\red19\green36\blue126;
+\red148\green6\blue75;\red101\green71\blue146;\red225\green225\blue225;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\paperw11900\paperh16840\margl1440\margr1440\vieww14720\viewh9160\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs48 \cf0 \'d3\'c3\'b7\'a8\
+\'ca\'d7\'cf\'c8\'b6\'d4\'d3\'da\'bb\'f1\'c8\'a1\'b5\'bd\'b5\'c4jsons\'ca\'fd\'be\'dd\'b5\'c4\'d5\'fb\'cc\'e5\'b8\'f1\'ca\'bd\'bd\'f8\'d0\'d0\'b7\'d6\'ce\'f6\'a3\'ac\'bd\'a8\'c1\'a2\'be\'df\'b1\'b8\'cf\'e0\'d3\'a6\'ca\'f4\'d0\'d4\'b5\'c4\'c0\'e0\'a3\'ac\'d5\'e2\'b8\'f6\'c0\'e0\'d6\'d0\'bf\'c9\'d2\'d4\'d6\'bb\'d3\'d0\'b2\'bf\'b7\'d6\'d7\'d6\'b6\'ce\'a3\'ac\'d5\'e2\'d1\'f9\'b5\'c4\'d2\'b2\'ca\'c7\'bf\'c9\'d2\'d4\'cd\'a8\'b9\'fd\'bd\'d3\'cb\'cd\'ca\'fd\'be\'dd\'c0\'b4\'b6\'d4\'b8\'c3\'c0\'e0\'b3\'f5\'ca\'bc\'bb\'af\'b5\'c4\'a3\'ac\
+\'c8\'e7\'b9\'fb\'bd\'d3\'cb\'cdjson\'b5\'c4\'b8\'f1\'ca\'bd\'d6\'d0\'c8\'e7\'b9\'fb\'ca\'c7\'b0\'fc\'ba\'ac\'d2\'bb\'b8\'f6\'ca\'fd\'d7\'e9\'b5\'c4\'bb\'b0\'a3\'ac\'d4\'da\'d5\'e2\'b8\'f6\'ca\'fd\'d7\'e9\'d6\'d0\'c3\'bf\'d2\'bb\'b8\'f6\'b6\'d4\'cf\'f3\'d2\'b2\'b6\'bc\'bf\'c9\'d2\'d4\'bd\'a8\'c1\'a2\'d2\'bb\'b8\'f6\'c4\'a3\'d0\'cd\'b5\'c4\'bb\'b0\'a3\'ac\'c4\'c7\'c3\'b4\'a3\'ac\'bd\'a8\'c1\'a2\'c0\'e0\'c4\'a3\'d0\'cd\'b5\'c4\'ca\'b1\'ba\'f2\'d2\'aa\'ce\'aa\'ca\'fd\'d7\'e9\'d5\'e2\'b8\'f6\'d2\'bb\'b8\'f6\'ca\'f4\'d0\'d4\'bd\'a8\'c1\'a2\'d2\'bb\'b8\'f6\'c6\'e4\'d6\'d0\'b5\'c4\'ca\'fd\'be\'dd\'b5\'c4\'c0\'e0\'b5\'c4\'d0\'ad\'d2\'e9
+\fs24 \
+
+\f1 \
+\pard\tx672\pardeftab672\pardirnatural
+
+\f2\fs28 \cf2 \cb0 \CocoaLigature0 @protocol
+\f3 \cf1  detailModel <
+\f2 \cf3 NSObject
+\f3 \cf1 >
+\f0 \cb4 \'be\'cd\'ca\'c7\'d5\'e2\'c0\'ef
+\f3 \cb0 \
+
+\f2 \cf2 @end
+\f3 \cf1 \
+
+\f2 \cf2 @interface
+\f3 \cf1  CookBookModel : 
+\f2 \cf5 JSONModel
+\f3 \cf1 \
+
+\f2 \cf2 @property
+\f3 \cf1  (
+\f2 \cf2 nonatomic
+\f3 \cf1 ,
+\f2 \cf2 strong
+\f3 \cf1 ) 
+\f2 \cf3 NSString
+\f3 \cf1  * status;\
+
+\f2 \cf2 @property
+\f3 \cf1  (
+\f2 \cf2 nonatomic
+\f3 \cf1 ,
+\f2 \cf2 strong
+\f3 \cf1 ) 
+\f2 \cf3 NSString
+\f3 \cf1  * message;\
+
+\f2 \cf2 @property
+\f3 \cf1  (
+\f2 \cf2 nonatomic
+\f3 \cf1 ,
+\f2 \cf2 strong
+\f3 \cf1 ) 
+\f2 \cf5 bean
+\f3 \cf1  *bean;\
+
+\f2 \cf2 @property
+\f3 \cf1  (
+\f2 \cf2 nonatomic
+\f3 \cf1 ,
+\f2 \cf2 strong
+\f3 \cf1 ) 
+\f2 \cf3 NSMutableArray
+\f3 \cf1 <
+\f2 \cf5 detailModel
+\f3 \cf1 > * data;
+\f1\fs24 \cf0 \CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \cb1 \
+http://www.68idc.cn/help/mobilesys/ios/20150119177647.html       jsonModel\
+\
+http://blog.csdn.net/smking/article/details/40432287      jsonModel
+\f4\b\fs54 \cf6 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\sl640\sa320
+\cf6 Examples\
+\pard\pardeftab720\sl360
+
+\fs30 \cf7 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\sl420\sa320
+\cf6 \expnd0\expndtw0\kerning0
+Automatic name based mapping\
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \tamarb320 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clcbpat1 \clwWidth5560\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf9 \clbrdrl\brdrs\brdrw20\brdrcf9 \clbrdrb\brdrs\brdrw20\brdrcf9 \clbrdrr\brdrs\brdrw20\brdrcf9 \clpadt120 \clpadl260 \clpadb120 \clpadr260 \gaph\cellx4320
+\clvertalc \clcbpat1 \clwWidth8980\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf9 \clbrdrl\brdrs\brdrw20\brdrcf9 \clbrdrb\brdrs\brdrw20\brdrcf9 \clbrdrr\brdrs\brdrw20\brdrcf9 \clpadt120 \clpadl260 \clpadb120 \clpadr260 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl380
+
+\f5\b0\fs28 \cf6 \cb8 \expnd0\expndtw0\kerning0
+\{\
+  "id": "123",\
+  "name": "Product name",\
+  "price": 12.95\
+\}\cell 
+\pard\intbl\itap1\pardeftab720\sl380
+\cf6 \expnd0\expndtw0\kerning0
+@interface ProductModel : JSONModel\
+@property (assign, nonatomic) int id;\
+@property (strong, nonatomic) NSString* name;\
+@property (assign, nonatomic) float price;\
+@end\
+\
+@implementation ProductModel\
+@end\cell \lastrow\row
+\pard\pardeftab720\sl360
+
+\f4\b\fs30 \cf7 \cb1 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\sl420\sa320
+\cf6 \expnd0\expndtw0\kerning0
+Model cascading (models including other models)\
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \tamarb320 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clcbpat1 \clwWidth5340\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf9 \clbrdrl\brdrs\brdrw20\brdrcf9 \clbrdrb\brdrs\brdrw20\brdrcf9 \clbrdrr\brdrs\brdrw20\brdrcf9 \clpadt120 \clpadl260 \clpadb120 \clpadr260 \gaph\cellx4320
+\clvertalt \clcbpat1 \clwWidth9200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf9 \clbrdrl\brdrs\brdrw20\brdrcf9 \clbrdrb\brdrs\brdrw20\brdrcf9 \clbrdrr\brdrs\brdrw20\brdrcf9 \clpadt120 \clpadl260 \clpadb120 \clpadr260 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl380
+
+\f5\b0\fs28 \cf6 \cb8 \expnd0\expndtw0\kerning0
+\{\
+  "order_id": 104,\
+  "total_price": 13.45,\
+  "product" : \{\
+    "id": "123",\
+    "name": "Product name",\
+    "price": 12.95\
+  \}\
+\}\cell 
+\pard\intbl\itap1\pardeftab720\sl380
+\cf6 \expnd0\expndtw0\kerning0
+@interface OrderModel : JSONModel\
+@property (assign, nonatomic) int order_id;\
+@property (assign, nonatomic) float total_price;\
+@property (strong, nonatomic) 
+\f6\b \expnd0\expndtw0\kerning0
+ProductModel*
+\f5\b0 \expnd0\expndtw0\kerning0
+ product;\
+@end\
+\
+@implementation OrderModel\
+@end\cell \lastrow\row
+\pard\pardeftab720\sl360
+
+\f4\b\fs30 \cf7 \cb1 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\sl420\sa320
+\cf6 \expnd0\expndtw0\kerning0
+Model collections\
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \tamarb320 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clcbpat1 \clwWidth5340\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf9 \clbrdrl\brdrs\brdrw20\brdrcf9 \clbrdrb\brdrs\brdrw20\brdrcf9 \clbrdrr\brdrs\brdrw20\brdrcf9 \clpadt120 \clpadl260 \clpadb120 \clpadr260 \gaph\cellx4320
+\clvertalt \clcbpat1 \clwWidth9200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf9 \clbrdrl\brdrs\brdrw20\brdrcf9 \clbrdrb\brdrs\brdrw20\brdrcf9 \clbrdrr\brdrs\brdrw20\brdrcf9 \clpadt120 \clpadl260 \clpadb120 \clpadr260 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl380
+
+\f5\b0\fs28 \cf6 \cb8 \expnd0\expndtw0\kerning0
+\{\
+  "order_id": 104,\
+  "total_price": 103.45,\
+  "products" : [\
+    \{\
+      "id": "123",\
+      "name": "Product #1",\
+      "price": 12.95\
+    \},\
+    \{\
+      "id": "137",\
+      "name": "Product #2",\
+      "price": 82.95\
+    \}\
+  ]\
+\}\cell 
+\pard\intbl\itap1\pardeftab720\sl380
+
+\f6\b \cf6 \expnd0\expndtw0\kerning0
+@protocol ProductModel\
+@end
+\f5\b0 \expnd0\expndtw0\kerning0
+\
+\
+@interface ProductModel : JSONModel\
+@property (assign, nonatomic) int id;\
+@property (strong, nonatomic) NSString* name;\
+@property (assign, nonatomic) float price;\
+@end\
+\
+@implementation ProductModel\
+@end\
+\
+@interface OrderModel : JSONModel\
+@property (assign, nonatomic) int order_id;\
+@property (assign, nonatomic) float total_price;\
+@property (strong, nonatomic) 
+\f6\b \expnd0\expndtw0\kerning0
+NSArray<ProductModel>*
+\f5\b0 \expnd0\expndtw0\kerning0
+ products;\
+@end\
+\
+@implementation OrderModel\
+@end\cell \lastrow\row
+\pard\pardeftab720\sl360
+
+\f4\b\fs30 \cf7 \cb1 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\sl420\sa320
+\cf6 \expnd0\expndtw0\kerning0
+Key mapping\
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \tamarb320 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clcbpat1 \clwWidth5200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf9 \clbrdrl\brdrs\brdrw20\brdrcf9 \clbrdrb\brdrs\brdrw20\brdrcf9 \clbrdrr\brdrs\brdrw20\brdrcf9 \clpadt120 \clpadl260 \clpadb120 \clpadr260 \gaph\cellx4320
+\clvertalt \clcbpat1 \clwWidth9340\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf9 \clbrdrl\brdrs\brdrw20\brdrcf9 \clbrdrb\brdrs\brdrw20\brdrcf9 \clbrdrr\brdrs\brdrw20\brdrcf9 \clpadt120 \clpadl260 \clpadb120 \clpadr260 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl380
+
+\f5\b0\fs28 \cf6 \cb8 \expnd0\expndtw0\kerning0
+\{\
+  "order_id": 104,\
+  "order_details" : [\
+    \{\
+      "name": "Product#1",\
+      "price": \{\
+        "usd": 12.95\
+      \}\
+    \}\
+  ]\
+\}\cell 
+\pard\intbl\itap1\pardeftab720\sl380
+\cf6 \expnd0\expndtw0\kerning0
+@interface OrderModel : JSONModel\
+@property (assign, nonatomic) int id;\
+@property (assign, nonatomic) float price;\
+@property (strong, nonatomic) NSString* productName;\
+@end\
+\
+@implementation OrderModel\
+\
++(JSONKeyMapper*)keyMapper\
+\{\
+  return [[JSONKeyMapper alloc] initWithDictionary:@\{\
+  
+\f6\b \expnd0\expndtw0\kerning0
+  @"order_id": @"id",\
+    @"order_details.name": @"productName",\
+    @"order_details.price.usd": @"price"
+\f5\b0 \expnd0\expndtw0\kerning0
+\
+  \}];\
+\}\
+\
+@end\cell \lastrow\row
+\pard\pardeftab720\sl360
+
+\f4\b\fs30 \cf7 \cb1 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\sl420\sa320
+\cf6 \expnd0\expndtw0\kerning0
+Global key mapping (applies to all models in your app)\
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \tamarb320 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clcbpat1 \clwWidth14540\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf9 \clbrdrl\brdrs\brdrw20\brdrcf9 \clbrdrb\brdrs\brdrw20\brdrcf9 \clbrdrr\brdrs\brdrw20\brdrcf9 \clpadt120 \clpadl260 \clpadb120 \clpadr260 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl380
+
+\f6\fs28 \cf6 \cb8 \expnd0\expndtw0\kerning0
+[JSONModel setGlobalKeyMapper:[
+\f5\b0 \expnd0\expndtw0\kerning0
+\
+    [JSONKeyMapper alloc] initWithDictionary:@\{\
+      @"item_id":@"ID",\
+      @"item.name": @"itemName"\
+   \}]\
+
+\f6\b \expnd0\expndtw0\kerning0
+];
+\f5\b0 \expnd0\expndtw0\kerning0
+\
+\cell \lastrow\row
+\pard\pardeftab720\sl360
+
+\f4\b\fs30 \cf7 \cb1 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\sl420\sa320
+\cf6 \expnd0\expndtw0\kerning0
+Map automatically under_score case to camelCase\
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \tamarb320 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clcbpat1 \clwWidth6280\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf9 \clbrdrl\brdrs\brdrw20\brdrcf9 \clbrdrb\brdrs\brdrw20\brdrcf9 \clbrdrr\brdrs\brdrw20\brdrcf9 \clpadt120 \clpadl260 \clpadb120 \clpadr260 \gaph\cellx4320
+\clvertalt \clcbpat1 \clwWidth9340\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf9 \clbrdrl\brdrs\brdrw20\brdrcf9 \clbrdrb\brdrs\brdrw20\brdrcf9 \clbrdrr\brdrs\brdrw20\brdrcf9 \clpadt120 \clpadl260 \clpadb120 \clpadr260 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl380
+
+\f5\b0\fs28 \cf6 \cb8 \expnd0\expndtw0\kerning0
+\{\
+  "order_id": 104,\
+  "order_product" : @"Product#1",\
+  "order_price" : 12.95\
+\}\cell 
+\pard\intbl\itap1\pardeftab720\sl380
+\cf6 \expnd0\expndtw0\kerning0
+@interface OrderModel : JSONModel\
+\
+@property (assign, nonatomic) int orderId;\
+@property (assign, nonatomic) float orderPrice;\
+@property (strong, nonatomic) NSString* orderProduct;\
+\
+@end\
+\
+@implementation OrderModel\
+\
++(JSONKeyMapper*)keyMapper\
+\{\
+  return 
+\f6\b \expnd0\expndtw0\kerning0
+[JSONKeyMapper mapperFromUnderscoreCaseToCamelCase];
+\f5\b0 \expnd0\expndtw0\kerning0
+\
+\}\
+\
+@end\cell \lastrow\row
+\pard\pardeftab720\sl360
+
+\f0\b\fs30 \cf7 \cb10 \expnd0\expndtw0\kerning0
+\'bf\'c9\'d2\'d4\'d3\'c3
+\f4 optional
+\f0 \'c0\'b4\'bd\'f8\'d0\'d0\'d2\'bb\'b8\'f6\'cf\'e0\'b5\'b1\'d3\'da\'c8\'dd\'b4\'ed\'b5\'c4\'b5\'c4\'b4\'a6\'c0\'ed\'a3\'ac\'c8\'e7\'b9\'fb\'c3\'bb\'d3\'d0\'d6\'b5\'bb\'f2\'d5\'dfnull
+\f4 \
+\pard\pardeftab720\sl420\sa320
+\cf6 \cb11 \expnd0\expndtw0\kerning0
+Optional properties (i.e. can be missing or null)\
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \tamarb320 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clcbpat1 \clwWidth3980\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf9 \clbrdrl\brdrs\brdrw20\brdrcf9 \clbrdrb\brdrs\brdrw20\brdrcf9 \clbrdrr\brdrs\brdrw20\brdrcf9 \clpadt120 \clpadl260 \clpadb120 \clpadr260 \gaph\cellx4320
+\clvertalc \clcbpat1 \clwWidth10560\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf9 \clbrdrl\brdrs\brdrw20\brdrcf9 \clbrdrb\brdrs\brdrw20\brdrcf9 \clbrdrr\brdrs\brdrw20\brdrcf9 \clpadt120 \clpadl260 \clpadb120 \clpadr260 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl380
+
+\f5\b0\fs28 \cf6 \cb11 \expnd0\expndtw0\kerning0
+\{\
+  "id": "123",\
+  "name": null,\
+  "price": 12.95\
+\}\cell 
+\pard\intbl\itap1\pardeftab720\sl380
+\cf6 \expnd0\expndtw0\kerning0
+@interface ProductModel : JSONModel\
+@property (assign, nonatomic) int id;\
+@property (strong, nonatomic) NSString
+\f6\b \expnd0\expndtw0\kerning0
+<Optional>
+\f5\b0 \expnd0\expndtw0\kerning0
+* name;\
+@property (assign, nonatomic) float price;\
+@property (strong, nonatomic) NSNumber
+\f6\b \expnd0\expndtw0\kerning0
+<Optional>
+\f5\b0 \expnd0\expndtw0\kerning0
+* uuid;\
+@end\
+\
+@implementation ProductModel\
+@end\cell \lastrow\row
+\pard\pardeftab720\sl360
+
+\f4\b\fs30 \cf7 \cb1 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\sl420\sa320
+\cf6 \expnd0\expndtw0\kerning0
+Ignored properties (i.e. JSONModel completely ignores them)\
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \tamarb320 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clcbpat1 \clwWidth3400\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf9 \clbrdrl\brdrs\brdrw20\brdrcf9 \clbrdrb\brdrs\brdrw20\brdrcf9 \clbrdrr\brdrs\brdrw20\brdrcf9 \clpadt120 \clpadl260 \clpadb120 \clpadr260 \gaph\cellx4320
+\clvertalc \clcbpat1 \clwWidth11140\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf9 \clbrdrl\brdrs\brdrw20\brdrcf9 \clbrdrb\brdrs\brdrw20\brdrcf9 \clbrdrr\brdrs\brdrw20\brdrcf9 \clpadt120 \clpadl260 \clpadb120 \clpadr260 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl380
+
+\f5\b0\fs28 \cf6 \cb8 \expnd0\expndtw0\kerning0
+\{\
+  "id": "123",\
+  "name": null\
+\}\cell 
+\pard\intbl\itap1\pardeftab720\sl380
+\cf6 \expnd0\expndtw0\kerning0
+@interface ProductModel : JSONModel\
+@property (assign, nonatomic) int id;\
+@property (strong, nonatomic) NSString
+\f6\b \expnd0\expndtw0\kerning0
+<Ignore>
+\f5\b0 \expnd0\expndtw0\kerning0
+* customProperty;\
+@end\
+\
+@implementation ProductModel\
+@end\cell \lastrow\row
+\pard\pardeftab720\sl360
+
+\f4\b\fs30 \cf7 \cb1 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\sl420\sa320
+\cf6 \expnd0\expndtw0\kerning0
+Make all model properties optional (avoid if possible)\
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \tamarb320 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clcbpat1 \clwWidth14540\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf9 \clbrdrl\brdrs\brdrw20\brdrcf9 \clbrdrb\brdrs\brdrw20\brdrcf9 \clbrdrr\brdrs\brdrw20\brdrcf9 \clpadt120 \clpadl260 \clpadb120 \clpadr260 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl380
+
+\f5\b0\fs28 \cf6 \cb8 \expnd0\expndtw0\kerning0
+@implementation ProductModel\
+\pard\intbl\itap1\pardeftab720\sl380
+
+\f6\b \cf6 \expnd0\expndtw0\kerning0
++(BOOL)propertyIsOptional:(NSString*)propertyName\
+\{\
+  return YES;\
+\}
+\f5\b0 \expnd0\expndtw0\kerning0
+\
+@end\cell \lastrow\row
+\pard\pardeftab720\sl360
+
+\f4\b\fs30 \cf7 \cb1 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\sl420\sa320
+\cf6 \expnd0\expndtw0\kerning0
+Lazy convert collection items from dictionaries to models\
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \tamarb320 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clcbpat1 \clwWidth5340\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf9 \clbrdrl\brdrs\brdrw20\brdrcf9 \clbrdrb\brdrs\brdrw20\brdrcf9 \clbrdrr\brdrs\brdrw20\brdrcf9 \clpadt120 \clpadl260 \clpadb120 \clpadr260 \gaph\cellx4320
+\clvertalt \clcbpat1 \clwWidth9200\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf9 \clbrdrl\brdrs\brdrw20\brdrcf9 \clbrdrb\brdrs\brdrw20\brdrcf9 \clbrdrr\brdrs\brdrw20\brdrcf9 \clpadt120 \clpadl260 \clpadb120 \clpadr260 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl380
+
+\f5\b0\fs28 \cf6 \cb8 \expnd0\expndtw0\kerning0
+\{\
+  "order_id": 104,\
+  "total_price": 103.45,\
+  "products" : [\
+    \{\
+      "id": "123",\
+      "name": "Product #1",\
+      "price": 12.95\
+    \},\
+    \{\
+      "id": "137",\
+      "name": "Product #2",\
+      "price": 82.95\
+    \}\
+  ]\
+\}\cell 
+\pard\intbl\itap1\pardeftab720\sl380
+\cf6 \expnd0\expndtw0\kerning0
+@protocol ProductModel\
+@end\
+\
+@interface ProductModel : JSONModel\
+@property (assign, nonatomic) int id;\
+@property (strong, nonatomic) NSString* name;\
+@property (assign, nonatomic) float price;\
+@end\
+\
+@implementation ProductModel\
+@end\
+\
+@interface OrderModel : JSONModel\
+@property (assign, nonatomic) int order_id;\
+@property (assign, nonatomic) float total_price;\
+@property (strong, nonatomic) NSArray<ProductModel, 
+\f6\b \expnd0\expndtw0\kerning0
+ConvertOnDemand
+\f5\b0 \expnd0\expndtw0\kerning0
+>* products;\
+@end\
+\
+@implementation OrderModel\
+@end\cell \lastrow\row
+\pard\pardeftab720\sl360
+
+\f4\b\fs30 \cf7 \cb1 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\sl420\sa320
+\cf6 \expnd0\expndtw0\kerning0
+Using the built-in thin HTTP client\cb11 \expnd0\expndtw0\kerning0
+ 
+\f0 \'bf\'c9\'d2\'d4\'d6\'b1\'bd\'d3\'bd\'f8\'d0\'d0json\'ca\'fd\'be\'dd\'b5\'c4\'c7\'eb\'c7\'f3
+\f4 \cb1 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\sl380
+
+\f5\b0\fs28 \cf12 \cb8 \expnd0\expndtw0\kerning0
+//add extra headers\cf6 \expnd0\expndtw0\kerning0
+\
+[[JSONHTTPClient \cf13 \expnd0\expndtw0\kerning0
+requestHeaders\cf6 \expnd0\expndtw0\kerning0
+] \cf13 \expnd0\expndtw0\kerning0
+setValue:\cf14 \expnd0\expndtw0\kerning0
+@"MySecret"\cf6 \expnd0\expndtw0\kerning0
+ \cf13 \expnd0\expndtw0\kerning0
+forKey:\cf14 \expnd0\expndtw0\kerning0
+@"AuthorizationToken"\cf6 \expnd0\expndtw0\kerning0
+];\
+\
+\cf12 \expnd0\expndtw0\kerning0
+//make post, get requests\cf6 \expnd0\expndtw0\kerning0
+\
+[JSONHTTPClient \cf13 \expnd0\expndtw0\kerning0
+postJSONFromURLWithString:\cf14 \expnd0\expndtw0\kerning0
+@"http://mydomain.com/api"\cf6 \expnd0\expndtw0\kerning0
+\
+                                   \cf13 \expnd0\expndtw0\kerning0
+params:\cf6 \expnd0\expndtw0\kerning0
+@\{\cf14 \expnd0\expndtw0\kerning0
+@"postParam1"\cf6 \expnd0\expndtw0\kerning0
+:\cf14 \expnd0\expndtw0\kerning0
+@"value1"\cf6 \expnd0\expndtw0\kerning0
+\}\
+                               \cf13 \expnd0\expndtw0\kerning0
+completion:\cf6 \expnd0\expndtw0\kerning0
+^(\cf15 \expnd0\expndtw0\kerning0
+id\cf6 \expnd0\expndtw0\kerning0
+ json, JSONModelError *err) \{\
+\
+                                   \cf12 \expnd0\expndtw0\kerning0
+//check err, process json ...\cf6 \expnd0\expndtw0\kerning0
+\
+\
+                               \}];\
+\pard\pardeftab720\sl360
+
+\f4\b\fs30 \cf7 \cb1 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\sl420\sa320
+\cf6 \expnd0\expndtw0\kerning0
+Export model to NSDictionary or to JSON text\
+\pard\pardeftab720\sl380
+
+\f5\b0\fs28 \cf6 \cb8 \expnd0\expndtw0\kerning0
+ProductModel* pm = [[ProductModel \cf13 \expnd0\expndtw0\kerning0
+alloc\cf6 \expnd0\expndtw0\kerning0
+] \cf13 \expnd0\expndtw0\kerning0
+initWithString:\cf6 \expnd0\expndtw0\kerning0
+jsonString \cf13 \expnd0\expndtw0\kerning0
+error:nil\cf6 \expnd0\expndtw0\kerning0
+];\
+pm.name = \cf14 \expnd0\expndtw0\kerning0
+@"Changed Name"\cf6 \expnd0\expndtw0\kerning0
+;\
+\
+\cf12 \expnd0\expndtw0\kerning0
+//convert to dictionary\cf6 \expnd0\expndtw0\kerning0
+\
+\cf13 \expnd0\expndtw0\kerning0
+NSDictionary\cf6 \expnd0\expndtw0\kerning0
+* dict = [pm \cf13 \expnd0\expndtw0\kerning0
+toDictionary\cf6 \expnd0\expndtw0\kerning0
+];\
+\
+\cf12 \expnd0\expndtw0\kerning0
+//convert to text\cf6 \expnd0\expndtw0\kerning0
+\
+\cf13 \expnd0\expndtw0\kerning0
+NSString\cf6 \expnd0\expndtw0\kerning0
+* string = [pm \cf13 \expnd0\expndtw0\kerning0
+toJSONString\cf6 \expnd0\expndtw0\kerning0
+];\
+\pard\pardeftab720\sl360
+
+\f4\b\fs30 \cf7 \cb1 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\sl420\sa320
+\cf6 \expnd0\expndtw0\kerning0
+Custom data transformers\
+\pard\pardeftab720\sl380
+
+\f5\b0\fs28 \cf15 \cb8 \expnd0\expndtw0\kerning0
+@implementation\cf6 \expnd0\expndtw0\kerning0
+ \cf16 \expnd0\expndtw0\kerning0
+JSONValueTransformer\cf6 \expnd0\expndtw0\kerning0
+ (CustomTransformer)\
+\
+- (\cf13 \expnd0\expndtw0\kerning0
+NSDate\cf6 \expnd0\expndtw0\kerning0
+ *)\cf16 \expnd0\expndtw0\kerning0
+NSDateFromNSString:\cf6 \expnd0\expndtw0\kerning0
+(\cf13 \expnd0\expndtw0\kerning0
+NSString\cf6 \expnd0\expndtw0\kerning0
+*)string \{\
+    \cf13 \expnd0\expndtw0\kerning0
+NSDateFormatter\cf6 \expnd0\expndtw0\kerning0
+ *formatter = [[\cf13 \expnd0\expndtw0\kerning0
+NSDateFormatter\cf6 \expnd0\expndtw0\kerning0
+ \cf13 \expnd0\expndtw0\kerning0
+alloc\cf6 \expnd0\expndtw0\kerning0
+] \cf13 \expnd0\expndtw0\kerning0
+init\cf6 \expnd0\expndtw0\kerning0
+];\
+    [formatter \cf13 \expnd0\expndtw0\kerning0
+setDateFormat:\cf6 \expnd0\expndtw0\kerning0
+APIDateFormat];\
+    \cf15 \expnd0\expndtw0\kerning0
+return\cf6 \expnd0\expndtw0\kerning0
+ [formatter \cf13 \expnd0\expndtw0\kerning0
+dateFromString:\cf6 \expnd0\expndtw0\kerning0
+string];\
+\}\
+\
+- (\cf13 \expnd0\expndtw0\kerning0
+NSString\cf6 \expnd0\expndtw0\kerning0
+ *)\cf16 \expnd0\expndtw0\kerning0
+JSONObjectFromNSDate:\cf6 \expnd0\expndtw0\kerning0
+(\cf13 \expnd0\expndtw0\kerning0
+NSDate\cf6 \expnd0\expndtw0\kerning0
+ *)date \{\
+    \cf13 \expnd0\expndtw0\kerning0
+NSDateFormatter\cf6 \expnd0\expndtw0\kerning0
+ *formatter = [[\cf13 \expnd0\expndtw0\kerning0
+NSDateFormatter\cf6 \expnd0\expndtw0\kerning0
+ \cf13 \expnd0\expndtw0\kerning0
+alloc\cf6 \expnd0\expndtw0\kerning0
+] \cf13 \expnd0\expndtw0\kerning0
+init\cf6 \expnd0\expndtw0\kerning0
+];\
+    [formatter \cf13 \expnd0\expndtw0\kerning0
+setDateFormat:\cf6 \expnd0\expndtw0\kerning0
+APIDateFormat];\
+    \cf15 \expnd0\expndtw0\kerning0
+return\cf6 \expnd0\expndtw0\kerning0
+ [formatter \cf13 \expnd0\expndtw0\kerning0
+stringFromDate:\cf6 \expnd0\expndtw0\kerning0
+date];\
+\}\
+\
+\cf15 \expnd0\expndtw0\kerning0
+@end\cf6 \expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl512
+\ls1\ilvl0
+\f4\fs32 \cf6 \cb1 \kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+json validation\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+error handling\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+custom data validation\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+automatic compare and equality features\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+and more.\
+\pard\pardeftab720\sl512\sa320
+\cf6 \cb17 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\sl540
+
+\b\fs54 \cf7 \cb1 \expnd0\expndtw0\kerning0
+\
+}

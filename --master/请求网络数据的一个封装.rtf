@@ -1,0 +1,278 @@
+{\rtf1\ansi\ansicpg936\cocoartf1347\cocoasubrtf570
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset0 AndaleMono;}
+{\colortbl;\red255\green255\blue255;\red228\green124\blue72;\red255\green44\blue56;\red211\green24\blue149;
+\red255\green255\blue0;\red0\green160\blue255;\red255\green128\blue0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab672
+\pard\tx672\pardeftab672\pardirnatural
+
+\f0\fs28 \cf2 \cb0 \CocoaLigature0 #import \cf3 <Foundation/Foundation.h>\cf2 \
+\cf4 @class
+\f1 \cf1  
+\f0 \cf5 CookBookModel
+\f1 \cf1 ;\
+
+\f0 \cf4 @interface
+\f1 \cf1  Manage : 
+\f0 \cf6 NSObject
+\f1 \cf1 \
+
+\f0 \cf4 @property
+\f1 \cf1  
+\f0 \cf6 NSString
+\f1 \cf1  * IP;\
++(
+\f0 \cf4 instancetype
+\f1 \cf1 )shareManager;\
+-(
+\f0 \cf4 void
+\f1 \cf1 )getIP:(
+\f0 \cf4 void
+\f1 \cf1  (^)(
+\f0 \cf6 NSString
+\f1 \cf1  * ip))complitionHandler;\
+-(
+\f0 \cf4 void
+\f1 \cf1 )getCookBookWithUrl:(
+\f0 \cf6 NSString
+\f1 \cf1  * )url andComplitionHandler:(
+\f0 \cf4 void
+\f1 \cf1 (^)(
+\f0 \cf5 CookBookModel
+\f1 \cf1  * model))complitionHandler;\
+-(
+\f0 \cf4 void
+\f1 \cf1 )getDateWithUrl:(
+\f0 \cf6 NSString
+\f1 \cf1  * )url andComplitionHandler:(
+\f0 \cf4 void
+\f1 \cf1 (^) (
+\f0 \cf4 id
+\f1 \cf1  data))complitionHandler;\
+
+\f0 \cf4 @end\
+\
+\
+
+\f1 \cf1 \cb1 \
+\
+
+\f0 \cf2 \cb0 #import \cf3 "Manage.h"\cf2 \
+#import \cf3 "CookBookModel.h"\
+\cf2 \
+\cf4 @implementation
+\f1 \cf1  Manage\
++(
+\f0 \cf4 instancetype
+\f1 \cf1 )shareManager\
+\{\
+    
+\f0 \cf4 static
+\f1 \cf1  
+\f0 \cf5 Manage
+\f1 \cf1  * manager = 
+\f0 \cf4 nil
+\f1 \cf1 ;\
+    
+\f0 \cf4 if
+\f1 \cf1  (manager == 
+\f0 \cf4 nil
+\f1 \cf1 )\
+    \{\
+        manager = [[
+\f0 \cf4 self
+\f1 \cf1  
+\f0 \cf6 alloc
+\f1 \cf1 ]
+\f0 \cf6 init
+\f1 \cf1 ];\
+    \}\
+    
+\f0 \cf4 return
+\f1 \cf1  manager;\
+\}\
+-(
+\f0 \cf4 void
+\f1 \cf1 )getDateWithUrl:(
+\f0 \cf6 NSString
+\f1 \cf1  *)url andComplitionHandler:(
+\f0 \cf4 void
+\f1 \cf1  (^)(
+\f0 \cf4 id
+\f1 \cf1 ))complitionHandler\
+\{\
+    [
+\f0 \cf4 self
+\f1 \cf1  
+\f0 \cf5 requesetWithURL
+\f1 \cf1 :url 
+\f0 \cf5 andComplitionHandler
+\f1 \cf1 :^(
+\f0 \cf4 id
+\f1 \cf1  data) \{\
+        complitionHandler(data);\
+    \}];\
+\}\
+-(
+\f0 \cf4 void
+\f1 \cf1 )getCookBookWithUrl:(
+\f0 \cf6 NSString
+\f1 \cf1  *)url andComplitionHandler:(
+\f0 \cf4 void
+\f1 \cf1  (^)(
+\f0 \cf5 CookBookModel
+\f1 \cf1 * model))complitionHandler\
+\{\
+    [
+\f0 \cf4 self
+\f1 \cf1  
+\f0 \cf5 requesetWithURL
+\f1 \cf1 :url 
+\f0 \cf5 andComplitionHandler
+\f1 \cf1 :^(
+\f0 \cf4 id
+\f1 \cf1  data) \{\
+        
+\f0 \cf6 NSDictionary
+\f1 \cf1  * dict = [
+\f0 \cf6 NSJSONSerialization
+\f1 \cf1  
+\f0 \cf6 JSONObjectWithData
+\f1 \cf1 :data 
+\f0 \cf6 options
+\f1 \cf1 :
+\f0 \cf6 NSJSONReadingMutableContainers
+\f1 \cf1  
+\f0 \cf6 error
+\f1 \cf1 :
+\f0 \cf4 nil
+\f1 \cf1 ];\
+        \
+        
+\f0 \cf5 CookBookModel
+\f1 \cf1  * CBMdata = [[
+\f0 \cf5 CookBookModel
+\f1 \cf1  
+\f0 \cf6 alloc
+\f1 \cf1 ]
+\f0 \cf5 initWithDictionary
+\f1 \cf1 :dict 
+\f0 \cf5 error
+\f1 \cf1 :
+\f0 \cf4 nil
+\f1 \cf1 ];\
+        \
+\
+        complitionHandler(CBMdata);\
+        \
+        \
+    \}];\
+\}\
+-(
+\f0 \cf4 void
+\f1 \cf1 )getIP:(
+\f0 \cf4 void
+\f1 \cf1  (^)(
+\f0 \cf6 NSString
+\f1 \cf1  * ip))complitionHandler\
+\{\
+\
+    [
+\f0 \cf4 self
+\f1 \cf1  
+\f0 \cf5 requesetWithURL
+\f1 \cf1 :
+\f0 \cf3 @"http://client.izhangchu.com/get-videoIP.html"
+\f1 \cf1  
+\f0 \cf5 andComplitionHandler
+\f1 \cf1 :^(
+\f0 \cf4 __autoreleasing
+\f1 \cf1  
+\f0 \cf4 id
+\f1 \cf1  data)\{\
+        
+\f0 \cf6 NSString
+\f1 \cf1  * ip = [[
+\f0 \cf6 NSString
+\f1 \cf1  
+\f0 \cf6 alloc
+\f1 \cf1 ]
+\f0 \cf6 initWithData
+\f1 \cf1 :data 
+\f0 \cf6 encoding
+\f1 \cf1 :
+\f0 \cf6 NSUTF8StringEncoding
+\f1 \cf1 ];\
+        
+\f0 \cf4 self
+\f1 \cf1 .
+\f0 \cf7 IP
+\f1 \cf1  = ip;\
+     complitionHandler(ip);\
+    \}];\
+   \
+\
+\}\
+-(
+\f0 \cf4 void
+\f1 \cf1 )requesetWithURL:(
+\f0 \cf6 NSString
+\f1 \cf1  * )url andComplitionHandler:(
+\f0 \cf4 void
+\f1 \cf1  (^)(
+\f0 \cf4 id
+\f1 \cf1  data))complitionHandler\
+\{\
+    
+\f0 \cf5 AFHTTPSessionManager
+\f1 \cf1  * manager = [[
+\f0 \cf5 AFHTTPSessionManager
+\f1 \cf1  
+\f0 \cf6 alloc
+\f1 \cf1 ]
+\f0 \cf6 init
+\f1 \cf1 ];\
+    \
+    manager.
+\f0 \cf7 responseSerializer
+\f1 \cf1  = [
+\f0 \cf5 AFHTTPResponseSerializer
+\f1 \cf1  
+\f0 \cf5 serializer
+\f1 \cf1 ];\
+    \
+    [manager 
+\f0 \cf5 GET
+\f1 \cf1 :url 
+\f0 \cf5 parameters
+\f1 \cf1 :
+\f0 \cf4 nil
+\f1 \cf1  
+\f0 \cf5 success
+\f1 \cf1 :^(
+\f0 \cf6 NSURLSessionDataTask
+\f1 \cf1  *task, 
+\f0 \cf4 id
+\f1 \cf1  responseObject) \{\
+        
+\f0 \cf6 NSLog
+\f1 \cf1 (
+\f0 \cf3 @"%@"
+\f1 \cf1 ,responseObject);\
+        \
+        complitionHandler(responseObject);\
+        \
+    \} 
+\f0 \cf5 failure
+\f1 \cf1 :^(
+\f0 \cf6 NSURLSessionDataTask
+\f1 \cf1  *task, 
+\f0 \cf6 NSError
+\f1 \cf1  *error) \{\
+        \
+    \}];\
+\}\
+
+\f0 \cf4 @end
+\f1 \cf1 \
+}

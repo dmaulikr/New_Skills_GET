@@ -1,0 +1,206 @@
+{\rtf1\ansi\ansicpg936\cocoartf1347\cocoasubrtf570
+{\fonttbl\f0\fnil\fcharset134 STHeitiSC-Light;\f1\fswiss\fcharset0 Helvetica;\f2\fnil\fcharset0 HelveticaNeue;
+\f3\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;\red255\green39\blue18;\red26\green26\blue26;\red243\green235\blue0;
+\red38\green38\blue38;\red54\green54\blue54;\red209\green232\blue225;\red15\green112\blue1;\red0\green0\blue255;
+\red107\green0\blue109;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sl293
+
+\f0\fs72 \cf0 \cb2 \expnd0\expndtw0\kerning0
+\'d2\'fe\'b2\'d8\'d7\'b4\'cc\'ac\'c0\'b8
+\f1 \
+\pard\pardeftab720\sl390
+
+\f2\fs30 \cf3 \cb4 \expnd0\expndtw0\kerning0
+You should add this value to plist: "
+\b \expnd0\expndtw0\kerning0
+View controller-based status bar appearance
+\b0 \expnd0\expndtw0\kerning0
+" and set it to "
+\b \expnd0\expndtw0\kerning0
+NO
+\b0 \expnd0\expndtw0\kerning0
+".\cb1 \expnd0\expndtw0\kerning0
+\
+
+\f1\fs26 \cf0 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720
+
+\fs32 \cf5 \expnd0\expndtw0\kerning0
+iOS6
+\f0 \'ba\'cd
+\f1 iOS7
+\f0 \'d4\'da\'d2\'fe\'b2\'d8
+\f1  Status Bar 
+\f0 \'c8\'fd\'d6\'d6\'b7\'bd\'ca\'bd\'b1\'c8\'bd\'cf
+\f1 :\
+Storyboard\
+
+\f0 \'bd\'e7\'c3\'e6\'c9\'cf\'d1\'a1\'d6\'d0
+\f1 UIViewController,
+\f0 \'d7\'ee\'d3\'d2\'b1\'df
+\f1 Simulated Metrics
+\f0 \'d5\'d2\'b5\'bd
+\f1  Status Bar 
+\f0 \'c9\'e8\'b6\'a8\'b3\'c9
+\f1  None\
+ViewController\
+iOS 6
+\f0 \'cd\'a8\'b9\'fd
+\f1 [UIApplication sharedApplication] 
+\f0 \'c8\'a1\'b5\'c3
+\f1 app
+\f0 \'b5\'c4\'b5\'a5\'c0\'fd\'a3\'ac\'c8\'bb\'ba\'f3\'b5\'f7\'d3\'c3
+\f1 setStatusBarHidden
+\f0 \'b7\'bd\'b7\'a8\'d2\'fe\'b2\'d8
+\f1  Status Bar
+\f0 \'a1\'a3
+\f1 \
+iOS 7\
+Info.plist\
+
+\f0\fs36 \cb2 \'b2\'bb\'b5\'ab\'d2\'aa\'d4\'da
+\f1 Info.plist
+\f0 \'d6\'d0\'d4\'f6\'bc\'d3
+\f1  Status bar is initially hiddenStatus bar is initially hidden
+\f0 \'d2\'bb\'d0\'d0
+\f1 ,
+\f0 \'d1\'a1\'d4\'f1\'ce\'aa
+\f1  YES,\
+
+\f0 \'bb\'b9\'d0\'e8\'d4\'f6\'bc\'d3
+\f1  View controller-based status bar appearance 
+\f0 \'d2\'bb\'d0\'d0
+\f1 ,
+\f0 \'d1\'a1\'d4\'f1\'ce\'aa
+\f1  NO
+\f0 \'a1\'a3
+\f1 \
+\pard\pardeftab720\sl390
+
+\f2 \cf3 \expnd0\expndtw0\kerning0
+You should add this value to plist: "
+\b \expnd0\expndtw0\kerning0
+View controller-based status bar appearance
+\b0 \expnd0\expndtw0\kerning0
+" and set it to "
+\b \expnd0\expndtw0\kerning0
+NO
+\b0 \expnd0\expndtw0\kerning0
+".
+\f1 \cf5 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\sl420
+
+\f3\fs28 \cf6 \cb7 \expnd0\expndtw0\kerning0
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *\cf0 \expnd0\expndtw0\kerning0
+)launchOptions \{ \
+\pard\pardeftab720\sl420
+\cf8 \expnd0\expndtw0\kerning0
+// Override point for customization afterapplication launch.\cf6 \expnd0\expndtw0\kerning0
+ \
+\pard\pardeftab720\sl420
+\cf0 \expnd0\expndtw0\kerning0
+[application setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade]; \
+\pard\pardeftab720\sl420
+\cf8 \expnd0\expndtw0\kerning0
+// Add the view controller's view to the window and display.\cf6 \expnd0\expndtw0\kerning0
+ \
+\pard\pardeftab720\sl420
+\cf0 \expnd0\expndtw0\kerning0
+[self.window addSubview:viewController.view]; [self.window makeKeyAndVisible]; \cf9 \expnd0\expndtw0\kerning0
+return\cf0 \expnd0\expndtw0\kerning0
+ YES; \}\
+\pard\pardeftab720\sl420\sa100
+
+\f0 \cf6 \expnd0\expndtw0\kerning0
+\'b6\'fe\'a1\'a2
+\f1 APP
+\f0 \'c6\'f4\'b6\'af\'ca\'b1\'d2\'fe\'b2\'d8\'d7\'b4\'cc\'ac\'c0\'b8
+\f1 \
+
+\f0 \'d3\'c3\'c1\'cb\'c9\'cf\'c3\'e6\'b5\'c4\'b7\'bd\'b7\'a8\'d6\'ae\'ba\'f3\'a3\'ac
+\f1 App
+\f0 \'d4\'da\'d4\'cb\'d0\'d0\'b9\'fd\'b3\'cc\'d6\'d0\'a3\'ac\'d7\'b4\'cc\'ac\'c0\'b8\'c8\'b7\'ca\'b5\'b1\'bb\'d2\'fe\'b2\'d8\'c6\'f0\'c0\'b4\'c1\'cb\'a3\'ac\'b5\'ab\'ca\'c7\'ce\'d2\'b7\'a2\'cf\'d6\'d4\'da
+\f1 App
+\f0 \'c6\'f4\'b6\'af\'b5\'c4\'c4\'c7\'b8\'f6\'cb\'b2\'bc\'e4\'a3\'ac\'bb\'b9\'ca\'c7\'bf\'c9\'d2\'d4\'bf\'b4\'b5\'bd\'d7\'b4\'cc\'ac\'c0\'b8\'b5\'c4\'a3\'ac\'c8\'bb\'ba\'f3\'d2\'bb
+\f1  
+\f0 \'c9\'c1\'bc\'b4\'b9\'fd\'a1\'a3\'cb\'e4\'c8\'bb\'ca\'b1\'bc\'e4\'ba\'dc\'b6\'cc\'d4\'dd\'a3\'ac\'bf\'b4\'d7\'c5\'bb\'b9\'ca\'c7\'ba\'dc\'b2\'bb\'ca\'e6\'b7\'fe\'a1\'a3\'ce\'aa\'c1\'cb\'c8\'c3\'d7\'b4\'cc\'ac\'c0\'b8\'b4\'d3\'c6\'f4\'b6\'af\'b5\'c4\'ca\'b1\'ba\'f2\'be\'cd\'d2\'fe\'b2\'d8\'c6\'f0\'c0\'b4\'a3\'ac\'bf\'c9\'d2\'d4\'d0\'de\'b8\'c4
+\f1 -Info.plist
+\f0 \'a1\'a3\'c8\'e7
+\f1  
+\f0 \'b9\'fb\'d4\'da
+\f1 Xcode
+\f0 \'d6\'d0\'d0\'de\'b8\'c4\'a3\'ac\'d4\'da\'b8\'f9\'bd\'e1\'b5\'e3
+\f1 Infomation Property List
+\f0 \'cf\'c2\'c3\'e6\'d0\'c2\'bc\'d3\'d2\'bb\'cf\'ee
+\f1 \'93Status bar is initially hidden\'94
+\f0 \'a3\'a8\'b2\'bb\'d3\'c3\'ca\'d6\'b6\'af\'ca\'e4\'c8\'eb\'a3\'ac\'bf\'c9\'d2\'d4\'d6\'b1\'bd\'d3\'d4\'da\'cf\'c2\'c0\'ad\'b2\'cb\'b5\'a5\'d6\'d0\'d1\'a1\'c8\'a1\'a3\'a9\'a1\'a3\'d5\'e2\'ca\'c7\'b8\'f6
+\f1 BOOL
+\f0 \'c0\'e0\'d0\'cd\'b5\'c4\'bc\'fc\'d6\'b5\'a3\'ac\'bd\'ab
+\f1 Value
+\f0 \'c0\'b8\'d6\'d0\'b5\'c4\'b8\'b4\'d1\'a1\'bf\'f2\'b9\'b4\'d1\'a1\'c9\'cf\'bc\'b4\'bf\'c9\'a1\'a3
+\f1 \
+\'a0
+\f0 \'c8\'fd\'a1\'a2\'d4\'da\'d4\'cb\'d0\'d0\'b3\'cc\'d0\'f2\'b9\'fd\'b3\'cc\'d6\'d0\'d2\'fe\'b2\'d8\'d7\'b4\'cc\'ac\'c0\'b8
+\f1 \
+\pard\pardeftab720\sl420
+
+\f3 \cf6 \expnd0\expndtw0\kerning0
+[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];\cb1 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\sl420\sa100
+
+\f1 \cf6 \cb7 \expnd0\expndtw0\kerning0
+\'a0
+\f0 \'ca\'b5\'c0\'fd\'a3\'ba
+\f1 \
+\pard\pardeftab720\sl420
+
+\f3 \cf6 \expnd0\expndtw0\kerning0
+- (\cf9 \expnd0\expndtw0\kerning0
+void\cf0 \expnd0\expndtw0\kerning0
+)viewDidLoad \{ [super viewDidLoad]; \cf8 \expnd0\expndtw0\kerning0
+// Do any additional setup after loading the view, typically from a nib.\cf6 \expnd0\expndtw0\kerning0
+ \cf0 \expnd0\expndtw0\kerning0
+flag \cf6 \expnd0\expndtw0\kerning0
+= \cf10 \expnd0\expndtw0\kerning0
+0\cf0 \expnd0\expndtw0\kerning0
+; UIView \cf6 \expnd0\expndtw0\kerning0
+*view =\cf0 \expnd0\expndtw0\kerning0
+ [[UIControl alloc]init]; view.backgroundColor \cf6 \expnd0\expndtw0\kerning0
+=\cf0 \expnd0\expndtw0\kerning0
+ [UIColor redColor]; [(UIControl \cf6 \expnd0\expndtw0\kerning0
+*\cf0 \expnd0\expndtw0\kerning0
+)view addTarget:self action:@selector(touchpicture:) forControlEvents:UIControlEventTouchUpInside]; [view setFrame:CGRectMake(\cf10 \expnd0\expndtw0\kerning0
+0\cf6 \expnd0\expndtw0\kerning0
+, \cf10 \expnd0\expndtw0\kerning0
+0\cf6 \expnd0\expndtw0\kerning0
+,\cf10 \expnd0\expndtw0\kerning0
+320\cf6 \expnd0\expndtw0\kerning0
+, \cf10 \expnd0\expndtw0\kerning0
+480\cf0 \expnd0\expndtw0\kerning0
+)]; [self.view addSubview:view]; \}\cf6 \cb1 \expnd0\expndtw0\kerning0
+\
+\cb7 \expnd0\expndtw0\kerning0
+-(\cf9 \expnd0\expndtw0\kerning0
+void\cf6 \expnd0\expndtw0\kerning0
+)touchpicture:(UIView *\cf0 \expnd0\expndtw0\kerning0
+)sender\{ \cf9 \expnd0\expndtw0\kerning0
+if\cf6 \expnd0\expndtw0\kerning0
+ (flag == \cf10 \expnd0\expndtw0\kerning0
+0\cf0 \expnd0\expndtw0\kerning0
+) \{ [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide]; flag \cf6 \expnd0\expndtw0\kerning0
+= \cf10 \expnd0\expndtw0\kerning0
+1\cf0 \expnd0\expndtw0\kerning0
+; \}\cf9 \expnd0\expndtw0\kerning0
+else\cf0 \expnd0\expndtw0\kerning0
+ \{ [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide]; flag \cf6 \expnd0\expndtw0\kerning0
+= \cf10 \expnd0\expndtw0\kerning0
+0\cf0 \expnd0\expndtw0\kerning0
+; \} \}\cf6 \expnd0\expndtw0\kerning0
+\
+}

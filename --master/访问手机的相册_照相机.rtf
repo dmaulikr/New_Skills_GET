@@ -1,0 +1,231 @@
+{\rtf1\ansi\ansicpg936\cocoartf1343\cocoasubrtf140
+{\fonttbl\f0\fnil\fcharset134 STHeitiSC-Light;\f1\fnil\fcharset0 Menlo-Regular;\f2\fmodern\fcharset0 Courier;
+}
+{\colortbl;\red255\green255\blue255;\red255\green173\blue23;\red170\green13\blue145;\red255\green39\blue18;
+\red63\green110\blue116;\red59\green16\blue143;\red92\green38\blue153;\red0\green116\blue0;\red46\green13\blue110;
+\red38\green38\blue38;\red254\green73\blue64;\red196\green26\blue22;\red28\green0\blue207;\red100\green56\blue32;
+}
+\paperw11900\paperh16840\margl1440\margr1440\vieww14660\viewh12280\viewkind0
+\deftab674
+\pard\tx674\pardeftab674\pardirnatural
+
+\f0\fs28 \cf0 \CocoaLigature0 \'ca\'d7\'cf\'c8\'c8\'c3\'b5\'b1\'c7\'b0\'b5\'c4ciewcontroll
+\f1 er
+\f0 \'bc\'cc\'b3\'d0\'d0\'ad\'d2\'e9
+\f1 \
+<\cf2 UIImagePickerControllerDelegate\cf0 ,\cf2 UINavigationBarDelegate\cf0 >\
+\
+\cf3 @interface\cf0  LoginViewController : \cf2 UIViewController\cf0  <\cf2 UIImagePickerControllerDelegate\cf0 ,\cf2 UINavigationControllerDelegate\cf0 >\
+\
+
+\f0\fs36 \cb4 \'bd\'f8\'c8\'eb\'cf\'e0\'b2\'e1
+\f1\fs28 \cb1 \
+\{\
+ \cf5 _pickerController\cf0  = [[\cf2 UIImagePickerController\cf0  \cf6 alloc\cf0 ]\cf6 init\cf0 ];\
+\
+ \cf5 _pickerController\cf0 .\cf7 delegate\cf0  =\cf3 self\cf0 ;\
+   \cb4  
+\f0 \'d5\'e2\'b8\'f6\'ca\'f4\'d0\'d4\'bf\'d8\'d6\'c6\'d4\'da\'d1\'a1\'d4\'f1\'cd\'bc\'c6\'ac\'ba\'f3\'ca\'c7\'b7\'f1\'bb\'e1\'bd\'f8\'c8\'eb\'b5\'bd\'d2\'bb\'b8\'f6\'bc\'f2\'b5\'a5\'b5\'c4\'cf\'b5\'cd\'b3\'d7\'d4\'b4\'f8\'b5\'c4\'b1\'e0\'bc\'ad\'c4\'a3\'ca\'bd\'d6\'d0
+\f1 \cb1 \
+\cf5 _pickerController\cf0 .\cf7 allowsEditing\cf0  =\cf3 YES\cf0 ;\
+\
+ [\cf3 self\cf0  \cf6 presentViewController\cf0 :\cf5 _pickerController\cf0  \cf6 animated\cf0 :\cf3 YES\cf0  \cf6 completion\cf0 :^\{\
+ \}];\
+\
+\
+
+\f0\fs48 \cb4 \'bd\'f8\'c8\'eb\'cf\'e0\'bb\'fa
+\fs28 \cb1 \
+\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f1 \cf8 //
+\f0 \'cf\'c8\'c9\'e8\'b6\'a8
+\f1 sourceType
+\f0 \'ce\'aa\'cf\'e0\'bb\'fa\'a3\'ac\'c8\'bb\'ba\'f3\'c5\'d0\'b6\'cf\'cf\'e0\'bb\'fa\'ca\'c7\'b7\'f1\'bf\'c9\'d3\'c3\'a3\'a8
+\f1 ipod
+\f0 \'a3\'a9\'c3\'bb\'cf\'e0\'bb\'fa\'a3\'ac\'b2\'bb\'bf\'c9\'d3\'c3\'bd\'ab
+\f1 sourceType
+\f0 \'c9\'e8\'b6\'a8\'ce\'aa\'cf\'e0\'c6\'ac\'bf\'e2
+\f1 \cf0 \
+    \cf7 UIImagePickerControllerSourceType\cf0  sourceType = \cf9 UIImagePickerControllerSourceTypeCamera\cf0 ;\
+    \cf8 //    if (![UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera]) \{\cf0 \
+    \cf8 //        sourceType = UIImagePickerControllerSourceTypePhotoLibrary;\cf0 \
+    \cf8 //    \}\
+\pard\tx674\pardeftab674\pardirnatural
+\cf0 \
+    \cf8 //sourceType = UIImagePickerControllerSourceTypeCamera; //
+\f0 \'d5\'d5\'cf\'e0\'bb\'fa
+\f1 \cf0 \
+    \cf8 //sourceType = UIImagePickerControllerSourceTypePhotoLibrary; //
+\f0 \'cd\'bc\'c6\'ac\'bf\'e2
+\f1 \cf0 \
+    \cf8 //sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum; //
+\f0 \'b1\'a3\'b4\'e6\'b5\'c4\'cf\'e0\'c6\'ac
+\f1 \cf0 \
+    \cf2 UIImagePickerController\cf0  *picker = [[\cf2 UIImagePickerController\cf0  \cf6 alloc\cf0 ] \cf6 init\cf0 ];\cf8 //
+\f0 \'b3\'f5\'ca\'bc\'bb\'af
+\f1 \cf0 \
+    picker.\cf7 delegate\cf0  = \cf3 self\cf0 ;\
+    picker.\cf7 allowsEditing\cf0  = \cf3 YES\cf0 ;\cf8 //
+\f0 \'c9\'e8\'d6\'c3\'bf\'c9\'b1\'e0\'bc\'ad
+\f1 \cf0 \
+    picker.\cf7 sourceType\cf0  = sourceType;\
+   \
+    \
+    [\cf3 self\cf0  \cf6 presentViewController\cf0 :picker \cf6 animated\cf0 :\cf3 YES\cf0  \cf6 completion\cf0 :\cf3 nil\cf0 ];  \cf8 //
+\f0 \'bd\'f8\'c8\'eb\'d5\'d5\'cf\'e0\'bd\'e7\'c3\'e6
+\f1 \cf0 \
+
+\f0 \'d5\'e2\'d1\'f9\'b5\'af\'b3\'f6\'b7\'c3\'ce\'ca\'cf\'e0\'b2\'e1\'b5\'c4\'d2\'b3\'c3\'e6
+\f1 \
+
+\f0 \'d0\'e8\'d2\'aa\'cd\'ea\'b3\'c9\'d0\'ad\'d2\'e9\'c0\'ef\'b5\'c4\'ba\'af\'ca\'fd\'a3\'ac\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f2 \cf10 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+
+\f0 \'d5\'e2\'bc\'b8\'b8\'f6\'d6\'b5\'ca\'b1\'d3\'c3\'c0\'b4\'bb\'f1\'c8\'a1
+\f2 info
+\f0 \'d6\'d0\'b5\'c4\'cf\'e0\'b9\'d8\'d0\'c5\'cf\'a2
+\f2 \
+
+\f1 \cf0 \kerning1\expnd0\expndtw0 \CocoaLigature0     UIKIT_EXTERN NSString *\cf3 const\cf0  UIImagePickerControllerMediaType;      \cf8 // an NSString (UTI, i.e. kUTTypeImage)\cf0 \
+    UIKIT_EXTERN NSString *\cf3 const\cf0  UIImagePickerControllerOriginalImage;
+\f0 \'d4\'ad\'cd\'bc
+\f1   \cf8 // a UIImage\cf0 \
+    UIKIT_EXTERN NSString *\cf3 const\cf0  UIImagePickerControllerEditedImage;  
+\f0 \'b1\'e0\'bc\'ad\'ba\'f3\'b5\'c4\'cd\'bc
+\f1   \cf8 // a UIImage\cf0 \
+    UIKIT_EXTERN NSString *\cf3 const\cf0  UIImagePickerControllerCropRect; 
+\f0 \'b1\'e0\'bc\'ad\'ca\'a3\'cf\'c2\'b5\'c4\'cd\'bc
+\f1       \cf8 // an NSValue (CGRect)\cf0 \
+    UIKIT_EXTERN NSString *\cf3 const\cf0  UIImagePickerControllerMediaURL;       \cf8 // an NSURL\cf0 \
+    UIKIT_EXTERN NSString *\cf3 const\cf0  UIImagePickerControllerReferenceURL        \
+    UIKIT_EXTERN NSString *\cf3 const\cf0  UIImagePickerControllerMediaMetadata       \
+
+\f2 \cf10 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\
+\
+\
+
+\f0 \'d0\'e8\'d2\'aa\'cd\'ea\'b3\'c9\'b5\'c4\'bb\'d8\'b5\'f7\'ba\'af\'ca\'fd\'a3\'ac\
+\
+\cb11 \expnd0\expndtw0\kerning0
+\'d4\'da\'d1\'a1\'c8\'a1\'ba\'f3\'b5\'f7\'d3\'c3
+\f2 \cb1 \expnd0\expndtw0\kerning0
+\
+
+\f1 \cf0 \kerning1\expnd0\expndtw0 \CocoaLigature0 -(\cf3 void\cf0 )imagePickerController:(\cf2 UIImagePickerController\cf0  *)picker didFinishPickingMediaWithInfo:(\cf2 NSDictionary\cf0  *)info\
+\{\
+\
+    \cf2 UIImage\cf0  * image = [info \cf6 objectForKey\cf0 :\cf12 @"UIImagePickerControllerEditedImage"\cf0 ];\
+    \
+     \cf5 _imgveiw\cf0 .\cf7 image\cf0  = image;\
+    \
+\pard\tx674\pardeftab674\pardirnatural
+\cf0     \cf6 UIImageWriteToSavedPhotosAlbum\cf0 (image,\cf3 self\cf0 , \cf3 nil\cf0 , \cf3 nil\cf0 );\
+\pard\tx674\pardeftab674\pardirnatural
+\cf0 \
+    [picker \cf6 dismissViewControllerAnimated\cf0 :\cf3 YES\cf0  \cf6 completion\cf0 :^\{\
+    \}];\
+\}\
+
+\f0 \'d4\'da\'b5\'e3\'bb\'f7\'c8\'a1\'cf\'fb\'b0\'b4\'c5\'a5\'ca\'bd\'b5\'f7\'d3\'c3
+\f1 \
+- (\cf3 void\cf0 )imagePickerControllerDidCancel:(\cf2 UIImagePickerController\cf0  *)picker\
+\{\
+    \cf6 NSLog\cf0 (\cf12 @"%s"\cf0 ,__func__);\
+    [picker \cf6 dismissViewControllerAnimated\cf0 :\cf3 YES\cf0  \cf6 completion\cf0 :^\{\
+    \}];\
+\}\
+\
+\
+\
+\
+\cb4                                                             \
+\
+\
+\cb1 \
+\cf3 @interface\cf0  UIImagePickerController : \cf2 UINavigationController\cf0  <\cf2 NSCoding\cf0 > \{\
+  \cf3 @private\cf0 \
+    \cf7 UIImagePickerControllerSourceType\cf0  _sourceType;\
+    \cf3 id\cf0                                 _image;\
+    \cf7 CGRect\cf0                             _cropRect;\
+    \cf2 NSArray\cf0                           *_mediaTypes;\
+    \cf2 NSMutableDictionary\cf0               *_properties;\
+    \cf3 int\cf0                                _previousStatusBarStyle;\
+    \cf3 BOOL\cf0                               _previousStatusBarHidden;\
+    \
+    \cf3 struct\cf0  \{\
+        \cf3 unsigned\cf0  \cf3 int\cf0  visible:\cf13 1\cf0 ;\
+        \cf3 unsigned\cf0  \cf3 int\cf0  isCleaningUp:\cf13 1\cf0 ;\
+        \cf3 unsigned\cf0  \cf3 int\cf0  savingOptions:\cf13 3\cf0 ;\
+        \cf3 unsigned\cf0  \cf3 int\cf0  didRevertStatusBar:\cf13 1\cf0 ;\
+    \} _imagePickerFlags;\
+\}\
+\
++ (\cf3 BOOL\cf0 )isSourceTypeAvailable:(\cf7 UIImagePickerControllerSourceType\cf0 )sourceType;                 \cf8 // returns YES if source is available (i.e. camera present)\cf0 \
++ (\cf2 NSArray\cf0  *)availableMediaTypesForSourceType:(\cf7 UIImagePickerControllerSourceType\cf0 )sourceType; \cf8 // returns array of available media types (i.e. kUTTypeImage)\cf0 \
+\
++ (\cf3 BOOL\cf0 )isCameraDeviceAvailable:(\cf7 UIImagePickerControllerCameraDevice\cf0 )cameraDevice                   \cf14 NS_AVAILABLE_IOS\cf0 (\cf13 4\cf0 _0); \cf8 // returns YES if camera device is available \cf0 \
++ (\cf3 BOOL\cf0 )isFlashAvailableForCameraDevice:(\cf7 UIImagePickerControllerCameraDevice\cf0 )cameraDevice           \cf14 NS_AVAILABLE_IOS\cf0 (\cf13 4\cf0 _0); \cf8 // returns YES if camera device supports flash and torch.\cf0 \
++ (\cf2 NSArray\cf0  *)availableCaptureModesForCameraDevice:(\cf7 UIImagePickerControllerCameraDevice\cf0 )cameraDevice \cf14 NS_AVAILABLE_IOS\cf0 (\cf13 4\cf0 _0); \cf8 // returns array of NSNumbers (UIImagePickerControllerCameraCaptureMode)\cf0 \
+\
+\cf3 @property\cf0 (\cf3 nonatomic\cf0 ,\cf3 assign\cf0 )    \cf3 id\cf0  <\cf2 UINavigationControllerDelegate\cf0 , \cf2 UIImagePickerControllerDelegate\cf0 > delegate;\
+\
+\cf3 @property\cf0 (\cf3 nonatomic\cf0 )           \cf7 UIImagePickerControllerSourceType\cf0      sourceType;                                                        \cf8 // default value is UIImagePickerControllerSourceTypePhotoLibrary.\cf0 \
+\cf3 @property\cf0 (\cf3 nonatomic\cf0 ,\cf3 copy\cf0 )      \cf2 NSArray\cf0                               *mediaTypes;  \
+    \cf8 // default value is an array containing kUTTypeImage.\cf0 \
+\cf3 @property\cf0 (\cf3 nonatomic\cf0 )           \cf3 BOOL\cf0                                   allowsEditing \cf14 NS_AVAILABLE_IOS\cf0 (\cf13 3\cf0 _1);     \cf8 // replacement for -allowsImageEditing; default value is NO.\cf0 \
+\cf3 @property\cf0 (\cf3 nonatomic\cf0 )           \cf3 BOOL\cf0                                   allowsImageEditing \cf14 NS_DEPRECATED_IOS\cf0 (\cf13 2\cf0 _0, \cf13 3\cf0 _1);\
+\
+\cf8 // video properties apply only if mediaTypes includes kUTTypeMovie\cf0 \
+\cf3 @property\cf0 (\cf3 nonatomic\cf0 )           \cf7 NSTimeInterval\cf0                         videoMaximumDuration \cf14 NS_AVAILABLE_IOS\cf0 (\cf13 3\cf0 _1); \cf8 // default value is 10 minutes.\cf0 \
+\cf3 @property\cf0 (\cf3 nonatomic\cf0 )           \cf7 UIImagePickerControllerQualityType\cf0     videoQuality \cf14 NS_AVAILABLE_IOS\cf0 (\cf13 3\cf0 _1);         \cf8 // default value is UIImagePickerControllerQualityTypeMedium. If the cameraDevice does not support the videoQuality, it will use the default value.\cf0 \
+\
+\cf8 // camera additions available only if sourceType is UIImagePickerControllerSourceTypeCamera.\cf0 \
+\cf3 @property\cf0 (\cf3 nonatomic\cf0 )           \cf3 BOOL\cf0                                   showsCameraControls \cf14 NS_AVAILABLE_IOS\cf0 (\cf13 3\cf0 _1);   \cf8 // set to NO to hide all standard camera UI. default is YES\cf0 \
+\cf3 @property\cf0 (\cf3 nonatomic\cf0 ,\cf3 retain\cf0 )    \cf2 UIView\cf0                                 *cameraOverlayView  \cf14 NS_AVAILABLE_IOS\cf0 (\cf13 3\cf0 _1);   \cf8 // set a view to overlay the preview view.\cf0 \
+\cf3 @property\cf0 (\cf3 nonatomic\cf0 )           \cf7 CGAffineTransform\cf0                      cameraViewTransform \cf14 NS_AVAILABLE_IOS\cf0 (\cf13 3\cf0 _1);   \cf8 // set the transform of the preview view.\cf0 \
+\
+- (\cf3 void\cf0 )takePicture \cf14 NS_AVAILABLE_IOS\cf0 (\cf13 3\cf0 _1);                                                   \
+\cf8 // programatically initiates still image capture. ignored if image capture is in-flight.\cf0 \
+\cf8 // clients can initiate additional captures after receiving -imagePickerController:didFinishPickingMediaWithInfo: delegate callback\cf0 \
+\
+- (\cf3 BOOL\cf0 )startVideoCapture \cf14 NS_AVAILABLE_IOS\cf0 (\cf13 4\cf0 _0);\
+- (\cf3 void\cf0 )stopVideoCapture  \cf14 NS_AVAILABLE_IOS\cf0 (\cf13 4\cf0 _0);\
+\
+\cf3 @property\cf0 (\cf3 nonatomic\cf0 ) \cf7 UIImagePickerControllerCameraCaptureMode\cf0  cameraCaptureMode \cf14 NS_AVAILABLE_IOS\cf0 (\cf13 4\cf0 _0); \cf8 // default is UIImagePickerControllerCameraCaptureModePhoto\cf0 \
+\cf3 @property\cf0 (\cf3 nonatomic\cf0 ) \cf7 UIImagePickerControllerCameraDevice\cf0       cameraDevice      \cf14 NS_AVAILABLE_IOS\cf0 (\cf13 4\cf0 _0); \cf8 // default is UIImagePickerControllerCameraDeviceRear\cf0 \
+\cf3 @property\cf0 (\cf3 nonatomic\cf0 ) \cf7 UIImagePickerControllerCameraFlashMode\cf0    cameraFlashMode   \cf14 NS_AVAILABLE_IOS\cf0 (\cf13 4\cf0 _0); \cf8 // default is UIImagePickerControllerCameraFlashModeAuto. \cf0 \
+\cf8 // cameraFlashMode controls the still-image flash when cameraCaptureMode is Photo. cameraFlashMode controls the video torch when cameraCaptureMode is Video.\cf0 \
+\
+\cf3 @end\cf0 \
+\
+\cf3 @protocol\cf0  UIImagePickerControllerDelegate<\cf2 NSObject\cf0 >\
+\cf3 @optional\cf0 \
+\cf8 // The picker does not dismiss itself; the client dismisses it in these callbacks.\cf0 \
+\cf8 // The delegate will receive one or the other, but not both, depending whether the user\cf0 \
+\cf8 // confirms or cancels.\cf0 \
+- (\cf3 void\cf0 )imagePickerController:(\cf2 UIImagePickerController\cf0  *)picker didFinishPickingImage:(\cf2 UIImage\cf0  *)image editingInfo:(\cf2 NSDictionary\cf0  *)editingInfo \cf14 NS_DEPRECATED_IOS\cf0 (\cf13 2\cf0 _0, \cf13 3\cf0 _0);\
+- (\cf3 void\cf0 )imagePickerController:(\cf2 UIImagePickerController\cf0  *)picker didFinishPickingMediaWithInfo:(\cf2 NSDictionary\cf0  *)info;\
+- (\cf3 void\cf0 )imagePickerControllerDidCancel:(\cf2 UIImagePickerController\cf0  *)picker;\
+\
+\cf3 @end\cf0 \
+\
+\
+\cf8 // Adds a photo to the saved photos album.  The optional completionSelector should have the form:\cf0 \
+\cf8 //  - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo;\cf0 \
+\cf14 UIKIT_EXTERN\cf0  \cf3 void\cf0  UIImageWriteToSavedPhotosAlbum(\cf2 UIImage\cf0  *image, \cf3 id\cf0  completionTarget, \cf3 SEL\cf0  completionSelector, \cf3 void\cf0  *contextInfo);\
+\
+\cf8 // Is a specific video eligible to be saved to the saved photos album? \cf0 \
+\cf14 UIKIT_EXTERN\cf0  \cf3 BOOL\cf0  UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(\cf2 NSString\cf0  *videoPath) \cf14 NS_AVAILABLE_IOS\cf0 (\cf13 3\cf0 _1);\
+\
+\cf8 // Adds a video to the saved photos album. The optional completionSelector should have the form:\cf0 \
+\cf8 //  - (void)video:(NSString *)videoPath didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo;\cf0 \
+\cf14 UIKIT_EXTERN\cf0  \cf3 void\cf0  UISaveVideoAtPathToSavedPhotosAlbum(\cf2 NSString\cf0  *videoPath, \cf3 id\cf0  completionTarget, \cf3 SEL\cf0  completionSelector, \cf3 void\cf0  *contextInfo) \cf14 NS_AVAILABLE_IOS\cf0 (\cf13 3\cf0 _1);\
+\
+}

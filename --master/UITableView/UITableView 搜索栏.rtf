@@ -1,0 +1,93 @@
+{\rtf1\ansi\ansicpg936\cocoartf1343\cocoasubrtf140
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset134 STHeitiSC-Light;}
+{\colortbl;\red255\green255\blue255;\red170\green13\blue145;\red255\green173\blue23;\red63\green110\blue116;
+\red59\green16\blue143;\red28\green0\blue207;\red92\green38\blue153;\red255\green39\blue18;\red196\green26\blue22;
+\red46\green13\blue110;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww14040\viewh14780\viewkind0
+\deftab674
+\pard\tx674\pardeftab674\pardirnatural
+
+\f0\fs28 \cf2 \CocoaLigature0 @property\cf0  \cf3 UISearchBar\cf0  *SearchBar;\
+\
+\cf2 @property\cf0  \cf3 UISearchDisplayController\cf0  * SDContrller;\
+\
+    \cf4 _SearchBar\cf0  = [[\cf3 UISearchBar\cf0  \cf5 alloc\cf0 ]\cf5 initWithFrame\cf0 :\cf5 CGRectMake\cf0 (\cf6 0\cf0 , \cf6 0\cf0 , \cf6 320\cf0 , \cf6 30\cf0 )];\
+    \
+    \cf4 _SDContrller\cf0  = [[\cf3 UISearchDisplayController\cf0  \cf5 alloc\cf0 ] \cf5 initWithSearchBar\cf0 :\cf4 _SearchBar\cf0  \cf5 contentsController\cf0 :\cf2 self\cf0 ];\
+    \
+    \cf4 _SDContrller\cf0 .\cf7 delegate\cf0  = \cf2 self\cf0 ;\
+    \
+    \cf4 _SDContrller\cf0 .\cf7 searchResultsDelegate\cf0  = \cf2 self\cf0 ;\
+    \
+    \cf4 _SDContrller\cf0 .\cf7 searchResultsDataSource\cf0  =\cf2 self\cf0 ;\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f1\fs48 \cf0 \cb8 \'cd\'ea\'b3\'c9\'b4\'fa\'c0\'ed\'b5\'c4\'ba\'af\'ca\'fd
+\f0\fs28 \cb1 \
+-(\cf2 BOOL\cf0 )searchDisplayController:(\cf3 UISearchDisplayController\cf0  *)controller shouldReloadTableForSearchString:(\cf3 NSString\cf0  *)searchString\
+\{
+\f1 \'b8\'f8\'b4\'a2\'b4\'e6\'bd\'e1\'b9\'fb\'b5\'c4\'ca\'fd\'d7\'e9\'b8\'b3\'d6\'b5
+\f0 \
+    \cf4 _arrayForResult\cf0  = [[\cf3 NSMutableArray\cf0  \cf5 alloc\cf0 ]\cf5 init\cf0 ];\
+    \
+    \cf2 for\cf0  (\cf3 NSMutableArray\cf0  *arr \cf2 in\cf0  \cf4 _dataSource\cf0 )\
+    \{\
+        \cf2 for\cf0  (\cf3 NSString\cf0  *str \cf2 in\cf0  arr)\
+        \{\
+            \cf7 NSRange\cf0  renge = [str \cf5 rangeOfString\cf0 :searchString];\
+            \cf2 if\cf0  (renge.\cf7 length\cf0 )\
+            \{\
+                [\cf4 _arrayForResult\cf0  \cf5 addObject\cf0 :str];\
+            \}\
+        \}\
+    \}\
+    \cf2 return\cf0  \cf2 YES\cf0 ;\
+\}\
+
+\f1 \cb8 \'d5\'e2\'d0\'a9\'bb\'e6\'d6\'c6
+\f0 tableView
+\f1 \'b5\'c4\'ba\'af\'ca\'fd\'a3\'ac\'d4\'da\'c0\'ef\'c3\'e6\'d0\'e8\'d2\'aa\'bc\'d3\'c9\'cf\'c5\'d0\'b6\'cf\'a3\'ac\'d3\'a6\'ce\'aa\'cb\'d1\'cb\'f7\'b5\'c4\'bd\'e1\'b9\'fb\'bb\'e1\'b3\'ca\'cf\'d6\'d4\'da\'d2\'bb\'b8\'f6\'d0\'c2\'b5\'c4tableview\'d6\'d0\'a3\'ac\'d2\'aa\'b6\'e0\'b2\'ce\'ca\'fdtableView\'b5\'c4\'b5\'d8\'d6\'b7\'b5\'c4\'b1\'e4\'bb\'af
+\f0 \cb1 \
+-(\cf7 NSInteger\cf0 )tableView:(\cf3 UITableView\cf0  *)tableView numberOfRowsInSection:(\cf7 NSInteger\cf0 )section\
+\{\
+    \
+    \cf2 if\cf0  (tableView != \cf4 _tableView\cf0 )\
+    \{\
+        \cf2 return\cf0  \cf4 _arrayForResult\cf0 .\cf7 count\cf0 ;\
+    \}\
+    \cf2 if\cf0  (![\cf4 _isOpen\cf0 [section] \cf5 boolValue\cf0 ])\
+    \{\
+        \cf2 return\cf0  \cf6 0\cf0 ;\
+    \}\
+    \cf2 return\cf0  ((\cf3 NSMutableArray\cf0  * )\cf4 _dataSource\cf0 [section]).\cf7 count\cf0 ;\
+\}\
+\
+\
+-(\cf7 NSInteger\cf0 )numberOfSectionsInTableView:(\cf3 UITableView\cf0  *)tableView\
+\{\
+    \cf2 if\cf0  (tableView != \cf4 _tableView\cf0 )\
+    \{\
+        \cf2 return\cf0  \cf6 1\cf0 ;\
+    \}\
+    \
+     \cf2 return\cf0  \cf4 _dataSource\cf0 .\cf7 count\cf0 ;\
+    \
+\}\
+\
+\
+-(\cf3 UITableViewCell\cf0  * )tableView:(\cf3 UITableView\cf0  *)tableView cellForRowAtIndexPath:(\cf3 NSIndexPath\cf0  *)indexPath\
+\{\
+    \cf3 UITableViewCell\cf0  * cell =[tableView \cf5 dequeueReusableCellWithIdentifier\cf0 :\cf9 @"MXF"\cf0 ];\
+    \cf2 if\cf0  (cell == \cf2 nil\cf0 )\
+    \{\
+        cell = [[\cf3 UITableViewCell\cf0  \cf5 alloc\cf0 ]\cf5 initWithStyle\cf0 :\cf10 UITableViewCellStyleDefault\cf0  \cf5 reuseIdentifier\cf0 :\cf9 @"MXF"\cf0 ];\
+    \}\
+    \
+    \cf2 if\cf0  (tableView != \cf4 _tableView\cf0 )\
+    \{\
+         cell.\cf7 textLabel\cf0 .\cf7 text\cf0  = \cf4 _arrayForResult\cf0 [indexPath.\cf7 row\cf0 ];\
+    \}\cf2 else\cf0 \
+    cell.\cf7 textLabel\cf0 .\cf7 text\cf0  = ((\cf3 NSMutableArray\cf0 *)\cf4 _dataSource\cf0 [indexPath.\cf7 section\cf0 ])[indexPath.\cf7 row\cf0 ];\
+    \cf2 return\cf0  cell;\
+    \
+\}}

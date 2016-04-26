@@ -1,0 +1,55 @@
+{\rtf1\ansi\ansicpg936\cocoartf1343\cocoasubrtf140
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset134 STHeitiSC-Light;}
+{\colortbl;\red255\green255\blue255;\red100\green56\blue32;\red28\green0\blue207;\red170\green13\blue145;
+\red255\green173\blue23;\red0\green116\blue0;\red92\green38\blue153;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww24820\viewh15040\viewkind0
+\deftab674
+\pard\tx674\pardeftab674\pardirnatural
+
+\f0\fs28 \cf2 \CocoaLigature0 NS_CLASS_AVAILABLE_IOS\cf0 (\cf3 5\cf0 _0) \cf4 @interface\cf0  UIStepper : \cf5 UIControl\cf0  \
+\
+\pard\tx674\pardeftab674\pardirnatural
+\cf4 @property\cf0 (\cf4 nonatomic\cf0 ,\cf4 getter\cf0 =isContinuous) \cf4 BOOL\cf0  continuous; \
+
+\f1 \'c4\'ac\'c8\'cf
+\f0 yes
+\f1 \'bb\'e1\'ca\'b5\'ca\'b1\'b5\'f7\'d3\'c3\'bc\'e0\'cc\'fd\'ba\'af\'ca\'fd\'a3\'ac\'c8\'e7\'b9\'fb\'c9\'e8\'d6\'c3\'ce\'aa
+\f0 no
+\f1 \'d4\'da\'ca\'d6\'d6\'b8\'cc\'a7\'c6\'f0\'b2\'c5\'bb\'e1\'b5\'f7\'d3\'c3\'a3\'a1\'a3\'a1
+\f0 \
+\cf6 // if YES, value change events are sent any time the value changes during interaction. default = YES\cf0 \
+\cf4 @property\cf0 (\cf4 nonatomic\cf0 ) \cf4 BOOL\cf0  autorepeat; \cf6 // if YES, press & hold repeatedly alters value. default = YES\
+
+\f1 \cf0 \'c1\'ac\'d0\'f8\'b4\'a5\'b7\'a2\'a3\'ac\'c4\'ac\'c8\'cf\'ca\'b1
+\f0 YES
+\f1 \'cb\'f9\'d2\'d4\'be\'cd\'bf\'c9\'d2\'d4\'ca\'d6\'d6\'b8\'b2\'bb\'d3\'c3\'cc\'a7\'c6\'f0\'c1\'ac\'d0\'f8\'b4\'a5\'b7\'a2\'a3\'ac\'c8\'e7\'b9\'fb\'c9\'e8\'d6\'c3\'ce\'aaNO\'ca\'d6\'d6\'b8\'b2\'bb\'cc\'ab\'c6\'f0\'c0\'b4\'be\'cd\'b2\'bb\'bb\'e1\'b4\'a5\'b7\'a2\'a3\'bb
+\f0 \
+\cf4 @property\cf0 (\cf4 nonatomic\cf0 ) \cf4 BOOL\cf0  wraps;                          \cf6 // if YES, value wraps from min <-> max. default = NO\cf0 \
+
+\f1 \'d1\'ad\'bb\'b7\'a3\'ac\'d4\'f6\'bc\'d3\'b5\'bd\'d7\'ee\'b4\'f3\'d6\'b5\'bb\'e1\'d7\'d4\'b6\'af\'bb\'d8\'b5\'bd\'d7\'ee\'d0\'a1\'d6\'b5
+\f0 \cf6 default = NO\cf0 \
+\cf4 @property\cf0 (\cf4 nonatomic\cf0 ) \cf4 double\cf0  value;                        \cf6 // default is 0. sends UIControlEventValueChanged. clamped to min/max\cf0 \
+\cf4 @property\cf0 (\cf4 nonatomic\cf0 ) \cf4 double\cf0  minimumValue;                 \cf6 // default 0. must be less than maximumValue\cf0 \
+\cf4 @property\cf0 (\cf4 nonatomic\cf0 ) \cf4 double\cf0  maximumValue;                 \cf6 // default 100. must be greater than minimumValue\cf0 \
+\cf4 @property\cf0 (\cf4 nonatomic\cf0 ) \cf4 double\cf0  stepValue;                    \cf6 // default 1. must be greater than 0\cf0 \
+\
+\cf6 // The tintColor is inherited through the superview hierarchy. See UIView for more information.\cf0 \
+\cf4 @property\cf0 (\cf4 nonatomic\cf0 ,\cf4 retain\cf0 ) \cf5 UIColor\cf0  *tintColor \cf2 NS_AVAILABLE_IOS\cf0 (\cf3 6\cf0 _0);\
+\
+\cf6 // a background image which will be 3-way stretched over the whole of the control. Each half of the stepper will paint the image appropriate for its state\cf0 \
+- (\cf4 void\cf0 )setBackgroundImage:(\cf5 UIImage\cf0 *)image forState:(\cf7 UIControlState\cf0 )state \cf2 NS_AVAILABLE_IOS\cf0 (\cf3 6\cf0 _0) \cf2 UI_APPEARANCE_SELECTOR\cf0 ;\
+- (\cf5 UIImage\cf0 *)backgroundImageForState:(\cf7 UIControlState\cf0 )state \cf2 NS_AVAILABLE_IOS\cf0 (\cf3 6\cf0 _0) \cf2 UI_APPEARANCE_SELECTOR\cf0 ;\
+\
+\cf6 // an image which will be painted in between the two stepper segments. The image is selected depending both segments' state\cf0 \
+- (\cf4 void\cf0 )setDividerImage:(\cf5 UIImage\cf0 *)image forLeftSegmentState:(\cf7 UIControlState\cf0 )leftState rightSegmentState:(\cf7 UIControlState\cf0 )rightState \cf2 NS_AVAILABLE_IOS\cf0 (\cf3 6\cf0 _0) \cf2 UI_APPEARANCE_SELECTOR\cf0 ;\
+- (\cf5 UIImage\cf0 *)dividerImageForLeftSegmentState:(\cf7 UIControlState\cf0 )state rightSegmentState:(\cf7 UIControlState\cf0 )state \cf2 NS_AVAILABLE_IOS\cf0 (\cf3 6\cf0 _0) \cf2 UI_APPEARANCE_SELECTOR\cf0 ;\
+\
+\cf6 // the glyph image for the plus/increase button\cf0 \
+- (\cf4 void\cf0 )setIncrementImage:(\cf5 UIImage\cf0  *)image forState:(\cf7 UIControlState\cf0 )state \cf2 NS_AVAILABLE_IOS\cf0 (\cf3 6\cf0 _0) \cf2 UI_APPEARANCE_SELECTOR\cf0 ;\
+- (\cf5 UIImage\cf0  *)incrementImageForState:(\cf7 UIControlState\cf0 )state \cf2 NS_AVAILABLE_IOS\cf0 (\cf3 6\cf0 _0) \cf2 UI_APPEARANCE_SELECTOR\cf0 ;\
+\
+\cf6 // the glyph image for the minus/decrease button\cf0 \
+- (\cf4 void\cf0 )setDecrementImage:(\cf5 UIImage\cf0  *)image forState:(\cf7 UIControlState\cf0 )state \cf2 NS_AVAILABLE_IOS\cf0 (\cf3 6\cf0 _0) \cf2 UI_APPEARANCE_SELECTOR\cf0 ;\
+- (\cf5 UIImage\cf0  *)decrementImageForState:(\cf7 UIControlState\cf0 )state \cf2 NS_AVAILABLE_IOS\cf0 (\cf3 6\cf0 _0) \cf2 UI_APPEARANCE_SELECTOR\cf0 ;\
+\
+}

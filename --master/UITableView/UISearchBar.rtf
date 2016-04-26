@@ -1,0 +1,139 @@
+{\rtf1\ansi\ansicpg936\cocoartf1343\cocoasubrtf140
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red100\green56\blue32;\red28\green0\blue207;\red170\green13\blue145;
+\red255\green173\blue23;\red92\green38\blue153;\red0\green116\blue0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab674
+\pard\tx674\pardeftab674\pardirnatural
+
+\f0\fs28 \cf2 \CocoaLigature0 NS_CLASS_AVAILABLE_IOS\cf0 (\cf3 2\cf0 _0) \cf4 @interface\cf0  UISearchBar : \cf5 UIView\cf0  <\cf5 UIBarPositioning\cf0 , \cf5 UITextInputTraits\cf0 >\
+\
+\cf4 @property\cf0 (\cf4 nonatomic\cf0 )        \cf6 UIBarStyle\cf0               barStyle;              \cf7 // default is UIBarStyleDefault (blue)\cf0 \
+\cf4 @property\cf0 (\cf4 nonatomic\cf0 ,\cf4 assign\cf0 ) \cf4 id\cf0 <\cf5 UISearchBarDelegate\cf0 > delegate;              \cf7 // weak reference. default is nil\cf0 \
+\cf4 @property\cf0 (\cf4 nonatomic\cf0 ,\cf4 copy\cf0 )   \cf5 NSString\cf0                *text;                  \cf7 // current/starting search text\cf0 \
+\cf4 @property\cf0 (\cf4 nonatomic\cf0 ,\cf4 copy\cf0 )   \cf5 NSString\cf0                *prompt;                \cf7 // default is nil\cf0 \
+\cf4 @property\cf0 (\cf4 nonatomic\cf0 ,\cf4 copy\cf0 )   \cf5 NSString\cf0                *placeholder;           \cf7 // default is nil\cf0 \
+\cf4 @property\cf0 (\cf4 nonatomic\cf0 )        \cf4 BOOL\cf0                     showsBookmarkButton;   \cf7 // default is NO\cf0 \
+\cf4 @property\cf0 (\cf4 nonatomic\cf0 )        \cf4 BOOL\cf0                     showsCancelButton;     \cf7 // default is NO\cf0 \
+\cf4 @property\cf0 (\cf4 nonatomic\cf0 )        \cf4 BOOL\cf0                     showsSearchResultsButton \cf2 NS_AVAILABLE_IOS\cf0 (\cf3 3\cf0 _2); \cf7 // default is NO\cf0 \
+\cf4 @property\cf0 (\cf4 nonatomic\cf0 , \cf4 getter\cf0 =isSearchResultsButtonSelected) \cf4 BOOL\cf0  searchResultsButtonSelected \cf2 NS_AVAILABLE_IOS\cf0 (\cf3 3\cf0 _2); \cf7 // default is NO\cf0 \
+- (\cf4 void\cf0 )setShowsCancelButton:(\cf4 BOOL\cf0 )showsCancelButton animated:(\cf4 BOOL\cf0 )animated \cf2 NS_AVAILABLE_IOS\cf0 (\cf3 3\cf0 _0);\
+\
+\pard\tx674\pardeftab674\pardirnatural
+\cf7 /*\
+ The behavior of tintColor for bars has changed on iOS 7.0. It no longer affects the bar's background\
+ and behaves as described for the tintColor property added to UIView.\
+ To tint the bar's background, please use -barTintColor.\
+ */\cf0 \
+\pard\tx674\pardeftab674\pardirnatural
+\cf4 @property\cf0 (\cf4 nonatomic\cf0 ,\cf4 retain\cf0 ) \cf5 UIColor\cf0  *tintColor;\
+\cf4 @property\cf0 (\cf4 nonatomic\cf0 ,\cf4 retain\cf0 ) \cf5 UIColor\cf0  *barTintColor \cf2 NS_AVAILABLE_IOS\cf0 (\cf3 7\cf0 _0) \cf2 UI_APPEARANCE_SELECTOR\cf0 ;  \cf7 // default is nil\cf0 \
+\
+\cf4 @property\cf0  (\cf4 nonatomic\cf0 ) \cf6 UISearchBarStyle\cf0  searchBarStyle \cf2 NS_AVAILABLE_IOS\cf0 (\cf3 7\cf0 _0);\
+\
+\pard\tx674\pardeftab674\pardirnatural
+\cf7 /*\
+ New behavior on iOS 7.\
+ Default is YES.\
+ You may force an opaque background by setting the property to NO.\
+ If the search bar has a custom background image, the default is inferred\
+ from the alpha values of the image\'97YES if it has any pixel with alpha < 1.0\
+ If you send setTranslucent:YES to a bar with an opaque custom background image\
+ it will apply a system opacity less than 1.0 to the image.\
+ If you send setTranslucent:NO to a bar with a translucent custom background image\
+ it will provide an opaque background for the image using the bar's barTintColor if defined, or black\
+ for UIBarStyleBlack or white for UIBarStyleDefault if barTintColor is nil.\
+ */\cf0 \
+\pard\tx674\pardeftab674\pardirnatural
+\cf4 @property\cf0 (\cf4 nonatomic\cf0 ,\cf4 assign\cf0 ,\cf4 getter\cf0 =isTranslucent) \cf4 BOOL\cf0  translucent \cf2 NS_AVAILABLE_IOS\cf0 (\cf3 3\cf0 _0); \cf7 // Default is NO on iOS 6 and earlier. Always YES if barStyle is set to UIBarStyleBlackTranslucent\cf0 \
+\
+\cf4 @property\cf0 (\cf4 nonatomic\cf0 ,\cf4 copy\cf0 ) \cf5 NSArray\cf0    *scopeButtonTitles        \cf2 NS_AVAILABLE_IOS\cf0 (\cf3 3\cf0 _0); \cf7 // array of NSStrings. no scope bar shown unless 2 or more items\cf0 \
+\cf4 @property\cf0 (\cf4 nonatomic\cf0 )      \cf6 NSInteger\cf0   selectedScopeButtonIndex \cf2 NS_AVAILABLE_IOS\cf0 (\cf3 3\cf0 _0); \cf7 // index into array of scope button titles. default is 0. ignored if out of range\cf0 \
+\cf4 @property\cf0 (\cf4 nonatomic\cf0 )      \cf4 BOOL\cf0        showsScopeBar            \cf2 NS_AVAILABLE_IOS\cf0 (\cf3 3\cf0 _0); \cf7 // default is NO. if YES, shows the scope bar. call sizeToFit: to update frame\cf0 \
+\
+\pard\tx674\pardeftab674\pardirnatural
+\cf7 /* Allow placement of an input accessory view to the keyboard for the search bar\
+ */\cf0 \
+\pard\tx674\pardeftab674\pardirnatural
+\cf4 @property\cf0  (\cf4 nonatomic\cf0 , \cf4 readwrite\cf0 , \cf4 retain\cf0 ) \cf5 UIView\cf0  *inputAccessoryView;\
+\
+\pard\tx674\pardeftab674\pardirnatural
+\cf7 // 1pt wide images and resizable images will be scaled or tiled according to the resizable area, otherwise the image will be tiled\cf0 \
+\pard\tx674\pardeftab674\pardirnatural
+\cf4 @property\cf0 (\cf4 nonatomic\cf0 ,\cf4 retain\cf0 ) \cf5 UIImage\cf0  *backgroundImage \cf2 NS_AVAILABLE_IOS\cf0 (\cf3 5\cf0 _0) \cf2 UI_APPEARANCE_SELECTOR\cf0 ;\
+\cf4 @property\cf0 (\cf4 nonatomic\cf0 ,\cf4 retain\cf0 ) \cf5 UIImage\cf0  *scopeBarBackgroundImage \cf2 NS_AVAILABLE_IOS\cf0 (\cf3 5\cf0 _0) \cf2 UI_APPEARANCE_SELECTOR\cf0 ;\
+\
+\
+- (\cf4 void\cf0 )setBackgroundImage:(\cf5 UIImage\cf0  *)backgroundImage forBarPosition:(\cf6 UIBarPosition\cf0 )barPosition barMetrics:(\cf6 UIBarMetrics\cf0 )barMetrics \cf2 NS_AVAILABLE_IOS\cf0 (\cf3 7\cf0 _0) \cf2 UI_APPEARANCE_SELECTOR\cf0 ;  \cf7 // Use UIBarMetricsDefaultPrompt to set a separate backgroundImage for a search bar with a prompt\cf0 \
+- (\cf5 UIImage\cf0  *)backgroundImageForBarPosition:(\cf6 UIBarPosition\cf0 )barPosition barMetrics:(\cf6 UIBarMetrics\cf0 )barMetrics \cf2 NS_AVAILABLE_IOS\cf0 (\cf3 7\cf0 _0) \cf2 UI_APPEARANCE_SELECTOR\cf0 ;\
+\
+\pard\tx674\pardeftab674\pardirnatural
+\cf7 /* In general, you should specify a value for the normal state to be used by other states which don't have a custom value set\
+ */\cf0 \
+\
+\cf7 /* The rounded-rect search text field image. Valid states are UIControlStateNormal and UIControlStateDisabled\
+ */\cf0 \
+- (\cf4 void\cf0 )setSearchFieldBackgroundImage:(\cf5 UIImage\cf0  *)backgroundImage forState:(\cf6 UIControlState\cf0 )state \cf2 NS_AVAILABLE_IOS\cf0 (\cf3 5\cf0 _0) \cf2 UI_APPEARANCE_SELECTOR\cf0 ;\
+- (\cf5 UIImage\cf0  *)searchFieldBackgroundImageForState:(\cf6 UIControlState\cf0 )state \cf2 NS_AVAILABLE_IOS\cf0 (\cf3 5\cf0 _0) \cf2 UI_APPEARANCE_SELECTOR\cf0 ;\
+\
+- (\cf4 void\cf0 )setImage:(\cf5 UIImage\cf0  *)iconImage forSearchBarIcon:(\cf6 UISearchBarIcon\cf0 )icon state:(\cf6 UIControlState\cf0 )state \cf2 NS_AVAILABLE_IOS\cf0 (\cf3 5\cf0 _0) \cf2 UI_APPEARANCE_SELECTOR\cf0 ;\
+- (\cf5 UIImage\cf0  *)imageForSearchBarIcon:(\cf6 UISearchBarIcon\cf0 )icon state:(\cf6 UIControlState\cf0 )state \cf2 NS_AVAILABLE_IOS\cf0 (\cf3 5\cf0 _0) \cf2 UI_APPEARANCE_SELECTOR\cf0 ;\
+\
+\cf7 //\cf0 \
+\cf7 // Customizing the appearance of the scope bar buttons.\cf0 \
+\cf7 //\cf0 \
+\
+\cf7 /* If backgroundImage is an image returned from -[UIImage resizableImageWithCapInsets:] the cap widths will be calculated from the edge insets, otherwise, the cap width will be calculated by subtracting one from the image's width then dividing by 2. The cap widths will also be used as the margins for text placement. To adjust the margin use the margin adjustment methods.\
+ */\cf0 \
+- (\cf4 void\cf0 )setScopeBarButtonBackgroundImage:(\cf5 UIImage\cf0  *)backgroundImage forState:(\cf6 UIControlState\cf0 )state \cf2 NS_AVAILABLE_IOS\cf0 (\cf3 5\cf0 _0) \cf2 UI_APPEARANCE_SELECTOR\cf0 ; \
+- (\cf5 UIImage\cf0  *)scopeBarButtonBackgroundImageForState:(\cf6 UIControlState\cf0 )state \cf2 NS_AVAILABLE_IOS\cf0 (\cf3 5\cf0 _0) \cf2 UI_APPEARANCE_SELECTOR\cf0 ;\
+\
+\cf7 /* To customize the segmented control appearance you will need to provide divider images to go between two unselected segments (leftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateNormal), selected on the left and unselected on the right (leftSegmentState:UIControlStateSelected rightSegmentState:UIControlStateNormal), and unselected on the left and selected on the right (leftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateSelected).\
+ */\cf0 \
+- (\cf4 void\cf0 )setScopeBarButtonDividerImage:(\cf5 UIImage\cf0  *)dividerImage forLeftSegmentState:(\cf6 UIControlState\cf0 )leftState rightSegmentState:(\cf6 UIControlState\cf0 )rightState \cf2 NS_AVAILABLE_IOS\cf0 (\cf3 5\cf0 _0) \cf2 UI_APPEARANCE_SELECTOR\cf0 ;\
+- (\cf5 UIImage\cf0  *)scopeBarButtonDividerImageForLeftSegmentState:(\cf6 UIControlState\cf0 )leftState rightSegmentState:(\cf6 UIControlState\cf0 )rightState \cf2 NS_AVAILABLE_IOS\cf0 (\cf3 5\cf0 _0) \cf2 UI_APPEARANCE_SELECTOR\cf0 ;\
+\
+\cf7 /* You may specify the font, text color, and shadow properties for the title in the text attributes dictionary, using the keys found in NSAttributedString.h.\
+ */\cf0 \
+- (\cf4 void\cf0 )setScopeBarButtonTitleTextAttributes:(\cf5 NSDictionary\cf0  *)attributes forState:(\cf6 UIControlState\cf0 )state \cf2 NS_AVAILABLE_IOS\cf0 (\cf3 5\cf0 _0) \cf2 UI_APPEARANCE_SELECTOR\cf0 ;\
+- (\cf5 NSDictionary\cf0  *)scopeBarButtonTitleTextAttributesForState:(\cf6 UIControlState\cf0 )state \cf2 NS_AVAILABLE_IOS\cf0 (\cf3 5\cf0 _0) \cf2 UI_APPEARANCE_SELECTOR\cf0 ;\
+\
+\cf7 /* To nudge the position of the search text field background in the search bar\
+ */\cf0 \
+\pard\tx674\pardeftab674\pardirnatural
+\cf4 @property\cf0 (\cf4 nonatomic\cf0 ) \cf6 UIOffset\cf0  searchFieldBackgroundPositionAdjustment \cf2 NS_AVAILABLE_IOS\cf0 (\cf3 5\cf0 _0) \cf2 UI_APPEARANCE_SELECTOR\cf0 ;\
+\
+\pard\tx674\pardeftab674\pardirnatural
+\cf7 /* To nudge the position of the text within the search text field background\
+ */\cf0 \
+\pard\tx674\pardeftab674\pardirnatural
+\cf4 @property\cf0 (\cf4 nonatomic\cf0 ) \cf6 UIOffset\cf0  searchTextPositionAdjustment \cf2 NS_AVAILABLE_IOS\cf0 (\cf3 5\cf0 _0) \cf2 UI_APPEARANCE_SELECTOR\cf0 ;\
+\
+\pard\tx674\pardeftab674\pardirnatural
+\cf7 /* To nudge the position of the icon within the search text field\
+ */\cf0 \
+- (\cf4 void\cf0 )setPositionAdjustment:(\cf6 UIOffset\cf0 )adjustment forSearchBarIcon:(\cf6 UISearchBarIcon\cf0 )icon \cf2 NS_AVAILABLE_IOS\cf0 (\cf3 5\cf0 _0) \cf2 UI_APPEARANCE_SELECTOR\cf0 ;\
+- (\cf6 UIOffset\cf0 )positionAdjustmentForSearchBarIcon:(\cf6 UISearchBarIcon\cf0 )icon \cf2 NS_AVAILABLE_IOS\cf0 (\cf3 5\cf0 _0) \cf2 UI_APPEARANCE_SELECTOR\cf0 ;\
+\pard\tx674\pardeftab674\pardirnatural
+\cf4 @end\cf0 \
+\
+\cf4 @protocol\cf0  UISearchBarDelegate <\cf5 UIBarPositioningDelegate\cf0 >\
+\
+\cf4 @optional\cf0 \
+\
+- (\cf4 BOOL\cf0 )searchBarShouldBeginEditing:(\cf5 UISearchBar\cf0  *)searchBar;                      \cf7 // return NO to not become first responder\cf0 \
+- (\cf4 void\cf0 )searchBarTextDidBeginEditing:(\cf5 UISearchBar\cf0  *)searchBar;                     \cf7 // called when text starts editing\cf0 \
+- (\cf4 BOOL\cf0 )searchBarShouldEndEditing:(\cf5 UISearchBar\cf0  *)searchBar;                        \cf7 // return NO to not resign first responder\cf0 \
+- (\cf4 void\cf0 )searchBarTextDidEndEditing:(\cf5 UISearchBar\cf0  *)searchBar;                       \cf7 // called when text ends editing\cf0 \
+- (\cf4 void\cf0 )searchBar:(\cf5 UISearchBar\cf0  *)searchBar textDidChange:(\cf5 NSString\cf0  *)searchText;   \cf7 // called when text changes (including clear)\cf0 \
+- (\cf4 BOOL\cf0 )searchBar:(\cf5 UISearchBar\cf0  *)searchBar shouldChangeTextInRange:(\cf6 NSRange\cf0 )range replacementText:(\cf5 NSString\cf0  *)text \cf2 NS_AVAILABLE_IOS\cf0 (\cf3 3\cf0 _0); \cf7 // called before text changes\cf0 \
+\
+- (\cf4 void\cf0 )searchBarSearchButtonClicked:(\cf5 UISearchBar\cf0  *)searchBar;                     \cf7 // called when keyboard search button pressed\cf0 \
+- (\cf4 void\cf0 )searchBarBookmarkButtonClicked:(\cf5 UISearchBar\cf0  *)searchBar;                   \cf7 // called when bookmark button pressed\cf0 \
+- (\cf4 void\cf0 )searchBarCancelButtonClicked:(\cf5 UISearchBar\cf0  *)searchBar;                     \cf7 // called when cancel button pressed\cf0 \
+- (\cf4 void\cf0 )searchBarResultsListButtonClicked:(\cf5 UISearchBar\cf0  *)searchBar \cf2 NS_AVAILABLE_IOS\cf0 (\cf3 3\cf0 _2); \cf7 // called when search results button pressed\cf0 \
+\
+- (\cf4 void\cf0 )searchBar:(\cf5 UISearchBar\cf0  *)searchBar selectedScopeButtonIndexDidChange:(\cf6 NSInteger\cf0 )selectedScope \cf2 NS_AVAILABLE_IOS\cf0 (\cf3 3\cf0 _0);\
+\
+\cf4 @end\cf0 \
+}

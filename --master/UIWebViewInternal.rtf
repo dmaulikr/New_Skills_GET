@@ -1,0 +1,94 @@
+{\rtf1\ansi\ansicpg936\cocoartf1343\cocoasubrtf140
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red170\green13\blue145;\red255\green173\blue23;\red100\green56\blue32;
+\red28\green0\blue207;\red92\green38\blue153;\red0\green116\blue0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab674
+\pard\tx674\pardeftab674\pardirnatural
+
+\f0\fs28 \cf2 \CocoaLigature0 typedef\cf0  \cf2 NS_ENUM\cf0 (NSInteger, UIWebViewNavigationType) \{\
+    UIWebViewNavigationTypeLinkClicked,\
+    UIWebViewNavigationTypeFormSubmitted,\
+    UIWebViewNavigationTypeBackForward,\
+    UIWebViewNavigationTypeReload,\
+    UIWebViewNavigationTypeFormResubmitted,\
+    UIWebViewNavigationTypeOther\
+\};\
+\
+\cf2 typedef\cf0  \cf2 NS_ENUM\cf0 (NSInteger, UIWebPaginationMode) \{\
+    UIWebPaginationModeUnpaginated,\
+    UIWebPaginationModeLeftToRight,\
+    UIWebPaginationModeTopToBottom,\
+    UIWebPaginationModeBottomToTop,\
+    UIWebPaginationModeRightToLeft\
+\};\
+\
+\cf2 typedef\cf0  \cf2 NS_ENUM\cf0 (NSInteger, UIWebPaginationBreakingMode) \{\
+    UIWebPaginationBreakingModePage,\
+    UIWebPaginationBreakingModeColumn\
+\};\
+\
+\cf2 @class\cf0  \cf3 UIWebViewInternal\cf0 ;\
+\cf2 @protocol\cf0  \cf3 UIWebViewDelegate\cf0 ;\
+\
+\pard\tx674\pardeftab674\pardirnatural
+\cf4 NS_CLASS_AVAILABLE_IOS\cf0 (\cf5 2\cf0 _0) \cf2 @interface\cf0  UIWebView : \cf3 UIView\cf0  <\cf3 NSCoding\cf0 , \cf3 UIScrollViewDelegate\cf0 > \{ \
+ \cf2 @private\cf0 \
+    \cf3 UIWebViewInternal\cf0  *_internal;\
+\}\
+\
+\pard\tx674\pardeftab674\pardirnatural
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 , \cf2 assign\cf0 ) \cf2 id\cf0  <\cf3 UIWebViewDelegate\cf0 > delegate;\
+\
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 , \cf2 readonly\cf0 , \cf2 retain\cf0 ) \cf3 UIScrollView\cf0  *scrollView \cf4 NS_AVAILABLE_IOS\cf0 (\cf5 5\cf0 _0);\
+\
+- (\cf2 void\cf0 )loadRequest:(\cf3 NSURLRequest\cf0  *)request;\
+- (\cf2 void\cf0 )loadHTMLString:(\cf3 NSString\cf0  *)string baseURL:(\cf3 NSURL\cf0  *)baseURL;\
+- (\cf2 void\cf0 )loadData:(\cf3 NSData\cf0  *)data MIMEType:(\cf3 NSString\cf0  *)MIMEType textEncodingName:(\cf3 NSString\cf0  *)textEncodingName baseURL:(\cf3 NSURL\cf0  *)baseURL;\
+\
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 , \cf2 readonly\cf0 , \cf2 retain\cf0 ) \cf3 NSURLRequest\cf0  *request;\
+\
+- (\cf2 void\cf0 )reload;\
+- (\cf2 void\cf0 )stopLoading;\
+\
+- (\cf2 void\cf0 )goBack;\
+- (\cf2 void\cf0 )goForward;\
+\
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 , \cf2 readonly\cf0 , \cf2 getter\cf0 =canGoBack) \cf2 BOOL\cf0  canGoBack;\
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 , \cf2 readonly\cf0 , \cf2 getter\cf0 =canGoForward) \cf2 BOOL\cf0  canGoForward;\
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 , \cf2 readonly\cf0 , \cf2 getter\cf0 =isLoading) \cf2 BOOL\cf0  loading;\
+\
+- (\cf3 NSString\cf0  *)stringByEvaluatingJavaScriptFromString:(\cf3 NSString\cf0  *)script;\
+\
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 ) \cf2 BOOL\cf0  scalesPageToFit;\
+\
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 ) \cf2 BOOL\cf0  detectsPhoneNumbers \cf4 NS_DEPRECATED_IOS\cf0 (\cf5 2\cf0 _0, \cf5 3\cf0 _0);\
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 ) \cf6 UIDataDetectorTypes\cf0  dataDetectorTypes \cf4 NS_AVAILABLE_IOS\cf0 (\cf5 3\cf0 _0);\
+\
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 ) \cf2 BOOL\cf0  allowsInlineMediaPlayback \cf4 NS_AVAILABLE_IOS\cf0 (\cf5 4\cf0 _0); \cf7 // iPhone Safari defaults to NO. iPad Safari defaults to YES\cf0 \
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 ) \cf2 BOOL\cf0  mediaPlaybackRequiresUserAction \cf4 NS_AVAILABLE_IOS\cf0 (\cf5 4\cf0 _0); \cf7 // iPhone and iPad Safari both default to YES\cf0 \
+\
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 ) \cf2 BOOL\cf0  mediaPlaybackAllowsAirPlay \cf4 NS_AVAILABLE_IOS\cf0 (\cf5 5\cf0 _0); \cf7 // iPhone and iPad Safari both default to YES\cf0 \
+\
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 ) \cf2 BOOL\cf0  suppressesIncrementalRendering \cf4 NS_AVAILABLE_IOS\cf0 (\cf5 6\cf0 _0); \cf7 // iPhone and iPad Safari both default to NO\cf0 \
+\
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 ) \cf2 BOOL\cf0  keyboardDisplayRequiresUserAction \cf4 NS_AVAILABLE_IOS\cf0 (\cf5 6\cf0 _0); \cf7 // default is YES\cf0 \
+\
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 ) \cf6 UIWebPaginationMode\cf0  paginationMode \cf4 NS_AVAILABLE_IOS\cf0 (\cf5 7\cf0 _0);\
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 ) \cf6 UIWebPaginationBreakingMode\cf0  paginationBreakingMode \cf4 NS_AVAILABLE_IOS\cf0 (\cf5 7\cf0 _0);\
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 ) \cf6 CGFloat\cf0  pageLength \cf4 NS_AVAILABLE_IOS\cf0 (\cf5 7\cf0 _0);\
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 ) \cf6 CGFloat\cf0  gapBetweenPages \cf4 NS_AVAILABLE_IOS\cf0 (\cf5 7\cf0 _0);\
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 , \cf2 readonly\cf0 ) \cf6 NSUInteger\cf0  pageCount \cf4 NS_AVAILABLE_IOS\cf0 (\cf5 7\cf0 _0);\
+\
+\cf2 @end\cf0 \
+\
+\cf2 @protocol\cf0  UIWebViewDelegate <\cf3 NSObject\cf0 >\
+\
+\cf2 @optional\cf0 \
+- (\cf2 BOOL\cf0 )webView:(\cf3 UIWebView\cf0  *)webView shouldStartLoadWithRequest:(\cf3 NSURLRequest\cf0  *)request navigationType:(\cf6 UIWebViewNavigationType\cf0 )navigationType;\
+- (\cf2 void\cf0 )webViewDidStartLoad:(\cf3 UIWebView\cf0  *)webView;\
+- (\cf2 void\cf0 )webViewDidFinishLoad:(\cf3 UIWebView\cf0  *)webView;\
+- (\cf2 void\cf0 )webView:(\cf3 UIWebView\cf0  *)webView didFailLoadWithError:(\cf3 NSError\cf0  *)error;\
+\
+\cf2 @end\cf0 \
+}

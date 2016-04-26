@@ -1,0 +1,198 @@
+{\rtf1\ansi\ansicpg936\cocoartf1343\cocoasubrtf140
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset134 STHeitiSC-Light;\f2\fnil\fcharset0 Menlo-Regular;
+}
+{\colortbl;\red255\green255\blue255;\red217\green11\blue0;\red0\green116\blue0;\red100\green56\blue32;
+\red196\green26\blue22;\red255\green173\blue23;\red59\green16\blue143;\red63\green110\blue116;\red92\green38\blue153;
+\red28\green0\blue207;\red170\green13\blue145;\red46\green13\blue110;\red38\green71\blue75;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww16120\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs24 \cf0 1
+\f1 \'ca\'d7\'cf\'c8\'d4\'da\'bd\'a8\'c1\'a2\'b9\'a4\'b3\'cc\'b5\'c4\'ca\'b1\'ba\'f2\'d2\'aa\'d1\'a1\'d4\'f1coreData\
+\
+\'d5\'e2\'d1\'f9\'bb\'e1\'d4\'daXXXAppDelegate.m\'ce\'c4\'bc\'fe\'d6\'d0\'a3\'ac\'bb\'e1\'b2\'fa\'c9\'fa\'ba\'dc\'cf\'e0\'b9\'d8\'b5\'c4coredata\'b5\'c4\'ba\'af\'ca\'fd\
+\
+\'d4\'daCoreData1.xcdatamodeld\'d6\'d0\'bd\'a8\'c1\'a2\'b1\'ed\'b8\'f1\'a3\'ac\'b1\'ed\'b8\'f1
+\f0 {{\NeXTGraphic 屏幕快照 2015-05-18 下午6.29.02.png \width13680 \height4460
+}�}
+\f1 \
+\pard\tx674\pardeftab674\pardirnatural
+
+\fs28 \cf0 \CocoaLigature0 \'d4\'da\'c9\'cf\'cd\'bc\'d1\'a1\'cf\'ee\'d6\'d0\'b5\'e3\'bb\'f7\'c9\'fa\'b3\'c9\'b6\'d4\'d3\'a6\'b1\'df\'b9\'d8\'c1\'aa\'b5\'c4\cb2 \'c0\'e0\
+
+\f2 \cf3 \cb1 \
+//
+\f1 \cf3 \'b2\'d9\'d7\'f7\'d4\'f6\'c9\'be\'b8\'c4\'b2\'e9\
+\
+\'ca\'d7\'cf\'c8\'d2\'aa
+\f2 \cf4 #import \cf5 "AppDelegate.h"\
+\
+
+\f1 \'d4\'da\'b5\'b1\'c7\'b0\'b2\'d9\'d7\'f7\'b5\'c4\'c0\'e0\'d6\'d0
+\f2 \cf0   \
+\cf6 UIApplication\cf0  *app = [\cf6 UIApplication\cf0  \cf7 sharedApplication\cf0 ];\
+    \cf8 AppDelegate\cf0  * delegate = app.\cf9 delegate\cf0 ;\
+
+\f1 \'bb\'f1\'c8\'a1\'d6\'f7\'b3\'cc\'d0\'f2\'b5\'c4\'b4\'fa\'c0\'ed\'a1\'a3\
+\'b6\'d4\'d3\'da\'b2\'e5\'c8\'eb\'b2\'d9\'d7\'f7\cf3 \
+
+\f2 \cf0   \cf8 StuInfo\cf0  * info = [\cf6 NSEntityDescription\cf0  \cf7 insertNewObjectForEntityForName\cf0 :\cf5 @"StuInfo"\cf0  \cf7 inManagedObjectContext\cf0 :delegate.\cf8 managedObjectContext\cf0 ];\
+    \
+    info.\cf8 username\cf0  = \cf5 @"xiaownag"\cf0 ;\
+    \
+    info.\cf8 age\cf0  = \cf10 @(20)\cf0 ;\
+    \
+    \cf6 UIImage\cf0  * img = [\cf6 UIImage\cf0  \cf7 imageNamed\cf0 :\cf5 @"a.png"\cf0 ];\
+    \
+    \cf6 NSData\cf0  * data = \cf7 UIImagePNGRepresentation\cf0 (img);
+\f1 \cf3 \'cd\'bc\'c6\'ac\cf0 \'d7\'aa
+\f2 NSData\
+    \
+    info.\cf8 headimg\cf0  = data;\
+    \
+    \cf7 NSLog\cf0 (\cf5 @"%d"\cf0 ,[delegate.\cf8 managedObjectContext\cf0  \cf7 save\cf0 :\cf11 nil\cf0 ]);
+\f1 \cf3 \
+\
+\'b6\'d4\'d3\'da\'c9\'be\'a3\'ac\'b8\'c4\'a3\'ac\'b2\'e9\'a3\'ac\'c6\'e4\'ca\'b5\'b6\'bc\'ca\'c7\'b2\'e9\'d5\'d2\'b2\'d9\'d7\'f7\'a3\'ac\
+
+\f2 \cf0   \cf6 NSFetchRequest\cf0  * request = [[\cf6 NSFetchRequest\cf0  \cf7 alloc\cf0 ]\cf7 init\cf0 ];\
+    \
+    \cf6 NSEntityDescription\cf0  *info = [\cf6 NSEntityDescription\cf0  \cf7 entityForName\cf0 :\cf5 @"StuInfo"\cf0  \cf7 inManagedObjectContext\cf0 :delegate.\cf8 managedObjectContext\cf0 ];\
+    \
+    [request \cf7 setEntity\cf0 :info];\
+    \
+    \cf6 NSArray\cf0  * result = [delegate.\cf8 managedObjectContext\cf0  \cf7 executeFetchRequest\cf0 :request \cf7 error\cf0 :\cf11 nil\cf0 ];
+\f1 \cf3 \
+\
+
+\f2 \cf0  
+\f1 \'b5\'c3\'b5\'bd\'b5\'c4
+\f2 \cf6 NSArray\cf0  * result 
+\f1 \'be\'cd\'ca\'c7\'b1\'ed\'d6\'d0\'b5\'c4\'ca\'fd\'be\'dd\
+\
+\'c9\'be\'b3\'fd
+\f2   \
+    \cf8 StuInfo\cf0  * stu = result[\cf10 0\cf0 ];\
+    \
+    [delegate.\cf8 managedObjectContext\cf0  \cf7 deleteObject\cf0 :stu];\
+    \
+    [delegate.\cf8 managedObjectContext\cf0  \cf7 save\cf0 :\cf11 nil\cf0 ];\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f1 \cf3 \'d0\'de\'b8\'c4
+\f2 \cf0 \
+\pard\tx674\pardeftab674\pardirnatural
+\cf8 	StuInfo\cf0  *stu = result[\cf10 0\cf0 ];\
+\
+    stu.\cf8 username\cf0  = \cf5 @"sdfsdf"\cf0 ;\
+    \
+    [delegate.\cf8 managedObjectContext\cf0  \cf7 save\cf0 :\cf11 nil\cf0 ];
+\f1 \cf3 \
+\
+\
+\
+
+\fs24 \cf0 \CocoaLigature1 \
+
+\f2\fs28 \CocoaLigature0 \
+\cf3 //
+\f1 \cf3 \'b2\'d9\'d7\'f7\'d4\'f6\'c9\'be\'b8\'c4\'b2\'e9
+\f2 \cf0 \
+\cf11 @property\cf0  (\cf11 readonly\cf0 , \cf11 strong\cf0 , \cf11 nonatomic\cf0 ) \cf6 NSManagedObjectContext\cf0  *managedObjectContext;\
+\cf3 //
+\f1 \cf3 \'ca\'c7
+\f2 \cf3 CoreData1.xcdatamodle
+\f1 \cf3 \'b5\'c4\'b6\'d4\'cf\'f3
+\f2 \cf0 \
+\cf11 @property\cf0  (\cf11 readonly\cf0 , \cf11 strong\cf0 , \cf11 nonatomic\cf0 ) \cf6 NSManagedObjectModel\cf0  *managedObjectModel;\
+\cf3 //
+\f1 \cf3 \'b0\'f3\'b6\'a8
+\f2 \cf3 CoreData1.xcdatamodle
+\f1 \cf3 \'d3\'eb\'d5\'e6\'d5\'fd\'b5\'c4\'ca\'fd\'be\'dd\'bf\'e2
+\f2 \cf0 \
+\cf11 @property\cf0  (\cf11 readonly\cf0 , \cf11 strong\cf0 , \cf11 nonatomic\cf0 ) \cf6 NSPersistentStoreCoordinator\cf0  *persistentStoreCoordinator;
+\f1\fs24 \CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \
+\pard\tx674\pardeftab674\pardirnatural
+
+\f2\fs28 \cf4 \CocoaLigature0 #pragma mark - Core Data stack\
+\cf0 \
+\cf11 @synthesize\cf0  managedObjectContext = \cf8 _managedObjectContext\cf0 ;\
+\cf11 @synthesize\cf0  managedObjectModel = \cf8 _managedObjectModel\cf0 ;\
+\cf11 @synthesize\cf0  persistentStoreCoordinator = \cf8 _persistentStoreCoordinator\cf0 ;\
+\
+- (\cf6 NSURL\cf0  *)applicationDocumentsDirectory \{\
+    \cf3 // The directory the application uses to store the Core Data store file. This code uses a directory named "com.mxf.CoreData_test" in the application's documents directory.\cf0 \
+    \cf11 return\cf0  [[[\cf6 NSFileManager\cf0  \cf7 defaultManager\cf0 ] \cf7 URLsForDirectory\cf0 :\cf12 NSDocumentDirectory\cf0  \cf7 inDomains\cf0 :\cf12 NSUserDomainMask\cf0 ] \cf7 lastObject\cf0 ];\
+\}\
+\
+- (\cf6 NSManagedObjectModel\cf0  *)managedObjectModel \{\
+    \cf3 // The managed object model for the application. It is a fatal error for the application not to be able to find and load its model.\cf0 \
+    \cf11 if\cf0  (\cf8 _managedObjectModel\cf0  != \cf11 nil\cf0 ) \{\
+        \cf11 return\cf0  \cf8 _managedObjectModel\cf0 ;\
+    \}\
+    \cf6 NSURL\cf0  *modelURL = [[\cf6 NSBundle\cf0  \cf7 mainBundle\cf0 ] \cf7 URLForResource\cf0 :\cf5 @"CoreData_test"\cf0  \cf7 withExtension\cf0 :\cf5 @"momd"\cf0 ];\
+    \cf8 _managedObjectModel\cf0  = [[\cf6 NSManagedObjectModel\cf0  \cf7 alloc\cf0 ] \cf7 initWithContentsOfURL\cf0 :modelURL];\
+    \cf11 return\cf0  \cf8 _managedObjectModel\cf0 ;\
+\}\
+\
+- (\cf6 NSPersistentStoreCoordinator\cf0  *)persistentStoreCoordinator \{\
+    \cf3 // The persistent store coordinator for the application. This implementation creates and return a coordinator, having added the store for the application to it.\cf0 \
+    \cf11 if\cf0  (\cf8 _persistentStoreCoordinator\cf0  != \cf11 nil\cf0 ) \{\
+        \cf11 return\cf0  \cf8 _persistentStoreCoordinator\cf0 ;\
+    \}\
+    \
+    \cf3 // Create the coordinator and store\cf0 \
+    \
+    \cf8 _persistentStoreCoordinator\cf0  = [[\cf6 NSPersistentStoreCoordinator\cf0  \cf7 alloc\cf0 ] \cf7 initWithManagedObjectModel\cf0 :[\cf11 self\cf0  \cf13 managedObjectModel\cf0 ]];\
+    \cf6 NSURL\cf0  *storeURL = [[\cf11 self\cf0  \cf13 applicationDocumentsDirectory\cf0 ] \cf7 URLByAppendingPathComponent\cf0 :\cf5 @"CoreData_test.sqlite"\cf0 ];\
+    \cf6 NSError\cf0  *error = \cf11 nil\cf0 ;\
+    \cf6 NSString\cf0  *failureReason = \cf5 @"There was an error creating or loading the application's saved data."\cf0 ;\
+    \cf11 if\cf0  (![\cf8 _persistentStoreCoordinator\cf0  \cf7 addPersistentStoreWithType\cf0 :\cf9 NSSQLiteStoreType\cf0  \cf7 configuration\cf0 :\cf11 nil\cf0  \cf7 URL\cf0 :storeURL \cf7 options\cf0 :\cf11 nil\cf0  \cf7 error\cf0 :&error]) \{\
+        \cf3 // Report any error we got.\cf0 \
+        \cf6 NSMutableDictionary\cf0  *dict = [\cf6 NSMutableDictionary\cf0  \cf7 dictionary\cf0 ];\
+        dict[\cf9 NSLocalizedDescriptionKey\cf0 ] = \cf5 @"Failed to initialize the application's saved data"\cf0 ;\
+        dict[\cf9 NSLocalizedFailureReasonErrorKey\cf0 ] = failureReason;\
+        dict[\cf9 NSUnderlyingErrorKey\cf0 ] = error;\
+        error = [\cf6 NSError\cf0  \cf7 errorWithDomain\cf0 :\cf5 @"YOUR_ERROR_DOMAIN"\cf0  \cf7 code\cf0 :\cf10 9999\cf0  \cf7 userInfo\cf0 :dict];\
+        \cf3 // Replace this with code to handle the error appropriately.\cf0 \
+        \cf3 // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.\cf0 \
+        \cf7 NSLog\cf0 (\cf5 @"Unresolved error %@, %@"\cf0 , error, [error \cf7 userInfo\cf0 ]);\
+        \cf7 abort\cf0 ();\
+    \}\
+    \
+    \cf11 return\cf0  \cf8 _persistentStoreCoordinator\cf0 ;\
+\}\
+\
+\
+- (\cf6 NSManagedObjectContext\cf0  *)managedObjectContext \{\
+    \cf3 // Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.)\cf0 \
+    \cf11 if\cf0  (\cf8 _managedObjectContext\cf0  != \cf11 nil\cf0 ) \{\
+        \cf11 return\cf0  \cf8 _managedObjectContext\cf0 ;\
+    \}\
+    \
+    \cf6 NSPersistentStoreCoordinator\cf0  *coordinator = [\cf11 self\cf0  \cf13 persistentStoreCoordinator\cf0 ];\
+    \cf11 if\cf0  (!coordinator) \{\
+        \cf11 return\cf0  \cf11 nil\cf0 ;\
+    \}\
+    \cf8 _managedObjectContext\cf0  = [[\cf6 NSManagedObjectContext\cf0  \cf7 alloc\cf0 ] \cf7 init\cf0 ];\
+    [\cf8 _managedObjectContext\cf0  \cf7 setPersistentStoreCoordinator\cf0 :coordinator];\
+    \cf11 return\cf0  \cf8 _managedObjectContext\cf0 ;\
+\}\
+\
+\cf4 #pragma mark - Core Data Saving support\
+\cf0 \
+- (\cf11 void\cf0 )saveContext \{\
+    \cf6 NSManagedObjectContext\cf0  *managedObjectContext = \cf11 self\cf0 .\cf8 managedObjectContext\cf0 ;\
+    \cf11 if\cf0  (managedObjectContext != \cf11 nil\cf0 ) \{\
+        \cf6 NSError\cf0  *error = \cf11 nil\cf0 ;\
+        \cf11 if\cf0  ([managedObjectContext \cf7 hasChanges\cf0 ] && ![managedObjectContext \cf7 save\cf0 :&error]) \{\
+            \cf3 // Replace this implementation with code to handle the error appropriately.\cf0 \
+            \cf3 // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.\cf0 \
+            \cf7 NSLog\cf0 (\cf5 @"Unresolved error %@, %@"\cf0 , error, [error \cf7 userInfo\cf0 ]);\
+            \cf7 abort\cf0 ();\
+        \}\
+    \}\
+\}\
+}

@@ -1,0 +1,90 @@
+{\rtf1\ansi\ansicpg936\cocoartf1347\cocoasubrtf570
+{\fonttbl\f0\fnil\fcharset134 STHeitiSC-Light;\f1\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red255\green255\blue0;\red228\green124\blue72;\red255\green44\blue56;
+\red211\green24\blue149;\red255\green128\blue0;\red0\green160\blue255;\red65\green204\blue69;\red120\green109\blue255;
+\red217\green11\blue0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww16420\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs24 \cf0 \'ca\'d7\'cf\'c8\'d4\'da
+\f1\fs28 \cf2 \cb0 \CocoaLigature0 AppDelegate
+\f0\fs24 \cf0 \cb1 \CocoaLigature1 \'b5\'bc\'c8\'eb\'cd\'b7\'ce\'c4\'bc\'fe
+\f1\fs28 \cf3 \cb0 \CocoaLigature0 #import \cf4 "HKSlideMenu3DController.h"\cf3 \cb1 \
+\
+
+\f0 \'c8\'bb\'ba\'f3
+\f1 \cf5 \cb0 @property\cf1  (\cf5 strong\cf1 ,\cf5 nonatomic\cf1 ) \cf2 HKSlideMenu3DController\cf1  * hk;\
+\cb1 \
+\cb0 \
+\pard\tx674\pardeftab674\pardirnatural
+\cf5 self\cf1 .\cf6 hk\cf1  = [[\cf2 HKSlideMenu3DController\cf1  \cf7 alloc\cf1 ]\cf7 init\cf1 ];\
+\cf8 //    self [[HKSlideMenu3DController alloc]init];\cf1 \
+    \cf5 self\cf1 .\cf6 hk\cf1 .\cf7 view\cf1 .\cf7 frame\cf1  =  [[\cf7 UIScreen\cf1  \cf7 mainScreen\cf1 ] \cf7 bounds\cf1 ];\
+    \
+    \cf5 self\cf1 .\cf6 hk\cf1 .\cf6 menuViewController\cf1  =[[\cf2 ViewController\cf1  \cf7 alloc\cf1 ]\cf7 init\cf1 ]; [   \
+    \cf5 self\cf1 .\cf6 hk\cf1 .\cf6 mainViewController\cf1  =[\cf7 UINavigationController\cf1  \cf7 alloc\cf1 ]\cf7 initWithRootViewController\cf1 :[[\cf2 ViewControllerMenu\cf1  \cf7 alloc\cf1 ]\cf7 init\cf1 ]];\
+   \
+    \cf5 self\cf1 .\cf6 hk\cf1 .\cf6 enablePan\cf1  = \cf5 YES\cf1 ;\
+    \
+    \
+    \cf7 UIImage\cf1  * img = [\cf7 UIImage\cf1  \cf2 createImageWithColors\cf1 :\cf9 @[\cf1 [\cf7 UIColor\cf1  \cf7 redColor\cf1 ],[\cf7 UIColor\cf1  \cf7 blueColor\cf1 ],[\cf7 UIColor\cf1  \cf7 yellowColor\cf1 ]\cf9 ]\cf1  \cf2 andSize\cf1 :[\cf7 UIScreen\cf1  \cf7 mainScreen\cf1 ].\cf7 bounds\cf1 .\cf7 size\cf1  \cf2 ByGradientType\cf1 :\cf6 topToBottom\cf1 ];\
+    \cf5 self\cf1 .\cf6 hk\cf1 .\cf6 backgroundImage\cf1  = img;\
+\
+ \cf5 self\cf1 .\cf6 hk\cf1 .\cf6 backgroundImageContentMode\cf1  = \cf7 UIViewContentModeScaleAspectFit\cf1 ;\
+    \
+    \cf5 self\cf1 .\cf6 window\cf1 .\cf7 rootViewController\cf1  = \cf5 self\cf1 .\cf6 hk\cf1 ;\
+\
+\
+
+\f0 \'d4\'da\'be\'df\'cc\'e5\'b5\'c4\'b5\'d8\'b7\'bd\'ca\'b9\'d3\'c3\'d5\'e2\'b6\'ce\'b4\'fa\'c2\'eb\'bf\'c9\'d2\'d4\'bd\'ab\cb10 \'bf\'d8\'d6\'c6\'b3\'e9\'cc\'eb\'b5\'c4\'bf\'aa\'ba\'cf
+\f1 \cb0 \
+  [[\cf2 HKAppDelegate\cf1  \cf2 mainDelegate\cf1 ].\cf6 slideMenuVC\cf1  \cf2 toggleMenu\cf1 ];
+\f0 \cb10 \'bf\'d8\'d6\'c6\'b3\'e9\'cc\'eb\'b5\'c4\'bf\'aa\'ba\'cf
+\f1 \cb0 \
+\
+
+\f0 \'c9\'cf\'c3\'e6\'b5\'c4\'bb\'f9\'b1\'be\'b4\'fa\'c2\'eb\'d2\'d1\'be\'ad\'bf\'c9\'d2\'d4\'ca\'b5\'cf\'d6\'b3\'e9\'cc\'eb\'b5\'c4\'d0\'a7\'b9\'fb\'c1\'cb
+\f1 \
+\
+
+\f0 \'d4\'da\'ca\'b5\'cf\'d6\'c1\'cb\'b4\'fa\'c0\'ed\'b5\'c4\'c0\'e0\'d6\'d0\'bb\'e1\'b5\'f7\'d3\'c3\'d5\'e2\'b8\'f6\'d4\'da\'b3\'e9\'cc\'eb\'bf\'aa\'ba\'cf\'b5\'c4\'b6\'af\'d7\'f7\'ca\'b1\'b5\'f7\'d3\'c3\'a1\'a3
+\f1 \
+\cf5 self\cf1 .\cf6 hk\cf1 .\cf6 delegate\cf1  = \cf6 menuVC\cf1 .\cf5 self\cf1 ;\
+\
+\cf5 @protocol\cf1  HKSlideMenu3DControllerDelegate <\cf7 NSObject\cf1 >\
+\
+\cf5 @optional\cf1 \
+\
+-(\cf5 void\cf1 )willOpenMenu;\
+-(\cf5 void\cf1 )didOpenMenu;\
+\
+\cf8 //close\cf1 \
+-(\cf5 void\cf1 )willCloseMenu;\
+-(\cf5 void\cf1 )didCloseMenu;\
+\
+\cf5 @end\cf1 \
+\
+\cf5 @interface\cf1  HKSlideMenu3DController : \cf7 UIViewController\cf1 <\cf7 UIGestureRecognizerDelegate\cf1 >\
+\
+\pard\tx674\pardeftab674\pardirnatural
+\cf3 #pragma mark - Managed View Controllers\
+\pard\tx674\pardeftab674\pardirnatural
+\cf1 \
+\cf5 @property\cf1  (\cf5 nonatomic\cf1 , \cf5 weak\cf1 ) \cf5 id\cf1 <\cf2 HKSlideMenu3DControllerDelegate\cf1 > delegate;\
+\
+\cf5 @property\cf1  (\cf5 nonatomic\cf1 , \cf5 strong\cf1 ) \cf7 UIViewController\cf1  *menuViewController;\
+\cf5 @property\cf1  (\cf5 nonatomic\cf1 , \cf5 strong\cf1 ) \cf7 UIViewController\cf1  *mainViewController;\
+\cf5 @property\cf1  (\cf5 nonatomic\cf1 , \cf5 strong\cf1 ) \cf7 UIImage\cf1  *backgroundImage;\
+\cf5 @property\cf1  (\cf5 nonatomic\cf1 ) \cf7 UIViewContentMode\cf1  backgroundImageContentMode;\
+\cf5 @property\cf1  (\cf5 nonatomic\cf1 , \cf5 assign\cf1 ) \cf5 BOOL\cf1  enablePan;\
+\
+- (\cf5 void\cf1 )toggleMenu;\
+\
+\cf5 @end\cf1 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf1 \cb1 \
+\
+\
+\
+}

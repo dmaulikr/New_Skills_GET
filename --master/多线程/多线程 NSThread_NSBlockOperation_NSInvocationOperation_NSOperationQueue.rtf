@@ -1,0 +1,861 @@
+{\rtf1\ansi\ansicpg936\cocoartf1347\cocoasubrtf570
+{\fonttbl\f0\fnil\fcharset134 STHeitiSC-Light;\f1\fnil\fcharset0 Menlo-Regular;\f2\fswiss\fcharset0 Helvetica;
+\f3\fnil\fcharset134 STKaiti-SC-Regular;\f4\fnil\fcharset0 ComicSansMS;\f5\fswiss\fcharset0 ArialMT;
+\f6\fnil\fcharset134 STSongti-SC-Regular;\f7\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;\red255\green39\blue18;\red0\green116\blue0;\red255\green173\blue23;
+\red38\green38\blue38;\red59\green16\blue143;\red170\green13\blue145;\red196\green26\blue22;\red28\green0\blue207;
+\red92\green38\blue153;\red217\green11\blue0;\red230\green230\blue230;\red100\green56\blue32;\red69\green39\blue0;
+\red63\green110\blue116;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww12520\viewh9680\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs72 \cf0 \cb2 \'b4\'b4\'bd\'a8\'cf\'df\'b3\'cc\'b5\'c4\'c8\'fd\'d6\'d6\'b7\'bd\'ca\'bd
+\fs24 \cb1 \
+\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f1\fs28 \cf0 \CocoaLigature0 \
+\cf3 //iOS 
+\f0 \'bf\'c9\'d2\'d4\'cd\'a8\'b9\'fd\'c8\'fd\'d6\'d6\'b7\'bd\'ca\'bd\'ca\'b5\'cf\'d6\'b6\'e0\'cf\'df\'b3\'cc
+\f1 \cf0 \
+\cf3 //1,NSThread\cf0 \
+\cf3 //2,NSOperationQueue\cf0 \
+\cf3 //3,GCD\cf0 \
+\
+\cf3 //
+\f0 \'b6\'e0\'cf\'df\'b3\'cc\'b5\'c4\'d7\'f7\'d3\'c3\'ce\'aa\'d4\'da\'cd\'ac\'d2\'bb\'ca\'b1\'b6\'ce\'bf\'c9\'d2\'d4\'d6\'b4\'d0\'d0\'b6\'e0\'b8\'f6\'c8\'ce\'ce\'f1
+\f1 \cf0 \
+\
+\cf3 //
+\f0 \'c3\'bf\'b8\'f6\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'d3\'d0\'c7\'d2\'bd\'f6\'d3\'d0\'bd\'fc\'d2\'bb\'b8\'f6\'d6\'f7\'cf\'df\'b3\'cc
+\f1 \cf0 \
+\cf3 //
+\f0 \'d6\'f7\'cf\'df\'b3\'cc\'b5\'c4\'d7\'f7\'d3\'c3\'ce\'aa\'b2\'d9\'d7\'f7\'d2\'b3\'c3\'e6
+\f1 \cf0 \
+\
+\cf3 //
+\f0 \'c3\'bf\'b8\'f6\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'bf\'c9\'d2\'d4\'d3\'d0\'c8\'f4\'b8\'c9\'b8\'f6\'d7\'d3\'cf\'df\'b3\'cc\'a3\'ac\'d7\'d3\'cf\'df\'b3\'cc\'d0\'e8\'d2\'aa\'ca\'d6\'b6\'af\'bf\'aa\'b1\'d9
+\f1 \cf0 \
+\cf3 //
+\f0 \'d7\'d3\'cf\'df\'b3\'cc\'b5\'c4\'d7\'f7\'d3\'c3\'ce\'aa\'b2\'d9\'d7\'f7\'ba\'f3\'cc\'a8\'ca\'fd\'be\'dd\
+
+\f2\fs24 \cf0 \CocoaLigature1 \
+
+\f1\fs72 \cf4 \cb2 \CocoaLigature0 NSThread
+\f2\fs24 \cf0 \cb1 \CocoaLigature1 \
+\
+
+\f1\fs28 \CocoaLigature0   
+\f3\fs36 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \'d2\'bb\'a1\'a2
+\f4 NSThread
+\f5\fs28 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\sl520
+
+\f3\fs36 \cf0 \expnd0\expndtw0\kerning0
+\'b4\'b4\'bd\'a8
+\f4 NSThread
+\f3 \'d6\'f7\'d2\'aa\'d3\'d0\'c1\'bd\'d6\'d6\'b7\'bd\'ca\'bd\'a3\'ba
+\f5\fs28 \expnd0\expndtw0\kerning0
+\
+
+\f4\fs36 \expnd0\expndtw0\kerning0
+1.
+\f3 \'ca\'b9\'d3\'c3\'c0\'e0\'b7\'bd\'b7\'a8\'b4\'b4\'bd\'a8
+\f5\fs28 \expnd0\expndtw0\kerning0
+\
+
+\f4\fs36 \expnd0\expndtw0\kerning0
+[NSThread\'a0detachNewThreadSelector:@selector(doInBackgroud) toTarget:self\'a0withObject:nil];
+\f5\fs28 \expnd0\expndtw0\kerning0
+\
+
+\f4\fs36 \expnd0\expndtw0\kerning0
+\uc0\u8232 
+\f5\fs28 \expnd0\expndtw0\kerning0
+\
+
+\f4\fs36 \expnd0\expndtw0\kerning0
+2.
+\f3 \'ca\'b9\'d3\'c3\'b4\'ab\'cd\'b3\'b7\'bd\'ca\'bd\'b4\'b4\'bd\'a8
+\f5\fs28 \expnd0\expndtw0\kerning0
+\
+
+\f4\fs36 \expnd0\expndtw0\kerning0
+NSThread\'a0*thread = [[NSThreadalloc]\'a0initWithTarget:self\'a0selector:@selector(doInBackgroud)\'a0object:nil];
+\f5\fs28 \expnd0\expndtw0\kerning0
+\
+
+\f4\fs36 \expnd0\expndtw0\kerning0
+[thread\'a0start];
+\f5\fs28 \expnd0\expndtw0\kerning0
+\
+
+\f4\fs36 \expnd0\expndtw0\kerning0
+\uc0\u8232 
+\f5\fs28 \expnd0\expndtw0\kerning0
+\
+
+\f3\fs36 \expnd0\expndtw0\kerning0
+\'c1\'bd\'d6\'d6\'b7\'bd\'ca\'bd\'b5\'c4\'c7\'f8\'b1\'f0\'a3\'ba
+\f5\fs28 \expnd0\expndtw0\kerning0
+\
+
+\f4\fs36 \expnd0\expndtw0\kerning0
+1.
+\f3 \'b5\'da\'d2\'bb\'d6\'d6\'b7\'bd\'ca\'bd\'bb\'e1\'c1\'a2\'bc\'b4\'b5\'f7\'d3\'c3\'b2\'a2\'d6\'b4\'d0\'d0\'cf\'df\'b3\'cc\'a3\'ac\'b5\'da\'b6\'fe\'d6\'d6\'b1\'d8\'d0\'eb\'b5\'f7\'d3\'c3
+\f4 start
+\f3 \'b7\'bd\'b7\'a8\'ba\'f3\'b2\'c5\'bb\'e1\'bf\'aa\'ca\'bc\'d6\'b4\'d0\'d0\'cf\'df\'b3\'cc\'a3\'ac\'d4\'da\'b4\'cb\'d6\'ae\'c7\'b0\'bf\'c9\'d2\'d4\'b6\'d4\'cf\'df\'b3\'cc\'bd\'f8\'d0\'d0\'d2\'bb\'d0\'a9\'c9\'e8\'d6\'c3\'a3\'ac\'b1\'c8\'c8\'e7\'cf\'df\'b3\'cc\'d3\'c5\'cf\'c8\'bc\'b6\'b5\'c8\'a1\'a3\'b5\'da\'b6\'fe\'d6\'d6\'b7\'bd\'ca\'bd\'d3\'eb
+\f4 Java
+\f3 \'d6\'d0\'cf\'df\'b3\'cc\'b5\'c4\'ca\'b9\'d3\'c3\'c0\'e0\'cb\'c6\'a1\'a3
+\f5\fs28 \expnd0\expndtw0\kerning0
+\
+
+\f4\fs36 \expnd0\expndtw0\kerning0
+2.
+\f3 \'ca\'b9\'d3\'c3\'c0\'e0\'b7\'bd\'b7\'a8\'a3\'a8
+\f4 Convenient Method
+\f3 \'a3\'a9\'b4\'b4\'bd\'a8\'b5\'c4\'cf\'df\'b3\'cc\'b2\'bb\'d0\'e8\'d2\'aa\'bd\'f8\'d0\'d0\'c4\'da\'b4\'e6\'c7\'e5\'c0\'ed\'a3\'ac\'b6\'f8\'ca\'b9\'d3\'c3
+\f4 initWithTarget
+\f3 \'b7\'bd\'b7\'a8\'b4\'b4\'bd\'a8\'b5\'c4\'cf\'df\'b3\'cc\'d0\'e8\'d2\'aa\'b5\'b1
+\f4 retainCount
+\f3 \'ce\'aa
+\f4 0
+\f3 \'ca\'b1\'b5\'f7\'d3\'c3
+\f4 release
+\f3 \'b7\'bd\'b7\'a8\'ca\'cd\'b7\'c5\'c4\'da\'b4\'e6\'a1\'a3
+\f5\fs28 \expnd0\expndtw0\kerning0
+\
+\
+\pard\pardeftab720\sl560
+
+\f6 \cf5 \expnd0\expndtw0\kerning0
+\'a1\'a1
+\f7 1.- (BOOL)isExecuting\'a0\
+\'a0\
+
+\f6 \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'c8\'e7\'b9\'fb\'bd\'f8\'b3\'cc\'d5\'fd\'d4\'da\'d6\'b4\'d0\'d0
+\f7 ,
+\f6 \'d5\'e2\'b8\'f6\'b7\'bd\'b7\'a8\'b7\'b5\'bb\'d8
+\f7 YES,
+\f6 \'b7\'f1\'d4\'f2\'b7\'b5\'bb\'d8
+\f7 NO;\
+\'a0\
+
+\f6 \'a1\'a1\'a1\'a1
+\f7 2.- (BOOL)isFinished\
+\'a0\
+
+\f6 \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'c8\'e7\'b9\'fb\'bd\'f8\'b3\'cc\'d6\'b4\'d0\'d0\'bd\'e1\'ca\'f8
+\f7 ,
+\f6 \'b7\'b5\'bb\'d8
+\f7 YES,
+\f6 \'b7\'f1\'d4\'f2\'b7\'b5\'bb\'d8
+\f7 NO;\
+\'a0\
+
+\f6 \'a1\'a1\'a1\'a1
+\f7 3.- (BOOL)isCancelled\
+\'a0\
+
+\f6 \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'c8\'e7\'b9\'fb\'bd\'f8\'b3\'cc\'b1\'bb\'c8\'a1\'cf\'fb
+\f7 ,
+\f6 \'b7\'b5\'bb\'d8
+\f7 YES,
+\f6 \'b7\'f1\'d4\'f2\'b7\'b5\'bb\'d8
+\f7 NO;\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f1 \cf0 \kerning1\expnd0\expndtw0 \CocoaLigature0 \
+\
+ \cf3 //
+\f0 \'bf\'aa\'b1\'d9\'d7\'d3\'cf\'df\'b3\'cc
+\f1 \cf0 \
+    \cf4 NSThread\cf0  *t1=[[\cf4 NSThread\cf0  \cf6 alloc\cf0 ]\cf6 initWithTarget\cf0 :\cf7 self\cf0  \cf6 selector\cf0 :\cf7 @selector\cf0 (thread1) \cf6 object\cf0 :\cf7 nil\cf0 ];\
+    \cf3 //
+\f0 \'c9\'e8\'d6\'c3\'cf\'df\'b3\'cc\'b5\'c4\'c3\'fb\'b3\'c6
+\f1 \cf0 \
+    [t1 \cf6 setName\cf0 :\cf8 @"
+\f0 \'cf\'df\'b3\'cc
+\f1 1"\cf0 ];\
+    [t1 \cf6 start\cf0 ];\
+    \
+    \cf3 //
+\f0 \'bf\'aa\'b1\'d9\'b5\'da\'b6\'fe\'b8\'f6\'d7\'d3\'cf\'df\'b3\'cc
+\f1 \cf0 \
+    \cf4 NSThread\cf0  *t2=[[\cf4 NSThread\cf0  \cf6 alloc\cf0 ]\cf6 initWithTarget\cf0 :\cf7 self\cf0  \cf6 selector\cf0 :\cf7 @selector\cf0 (thread2) \cf6 object\cf0 :\cf7 nil\cf0 ];\
+    [t2 \cf6 setName\cf0 :\cf8 @"
+\f0 \'cf\'df\'b3\'cc
+\f1 2"\cf0 ];\
+    [t2 \cf6 start\cf0 ];\
+    \
+    \cf3 //
+\f0 \'bf\'aa\'b1\'d9\'b5\'da\'c8\'fd\'b8\'f6\'d7\'d3\'cf\'df\'b3\'cc
+\f1 \cf0 \
+    \cf3 //NSNumber *n=[NSNumber numberWithInt:20];\cf0 \
+    \cf4 NSNumber\cf0  *n=\cf9 @(20)\cf0 ;\
+    [\cf4 NSThread\cf0  \cf6 detachNewThreadSelector\cf0 :\cf7 @selector\cf0 (thread3:) \cf6 toTarget\cf0 :\cf7 self\cf0  \cf6 withObject\cf0 :n];\
+    \
+\
+-(\cf7 void\cf0 )thread3:(\cf7 id\cf0 )obj\
+\{\
+    \cf6 NSLog\cf0 (\cf8 @"%@"\cf0 ,obj);\
+    \cf7 while\cf0  (\cf7 YES\cf0 ) \{\
+        [\cf4 NSThread\cf0  \cf6 sleepForTimeInterval\cf0 :\cf9 1\cf0 ];\
+        \cf6 NSLog\cf0 (\cf8 @"thread3"\cf0 );\
+    \}\
+\}\
+-(\cf7 void\cf0 )thread1\
+\{\
+    \cf7 while\cf0  (\cf7 YES\cf0 ) \{\
+        \cf3 //
+\f0 \'b2\'e9\'bf\'b4\'b5\'b1\'c7\'b0\'b7\'bd\'b7\'a8\'b1\'bb\'c4\'c4\'b8\'f6\'cf\'df\'b3\'cc\'b5\'f7\'d3\'c3
+\f1 \cf0 \
+        \cf4 NSThread\cf0  *t=[\cf4 NSThread\cf0  \cf6 currentThread\cf0 ];\
+        \cf6 NSLog\cf0 (\cf8 @"%@"\cf0 ,t.\cf10 name\cf0 );\
+        \cf3 //
+\f0 \'c3\'bf\'b8\'f4
+\f1 1S
+\f0 \'b4\'f2\'d3\'a1\'d2\'bb\'b4\'ce\'b7\'bd\'b7\'a8\'c3\'fb
+\f1 \cf0 \
+        [\cf4 NSThread\cf0  \cf6 sleepForTimeInterval\cf0 :\cf9 1\cf0 ];\
+        \cf6 NSLog\cf0 (\cf8 @"thread1"\cf0 );\
+    \}\
+\}\
+-(\cf7 void\cf0 )thread2\
+\{\
+    \cf7 while\cf0  (\cf7 YES\cf0 ) \{\
+        \cf3 //
+\f0 \'c3\'bf\'b8\'f4
+\f1 1S
+\f0 \'b4\'f2\'d3\'a1\'d2\'bb\'b4\'ce\'b7\'bd\'b7\'a8\'c3\'fb
+\f1 \cf0 \
+        [\cf4 NSThread\cf0  \cf6 sleepForTimeInterval\cf0 :\cf9 1\cf0 ];\
+        \cf6 NSLog\cf0 (\cf8 @"thread2"\cf0 );\
+    \}\
+\}\
+\
+
+\fs72 \cf4 \cb11 NSOperationQueue
+\fs28 \cf0 \cb1 \
+\cb12  \cf7 @interface\cf0  NSOperationQueue : \cf4 NSObject\cf0  \{\
+\cf7 @private\cf0 \
+    \cf7 id\cf0  _private;\
+    \cf7 void\cf0  *_reserved;\
+\}\
+\
+- (\cf7 void\cf0 )addOperation:(\cf4 NSOperation\cf0  *)op;\
+- (\cf7 void\cf0 )addOperations:(\cf4 NSArray\cf0  *)ops waitUntilFinished:(\cf7 BOOL\cf0 )wait \cf13 NS_AVAILABLE\cf0 (\cf9 10\cf0 _6, \cf9 4\cf0 _0);\
+\
+- (\cf7 void\cf0 )addOperationWithBlock:(\cf7 void\cf0  (^)(\cf7 void\cf0 ))block \cf13 NS_AVAILABLE\cf0 (\cf9 10\cf0 _6, \cf9 4\cf0 _0);\
+\
+\cf7 @property\cf0  (\cf7 readonly\cf0 , \cf7 copy\cf0 ) \cf4 NSArray\cf0  *operations;\
+\cf7 @property\cf0  (\cf7 readonly\cf0 ) \cf10 NSUInteger\cf0  operationCount \cf13 NS_AVAILABLE\cf0 (\cf9 10\cf0 _6, \cf9 4\cf0 _0);\
+\
+\cf7 @property\cf0  \cf10 NSInteger\cf0  maxConcurrentOperationCount;\
+\
+\cf7 enum\cf0  \{\
+    NSOperationQueueDefaultMaxConcurrentOperationCount = -\cf9 1\cf0 \
+\};\
+\
+\cf7 @property\cf0  (\cf7 getter\cf0 =isSuspended) \cf7 BOOL\cf0  suspended;\
+\
+\cf7 @property\cf0  (\cf7 copy\cf0 ) \cf4 NSString\cf0  *name \cf13 NS_AVAILABLE\cf0 (\cf9 10\cf0 _6, \cf9 4\cf0 _0);\
+\
+\cf7 @property\cf0  \cf10 NSQualityOfService\cf0  qualityOfService \cf13 NS_AVAILABLE\cf0 (\cf9 10\cf0 _10, \cf9 8\cf0 _0);\
+\
+\cf7 @property\cf0  (\cf7 assign\cf0  \cf3 /* actually retain */\cf0 ) \cf10 dispatch_queue_t\cf0  underlyingQueue \cf13 NS_AVAILABLE\cf0 (\cf9 10\cf0 _10, \cf9 8\cf0 _0);\
+\
+- (\cf7 void\cf0 )cancelAllOperations;\
+\
+- (\cf7 void\cf0 )waitUntilAllOperationsAreFinished;\
+\
++ (\cf4 NSOperationQueue\cf0  *)currentQueue \cf13 NS_AVAILABLE\cf0 (\cf9 10\cf0 _6, \cf9 4\cf0 _0);\
++ (\cf4 NSOperationQueue\cf0  *)mainQueue \cf13 NS_AVAILABLE\cf0 (\cf9 10\cf0 _6, \cf9 4\cf0 _0);\
+\
+\cf7 @end\cf0 \
+\cb1 \
+\
+\cf4 NSOperationQueue\cf0  *queue=[[\cf4 NSOperationQueue\cf0  \cf6 alloc\cf0 ]\cf6 init\cf0 ];\
+    \cf3 //
+\f0 \'b4\'b4\'bd\'a8\'d7\'d3\'cf\'df\'b3\'cc
+\f1 \cf0 \
+\cf4 \
+\
+\cf7 \cb14 @interface\cf0  NSInvocationOperation : \cf4 NSOperation\cf0  \{\
+\cf7 @private\cf0 \
+    \cf7 id\cf0  _inv;\
+    \cf7 id\cf0  _exception;\
+    \cf7 void\cf0  *_reserved2;\
+\}\
+\
+- (\cf7 instancetype\cf0 )initWithTarget:(\cf7 id\cf0 )target selector:(\cf7 SEL\cf0 )sel object:(\cf7 id\cf0 )arg;\
+- (\cf7 instancetype\cf0 )initWithInvocation:(\cf4 NSInvocation\cf0  *)inv \
+\
+\cf7 @property\cf0  (\cf7 readonly\cf0 , \cf7 retain\cf0 ) \cf4 NSInvocation\cf0  *invocation;\
+\
+\cf7 @property\cf0  (\cf7 readonly\cf0 , \cf7 retain\cf0 ) \cf7 id\cf0  result;\
+\
+\cf7 @end\
+\
+\cf4 \cb1 NSInvocationOperation\cf0  *invocation=[[\cf4 NSInvocationOperation\cf0  \cf6 alloc\cf0 ]\cf6 initWithTarget\cf0 :\cf7 self\cf0  \cf6 selector\cf0 :\cf7 @selector\cf0 (thread1) \cf6 object\cf0 :\cf7 nil\cf0 ];\
+    \cf3 //
+\f0 \'d4\'cb\'d0\'d0\'d7\'d3\'cf\'df\'b3\'cc
+\f1 \cf0 \
+    [queue \cf6 addOperation\cf0 :invocation];\
+\
+
+\f0 \'d4\'cb\'d0\'d0\'d7\'d3\'cf\'df\'b3\'cc\'d2\'b2\'ca\'c7\'bf\'c9\'d2\'d4\'ca\'b9\'d3\'c3
+\f1 start
+\f0 \'c0\'b4\'bf\'aa\'c6\'f4\'b5\'c4
+\f1 \
+\
+    [invocation start];\
+    \cf3 //
+\f0 \'b5\'b1
+\f1 invocation
+\f0 \'cf\'df\'b3\'cc\'bd\'e1\'ca\'f8\'ca\'b1\'b5\'f7\'d3\'c3
+\f1 \cf0 \
+    [invocation \cf6 setCompletionBlock\cf0 :^\{\
+        \cf6 NSLog\cf0 (\cf8 @"
+\f0 \'b5\'da\'d2\'bb\'b8\'f6\'d7\'d3\'cf\'df\'b3\'cc\'bd\'e1\'ca\'f8
+\f1 "\cf0 );\
+    \}];\
+\
+\
+\
+\
+    \cf3 //
+\f0 \'b4\'b4\'bd\'a8\'b5\'da\'b6\'fe\'b8\'f6\'d7\'d3\'cf\'df\'b3\'cc\
+\
+
+\f1 \cf7 \cb14 @interface\cf0  NSBlockOperation : \cf4 NSOperation\cf0  \{\
+\cf7 @private\cf0 \
+    \cf7 id\cf0  _private2;\
+    \cf7 void\cf0  *_reserved2;\
+\}\
+\
++ (\cf7 instancetype\cf0 )blockOperationWithBlock:(\cf7 void\cf0  (^)(\cf7 void\cf0 ))block;\
+\
+- (\cf7 void\cf0 )addExecutionBlock:(\cf7 void\cf0  (^)(\cf7 void\cf0 ))block;\
+\cf7 @property\cf0  (\cf7 readonly\cf0 , \cf7 copy\cf0 ) \cf4 NSArray\cf0  *executionBlocks;\
+\
+\cf7 @end\cf0 \
+\cb1 \
+\
+    \cf4 NSBlockOperation\cf0  *block=[\cf4 NSBlockOperation\cf0  \cf6 blockOperationWithBlock\cf0 :^\{\
+       \
+        \
+        \cf7 while\cf0  (\cf7 YES\cf0 ) \{\
+            [\cf4 NSThread\cf0  \cf6 sleepForTimeInterval\cf0 :\cf9 1\cf0 ];\
+            \cf6 NSLog\cf0 (\cf8 @"thread2"\cf0 );\
+        \}\
+        \
+        \
+    \}];\
+    \cf3 //
+\f0 \'d4\'cb\'d0\'d0\'b5\'da\'b6\'fe\'b8\'f6\'d7\'d3\'cf\'df\'b3\'cc
+\f1 \cf0 \
+    [block \cf6 addOperation\cf0 :block];\
+\
+
+\f0 \'d4\'cb\'d0\'d0\'d7\'d3\'cf\'df\'b3\'cc\'d2\'b2\'ca\'c7\'bf\'c9\'d2\'d4\'ca\'b9\'d3\'c3
+\f1 start
+\f0 \'c0\'b4\'bf\'aa\'c6\'f4\'b5\'c4
+\f1 \
+\
+    [block start];\
+    \cf3 //
+\f0 \'c5\'d0\'b6\'cf\'b5\'da\'b6\'fe\'b8\'f6\'d7\'d3\'cf\'df\'b3\'cc\'ca\'c7\'b7\'f1\'bd\'e1\'ca\'f8
+\f1 \cf0 \
+    [block \cf6 setCompletionBlock\cf0 :^\{\
+        \
+    \}];\
+\
+\pard\tx674\pardeftab674\pardirnatural
+
+\fs72 \cf10 \cb2 dispatch_queue_t\cf0 \
+\pard\tx674\pardeftab674\pardirnatural
+
+\fs28 \cf0 \cb1 \
+\
+    \cf3 //
+\f0 \'d6\'f7\'cf\'df\'b3\'cc\'b6\'d3\'c1\'d0
+\f1 \cf0 \
+    \cf10 dispatch_queue_t\cf0  mainQueue;\
+    \cf3 //
+\f0 \'d7\'d3\'cf\'df\'b3\'cc\'b6\'d3\'c1\'d0
+\f1 \cf0 \
+    \cf10 dispatch_queue_t\cf0  queue;\
+    \
+    \cf3 //
+\f0 \'b4\'b4\'bd\'a8\'d6\'f7\'cf\'df\'b3\'cc\'b6\'d3\'c1\'d0
+\f1 \cf0 \
+    \cf3 //
+\f0 \'d6\'f7\'cf\'df\'b3\'cc\'b6\'d3\'c1\'d0\'b5\'c4\'d7\'f7\'d3\'c3\'ce\'aa\'b5\'f7\'d3\'c3\'d6\'f7\'cf\'df\'b3\'cc\'a3\'ac\'b2\'d9\'d7\'f7
+\f1 UI\cf0 \
+    mainQueue=\cf6 dispatch_get_main_queue\cf0 ();\
+    \cf3 //
+\f0 \'b4\'b4\'bd\'a8\'d7\'d3\'cf\'df\'b3\'cc
+\f1 \cf0 \
+    \cf3 //
+\f0 \'b5\'da\'d2\'bb\'b8\'f6\'b2\'ce\'ca\'fd\'ce\'aa\'c9\'e8\'d6\'c3\'d7\'d3\'cf\'df\'b3\'cc\'b5\'c4\'d3\'c5\'cf\'c8\'bc\'b6\'a3\'ac\'b5\'ab\'ca\'c7\'b2\'bb\'b9\'dc\'d3\'c3
+\f1 \cf0 \
+    queue=\cf6 dispatch_get_global_queue\cf0 (\cf13 DISPATCH_QUEUE_PRIORITY_DEFAULT\cf0 , \cf9 0\cf0 );\
+    \
+    \
+    \cf3 //
+\f0 \'b5\'f7\'d3\'c3\'d7\'d3\'cf\'df\'b3\'cc
+\f1 \cf0 \
+    \cf6 dispatch_async\cf0 (queue, ^\{\
+        \cf3 //
+\f0 \'d7\'d3\'cf\'df\'b3\'cc\'d6\'d0\'b5\'c4\'d3\'d0\'b9\'d8\'b2\'d9\'d7\'f7
+\f1 \cf0 \
+        \cf4 NSURL\cf0  *url=[\cf4 NSURL\cf0  \cf6 URLWithString\cf0 :\cf8 @"http://img.app.d1cm.com/news/img/201312021610065708.jpg"\cf0 ];\
+        \cf4 NSData\cf0  *data=[[\cf4 NSData\cf0  \cf6 alloc\cf0 ]\cf6 initWithContentsOfURL\cf0 :url];\
+        \cf4 UIImage\cf0  *image=[[\cf4 UIImage\cf0  \cf6 alloc\cf0 ]\cf6 initWithData\cf0 :data];\
+        \
+        \cf3 //
+\f0 \'b5\'f7\'d3\'c3\'d6\'f7\'cf\'df\'b3\'cc
+\f1 \cf0 \
+        \cf6 dispatch_async\cf0 (mainQueue, ^\{\
+            \cf3 //
+\f0 \'d6\'f7\'cf\'df\'b3\'cc\'d6\'d0\'b5\'c4\'d3\'d0\'b9\'d8\'b2\'d9\'d7\'f7
+\f1 \cf0 \
+            \
+            \cf4 UIImageView\cf0  *imageView=[[\cf4 UIImageView\cf0  \cf6 alloc\cf0 ]\cf6 initWithFrame\cf0 :\cf6 CGRectMake\cf0 (\cf9 100\cf0 , \cf9 100\cf0 , \cf9 200\cf0 , \cf9 100\cf0 )];\
+            imageView.\cf10 image\cf0 =image;\
+            [\cf7 self\cf0 .\cf15 window\cf0  \cf6 addSubview\cf0 :imageView];\
+            \
+            \
+        \});\
+        \
+        \
+        \
+    \});\
+\
+\
+\
+
+\f0 \'b6\'e0\'cf\'df\'b3\'cc\'d6\'ae
+\f1 NSInvocationOperation\
+
+\f0 \'b6\'e0\'cf\'df\'b3\'cc\'b1\'e0\'b3\'cc\'ca\'c7\'b7\'c0\'d6\'b9\'d6\'f7\'cf\'df\'b3\'cc\'b6\'c2\'c8\'fb\'a3\'ac\'d4\'f6\'bc\'d3\'d4\'cb\'d0\'d0\'d0\'a7\'c2\'ca\'b5\'c8\'b5\'c8\'b5\'c4\'d7\'ee\'bc\'d1\'b7\'bd\'b7\'a8\'a1\'a3\'b6\'f8\'d4\'ad\'ca\'bc\'b5\'c4\'b6\'e0\'cf\'df\'b3\'cc\'b7\'bd\'b7\'a8\'b4\'e6\'d4\'da\'ba\'dc\'b6\'e0\'b5\'c4\'c3\'ab\'b2\'a1\'a3\'ac\'b0\'fc\'c0\'a8\'cf\'df\'b3\'cc\'cb\'f8\'cb\'c0\'b5\'c8\'a1\'a3\'d4\'da
+\f1 Cocoa
+\f0 \'d6\'d0\'a3\'ac
+\f1 Apple
+\f0 \'cc\'e1\'b9\'a9\'c1\'cb
+\f1 NSOperation
+\f0 \'d5\'e2\'b8\'f6\'c0\'e0\'a3\'ac\'cc\'e1\'b9\'a9\'c1\'cb\'d2\'bb\'b8\'f6\'d3\'c5\'d0\'e3\'b5\'c4\'b6\'e0\'cf\'df\'b3\'cc\'b1\'e0\'b3\'cc\'b7\'bd\'b7\'a8\'a1\'a3
+\f1 \
+
+\f0 \'b1\'be\'b4\'ce\'bd\'e9\'c9\'dc
+\f1 NSOperation
+\f0 \'b5\'c4\'d7\'d3\'bc\'af\'a3\'ac\'bc\'f2\'d2\'d7\'b7\'bd\'b7\'a8\'b5\'c4
+\f1 NSInvocationOperation
+\f0 \'a3\'ba
+\f1 \
+@implementation MyCustomClass\
+\'a0- (void)launchTaskWithData:(id)data\
+\{\
+\'a0\'a0\'a0\'a0//
+\f0 \'b4\'b4\'bd\'a8\'d2\'bb\'b8\'f6
+\f1 NSInvocationOperation
+\f0 \'b6\'d4\'cf\'f3\'a3\'ac\'b2\'a2\'b3\'f5\'ca\'bc\'bb\'af\'b5\'bd\'b7\'bd\'b7\'a8
+\f1 \
+\'a0\'a0\'a0\'a0//
+\f0 \'d4\'da\'d5\'e2\'c0\'ef\'a3\'ac
+\f1 selector
+\f0 \'b2\'ce\'ca\'fd\'ba\'f3\'b5\'c4\'d6\'b5\'ca\'c7\'c4\'e3\'cf\'eb\'d4\'da\'c1\'ed\'cd\'e2\'d2\'bb\'b8\'f6\'cf\'df\'b3\'cc\'d6\'d0\'d4\'cb\'d0\'d0\'b5\'c4\'b7\'bd\'b7\'a8\'a3\'a8\'ba\'af\'ca\'fd\'a3\'ac
+\f1 Method
+\f0 \'a3\'a9
+\f1 \
+\'a0\'a0\'a0\'a0//
+\f0 \'d4\'da\'d5\'e2\'c0\'ef\'a3\'ac
+\f1 object
+\f0 \'ba\'f3\'b5\'c4\'d6\'b5\'ca\'c7\'cf\'eb\'b4\'ab\'b5\'dd\'b8\'f8\'c7\'b0\'c3\'e6\'b7\'bd\'b7\'a8\'b5\'c4\'ca\'fd\'be\'dd
+\f1 \
+\'a0\'a0\'a0\'a0NSInvocationOperation* theOp = [[NSInvocationOperation alloc] initWithTarget:self\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0selector:@selector(myTaskMethod:) object:data];\
+\'a0\'a0\
+\'a0\'a0\'a0\'a0// 
+\f0 \'cf\'c2\'c3\'e6\'bd\'ab\'ce\'d2\'c3\'c7\'bd\'a8\'c1\'a2\'b5\'c4\'b2\'d9\'d7\'f7
+\f1 \'93Operation\'94
+\f0 \'bc\'d3\'c8\'eb\'b5\'bd\'b1\'be\'b5\'d8\'b3\'cc\'d0\'f2\'b5\'c4\'b9\'b2\'cf\'ed\'b6\'d3\'c1\'d0\'d6\'d0\'a3\'a8\'bc\'d3\'c8\'eb\'ba\'f3\'b7\'bd\'b7\'a8\'be\'cd\'bb\'e1\'c1\'a2\'bf\'cc\'b1\'bb\'d6\'b4\'d0\'d0\'a3\'a9
+\f1 \
+\'a0\'a0\'a0\'a0// 
+\f0 \'b8\'fc\'b6\'e0\'b5\'c4\'ca\'b1\'ba\'f2\'ca\'c7\'d3\'c9\'ce\'d2\'c3\'c7\'d7\'d4\'bc\'ba\'bd\'a8\'c1\'a2
+\f1 \'93
+\f0 \'b2\'d9\'d7\'f7
+\f1 \'94
+\f0 \'b6\'d3\'c1\'d0
+\f1 \
+\'a0\'a0\'a0\'a0[[MyAppDelegate sharedOperationQueue] addOperation:theOp];\
+\}\
+\'a0\'a0\
+// 
+\f0 \'d5\'e2\'b8\'f6\'ca\'c7\'d5\'e6\'d5\'fd\'d4\'cb\'d0\'d0\'d4\'da\'c1\'ed\'cd\'e2\'d2\'bb\'b8\'f6\'cf\'df\'b3\'cc\'b5\'c4
+\f1 \'93
+\f0 \'b7\'bd\'b7\'a8
+\f1 \'94\
+- (void)myTaskMethod:(id)data\
+\{\
+\'a0\'a0\'a0\'a0// Perform the task.\
+\}\
+\'a0\'a0\
+@end
+\f0 \'d2\'bb\'b8\'f6
+\f1 NSOperationQueue 
+\f0 \'b2\'d9\'d7\'f7\'b6\'d3\'c1\'d0\'a3\'ac\'be\'cd\'cf\'e0\'b5\'b1\'d3\'da\'d2\'bb\'b8\'f6\'cf\'df\'b3\'cc\'b9\'dc\'c0\'ed\'c6\'f7\'a3\'ac\'b6\'f8\'b7\'c7\'d2\'bb\'b8\'f6\'cf\'df\'b3\'cc\'a1\'a3\'d2\'f2\'ce\'aa\'c4\'e3\'bf\'c9\'d2\'d4\'c9\'e8\'d6\'c3\'d5\'e2\'b8\'f6\'cf\'df\'b3\'cc\'b9\'dc\'c0\'ed\'c6\'f7\'c4\'da\'bf\'c9\'d2\'d4\'b2\'a2\'d0\'d0\'d4\'cb\'d0\'d0\'b5\'c4\'b5\'c4\'cf\'df\'b3\'cc\'ca\'fd\'c1\'bf\'b5\'c8\'b5\'c8\'a1\'a3\'cf\'c2\'c3\'e6\'ca\'c7\'bd\'a8\'c1\'a2\'b2\'a2\'b3\'f5\'ca\'bc\'bb\'af\'d2\'bb\'b8\'f6\'b2\'d9\'d7\'f7\'b6\'d3\'c1\'d0\'a3\'ba
+\f1 \
+\'a0\
+@interface MyViewController : UIViewController \{\
+\'a0\'a0\
+\'a0\'a0\'a0\'a0NSOperationQueue *operationQueue;\
+\'a0\'a0\'a0\'a0//
+\f0 \'d4\'da\'cd\'b7\'ce\'c4\'bc\'fe\'d6\'d0\'c9\'f9\'c3\'f7\'b8\'c3\'b6\'d3\'c1\'d0
+\f1 \
+\}\
+@end\
+\'a0\'a0\
+@implementation MyViewController\
+\'a0\'a0\
+- (id)init\
+\{\
+\'a0\'a0\'a0\'a0self = [super init];\
+\'a0\'a0\'a0\'a0if (self) \{\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0operationQueue = [[NSOperationQueue alloc] init]; //
+\f0 \'b3\'f5\'ca\'bc\'bb\'af\'b2\'d9\'d7\'f7\'b6\'d3\'c1\'d0
+\f1 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0[operationQueue setMaxConcurrentOperationCount:1];\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0//
+\f0 \'d4\'da\'d5\'e2\'c0\'ef\'cf\'de\'b6\'a8\'c1\'cb\'b8\'c3\'b6\'d3\'c1\'d0\'d6\'bb\'cd\'ac\'ca\'b1\'d4\'cb\'d0\'d0\'d2\'bb\'b8\'f6\'cf\'df\'b3\'cc
+\f1 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0//
+\f0 \'d5\'e2\'b8\'f6\'b6\'d3\'c1\'d0\'d2\'d1\'be\'ad\'bf\'c9\'d2\'d4\'ca\'b9\'d3\'c3\'c1\'cb
+\f1 \
+\'a0\'a0\'a0\'a0\}\
+\'a0\'a0\'a0\'a0return self;\
+\}\
+\'a0\'a0\
+- (void)dealloc\
+\{\
+\'a0\'a0\'a0\'a0[operationQueue release];\
+\'a0\'a0\'a0\'a0//
+\f0 \'d5\'fd\'c8\'e7
+\f1 Alan
+\f0 \'be\'ad\'b3\'a3\'cb\'b5\'b5\'c4\'a3\'ac\'ce\'d2\'c3\'c7\'ca\'c7\'b3\'cc\'d0\'f2\'b5\'c4\'ba\'c3\'b9\'ab\'c3\'f1\'a3\'ac\'d0\'e8\'d2\'aa\'ca\'cd\'b7\'c5\'c4\'da\'b4\'e6\'a3\'a1
+\f1 \
+\'a0\'a0\'a0\'a0[super dealloc];\
+\}\
+\'a0\'a0\
+@end
+\f0 \'bc\'f2\'b5\'a5\'bd\'e9\'c9\'dc\'d6\'ae\'ba\'f3\'a3\'ac\'c6\'e4\'ca\'b5\'bf\'c9\'d2\'d4\'b7\'a2\'cf\'d6\'d5\'e2\'d6\'d6\'b7\'bd\'b7\'a8\'ca\'c7\'b7\'c7\'b3\'a3\'bc\'f2\'b5\'a5\'b5\'c4\'a1\'a3\'ba\'dc\'b6\'e0\'b5\'c4\'ca\'b1\'ba\'f2\'ce\'d2\'c3\'c7\'ca\'b9\'d3\'c3\'b6\'e0\'cf\'df\'b3\'cc\'bd\'f6\'bd\'f6\'ca\'c7\'ce\'aa\'c1\'cb\'b7\'c0\'d6\'b9\'d6\'f7\'cf\'df\'b3\'cc\'b6\'c2\'c8\'fb\'a3\'ac\'b6\'f8
+\f1 NSInvocationOperation
+\f0 \'be\'cd\'ca\'c7\'d7\'ee\'bc\'f2\'b5\'a5\'b5\'c4\'b6\'e0\'cf\'df\'b3\'cc\'b1\'e0\'b3\'cc\'a3\'ac\'d4\'da
+\f1 iPhone
+\f0 \'b1\'e0\'b3\'cc\'d6\'d0\'ca\'c7\'be\'ad\'b3\'a3\'b1\'bb\'d3\'c3\'b5\'bd\'b5\'c4\'a1\'a3
+\f1 \
+\'a0\
+\'a0\
+\'a0\
+///////////////////////////////////////////////////////////////////////////////////////////////////\
+1 
+\f0 \'d4\'da\'d6\'f7\'cf\'df\'b3\'cc\'c0\'ef\'bc\'d3\'c8\'eb\'d2\'bb\'b8\'f6
+\f1 loading
+\f0 \'bb\'ad\'c3\'e6
+\f1 \'85\'85\
+2 \{\
+3 [window addSubview:view_loading];\
+4 [NSThread detachNewThreadSelector:@selector(init_backup:) toTarget:self withObject:nil];\
+5 \}\
+
+\f0 \'bf\'c9\'d2\'d4\'cd\'a8\'b9\'fd
+\f1 performSelectorOhMainThread
+\f0 \'b8\'fc\'d0\'c2
+\f1 UI
+\f0 \'d4\'aa\'cb\'d8\'a3\'ac\'b1\'c8\'c8\'e7\'c9\'e8\'d6\'c3\'bd\'f8\'b6\'c8\'cc\'f5\'b5\'c8\'b5\'c8\'a1\'a3\'d7\'ee\'ba\'f3\'cf\'fb\'b3\'fd
+\f1 loading
+\f0 \'bb\'ad\'c3\'e6\'a3\'ac\'d4\'d8\'c8\'eb\'d6\'f7
+\f1 View
+\f0 \'a1\'a3
+\f1 \
+7 - (void)init_backup:(id)sender\
+8 \{\
+9 NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];\
+10\
+11 // ...\
+12 int i = status;\
+13 [self performSelectorOnMainThread:@selector(show_loading:) withObject:[NSNumber numberWithInt:i] waitUntil Done:NO];\
+14\
+15 [view_loading removeFromSuperview];\
+16 [window addSubview:tabcontroller_main.view];\
+17 [pool release];\
+18 \}\
+\'a0\
+///////////////////////////////////////////////////////\
+\'a0\
+
+\f0 \'c0\'fb\'d3\'c3
+\f1 iphone
+\f0 \'b5\'c4\'b6\'e0\'cf\'df\'b3\'cc\'ca\'b5\'cf\'d6\'ba\'cd\'cf\'df\'b3\'cc\'cd\'ac\'b2\'bd
+\f1 \
+\'a0\
+
+\f0 \'b4\'d3\'bd\'d3\'bf\'da\'b5\'c4\'b6\'a8\'d2\'e5\'d6\'d0\'bf\'c9\'d2\'d4\'d6\'aa\'b5\'c0\'a3\'ac
+\f1 NSThread
+\f0 \'ba\'cd\'b4\'f3\'b6\'e0\'ca\'fd
+\f1 iphone
+\f0 \'b5\'c4\'bd\'d3\'bf\'da\'b6\'d4\'cf\'f3\'d2\'bb\'d1\'f9\'a3\'ac\'d3\'d0\'c1\'bd\'d6\'d6\'b7\'bd\'ca\'bd\'bf\'c9\'d2\'d4\'b3\'f5\'ca\'bc\'bb\'af\'a3\'ba
+\f1 \
+\'a0\
+
+\f0 \'d2\'bb\'d6\'d6\'ca\'b9\'d3\'c3
+\f1 initWithTarget :(id)target selector:(SEL)selector object:(id)argument
+\f0 \'a3\'ac\'b5\'ab\'d0\'e8\'d2\'aa\'b8\'ba\'d4\'f0\'d4\'da\'b6\'d4\'cf\'f3\'b5\'c4
+\f1 retain count
+\f0 \'ce\'aa
+\f1 0
+\f0 \'ca\'b1\'b5\'f7\'d3\'c3\'b6\'d4\'cf\'f3\'b5\'c4
+\f1 release
+\f0 \'b7\'bd\'b7\'a8\'c7\'e5\'c0\'ed\'b6\'d4\'cf\'f3\'a1\'a3
+\f1 \
+\'a0\
+
+\f0 \'c1\'ed\'d2\'bb\'d6\'d6\'d4\'f2\'ca\'b9\'d3\'c3\'cb\'f9\'ce\'bd\'b5\'c4
+\f1 convenient method,
+\f0 \'d5\'e2\'b8\'f6\'b7\'bd\'b1\'e3\'bd\'d3\'bf\'da\'be\'cd\'ca\'c7
+\f1 detachNewThreadSelector
+\f0 \'a3\'ac\'d5\'e2\'b8\'f6\'b7\'bd\'b7\'a8\'bf\'c9\'d2\'d4\'d6\'b1\'bd\'d3\'c9\'fa\'b3\'c9\'d2\'bb\'b8\'f6\'cf\'df\'b3\'cc\'b2\'a2\'c6\'f4\'b6\'af\'cb\'fc\'a3\'ac\'b6\'f8\'c7\'d2\'ce\'de\'d0\'e8\'ce\'aa\'cf\'df\'b3\'cc\'b5\'c4\'c7\'e5\'c0\'ed\'b8\'ba\'d4\'f0\'a1\'a3
+\f1 \
+\'a0\
+#import <UIKit/UIKit.h>\
+@interface SellTicketsAppDelegate : NSObject <UIApplicationDelegate> \{\
+\'a0\'a0\'a0\'a0int tickets;\
+\'a0\'a0\'a0\'a0int count;\
+\'a0\'a0\'a0\'a0NSThread* ticketsThreadone;\
+\'a0\'a0\'a0\'a0NSThread* ticketsThreadtwo;\
+\'a0\'a0\'a0\'a0NSCondition* ticketsCondition;\
+\'a0\'a0\'a0\'a0UIWindow *window;\
+\}\
+\'a0\
+@property (nonatomic, retain) IBOutlet UIWindow *window;\
+@end\
+\'a0\
+
+\f0 \'c8\'bb\'ba\'f3\'d4\'da\'ca\'b5\'cf\'d6\'d6\'d0\'cc\'ed\'bc\'d3\'c8\'e7\'cf\'c2\'b4\'fa\'c2\'eb\'a3\'ba
+\f1 \
+//\'a0 SellTicketsAppDelegate.m\
+//\'a0 SellTickets\
+//\
+//\'a0 Created by sun dfsun2009 on 09-11-10.\
+//\'a0 Copyright __MyCompanyName__ 2009. All rights reserved.\
+//\
+#import "SellTicketsAppDelegate.h"\
+@implementation SellTicketsAppDelegate\
+@synthesize window;\
+- (void)applicationDidFinishLaunching:(UIApplication *)application \{\
+\'a0\'a0\'a0\'a0tickets = 100;\
+\'a0\'a0\'a0\'a0count = 0;\
+\'a0\'a0\'a0\'a0// 
+\f0 \'cb\'f8\'b6\'d4\'cf\'f3
+\f1 \
+\'a0\'a0\'a0\'a0ticketCondition = [[NSCondition alloc] init];\
+\'a0\'a0\'a0\'a0ticketsThreadone = [[NSThread alloc] initWithTarget:self selector:@selector(run) object:nil];\
+\'a0\'a0\'a0\'a0[ticketsThreadone setName:@"Thread-1"];\
+\'a0\'a0\'a0\'a0[ticketsThreadone start];\
+\'a0\'a0\'a0\'a0ticketsThreadtwo = [[NSThread alloc] initWithTarget:self selector:@selector(run) object:nil];\
+\'a0\'a0\'a0\'a0[ticketsThreadtwo setName:@"Thread-2"];\
+\'a0\'a0\'a0\'a0[ticketsThreadtwo start];\
+\'a0\'a0\'a0\'a0//[NSThread detachNewThreadSelector:@selector(run) toTarget:self withObject:nil];\
+\'a0\'a0\'a0\'a0// Override point for customization after application launch\
+\'a0\'a0\'a0\'a0[window makeKeyAndVisible];\
+\}\
+- (void)run\{\
+\'a0\'a0\'a0\'a0while (TRUE) \{\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0// 
+\f0 \'c9\'cf\'cb\'f8
+\f1 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0[ticketsCondition lock];\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if(tickets > 0)\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\{\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0[NSThread sleepForTimeInterval:0.5];\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0count = 100 - tickets;\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0NSLog(@"
+\f0 \'b5\'b1\'c7\'b0\'c6\'b1\'ca\'fd\'ca\'c7
+\f1 :%d,
+\f0 \'ca\'db\'b3\'f6
+\f1 :%d,
+\f0 \'cf\'df\'b3\'cc\'c3\'fb
+\f1 :%@",tickets,count,[[NSThread currentThread] name]);\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0tickets--;\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\}else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\{\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0break;\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\}\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0[ticketsCondition unlock];\
+\'a0\'a0\'a0\'a0\}\
+\}\
+-\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 (void)dealloc \{\
+\'a0\'a0\'a0\'a0[ticketsThreadone release];\
+\'a0\'a0\'a0\'a0[ticketsThreadtwo release];\
+\'a0\'a0\'a0\'a0[ticketsCondition release];\
+\'a0\'a0\'a0\'a0[window release];\
+\'a0\'a0\'a0\'a0[super dealloc];\
+\}\
+@end\
+\'a0\
+-------------------------------------------------------------------------------------\
+// 
+\f0 \'b6\'a8\'d2\'e5
+\f1 \
+#import <UIKit/UIKit.h>\
+\'a0\
+@interface ThreadSyncSampleViewController : UIViewController \{\
+\'a0int _threadCount;\
+\'a0NSCondition *_myCondition;\
+\}\
+\'a0\
+@end\
+\'a0\
+//
+\f0 \'ca\'b5\'cf\'d6\'ce\'c4\'bc\'fe\'c8\'e7\'cf\'c2
+\f1 :\
+\'a0\
+#import "ThreadSyncSampleViewController.h"\
+\'a0\
+@implementation ThreadSyncSampleViewController\
+\'a0\
+/*\
+// The designated initializer. Override to perform setup that is required before the view is loaded.\
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil \{\
+\'a0\'a0\'a0\'a0if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) \{\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0// Custom initialization\
+\'a0\'a0\'a0\'a0\}\
+\'a0\'a0\'a0\'a0return self;\
+\}\
+*/\
+\'a0\
+/*\
+// Implement loadView to create a view hierarchy programmatically, without using a nib.\
+- (void)loadView \{\
+\}\
+*/\
+\'a0\
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.\
+- (void)viewDidLoad \{\
+\'a0\'a0\'a0\'a0[super viewDidLoad];\
+\'a0//\
+\'a0//_myCondition = nil;\
+\'a0//\
+\'a0_myCondition = [[NSCondition alloc] init];\
+\'a0//\
+\'a0NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:30\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0target:self\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0selector:@selector(threadTester)\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0userInfo:nil\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0repeats:YES];\
+\'a0[timer fire];\
+\'a0\'a0\
+\}\
+\'a0\
+\'a0\
+- (void)threadTester\{\
+\'a0[_myCondition lock];\
+\'a0\'a0\
+\'a0_threadCount = -2;\
+\'a0//
+\f0 \'c8\'e7\'b9\'fb\'d3\'d0
+\f1 n
+\f0 \'b8\'f6\'d2\'aa\'b5\'c8\'b4\'fd\'b5\'c4
+\f1 thread
+\f0 \'a3\'ac\'d5\'e2\'c0\'ef\'d6\'c3\'b3\'c9
+\f1  -n\
+\'a0[_myCondition unlock];\
+\'a0//\
+\'a0NSLog(@"");\
+\'a0NSLog(@"------------------------------------------------------------------------------");\
+\'a0[NSThread detachNewThreadSelector:@selector(threadOne) toTarget:self withObject:nil];\
+\'a0[NSThread detachNewThreadSelector:@selector(threadTwo) toTarget:self withObject:nil];\
+\'a0[NSThread detachNewThreadSelector:@selector(threadThree) toTarget:self withObject:nil];\
+\'a0return;\
+\}\
+\'a0\
+- (void)threadOne\{\
+\'a0NSLog(@"@@@ In thread 111111 start.");\
+\'a0[_myCondition lock];\
+\'a0\'a0\
+\'a0int n = rand()%5 + 1;\
+\'a0NSLog(@"@@@ Thread 111111 Will sleep %d seconds ,now _threadCount is : %d",n,_threadCount);\
+\'a0sleep(n);\
+\'a0//[NSThread sleepForTimeInterval:n];\
+\'a0_threadCount ++ ;\
+\'a0NSLog(@"@@@ Thread 111111 has sleep %d seconds ,now _threadCount is : %d",n,_threadCount);\
+\'a0[_myCondition signal];\
+\'a0NSLog(@"@@@ Thread 1111111 has signaled ,now _threadCount is : %d",_threadCount);\
+\'a0[_myCondition unlock];\
+\'a0NSLog(@"@@@ In thread one complete.");\
+\'a0[NSThread exit];\
+\'a0return;\
+\}\
+\'a0\
+- (void)threadTwo\{\
+\'a0NSLog(@"### In thread 2222222 start.");\
+\'a0[_myCondition lock];\
+\'a0\'a0\
+\'a0int n = rand()%5 + 1;\
+\'a0NSLog(@"### Thread 2222222 Will sleep %d seconds ,now _threadCount is : %d",n,_threadCount);\
+\'a0sleep(n);\
+\'a0//\'a0\'a0 [NSThread sleepForTimeInterval:n];\
+\'a0_threadCount ++ ;\
+\'a0NSLog(@"### Thread 2222222 has sleep %d seconds ,now _threadCount is : %d",n,_threadCount);\
+\'a0[_myCondition signal];\
+\'a0NSLog(@"### Thread 2222222 has signaled ,now _threadCount is : %d",_threadCount);\
+\'a0[_myCondition unlock];\
+\'a0//_threadCount ++ ;\
+\'a0NSLog(@"### In thread 2222222 complete.");\
+\'a0[NSThread exit];\
+\'a0return;\
+\}\
+\'a0\
+- (void)threadThree\{\
+\'a0NSLog(@"<<< In thread 333333 start.");\
+\'a0[_myCondition lock];\
+\'a0while (_threadCount < 0) \{\
+\'a0\'a0[_myCondition wait];\
+\'a0\}\
+\'a0NSLog(@"<<< In thread 333333 ,_threadCount now is %d ,will start work.",_threadCount);\
+\'a0[_myCondition unlock];\
+\'a0NSLog(@"<<< In thread 333333 complete.");\
+\'a0[NSThread exit];\
+\'a0return;\
+\}\
+\'a0\
+/*\
+// Override to allow orientations other than the default portrait orientation.\
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation \{\
+\'a0\'a0\'a0\'a0// Return YES for supported orientations\
+\'a0\'a0\'a0\'a0return (interfaceOrientation == UIInterfaceOrientationPortrait);\
+\}\
+*/\
+\'a0\
+- (void)didReceiveMemoryWarning \{\
+\'a0// Releases the view if it doesn't have a superview.\
+\'a0\'a0\'a0\'a0[super didReceiveMemoryWarning];\
+\'a0\'a0\
+\'a0// Release any cached data, images, etc that aren't in use.\
+\}\
+\'a0\
+- (void)viewDidUnload \{\
+\'a0// Release any retained subviews of the main view.\
+\'a0// e.g. self.myOutlet = nil;\
+\}\
+\'a0\
+\'a0\
+- (void)dealloc \{\
+\'a0[_myCondition release];\
+\'a0\'a0\'a0\'a0[super dealloc];\
+\}\
+\'a0\
+@end}

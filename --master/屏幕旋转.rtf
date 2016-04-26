@@ -1,0 +1,136 @@
+{\rtf1\ansi\ansicpg936\cocoartf1347\cocoasubrtf570
+{\fonttbl\f0\fnil\fcharset134 STHeitiSC-Light;\f1\fnil\fcharset0 Menlo-Regular;\f2\fnil\fcharset0 AndaleMono;
+}
+{\colortbl;\red255\green255\blue255;\red217\green11\blue0;\red103\green103\blue103;\red211\green24\blue149;
+\red0\green160\blue255;\red255\green39\blue18;\red254\green73\blue64;\red103\green103\blue103;\red65\green204\blue69;
+\red255\green44\blue56;\red255\green128\blue0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww17580\viewh11200\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs96 \cf0 \cb2 \'c6\'c1\'c4\'bb\'d0\'fd\'d7\'aa\
+
+\fs24 \cb3 \
+\
+\
+\pard\tx672\pardeftab672\pardirnatural
+
+\f1\fs28 \cf4 \CocoaLigature0 @property
+\f2 \cf1 (
+\f1 \cf4 nonatomic
+\f2 \cf1 ,
+\f1 \cf4 readonly
+\f2 \cf1 ) 
+\f1 \cf5 UIInterfaceOrientation
+\f2 \cf1  interfaceOrientation
+\f0   \cb6  \'b5\'b1\'c7\'b0\'c6\'c1\'c4\'bb\'b5\'c4\'d7\'b4\'cc\'ac
+\f2 \cb3 \
+\
+
+\f0\fs24 \cf0 \CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \
+\pard\tx672\pardeftab672\pardirnatural
+
+\f1\fs28 \cf4 \CocoaLigature0 typedef
+\f2 \cf1  
+\f1 \cf4 NS_ENUM
+\f2 \cf1 (NSInteger, UIInterfaceOrientation) \{\
+    UIInterfaceOrientationUnknown            = \cf5 UIDeviceOrientationUnknown\cf1 ,\
+    UIInterfaceOrientationPortrait           = \cf5 UIDeviceOrientationPortrait\cf1 ,\cb6 Home
+\f0 \'bc\'fc\'d4\'da\'b5\'d7\'cf\'c2
+\f2 \cb3 \
+    UIInterfaceOrientationPortraitUpsideDown = \cf5 UIDeviceOrientationPortraitUpsideDown\cf1 ,\cb7 Home
+\f0 \'bc\'fc\'d4\'da\'c9\'cf\'c3\'e6
+\f2 \cb3 \
+    UIInterfaceOrientationLandscapeLeft      = \cf5 UIDeviceOrientationLandscapeRight\cf1 ,\cb6 Home
+\f0 \'bc\'fc\'d4\'da\'d7\'f3\'b1\'df
+\f2 \cb3 \
+    UIInterfaceOrientationLandscapeRight     = \cf5 UIDeviceOrientationLandscapeLeft\cf1 \cb8 Home
+\f0 \'bc\'fc\'d4\'da\'d3\'d2\'b1\'df
+\f2 \cb3 \
+\};\
+
+\f0 \'d5\'e2\'b8\'f6\'bc\'b8\'b8\'f6\'ca\'f4\'d0\'d4\'ca\'c7\'d3\'c3\'c0\'b4\'c5\'d0\'b6\'cf\'b5\'b1\'c7\'b0\'c9\'e8\'b1\'b8\'b5\'c4\'b7\'c5\'d6\'c3\'d7\'b4\'cc\'ac\'a3\'ac\'d2\'bbHome\'bc\'fc\'ce\'aa\'b2\'ce\'d5\'d5\'a3\'ac
+\f2 \
+\
+\pard\tx672\pardeftab672\pardirnatural
+
+\f1 \cf9 // Notifies when rotation begins, reaches halfway point and ends.
+\f2 \cf1 \
+- (
+\f1 \cf4 void
+\f2 \cf1 )willRotateToInterfaceOrientation:(\cf5 UIInterfaceOrientation\cf1 )toInterfaceOrientation duration:(\cf5 NSTimeInterval\cf1 )duration ;\
+- (
+\f1 \cf4 void
+\f2 \cf1 )didRotateFromInterfaceOrientation:(\cf5 UIInterfaceOrientation\cf1 )fromInterfaceOrientation\
+    \{\
+\pard\tx672\pardeftab672\pardirnatural
+\cf5 NSLog\cf1 (
+\f1 \cf10 @"right"
+\f2 \cf1 );\
+    
+\f1 \cf4 if
+\f2 \cf1  (
+\f1 \cf4 self
+\f2 \cf1 .\cf5 interfaceOrientation\cf1  == \cf5 UIInterfaceOrientationLandscapeLeft\cf1 ||
+\f1 \cf4 self
+\f2 \cf1 .\cf5 interfaceOrientation\cf1  == \cf5 UIInterfaceOrientationLandscapeRight\cf1 )\
+    \{\
+        \cf5 NSLog\cf1 (
+\f1 \cf10 @"
+\f0 \cf10 \'d7\'dd\'c6\'c1\'d7\'aa\'ba\'e1\'c6\'c1
+\f1 \cf10 "
+\f2 \cf1 );\
+        
+\f1 \cf9 //        CGRect frame =
+\f2 \cf1 \
+                \cf11 _tableView\cf1 .\cf5 frame\cf1  = 
+\f1 \cf4 self
+\f2 \cf1 .\cf5 view\cf1 .\cf5 frame\cf1 ;\
+        \cf5 NSLog\cf1 (
+\f1 \cf10 @"%@"
+\f2 \cf1 ,\cf5 NSStringFromCGSize\cf1 (
+\f1 \cf4 self
+\f2 \cf1 .\cf5 view\cf1 .\cf5 frame\cf1 .\cf5 size\cf1 ));\
+        \
+    \}
+\f1 \cf4 else
+\f2 \cf1 \
+    \{\
+        \cf5 NSLog\cf1 (
+\f1 \cf10 @"
+\f0 \cf10 \'ba\'e1\'c6\'c1\'d7\'aa\'d7\'dd\'c6\'c1
+\f1 \cf10 "
+\f2 \cf1 );\
+        \cf5 NSLog\cf1 (
+\f1 \cf10 @"%@"
+\f2 \cf1 ,\cf5 NSStringFromCGSize\cf1 (
+\f1 \cf4 self
+\f2 \cf1 .\cf5 view\cf1 .\cf5 frame\cf1 .\cf5 size\cf1 ));\
+        \cf11 _tableView\cf1 .\cf5 frame\cf1  = 
+\f1 \cf4 self
+\f2 \cf1 .\cf5 view\cf1 .\cf5 frame\cf1 ;\
+    \}\
+\}\
+\
+- (
+\f1 \cf4 void
+\f2 \cf1 )willAnimateRotationToInterfaceOrientation:(\cf5 UIInterfaceOrientation\cf1 )toInterfaceOrientation duration:(\cf5 NSTimeInterval\cf1 )duration;\
+\
+- (
+\f1 \cf4 void
+\f2 \cf1 )willAnimateFirstHalfOfRotationToInterfaceOrientation:(\cf5 UIInterfaceOrientation\cf1 )toInterfaceOrientation duration:(\cf5 NSTimeInterval\cf1 )duration;\
+- (
+\f1 \cf4 void
+\f2 \cf1 )didAnimateFirstHalfOfRotationToInterfaceOrientation:(\cf5 UIInterfaceOrientation\cf1 )toInterfaceOrientation ; 
+\f1 \cf9 // The rotating header and footer views are offscreen.
+\f2 \cf1 \
+- (
+\f1 \cf4 void
+\f2 \cf1 )willAnimateSecondHalfOfRotationFromInterfaceOrientation:(\cf5 UIInterfaceOrientation\cf1 )fromInterfaceOrientation duration:(\cf5 NSTimeInterval\cf1 )duration ; 
+\f1 \cf9 // A this point, our view orientation is set to the new orientation.
+\f2 \cf1 \
+\
+\
+\
+}

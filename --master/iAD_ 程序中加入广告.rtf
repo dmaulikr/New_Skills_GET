@@ -1,0 +1,218 @@
+{\rtf1\ansi\ansicpg936\cocoartf1347\cocoasubrtf570
+{\fonttbl\f0\fnil\fcharset134 STHeiti;\f1\fnil\fcharset134 STXihei;\f2\fnil\fcharset0 Consolas;
+\f3\fnil\fcharset134 STHeitiSC-Light;\f4\fnil\fcharset0 Consolas-Bold;}
+{\colortbl;\red255\green255\blue255;\red14\green14\blue14;\red101\green101\blue101;\red255\green255\blue255;
+\red0\green0\blue0;\red49\green72\blue177;\red81\green81\blue81;\red106\green0\blue67;\red29\green0\blue255;
+}
+\paperw11900\paperh16840\margl1440\margr1440\vieww21040\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sa640
+{\field{\*\fldinst{HYPERLINK "http://blog.hsin.tw/2014/ios-dev-integrate-iad-banners-into-your-app/"}}{\fldrslt 
+\f0\b\fs64 \cf2 \expnd0\expndtw0\kerning0
+\ul \ulc2 \outl0\strokewidth0 \strokec2 [iOS Dev] \'8c\'a2iAD\'8f\'56\'b8\'e6\'b7\'c5\'c8\'ebAPP\'d6\'d0}}
+\f0\b\fs64 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 \
+\pard\pardeftab720\sl960\sa480
+
+\f1\b0\fs48 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \'b2\'bd\'f3\'45\'c6\'e4\'8c\'8d\'b1\'c8ADMob\'df\'80\'ba\'86\'86\'ce\
+\'ca\'d7\'cf\'c8\'d2\'aa\'b0\'d1\'ca\'d5\'e5\'58\'b5\'c4\'8e\'a4\'91\'f4\'b8\'e3\'b6\'a8 (\'c6\'e4\'8c\'8d\'d2\'b2\'bf\'c9\'d2\'d4\'d7\'ee\'e1\'e1\'d7\'f6 \'b7\'b4\'d5\'fd\'d2\'aa\'d7\'f6\'be\'cd\'ca\'c7\'c1\'cb)\'b5\'bd iTunes Connect \'be\'57\'d5\'be\'d6\'d0\'df\'4d\'c8\'eb\'b5\'bd Contracts, Tax, and Banking\'d3\'d0\'d2\'bb\'d0\'d0\'b5\'c4 Contract Type \'9e\'e9 iAd App Network\'8c\'a2\'d2\'d4\'cf\'c2\'df\'40\'c8\'fd\'82\'80 Contact Info, Bank Info, Tax Info \'b6\'bc\'82\'80\'84\'65\'b0\'b4\'cf\'c2 Set Up\'81\'4b\'b8\'fa\'d6\'f8\'b2\'bd\'f3\'45\'cd\'ea\'b3\'c9\'df\'40\'b8\'fa\'c4\'e3\'d9\'8d\'b5\'bd\'e5\'58\'e1\'e1\'d2\'aa\'b0\'d1\'e5\'58\'85\'52\'b5\'bd\'c4\'c4\'d1\'65\'d3\'d0\'ea\'50\'82\'53\'df\'40\'c6\'aa\'ce\'c4\'d5\'c2\'be\'cd\'b2\'bb\'d4\'94\'ca\'f6\'c1\'cb\
+\'bd\'d3\'d6\'f8\'df\'4d\'c8\'eb\'b3\'cc\'ca\'bd\'b2\'bf\'b7\'d6\
+1.\'d4\'da\'d7\'f3\'82\'c8\'b5\'c4 Project Navigator \'d6\'d0\'fc\'63\'df\'78\'c4\'e3\'b5\'c4Project (\'cb\'7b\'cb\'7b\'b5\'c4)\'d4\'d9\'fc\'63\'df\'78TARGETS\'d6\'d0\'b5\'c4\'8c\'a3\'b0\'b8\'98\'cb\'bb\'60\'df\'78\'93\'f1 General\'d4\'da Linked Frameworks and Libraries \'df\'40\'82\'80\'b2\'bf\'b7\'d6 (\'91\'aa\'d4\'93\'ca\'c7\'d4\'da\'d7\'ee\'cf\'c2\'c3\'e6)\'fc\'63\'df\'78\'bc\'d3\'cc\'96\'e1\'e1\'d5\'d2\'b5\'bd iAd.framework (\'bf\'c9\'d2\'d4\'b0\'b4\'cb\'d1\'8c\'a4 iAd \'e1\'e1 \'be\'cd\'95\'fe\'b3\'f6\'ac\'46\'c1\'cb)\'fc\'63\'df\'40\'82\'80\'e1\'e1\'b0\'b4 add\'b1\'e3\'bc\'d3\'c8\'eb\'b3\'c9\'b9\'a6\
+2.\'d4\'da ViewController.h \'d6\'d0import .h\'99\'6e\'b0\'b8\'81\'4b\'bc\'d3\'c9\'cf delegate\
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalt\clvertalbase \clshdrawnil \clwWidth880\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl0 \clpadr0 \gaph\cellx4320
+\clvertalt\clvertalbase \clshdrawnil \clwWidth20480\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl0 \clpadr0 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl440\qr
+
+\f2\fs40 \cf3 \cb4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 1\
+2\
+3\
+4\
+5\
+6\cell 
+\pard\intbl\itap1\pardeftab720\sl440
+\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6 // import iAd\cf5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec5 \
+\pard\intbl\itap1\pardeftab720\sl440
+\cf7 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec7 #import <iAd/iAd.h>\cf5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec5 \
+\'a0\
+\pard\intbl\itap1\pardeftab720\sl440
+\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6 // 
+\f3 \'bc\'d3\'c9\'cf
+\f2  delegate\cf5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec5 \
+@interface viewController : UIViewController <ADBannerViewDelegate>\
+@end\cell \lastrow\row
+\pard\pardeftab720\sl960\sa480
+
+\f1\fs48 \cf2 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 3.\'bd\'d3\'d6\'f8\'d4\'da ViewController.m \'d6\'d0\'cf\'c8\'bd\'6f banner \'d2\'bb\'82\'80\'d7\'83\'94\'b5\'c8\'bb\'e1\'e1\'d4\'da viewDidLoad \'d6\'d0\'8c\'a2 banner \'d4\'4f\'b6\'a8\'ba\'c3\'d7\'ee\'e1\'e1\'d4\'da delegate \'b5\'c4 methods \'d6\'d0\'d4\'4f\'b6\'a8\'ef\'40\'ca\'be\'bb\'f2\'eb\'5b\'b2\'d8 banner\
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalt\clvertalbase \clshdrawnil \clwWidth1100\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl0 \clpadr0 \gaph\cellx4320
+\clvertalt\clvertalbase \clshdrawnil \clwWidth25440\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl0 \clpadr0 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl440\qr
+
+\f2\fs40 \cf3 \cb4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 1\
+2\
+3\
+4\
+5\
+6\
+7\
+8\
+9\
+10\
+11\
+12\
+13\
+14\
+15\
+16\
+17\
+18\
+19\
+20\
+21\
+22\
+23\
+24\
+25\
+26\
+27\
+28\
+29\
+30\
+31\
+32\
+33\
+34\
+35\
+36\
+37\
+38\
+39\
+40\cell 
+\pard\intbl\itap1\pardeftab720\sl440
+\cf5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec5 @interface viewController ()\{\
+\pard\intbl\itap1\pardeftab720\sl440
+\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6 // 
+\f3 \'d7\'83\'94\'b5
+\f2 \cf5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec5 \
+\'a0\'a0\'a0\'a0ADBannerView *bannerView_;\
+\}\
+@end\
+\'a0\
+@implementation viewController\
+\'a0\
+- (
+\f4\b \cf8 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec8 void
+\f2\b0 \cf5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec5 )viewDidLoad\
+\{\
+\'a0\'a0\'a0\'a0[super viewDidLoad];\
+\'a0\
+\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6 // 
+\f3 \'d4\'4f\'b6\'a8
+\f2  banner 
+\f3 \'b5\'c4\'ce\'bb\'d6\'c3\'bc\'b0\'e9\'4c\'8c\'92
+\f2  
+\f3 \'df\'40\'df\'85\'ca\'c7\'b7\'c5\'d4\'da\'b5\'d7\'b2\'bf
+\f2 \cf5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec5 \
+\'a0\'a0\'a0\'a0bannerView_ = [[ADBannerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 50, 320, 50)];\
+\'a0\'a0\'a0\'a0bannerView_.delegate = self;\
+\'a0\'a0\'a0\'a0\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6 // 
+\f3 \'ee\'41\'d4\'4f\'9e\'e9\'eb\'5b\'b2\'d8
+\f2  load
+\f3 \'b3\'c9\'b9\'a6\'e1\'e1\'d4\'d9\'d4\'da
+\f2  delegate 
+\f3 \'b5\'c4
+\f2  method 
+\f3 \'d6\'d0\'ef\'40\'ca\'be
+\f2 \cf5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec5 \
+\'a0\'a0\'a0\'a0bannerView_.alpha = 0.0;\
+\'a0\'a0\'a0\'a0[self.view addSubview:bannerView_];\
+\}\
+\'a0\
+\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6 // 
+\f3 \'df\'40\'82\'80\'ca\'c7
+\f2  delegate 
+\f3 \'b5\'c4
+\f2  method , load
+\f3 \'cd\'ea\'e1\'e1\'95\'fe\'ba\'f4\'bd\'d0
+\f2 \cf5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec5 \
+-(
+\f4\b \cf8 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec8 void
+\f2\b0 \cf5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec5 )bannerViewDidLoadAd:(ADBannerView *)banner\{\
+\'a0\'a0\'a0\'a0NSLog(@\cf9 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec9 "Ad Banner did load ad."\cf5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec5 );\
+\'a0\'a0\'a0\'a0\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6 // Show the ad banner.\cf5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec5 \
+\'a0\'a0\'a0\'a0[UIView animateWithDuration:0.5 animations:^\{\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0bannerView_.alpha = 1.0;\
+\'a0\'a0\'a0\'a0\}];\
+\}\
+\'a0\
+\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6 // 
+\f3 \'df\'40\'82\'80\'ca\'c7
+\f2  delegate 
+\f3 \'b5\'c4
+\f2  method , 
+\f3 \'c8\'e7\'b9\'fb\'ca\'a7\'94\'a1\'bb\'f2\'d3\'d0
+\f2  error 
+\f3 \'95\'fe\'ba\'f4\'bd\'d0
+\f2 \cf5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec5 \
+-(
+\f4\b \cf8 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec8 void
+\f2\b0 \cf5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec5 )bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error\{\
+\'a0\
+\'a0\'a0\'a0\'a0NSLog(@\cf9 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec9 "Unable to show ads. Error: %@"\cf5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec5 , [error localizedDescription]);\
+\'a0\
+\'a0\'a0\'a0\'a0\cf6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6 // Hide the ad banner.\cf5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec5 \
+\'a0\'a0\'a0\'a0[UIView animateWithDuration:0.5 animations:^\{\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0bannerView_.alpha = 0.0;\
+\'a0\'a0\'a0\'a0\}];\
+\}\
+@end\cell \lastrow\row
+\pard\pardeftab720\sl960\sa480
+
+\f1\fs48 \cf2 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 \'df\'40\'98\'d3\'be\'cd\'cd\'ea\'b3\'c9\'c1\'cbrun \'e1\'e1\'95\'fe\'b3\'f6\'ac\'46 iAd \'cf\'e0\'ea\'50\'b5\'c4\'ae\'8b\'c3\'e6\'c9\'cf\'bc\'dc\'d6\'ae\'e1\'e1\'be\'cd\'95\'fe\'d3\'d0\'d5\'fd\'ca\'bd\'b5\'c4\'8f\'56\'b8\'e6\'c1\'cb\
+\'88\'f3\'b1\'ed\'df\'40\'df\'85\'bf\'b4{\field{\*\fldinst{HYPERLINK "https://iad.apple.com/itcportal/#app_homepage"}}{\fldrslt \expnd0\expndtw0\kerning0
+\ul \outl0\strokewidth0 https://iad.apple.com/itcportal/#app_homepage}}\
+\'d2\'d4\'c9\'cf\
+ref:{\field{\*\fldinst{HYPERLINK "http://codewithchris.com/iad-tutorial/"}}{\fldrslt \expnd0\expndtw0\kerning0
+\ul \outl0\strokewidth0 http://codewithchris.com/iad-tutorial/}}{\field{\*\fldinst{HYPERLINK "http://www.cocoachina.com/industry/20140701/8998.html"}}{\fldrslt \expnd0\expndtw0\kerning0
+\ul \outl0\strokewidth0 http://www.cocoachina.com/industry/20140701/8998.html}}\
+===\'ee\'7d\'cd\'e2\'d4\'92 \'b0\'6c\'c0\'ce\'f2\'7d===\'d4\'ad\'b1\'be\'ca\'c7\'d3\'c3 ADMob \'b5\'c4\'b5\'ab\'ce\'d2\'b5\'c4 google adsense \'b2\'bb\'d6\'aa\'b5\'c0\'9e\'e9\'c9\'b6\'be\'cd\'b1\'bb\'cd\'a3\'99\'e0\'c1\'cb\'d2\'f2\'9e\'e9\'ca\'c7\'df\'42\'84\'d3\'b5\'c4\'cb\'f9\'d2\'d4\'df\'42\'8e\'a7\'d2\'b2\'b0\'d1\'ce\'d2\'b5\'c4 ADMob \'d2\'b2\'cd\'a3\'c1\'cb\'a1\'ad\'c7\'ac\'a1\'ad\'e1\'e1\'81\'ed\'d3\'d6\'93\'51\'d0\'c2\'8e\'a4\'cc\'96\'b5\'ab\'c7\'b0\'8e\'d7\'cc\'ec\'d3\'d6\'b1\'bb\'cd\'a3\'a3\'a1\'c7\'ac\'c7\'ac\'c7\'ac\'a3\'a1\'a3\'a1\'cb\'f9\'d2\'d4\'b2\'bb\'cb\'ac\'d3\'c3\'c1\'cb\'a3\'a1\'a3\'a1\'a3\'a1\'c0\'cf\'d7\'d3\'b2\'bb\'cb\'ac\'d3\'c3 ADMob \'c1\'cb\'a3\'a1\'a3\'a1\'c7\'ac\'a1\'ab\'a1\'ab\'a1\'ab\'a3\'a1\
+}
