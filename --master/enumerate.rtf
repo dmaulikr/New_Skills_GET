@@ -1,0 +1,132 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf340
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fswiss\fcharset0 ArialMT;\f2\fnil\fcharset134 PingFangSC-Regular;
+\f3\fnil\fcharset0 Monaco;\f4\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red211\green24\blue149;\red0\green0\blue0;\red120\green109\blue255;
+\red35\green255\blue131;\red65\green204\blue69;\red37\green0\blue255;\red255\green255\blue255;\red0\green0\blue0;
+\red176\green0\blue4;\red38\green38\blue38;}
+\margl1440\margr1440\vieww16520\viewh8400\viewkind0
+\deftab674
+\pard\tx674\pardeftab674\pardirnatural\partightenfactor0
+
+\f0\fs28 \cf2 \cb3 \CocoaLigature0 typedef\cf1  \cf2 NS_ENUM\cf1  (NSUInteger, CPNavigationBarOption)\
+\{\
+    CPNavigationBarOptionNone                   = \cf4 1\cf1  << \cf4 0\cf1 ,\
+    \
+    CPNavigationBarOptionLeftNone               = \cf4 1\cf1  << \cf4 1\cf1 ,\
+    CPNavigationBarOptionLeftEmpty              = \cf4 1\cf1  << \cf4 2\cf1 ,\
+    CPNavigationBarOptionLeftMenu               = \cf4 1\cf1  << \cf4 3\cf1 ,\
+    CPNavigationBarOptionLeftBack               = \cf4 1\cf1  << \cf4 4\cf1 ,\
+    CPNavigationBarOptionLeftCustom             = \cf4 1\cf1  << \cf4 5\cf1 ,\
+    \
+    CPNavigationBarOptionCenterLeftTitle        = \cf4 1\cf1  << \cf4 6\cf1 ,\
+    CPNavigationBarOptionCenterTitle            = \cf4 1\cf1  << \cf4 7\cf1 ,\
+    CPNavigationBarOptionCenterLeftLogo         = \cf4 1\cf1  << \cf4 8\cf1 ,\
+    CPNavigationBarOptionCenterLogo             = \cf4 1\cf1  << \cf4 9\cf1 ,\
+    CPNavigationBarOptionCenterSmallHome        = \cf4 1\cf1  << \cf4 10\cf1 ,\
+    CPNavigationBarOptionCenterLargeSearch      = \cf4 1\cf1  << \cf4 11\cf1 ,\
+    CPNavigationBarOptionCenterMediumSearch     = \cf4 1\cf1  << \cf4 12\cf1 ,\
+    CPNavigationBarOptionCenterSmallSearch      = \cf4 1\cf1  << \cf4 13\cf1 ,\
+    CPNavigationBarOptionCenterSearchField      = \cf4 1\cf1  << \cf4 14\cf1 ,\
+    \
+    CPNavigationBarOptionRightCart              = \cf4 1\cf1  << \cf4 15\cf1 ,\
+    CPNavigationBarOptionRightClose             = \cf4 1\cf1  << \cf4 16\cf1 ,\
+    CPNavigationBarOptionRightDone              = \cf4 1\cf1  << \cf4 17\cf1 ,\
+    CPNavigationBarOptionRightCancel            = \cf4 1\cf1  << \cf4 18\cf1 ,\
+    CPNavigationBarOptionRightCustom            = \cf4 1\cf1  << \cf4 19\cf1 ,\
+    CPNavigationBarOptionRightEmpty             = \cf4 1\cf1  << \cf4 20\cf1 ,\
+\
+    CPNavigationBarOptionSearchRightCancel      = \cf4 1\cf1  << \cf4 21\cf1 ,\
+    CPNavigationBarOptionRightEdit              = \cf4 1\cf1  << \cf4 22\cf1 ,\
+    \
+    CPNavigationBarOptionHome = (\cf5 CPNavigationBarOptionLeftEmpty\cf1  |\
+                                 \cf5 CPNavigationBarOptionCenterLogo\cf1  |\
+                                 \cf5 CPNavigationBarOptionRightCart\cf1 ),\
+    \
+    CPNavigationBarOptionCategory = (\cf5 CPNavigationBarOptionCenterLargeSearch\cf1 ),\
+    \
+    CPNavigationBarOptionSearch = (\cf5 CPNavigationBarOptionLeftNone\cf1  |\
+                                      \cf5 CPNavigationBarOptionCenterSearchField\cf1  |\
+                                      \cf5 CPNavigationBarOptionSearchRightCancel\cf1 ),\
+\
+    CPNavigationBarOptionMyCoupang = (\cf5 CPNavigationBarOptionCenterLeftTitle\cf1  |\
+                                      \cf5 CPNavigationBarOptionRightCart\cf1 ),\
+\
+    CPNavigationBarOptionPLP = (\cf5 CPNavigationBarOptionCenterLeftTitle\cf1  |\
+                                \cf5 CPNavigationBarOptionCenterSmallSearch\cf1  |\
+                                \cf5 CPNavigationBarOptionRightCart\cf1 ),\
+    \
+    CPNavigationBarOptionCLP = (\cf5 CPNavigationBarOptionCenterLeftTitle\cf1  |\
+                                \cf5 CPNavigationBarOptionRightCart\cf1 ),\
+    \
+    CPNavigationBarOptionPDP = (\cf5 CPNavigationBarOptionCenterLeftTitle\cf1  |\
+                                \cf5 CPNavigationBarOptionCenterSmallHome\cf1  |\
+                                \cf5 CPNavigationBarOptionRightCart\cf1 ),\
+    \
+\cf6 //    CPNavigationBarOptionPDP = (CPNavigationBarOptionCenterLogo |\cf1 \
+\cf6 //                                CPNavigationBarOptionRightCart),\cf1 \
+\
+    CPNavigationBarOptionPushedView = (\cf5 CPNavigationBarOptionCenterLeftTitle\cf1  |\
+                                       \cf5 CPNavigationBarOptionRightCart\cf1 ),\
+    \
+    CPNavigationBarOptionModalView = (\cf5 CPNavigationBarOptionCenterTitle\cf1  |\
+                                      \cf5 CPNavigationBarOptionRightClose\cf1 )\
+\};\
+\pard\pardeftab720\sl520\partightenfactor0
+
+\f1\b \cf7 \cb8 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \outl0\strokewidth0 \strokec7 <<
+\f2 \'b4\'f8\'b7\'fb\'ba\'c5\'d7\'f3\'d2\'c6
+\f1  (n<<2 
+\f2 \'bd\'ab\'d5\'fb\'d0\'cd\'d6\'b5\'b4\'f8\'b7\'fb\'ba\'c5\'d7\'f3\'d2\'c6
+\f1 2
+\f2 \'ce\'bb
+\f1  
+\f2 \'a3\'a9
+\f1 \'a0
+\b0 \cf9 \strokec9 \
+
+\b \cf7 \strokec7 >>
+\f2 \'b4\'f8\'b7\'fb\'ba\'c5\'d3\'d2\'d2\'c6
+\f1  (n>>2 
+\f2 \'bd\'ab\'d5\'fb\'d0\'cd\'d6\'b5\'b4\'f8\'b7\'fb\'ba\'c5\'d3\'d2\'d2\'c6
+\f1 2
+\f2 \'ce\'bb
+\f1  
+\f2 \'a3\'a9
+\f1 \'a0\cb1 \uc0\u8232 \cb8 >>>
+\f2 \'ce\'de\'b7\'fb\'ba\'c5\'d3\'d2\'d2\'c6
+\f1  (n>>>2 
+\f2 \'bd\'ab\'d5\'fb\'d0\'cd\'d6\'b5\'ce\'de\'b7\'fb\'ba\'c5\'d3\'d2\'d2\'c6
+\f1 2
+\f2 \'ce\'bb
+\f1  
+\f2 \'a3\'a9
+\f1\b0 \cf9 \strokec9 \
+\pard\pardeftab720\sl520\partightenfactor0
+
+\f2\b \cf7 \strokec7 \'c0\'fd\'c8\'e7\'a3\'ba
+\f3\b0 \cf10 \strokec10 9\cf7 \strokec7 >>\cf10 \strokec10 1 
+\f2 \'ba\'f3\'a3\'ac\'bd\'e1\'b9\'fb\'ce\'aa
+\f4\b 4\'a0
+\f1\b0 \cf9 \strokec9 \
+\pard\pardeftab720\sl520\partightenfactor0
+
+\f4\b \cf10 \strokec10 9
+\f2 \'b5\'c4\'b6\'fe\'bd\'f8\'d6\'c6\'ce\'aa
+\f4 1001
+\f2 \'a3\'ac\'d3\'d2\'d2\'c6
+\f4 1
+\f2 \'ce\'bb\'ba\'f3\'a3\'ac\'d7\'f3\'d5\'fd\'ca\'fd\'b2\'b9
+\f4 0
+\f2 \'a3\'ac\'d3\'d2\'b1\'df\'b6\'aa\'c6\'fa\'a1\'a3\'bd\'e1\'b9\'fb\'ce\'aa
+\f4  0100
+\f2 \'a1\'a3\'d7\'aa\'ce\'aa
+\f4 10
+\f2 \'bd\'f8\'d6\'c6\'ba\'f3\'ce\'aa
+\f4 4
+\f2 \'a1\'a3
+\f4 \'a0\cb1 \uc0\u8232 
+\f1\b0 \cf9 \cb8 \strokec9 \
+\pard\pardeftab720\sl520\partightenfactor0
+\cf11 \strokec11 \
+}
