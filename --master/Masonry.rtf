@@ -1,0 +1,24 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf470
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red35\green255\blue131;\red228\green124\blue72;
+\red211\green24\blue149;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab674
+\pard\tx674\pardeftab674\pardirnatural\partightenfactor0
+
+\f0\fs28 \cf2 \CocoaLigature0 - (NSArray *)makeConstraints:(void(^)(MASConstraintMaker *make))block;\
+- (NSArray *)updateConstraints:(void(^)(MASConstraintMaker *make))block;\
+- (NSArray *)remakeConstraints:(void(^)(MASConstraintMaker *make))block;\
+\
+\
+\cf1 \cb2 make.\cf3 width\cf1 .\cf3 and\cf1 .\cf3 height\cf1 .\cf4 lessThanOrEqualTo\cf1 (\cf5 self\cf1 .\cf3 topView\cf1 );\
+            make.\cf3 width\cf1 .\cf3 and\cf1 .\cf3 height\cf1 .\cf4 equalTo\cf1 (\cf5 self\cf1 .\cf3 topView\cf1 ).\cf3 with\cf1 .\cf3 priorityLow\cf1 ();\
+\
+\pard\tx674\pardeftab674\pardirnatural\partightenfactor0
+\cf4 \cb0 equalTo\cf1 \cb2            \
+\cf4 \cb0 lessThanOrEqualTo\cf1 \cb2 \
+\pard\tx674\pardeftab674\pardirnatural\partightenfactor0
+\cf3 \cb0 priorityLow\cf1 ()\
+\
+if we want to make the view\'92s height a constraints,and we need give the constrains a max or min values , we need to use \cf4 lessThanOrEqualTo\cf1  and set another value use \cf4 equalTo\cf1  and set it priority is low by \cf3 priorityLow\cf1 ()\
+}
