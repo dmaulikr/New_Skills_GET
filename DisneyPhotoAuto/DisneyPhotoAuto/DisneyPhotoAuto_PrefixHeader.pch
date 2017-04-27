@@ -1,0 +1,14 @@
+//
+//  PrefixHeader.pch
+//  DisneyPhotoAuto
+//
+//  Created by Bruno.ma on 4/27/17.
+//  Copyright © 2017 Bruno.ma. All rights reserved.
+//
+
+#ifndef DisneyPhotoAuto_PrefixHeader
+#import <AFNetworking/AFNetworking.h>
+#import "DPPhoto.h"
+#import "DPPhotoAlbum.h"
+#define DisneyPhotoAuto_PrefixHeader
+#endif /* PrefixHeader_pch */

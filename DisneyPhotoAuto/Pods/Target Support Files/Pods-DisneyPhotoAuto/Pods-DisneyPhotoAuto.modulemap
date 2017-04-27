@@ -1,0 +1,6 @@
+framework module Pods_DisneyPhotoAuto {
+  umbrella header "Pods-DisneyPhotoAuto-umbrella.h"
+
+  export *
+  module * { export * }
+}
