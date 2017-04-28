@@ -12,6 +12,8 @@
 const static NSString * tokenId = @"a3540150-2b02-11e7-a47f-651e419c9bc5";
 
 @interface DPNetWorkingManager : NSObject
++ (void)addCard:(NSString *)cardId success:(void(^)(void))success;
+
 + (void)getPhotoRequest:(NSArray *)cardId success:(void (^)(NSArray <DPPhotoAlbum *> *PhotoAlbums))success;
 
 

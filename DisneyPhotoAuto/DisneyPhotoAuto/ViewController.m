@@ -15,15 +15,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    DPPhoto * photo = [DPPhoto new];
-    photo.photoName = @"dd";
-    
-    DPPhoto *pcs = [photo copy];
-    DPPhotoAlbum * pa1  = [DPPhotoAlbum new];
-    [pa1.photoes addObject:photo];
-    [pa1.photoes addObject:pcs];
-    
-    DPPhotoAlbum * pa2 = [pa1 mutableCopy];
+    [DPNetWorkingManager addCard:@"SHDR325VRRXEHD77" success:^{
+        
+    }];
+    [DPNetWorkingManager getPhotoRequest:nil success:nil];
     // Do any additional setup after loading the view, typically from a nib.
 }
 

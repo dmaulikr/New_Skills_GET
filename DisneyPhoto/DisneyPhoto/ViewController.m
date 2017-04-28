@@ -14,9 +14,9 @@
     [super viewDidLoad];
     char arr[] ={0xff, 0xd8, 0xff};
     NSData * data = [NSData dataWithBytes:arr length:3];
-    NSString *sourcePath =  @"/Users/bruno.ma/Desktop/DisneyPhoto/photoSource";
+    NSString *sourcePath =  @"/Users/maxiaofen/New_Skills_GET/DisneyPhoto/photoSource";
     
-    NSString * outPath = @"/Users/bruno.ma/Desktop/DisneyPhoto/out_photoes";
+    NSString * outPath = @"/Users/maxiaofen/New_Skills_GET/DisneyPhoto/out_photoes";
     
     NSArray * fileList = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:sourcePath error:nil];
     NSMutableArray * imagePaths = [NSMutableArray new];
@@ -27,7 +27,8 @@
         NSRange range1 = [data2 rangeOfData:data options:NSDataSearchAnchored range:NSMakeRange(0, data2.length)];
         
         NSRange range2 = [data2 rangeOfData:data options:NSDataSearchBackwards range:NSMakeRange(0, data2.length)];
-        
+        if (range1.length==0 || range2.length==0 ||[imageName containsString:@"("] || data2.length < 20000)
+            continue;
         [data2 replaceBytesInRange:NSMakeRange(range1.location, range2.location) withBytes:NULL length:0];
         
         NSString *outImagePath = [NSString stringWithFormat:@"%@/%@",outPath,imageName];

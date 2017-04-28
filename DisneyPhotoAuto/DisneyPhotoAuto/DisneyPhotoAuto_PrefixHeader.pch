@@ -10,5 +10,6 @@
 #import <AFNetworking/AFNetworking.h>
 #import "DPPhoto.h"
 #import "DPPhotoAlbum.h"
+#import "DPNetWorkingManager.h"
 #define DisneyPhotoAuto_PrefixHeader
 #endif /* PrefixHeader_pch */
