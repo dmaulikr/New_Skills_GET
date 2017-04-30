@@ -9,6 +9,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>LBXScan.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Masonry.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-DisneyPhotoAuto.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -19,20 +29,40 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>ZBarSDK.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>B8DEC145D09AE0BAF13BA58B662FC1D6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CA19504495835D5297E698BFAB9EDBDE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CB19B93BF8AA2C04693AF5A1A0F4D6BB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>CF671F7E57B92905F1CC91D036D6B4A7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E1FB7D4B0DCA9A9B0220D658C9C1E124</key>
+		<key>D01EA0B48697BAF76771EEDC30839951</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FE7C5B93CB211724F8C00CC933DEE947</key>
+		<key>D52144DE9D7255DE912490FF5A806573</key>
 		<dict>
 			<key>primary</key>
 			<true/>

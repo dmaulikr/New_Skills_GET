@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <AFNetworking/AFNetworking.h>
 #import "DPPhotoAlbum.h"
-const static NSString * tokenId = @"a3540150-2b02-11e7-a47f-651e419c9bc5";
-static const NSString *PHOTOES_CACHE_PATH = @"/Users/maxiaofen/Desktop/Disney_photoes";
+const static NSString * tokenId = @"5913ca10-2ca3-11e7-a67d-6b4caa5d78a0";
+#define PHOTOES_CACHE_PATH   [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject]
 
 @interface DPNetWorkingManager : NSObject
 + (void)addCard:(NSString *)cardId success:(void(^)(void))success;
@@ -21,5 +21,5 @@ static const NSString *PHOTOES_CACHE_PATH = @"/Users/maxiaofen/Desktop/Disney_ph
 
 + (void)getCardList:(void (^)(NSArray *cards))success;
 
-+ (void)downloadImage:(NSString *)url success:(void (^)(NSString * path))success;
++ (void)downloadImage:(NSString *)url cachePath:(NSString *)cachePath success:(void (^)(NSString * path))success;
 @end

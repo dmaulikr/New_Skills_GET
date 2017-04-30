@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		09EF530431979556102276EC /* Pods_DisneyPhotoAuto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AA2BD116EE4E083D75CDA35 /* Pods_DisneyPhotoAuto.framework */; };
+		28C306861EB58B0C00CAF0AD /* DPTabBarControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C306841EB58B0C00CAF0AD /* DPTabBarControllerViewController.m */; };
+		28C3068A1EB58B6D00CAF0AD /* DPNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C306891EB58B6C00CAF0AD /* DPNavigationController.m */; };
+		28C3068D1EB58EF800CAF0AD /* DPHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C3068C1EB58EF800CAF0AD /* DPHomeViewController.m */; };
+		28C3068F1EB5939800CAF0AD /* WX20170430-113741@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28C3068E1EB5939800CAF0AD /* WX20170430-113741@2x.png */; };
+		28C306BC1EB599FE00CAF0AD /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C3069D1EB599FE00CAF0AD /* UIColor+Hex.m */; };
+		28C306CD1EB5A56D00CAF0AD /* CGQCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C306CB1EB5A56D00CAF0AD /* CGQCollectionViewCell.m */; };
+		28C306CE1EB5A56D00CAF0AD /* CGQCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28C306CC1EB5A56D00CAF0AD /* CGQCollectionViewCell.xib */; };
+		28C306D21EB5CD2A00CAF0AD /* DPCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C306D01EB5CD2A00CAF0AD /* DPCollectionReusableView.m */; };
+		28C306D31EB5CD2A00CAF0AD /* DPCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28C306D11EB5CD2A00CAF0AD /* DPCollectionReusableView.xib */; };
 		28E3E61B1EB1AF88008093B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E3E61A1EB1AF88008093B7 /* main.m */; };
 		28E3E61E1EB1AF88008093B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E3E61D1EB1AF88008093B7 /* AppDelegate.m */; };
 		28E3E6211EB1AF88008093B7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E3E6201EB1AF88008093B7 /* ViewController.m */; };
@@ -21,6 +30,21 @@
 
 /* Begin PBXFileReference section */
 		1AA2BD116EE4E083D75CDA35 /* Pods_DisneyPhotoAuto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DisneyPhotoAuto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		28C306831EB58B0C00CAF0AD /* DPTabBarControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPTabBarControllerViewController.h; sourceTree = "<group>"; };
+		28C306841EB58B0C00CAF0AD /* DPTabBarControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPTabBarControllerViewController.m; sourceTree = "<group>"; };
+		28C306881EB58B6C00CAF0AD /* DPNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPNavigationController.h; sourceTree = "<group>"; };
+		28C306891EB58B6C00CAF0AD /* DPNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPNavigationController.m; sourceTree = "<group>"; };
+		28C3068B1EB58EF800CAF0AD /* DPHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPHomeViewController.h; sourceTree = "<group>"; };
+		28C3068C1EB58EF800CAF0AD /* DPHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPHomeViewController.m; sourceTree = "<group>"; };
+		28C3068E1EB5939800CAF0AD /* WX20170430-113741@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "WX20170430-113741@2x.png"; sourceTree = "<group>"; };
+		28C3069C1EB599FE00CAF0AD /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		28C3069D1EB599FE00CAF0AD /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		28C306CA1EB5A56D00CAF0AD /* CGQCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGQCollectionViewCell.h; sourceTree = "<group>"; };
+		28C306CB1EB5A56D00CAF0AD /* CGQCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGQCollectionViewCell.m; sourceTree = "<group>"; };
+		28C306CC1EB5A56D00CAF0AD /* CGQCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CGQCollectionViewCell.xib; sourceTree = "<group>"; };
+		28C306CF1EB5CD2A00CAF0AD /* DPCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPCollectionReusableView.h; sourceTree = "<group>"; };
+		28C306D01EB5CD2A00CAF0AD /* DPCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPCollectionReusableView.m; sourceTree = "<group>"; };
+		28C306D11EB5CD2A00CAF0AD /* DPCollectionReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DPCollectionReusableView.xib; sourceTree = "<group>"; };
 		28E3E6161EB1AF88008093B7 /* DisneyPhotoAuto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DisneyPhotoAuto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28E3E61A1EB1AF88008093B7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		28E3E61C1EB1AF88008093B7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -54,6 +78,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		28C306821EB58A1E00CAF0AD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				28C306831EB58B0C00CAF0AD /* DPTabBarControllerViewController.h */,
+				28C306841EB58B0C00CAF0AD /* DPTabBarControllerViewController.m */,
+				28C306881EB58B6C00CAF0AD /* DPNavigationController.h */,
+				28C306891EB58B6C00CAF0AD /* DPNavigationController.m */,
+				28C3068B1EB58EF800CAF0AD /* DPHomeViewController.h */,
+				28C3068C1EB58EF800CAF0AD /* DPHomeViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		28C306901EB599FE00CAF0AD /* Category_Extension */ = {
+			isa = PBXGroup;
+			children = (
+				28C3069C1EB599FE00CAF0AD /* UIColor+Hex.h */,
+				28C3069D1EB599FE00CAF0AD /* UIColor+Hex.m */,
+			);
+			path = Category_Extension;
+			sourceTree = "<group>";
+		};
 		28E3E60D1EB1AF88008093B7 = {
 			isa = PBXGroup;
 			children = (
@@ -75,10 +121,18 @@
 		28E3E6181EB1AF88008093B7 /* DisneyPhotoAuto */ = {
 			isa = PBXGroup;
 			children = (
+				28C306901EB599FE00CAF0AD /* Category_Extension */,
 				28E3E61C1EB1AF88008093B7 /* AppDelegate.h */,
 				28E3E61D1EB1AF88008093B7 /* AppDelegate.m */,
+				28C306821EB58A1E00CAF0AD /* Controller */,
 				28E3E61F1EB1AF88008093B7 /* ViewController.h */,
 				28E3E6201EB1AF88008093B7 /* ViewController.m */,
+				28C306CA1EB5A56D00CAF0AD /* CGQCollectionViewCell.h */,
+				28C306CB1EB5A56D00CAF0AD /* CGQCollectionViewCell.m */,
+				28C306CC1EB5A56D00CAF0AD /* CGQCollectionViewCell.xib */,
+				28C306CF1EB5CD2A00CAF0AD /* DPCollectionReusableView.h */,
+				28C306D01EB5CD2A00CAF0AD /* DPCollectionReusableView.m */,
+				28C306D11EB5CD2A00CAF0AD /* DPCollectionReusableView.xib */,
 				28E3E6311EB1B583008093B7 /* DPNetWorkingManager.h */,
 				28E3E6321EB1B584008093B7 /* DPNetWorkingManager.m */,
 				28E3E6341EB1B758008093B7 /* DPPhotoAlbum.h */,
@@ -87,6 +141,7 @@
 				28E3E6381EB1B768008093B7 /* DPPhoto.m */,
 				28E3E6221EB1AF88008093B7 /* Main.storyboard */,
 				28E3E6251EB1AF88008093B7 /* Assets.xcassets */,
+				28C3068E1EB5939800CAF0AD /* WX20170430-113741@2x.png */,
 				28E3E6271EB1AF88008093B7 /* LaunchScreen.storyboard */,
 				28E3E62A1EB1AF88008093B7 /* Info.plist */,
 				28E3E6191EB1AF88008093B7 /* Supporting Files */,
@@ -182,9 +237,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28C306CE1EB5A56D00CAF0AD /* CGQCollectionViewCell.xib in Resources */,
+				28C306D31EB5CD2A00CAF0AD /* DPCollectionReusableView.xib in Resources */,
 				28E3E6291EB1AF88008093B7 /* LaunchScreen.storyboard in Resources */,
 				28E3E6261EB1AF88008093B7 /* Assets.xcassets in Resources */,
 				28E3E6241EB1AF88008093B7 /* Main.storyboard in Resources */,
+				28C3068F1EB5939800CAF0AD /* WX20170430-113741@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,7 +276,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E9799E346D218BA4E7328599 /* [CP] Copy Pods Resources */ = {
@@ -243,12 +301,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28C3068D1EB58EF800CAF0AD /* DPHomeViewController.m in Sources */,
+				28C306BC1EB599FE00CAF0AD /* UIColor+Hex.m in Sources */,
 				28E3E6391EB1B768008093B7 /* DPPhoto.m in Sources */,
 				28E3E6211EB1AF88008093B7 /* ViewController.m in Sources */,
 				28E3E61E1EB1AF88008093B7 /* AppDelegate.m in Sources */,
+				28C306CD1EB5A56D00CAF0AD /* CGQCollectionViewCell.m in Sources */,
+				28C3068A1EB58B6D00CAF0AD /* DPNavigationController.m in Sources */,
+				28C306D21EB5CD2A00CAF0AD /* DPCollectionReusableView.m in Sources */,
 				28E3E61B1EB1AF88008093B7 /* main.m in Sources */,
 				28E3E6361EB1B758008093B7 /* DPPhotoAlbum.m in Sources */,
 				28E3E6331EB1B584008093B7 /* DPNetWorkingManager.m in Sources */,
+				28C306861EB58B0C00CAF0AD /* DPTabBarControllerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

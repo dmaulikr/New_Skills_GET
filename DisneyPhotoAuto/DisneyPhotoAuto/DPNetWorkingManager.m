@@ -28,6 +28,27 @@ static NSArray * _cards = nil;
                                 progress:^(NSProgress * _Nonnull uploadProgress) {
                                     
                                 } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                    if (success == nil) {
+                                        return ;
+                                    }
+                                    success();
+                                } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                    
+                                }];
+}
+
++ (void)removeCard:(NSString *)cardId
+{
+    if (cardId == nil) {
+        return ;
+    }
+    NSString * URLString = @"http://api.disneyphotopass.com.cn:3006/user/removePPFromUser";
+    [[AFHTTPSessionManager manager] POST:URLString
+                              parameters:@{@"tokenId":tokenId,
+                                           @"customerId":cardId}
+                                progress:^(NSProgress * _Nonnull uploadProgress) {
+                                    
+                                } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                                     
                                 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                                     
@@ -56,31 +77,48 @@ static NSArray * _cards = nil;
 
 + (void)getPhotoRequest:(NSString *)cardId success:(void (^)(NSArray <NSString *> *PhotoAlbums))success;
 {
-    NSString * URLString = [NSString stringWithFormat:@"http://api.disneyphotopass.com.cn:3006/p/getPhotosByConditions?customerId=%@&tokenId=%@",cardId,tokenId];
-    
-    [[AFHTTPSessionManager manager] GET:URLString parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+    if ( cardId == nil) {
+        return;
+    }
+    [DPNetWorkingManager addCard:cardId success:^{
+        NSString * URLString = [NSString stringWithFormat:@"http://api.disneyphotopass.com.cn:3006/p/getPhotosByConditions?customerId=%@&tokenId=%@",cardId,tokenId];
         
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSDictionary * dict = responseObject;
-        NSDictionary * result = dict[@"result"];
-        NSArray * photoes = result[@"photos"];
-        NSMutableArray * photoUrls = [NSMutableArray new];
-        for (NSDictionary * photoObjectDict in photoes) {
-            NSDictionary * thumbnail = photoObjectDict[@"thumbnail"];
-            NSDictionary * thumbnailUrl = thumbnail[@"en1024"];
-            if(thumbnailUrl == nil) {
-                thumbnailUrl =  thumbnail[@"x1024"];
+        [[AFHTTPSessionManager manager] GET:URLString parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+            
+        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            [DPNetWorkingManager removeCard:cardId];
+            if (responseObject == nil) {
+                return ;
             }
-            NSString * url = thumbnailUrl[@"url"];//[NSString stringWithFormat:@"%@%@",imageDownLoadUrl,dict[@"url"]];
-            [photoUrls addObject:url];
-        }
-        success(photoUrls);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
+            NSDictionary * dict = responseObject;
+            NSDictionary * result = dict[@"result"];
+            NSArray * photoes = result[@"photos"];
+            NSMutableArray * photoUrls = [NSMutableArray new];
+            for (NSDictionary * photoObjectDict in photoes) {
+                NSDictionary * thumbnail = photoObjectDict[@"thumbnail"];
+                NSString *mimeType = photoObjectDict[@"mimeType"];
+                if ([mimeType isEqualToString:@"jpg"] == NO) {
+                    continue ;
+                }
+                NSDictionary * thumbnailUrl = thumbnail[@"en1024"];
+                if(thumbnailUrl == nil) {
+                    thumbnailUrl =  thumbnail[@"x1024"];
+                }
+                NSString * url = thumbnailUrl[@"url"];
+                if (url != nil) {
+                    [photoUrls addObject:url];
+                }
+            }
+            [[NSUserDefaults standardUserDefaults] setObject:cardId forKey:photoUrls];
+            success(photoUrls);
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            
+        }];
+
     }];
 }
 
-+ (void)downloadImage:(NSString *)url success:(void (^)(NSString * path))success
++ (void)downloadImage:(NSString *)url cachePath:(NSString *)cachePath success:(void (^)(NSString * path))success
 {
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
@@ -93,41 +131,12 @@ static NSArray * _cards = nil;
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:imageUrl]];
     
     NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
-        //        NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
-        return [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/tmp/%@.jpeg",PHOTOES_CACHE_PATH,url]];
+        NSString * path = [cachePath stringByAppendingPathComponent:response.suggestedFilename];
+        return [NSURL fileURLWithPath:path];
     } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
-        //        NSLog(@"File downloaded to: %@", filePath);
         success([filePath path]);
     }];
     [downloadTask resume];
-    //    [[[AFHTTPSessionManager manager] downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
-    //
-    //
-    //    } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
-    //
-    //        return [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/tmp/%@",PHOTOES_CACHE_PATH,url]];
-    //    } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
-    //        NSData * data = [NSData dataWithContentsOfFile:filePath.absoluteString];
-    //        success(filePath.absoluteString);
-    //    }] resume];
-}
-
-+ (void)removeCard:(NSString *)cardId
-{
-    if (cardId == nil) {
-        return ;
-    }
-    NSString * URLString = @"http://api.disneyphotopass.com.cn:3006/user/removePPFromUser";
-    [[AFHTTPSessionManager manager] POST:URLString
-                              parameters:@{@"tokenId":tokenId,
-                                           @"customerId":cardId}
-                                progress:^(NSProgress * _Nonnull uploadProgress) {
-                                    
-                                } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                    
-                                } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                                    
-                                }];
 }
 
 @end
