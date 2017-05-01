@@ -9,12 +9,17 @@
 #import "DPHomeViewController.h"
 #import "CGQCollectionViewCell.h"
 #import "DPCollectionReusableView.h"
+#import "ESPictureBrowser.h"
+#import "QQLBXScanViewController.h"
+#import "StyleDIY.h"
 #define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
 #define IMAGES_CARD_ID_CACHE_KEY @"IMAGES_CARD_ID_CACHE_KEY"
-@interface DPHomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
+@interface DPHomeViewController ()<ESPictureBrowserDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 @property (nonatomic, strong)UICollectionView * collectionView;
+@property (nonatomic, strong)UICollectionView * imageBrowserCollectionView;
 @property (nonatomic, strong)NSMutableDictionary *imageDataCache;
 @property (nonatomic, strong)NSMutableArray *cardIds;
+@property (nonatomic, strong)NSArray *photoBrowserImages;
 @end
 
 @implementation DPHomeViewController
@@ -43,9 +48,69 @@
             NSString * imageCardCachePath = [self createLocalPath:cardId];
             NSArray * images = [self getLocalCacheImage:imageCardCachePath];
             [_imageDataCache setObject:images forKey:cardId];
+            [self checkCachedImageCardId:cardId count:images.count];
         }
     }
     
+}
+
+//获取所有图片的数组
+- (NSArray *)getTotalImages
+{
+    NSMutableArray * totalImages = [NSMutableArray new];
+    for (NSString *cardId in _cardIds) {
+        NSArray * images = [_imageDataCache objectForKey:cardId];
+        [totalImages addObjectsFromArray:images];
+    }
+    
+    return totalImages;
+}
+
+- (NSInteger)indexPathToIndex:(NSIndexPath *)indexPath
+{
+    NSInteger section = indexPath.section;
+    NSInteger row = indexPath.row;
+    NSInteger index = row;
+    for (NSInteger i = 0 ; i < section ; i++) {
+        NSString * cardId = [_cardIds objectAtIndex:i];
+        NSInteger imageCount = ((NSArray *)[_imageDataCache objectForKey:cardId]).count;
+        index += imageCount;
+    }
+    return  index;
+}
+
+- (NSIndexPath *)indexToIndexPath:(NSInteger)index
+{
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    NSInteger section = 0;
+    NSInteger row = 0;
+    for (NSInteger i = 0;i < _cardIds.count ; i++) {
+        NSString *cardId = [_cardIds objectAtIndex:i];
+        NSInteger imageCount = ((NSArray *)[_imageDataCache objectForKey:cardId]).count;
+        if (index > imageCount - 1) {
+            index = index - imageCount;
+            continue;
+        } else {
+            section = i;
+            row = index;
+            indexPath = [NSIndexPath indexPathForRow:row inSection:section];
+            break;
+        }
+    }
+    return indexPath;
+}
+
+//检查图片数量是否够
+- (void)checkCachedImageCardId:(NSString *)cardId count:(NSInteger)count
+{
+    NSArray * imageUrls = [[NSUserDefaults standardUserDefaults] objectForKey:cardId];
+    if (imageUrls == nil) {
+        return;
+    }
+    
+    if (count != imageUrls.count) {
+        [self downloadImageByCardId:cardId];
+    }
 }
 
 //获取cardID 上图片的缓存路径
@@ -146,17 +211,33 @@
         NSMutableArray * images = [_imageDataCache objectForKey:cardId];
         if (images == nil) {
             images = [NSMutableArray new];
-            [_imageDataCache setObject:cardId forKey:images];
+            [_imageDataCache setObject:images forKey:cardId];
         }
         [images addObject:image];
+        __weak typeof(self) weakSelf = self;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf.collectionView reloadData];
+        });
     }
 }
 
 
 - (void)addPhotos
 {
+    //添加一些扫码或相册结果处理
+    QQLBXScanViewController *vc = [QQLBXScanViewController new];
+    vc.style = [StyleDIY qqStyle];
+    
+    //镜头拉远拉近功能
+    vc.isVideoZoom = YES;
+    
+    [self presentViewController:vc animated:YES completion:^{
+        
+    }];
+//    [self.navigationController pushViewController:vc animated:YES];
+    
     //add
-    [self downloadImageByCardId:@"SHDR32HUF7FQHBT8"];
+//    [self downloadImageByCardId:@"SHDR32GH7UW6HBT7"];
 //    [DPNetWorkingManager addCard:@"SHDR32HUF7FQHBT8" success:nil];
 }
 
@@ -184,10 +265,12 @@
     [self.view addSubview:self.collectionView];
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
+    self.collectionView.contentInset = UIEdgeInsetsMake(10, 0, 0, 0);
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([CGQCollectionViewCell class]) bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"CGQCollectionViewCell"];
     
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([DPCollectionReusableView class]) bundle:[NSBundle mainBundle]] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
     layoutView.headerReferenceSize = CGSizeMake(self.view.bounds.size.width, 30);
+
     
 }
 
@@ -219,7 +302,10 @@
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     DPCollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header" forIndexPath:indexPath];
-    headerView.titleLabel.text=[_cardIds objectAtIndex:indexPath.section];
+    NSString * cardId = [_cardIds objectAtIndex:indexPath.section];
+    NSArray * images = [_imageDataCache objectForKey:cardId];
+    NSInteger imageCount = images.count;
+    headerView.titleLabel.text = [NSString stringWithFormat:@"卡号:%@/照片数量:%ld",cardId,imageCount];
     
     return headerView;
     
@@ -243,16 +329,67 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"%ld", (long)indexPath.row);
-    
-}
-- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row == 0) {
-        [self downloadImageByCardId:@""];
-    } else if (indexPath.row == 1) {
-        [self downloadImageByCardId:@""];
-    }
 
+    ESPictureBrowser *browser = [[ESPictureBrowser alloc] init];
+    [browser setDelegate:self];
+    [browser setLongPressBlock:^(NSInteger index) {
+        NSLog(@"%zd", index);
+    }];
+    _photoBrowserImages = [self getTotalImages];
+    [browser showFromView:self.view picturesCount:_photoBrowserImages.count currentPictureIndex:[self indexPathToIndex:indexPath]];
+}
+
+#pragma mark - ESPictureBrowserDelegate
+- (NSString *)pictureView:(ESPictureBrowser *)pictureBrowser highQualityUrlStringForIndex:(NSInteger)index
+{
+    return nil;
+}
+
+/**
+ 获取对应索引的视图
+ 
+ @param pictureBrowser 图片浏览器
+ @param index          索引
+ 
+ @return 视图
+ */
+- (UIView *)pictureView:(ESPictureBrowser *)pictureBrowser viewForIndex:(NSInteger)index {
+    NSIndexPath * indexPath = [self indexToIndexPath:index];
+    UIView * view = [_collectionView cellForItemAtIndexPath:indexPath];
+    return view;
+}
+
+/**
+ 获取对应索引的图片大小
+ 
+ @param pictureBrowser 图片浏览器
+ @param index          索引
+ 
+ @return 图片大小
+ */
+//- (CGSize)pictureView:(ESPictureBrowser *)pictureBrowser imageSizeForIndex:(NSInteger)index {
+//    
+//    UIImage * image = [_photoBrowserImages objectAtIndex:index];
+//    return image.size;
+//}
+
+/**
+ 获取对应索引默认图片，可以是占位图片，可以是缩略图
+ 
+ @param pictureBrowser 图片浏览器
+ @param index          索引
+ 
+ @return 图片
+ */
+- (UIImage *)pictureView:(ESPictureBrowser *)pictureBrowser defaultImageForIndex:(NSInteger)index {
+    UIImage * image = [_photoBrowserImages objectAtIndex:index];
+
+    return image;
+}
+
+
+- (void)pictureView:(ESPictureBrowser *)pictureBrowser scrollToIndex:(NSInteger)index {
+    [_collectionView scrollToItemAtIndexPath:[self indexToIndexPath:index] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
 }
 
 

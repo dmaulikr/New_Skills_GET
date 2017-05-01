@@ -17,6 +17,21 @@
 		28C306CE1EB5A56D00CAF0AD /* CGQCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28C306CC1EB5A56D00CAF0AD /* CGQCollectionViewCell.xib */; };
 		28C306D21EB5CD2A00CAF0AD /* DPCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C306D01EB5CD2A00CAF0AD /* DPCollectionReusableView.m */; };
 		28C306D31EB5CD2A00CAF0AD /* DPCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28C306D11EB5CD2A00CAF0AD /* DPCollectionReusableView.xib */; };
+		28C306D61EB6BF1500CAF0AD /* QQLBXScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C306D51EB6BF1500CAF0AD /* QQLBXScanViewController.m */; };
+		28C306E31EB6BF6200CAF0AD /* UIActionSheet+LBXAlertAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C306DA1EB6BF6200CAF0AD /* UIActionSheet+LBXAlertAction.m */; };
+		28C306E41EB6BF6200CAF0AD /* UIAlertController+supportedInterfaceOrientations.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C306DC1EB6BF6200CAF0AD /* UIAlertController+supportedInterfaceOrientations.m */; };
+		28C306E51EB6BF6200CAF0AD /* UIAlertView+LBXAlertAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C306DE1EB6BF6200CAF0AD /* UIAlertView+LBXAlertAction.m */; };
+		28C306E61EB6BF6200CAF0AD /* UIWindow+LBXHierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C306E01EB6BF6200CAF0AD /* UIWindow+LBXHierarchy.m */; };
+		28C306E71EB6BF6200CAF0AD /* LBXAlertAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C306E21EB6BF6200CAF0AD /* LBXAlertAction.m */; };
+		28C306EF1EB6BF9800CAF0AD /* LBXScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C306E91EB6BF9800CAF0AD /* LBXScanViewController.m */; };
+		28C306F01EB6BF9800CAF0AD /* ScanResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C306EB1EB6BF9800CAF0AD /* ScanResultViewController.m */; };
+		28C306F11EB6BF9800CAF0AD /* ScanResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28C306EC1EB6BF9800CAF0AD /* ScanResultViewController.xib */; };
+		28C306F21EB6BF9800CAF0AD /* Global.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C306EE1EB6BF9800CAF0AD /* Global.m */; };
+		28C306F51EB6BFB800CAF0AD /* LBXScanPermissions.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C306F31EB6BFB800CAF0AD /* LBXScanPermissions.m */; };
+		28C306F81EB6C04300CAF0AD /* CreateBarCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C306F71EB6C04300CAF0AD /* CreateBarCodeViewController.m */; };
+		28C306FC1EB6C06800CAF0AD /* UIImageView+CornerRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C306FB1EB6C06800CAF0AD /* UIImageView+CornerRadius.m */; };
+		28C307001EB6C1EE00CAF0AD /* StyleDIY.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C306FF1EB6C1EE00CAF0AD /* StyleDIY.m */; };
+		28C307021EB6D97F00CAF0AD /* CodeScan.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 28C307011EB6D97F00CAF0AD /* CodeScan.bundle */; };
 		28E3E61B1EB1AF88008093B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E3E61A1EB1AF88008093B7 /* main.m */; };
 		28E3E61E1EB1AF88008093B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E3E61D1EB1AF88008093B7 /* AppDelegate.m */; };
 		28E3E6211EB1AF88008093B7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E3E6201EB1AF88008093B7 /* ViewController.m */; };
@@ -45,6 +60,34 @@
 		28C306CF1EB5CD2A00CAF0AD /* DPCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPCollectionReusableView.h; sourceTree = "<group>"; };
 		28C306D01EB5CD2A00CAF0AD /* DPCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPCollectionReusableView.m; sourceTree = "<group>"; };
 		28C306D11EB5CD2A00CAF0AD /* DPCollectionReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DPCollectionReusableView.xib; sourceTree = "<group>"; };
+		28C306D41EB6BF1500CAF0AD /* QQLBXScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQLBXScanViewController.h; sourceTree = "<group>"; };
+		28C306D51EB6BF1500CAF0AD /* QQLBXScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQLBXScanViewController.m; sourceTree = "<group>"; };
+		28C306D91EB6BF6200CAF0AD /* UIActionSheet+LBXAlertAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIActionSheet+LBXAlertAction.h"; sourceTree = "<group>"; };
+		28C306DA1EB6BF6200CAF0AD /* UIActionSheet+LBXAlertAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIActionSheet+LBXAlertAction.m"; sourceTree = "<group>"; };
+		28C306DB1EB6BF6200CAF0AD /* UIAlertController+supportedInterfaceOrientations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+supportedInterfaceOrientations.h"; sourceTree = "<group>"; };
+		28C306DC1EB6BF6200CAF0AD /* UIAlertController+supportedInterfaceOrientations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+supportedInterfaceOrientations.m"; sourceTree = "<group>"; };
+		28C306DD1EB6BF6200CAF0AD /* UIAlertView+LBXAlertAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+LBXAlertAction.h"; sourceTree = "<group>"; };
+		28C306DE1EB6BF6200CAF0AD /* UIAlertView+LBXAlertAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+LBXAlertAction.m"; sourceTree = "<group>"; };
+		28C306DF1EB6BF6200CAF0AD /* UIWindow+LBXHierarchy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+LBXHierarchy.h"; sourceTree = "<group>"; };
+		28C306E01EB6BF6200CAF0AD /* UIWindow+LBXHierarchy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+LBXHierarchy.m"; sourceTree = "<group>"; };
+		28C306E11EB6BF6200CAF0AD /* LBXAlertAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBXAlertAction.h; sourceTree = "<group>"; };
+		28C306E21EB6BF6200CAF0AD /* LBXAlertAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBXAlertAction.m; sourceTree = "<group>"; };
+		28C306E81EB6BF9800CAF0AD /* LBXScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBXScanViewController.h; sourceTree = "<group>"; };
+		28C306E91EB6BF9800CAF0AD /* LBXScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBXScanViewController.m; sourceTree = "<group>"; };
+		28C306EA1EB6BF9800CAF0AD /* ScanResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanResultViewController.h; sourceTree = "<group>"; };
+		28C306EB1EB6BF9800CAF0AD /* ScanResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanResultViewController.m; sourceTree = "<group>"; };
+		28C306EC1EB6BF9800CAF0AD /* ScanResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScanResultViewController.xib; sourceTree = "<group>"; };
+		28C306ED1EB6BF9800CAF0AD /* Global.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
+		28C306EE1EB6BF9800CAF0AD /* Global.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Global.m; sourceTree = "<group>"; };
+		28C306F31EB6BFB800CAF0AD /* LBXScanPermissions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBXScanPermissions.m; sourceTree = "<group>"; };
+		28C306F41EB6BFB800CAF0AD /* LBXScanPermissions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBXScanPermissions.h; sourceTree = "<group>"; };
+		28C306F61EB6C04300CAF0AD /* CreateBarCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateBarCodeViewController.h; sourceTree = "<group>"; };
+		28C306F71EB6C04300CAF0AD /* CreateBarCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateBarCodeViewController.m; sourceTree = "<group>"; };
+		28C306FA1EB6C06800CAF0AD /* UIImageView+CornerRadius.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+CornerRadius.h"; sourceTree = "<group>"; };
+		28C306FB1EB6C06800CAF0AD /* UIImageView+CornerRadius.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+CornerRadius.m"; sourceTree = "<group>"; };
+		28C306FE1EB6C1EE00CAF0AD /* StyleDIY.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyleDIY.h; sourceTree = "<group>"; };
+		28C306FF1EB6C1EE00CAF0AD /* StyleDIY.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyleDIY.m; sourceTree = "<group>"; };
+		28C307011EB6D97F00CAF0AD /* CodeScan.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CodeScan.bundle; sourceTree = "<group>"; };
 		28E3E6161EB1AF88008093B7 /* DisneyPhotoAuto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DisneyPhotoAuto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28E3E61A1EB1AF88008093B7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		28E3E61C1EB1AF88008093B7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -100,6 +143,65 @@
 			path = Category_Extension;
 			sourceTree = "<group>";
 		};
+		28C306D71EB6BF6200CAF0AD /* LBXAlertAction */ = {
+			isa = PBXGroup;
+			children = (
+				28C306D81EB6BF6200CAF0AD /* Class */,
+				28C306E11EB6BF6200CAF0AD /* LBXAlertAction.h */,
+				28C306E21EB6BF6200CAF0AD /* LBXAlertAction.m */,
+			);
+			path = LBXAlertAction;
+			sourceTree = "<group>";
+		};
+		28C306D81EB6BF6200CAF0AD /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				28C306D91EB6BF6200CAF0AD /* UIActionSheet+LBXAlertAction.h */,
+				28C306DA1EB6BF6200CAF0AD /* UIActionSheet+LBXAlertAction.m */,
+				28C306DB1EB6BF6200CAF0AD /* UIAlertController+supportedInterfaceOrientations.h */,
+				28C306DC1EB6BF6200CAF0AD /* UIAlertController+supportedInterfaceOrientations.m */,
+				28C306DD1EB6BF6200CAF0AD /* UIAlertView+LBXAlertAction.h */,
+				28C306DE1EB6BF6200CAF0AD /* UIAlertView+LBXAlertAction.m */,
+				28C306DF1EB6BF6200CAF0AD /* UIWindow+LBXHierarchy.h */,
+				28C306E01EB6BF6200CAF0AD /* UIWindow+LBXHierarchy.m */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		28C306F91EB6C06800CAF0AD /* CornerRadiusCategory */ = {
+			isa = PBXGroup;
+			children = (
+				28C306FA1EB6C06800CAF0AD /* UIImageView+CornerRadius.h */,
+				28C306FB1EB6C06800CAF0AD /* UIImageView+CornerRadius.m */,
+			);
+			path = CornerRadiusCategory;
+			sourceTree = "<group>";
+		};
+		28C306FD1EB6C14B00CAF0AD /* QR */ = {
+			isa = PBXGroup;
+			children = (
+				28C307011EB6D97F00CAF0AD /* CodeScan.bundle */,
+				28C306FE1EB6C1EE00CAF0AD /* StyleDIY.h */,
+				28C306FF1EB6C1EE00CAF0AD /* StyleDIY.m */,
+				28C306D41EB6BF1500CAF0AD /* QQLBXScanViewController.h */,
+				28C306D51EB6BF1500CAF0AD /* QQLBXScanViewController.m */,
+				28C306F61EB6C04300CAF0AD /* CreateBarCodeViewController.h */,
+				28C306F71EB6C04300CAF0AD /* CreateBarCodeViewController.m */,
+				28C306E81EB6BF9800CAF0AD /* LBXScanViewController.h */,
+				28C306E91EB6BF9800CAF0AD /* LBXScanViewController.m */,
+				28C306EA1EB6BF9800CAF0AD /* ScanResultViewController.h */,
+				28C306EB1EB6BF9800CAF0AD /* ScanResultViewController.m */,
+				28C306EC1EB6BF9800CAF0AD /* ScanResultViewController.xib */,
+				28C306F31EB6BFB800CAF0AD /* LBXScanPermissions.m */,
+				28C306F41EB6BFB800CAF0AD /* LBXScanPermissions.h */,
+				28C306ED1EB6BF9800CAF0AD /* Global.h */,
+				28C306EE1EB6BF9800CAF0AD /* Global.m */,
+				28C306F91EB6C06800CAF0AD /* CornerRadiusCategory */,
+				28C306D71EB6BF6200CAF0AD /* LBXAlertAction */,
+			);
+			name = QR;
+			sourceTree = "<group>";
+		};
 		28E3E60D1EB1AF88008093B7 = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +226,7 @@
 				28C306901EB599FE00CAF0AD /* Category_Extension */,
 				28E3E61C1EB1AF88008093B7 /* AppDelegate.h */,
 				28E3E61D1EB1AF88008093B7 /* AppDelegate.m */,
+				28C306FD1EB6C14B00CAF0AD /* QR */,
 				28C306821EB58A1E00CAF0AD /* Controller */,
 				28E3E61F1EB1AF88008093B7 /* ViewController.h */,
 				28E3E6201EB1AF88008093B7 /* ViewController.m */,
@@ -238,11 +341,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				28C306CE1EB5A56D00CAF0AD /* CGQCollectionViewCell.xib in Resources */,
+				28C306F11EB6BF9800CAF0AD /* ScanResultViewController.xib in Resources */,
 				28C306D31EB5CD2A00CAF0AD /* DPCollectionReusableView.xib in Resources */,
 				28E3E6291EB1AF88008093B7 /* LaunchScreen.storyboard in Resources */,
 				28E3E6261EB1AF88008093B7 /* Assets.xcassets in Resources */,
 				28E3E6241EB1AF88008093B7 /* Main.storyboard in Resources */,
 				28C3068F1EB5939800CAF0AD /* WX20170430-113741@2x.png in Resources */,
+				28C307021EB6D97F00CAF0AD /* CodeScan.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,18 +406,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28C306F01EB6BF9800CAF0AD /* ScanResultViewController.m in Sources */,
+				28C306E61EB6BF6200CAF0AD /* UIWindow+LBXHierarchy.m in Sources */,
 				28C3068D1EB58EF800CAF0AD /* DPHomeViewController.m in Sources */,
+				28C306F21EB6BF9800CAF0AD /* Global.m in Sources */,
+				28C306E31EB6BF6200CAF0AD /* UIActionSheet+LBXAlertAction.m in Sources */,
+				28C306FC1EB6C06800CAF0AD /* UIImageView+CornerRadius.m in Sources */,
 				28C306BC1EB599FE00CAF0AD /* UIColor+Hex.m in Sources */,
 				28E3E6391EB1B768008093B7 /* DPPhoto.m in Sources */,
 				28E3E6211EB1AF88008093B7 /* ViewController.m in Sources */,
+				28C306E41EB6BF6200CAF0AD /* UIAlertController+supportedInterfaceOrientations.m in Sources */,
+				28C306EF1EB6BF9800CAF0AD /* LBXScanViewController.m in Sources */,
+				28C306F81EB6C04300CAF0AD /* CreateBarCodeViewController.m in Sources */,
+				28C306D61EB6BF1500CAF0AD /* QQLBXScanViewController.m in Sources */,
 				28E3E61E1EB1AF88008093B7 /* AppDelegate.m in Sources */,
 				28C306CD1EB5A56D00CAF0AD /* CGQCollectionViewCell.m in Sources */,
 				28C3068A1EB58B6D00CAF0AD /* DPNavigationController.m in Sources */,
+				28C307001EB6C1EE00CAF0AD /* StyleDIY.m in Sources */,
 				28C306D21EB5CD2A00CAF0AD /* DPCollectionReusableView.m in Sources */,
 				28E3E61B1EB1AF88008093B7 /* main.m in Sources */,
+				28C306E71EB6BF6200CAF0AD /* LBXAlertAction.m in Sources */,
 				28E3E6361EB1B758008093B7 /* DPPhotoAlbum.m in Sources */,
 				28E3E6331EB1B584008093B7 /* DPNetWorkingManager.m in Sources */,
 				28C306861EB58B0C00CAF0AD /* DPTabBarControllerViewController.m in Sources */,
+				28C306F51EB6BFB800CAF0AD /* LBXScanPermissions.m in Sources */,
+				28C306E51EB6BF6200CAF0AD /* UIAlertView+LBXAlertAction.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,7 +556,7 @@
 				GCC_PREFIX_HEADER = DisneyPhotoAuto/DisneyPhotoAuto_PrefixHeader.pch;
 				INFOPLIST_FILE = DisneyPhotoAuto/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ma.DisneyPhotoAuto;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mxf.DisneyPhoto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "17939637-595e-4b42-b545-39fb279b206b";
 				PROVISIONING_PROFILE_SPECIFIER = mxf_dev;
@@ -450,13 +568,15 @@
 			baseConfigurationReference = 32ABED7CB70CBD278782E435 /* Pods-DisneyPhotoAuto.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 4H22C2CRLW;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DisneyPhotoAuto/DisneyPhotoAuto_PrefixHeader.pch;
 				INFOPLIST_FILE = DisneyPhotoAuto/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ma.DisneyPhotoAuto;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mxf.DisneyPhoto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "17939637-595e-4b42-b545-39fb279b206b";
+				PROVISIONING_PROFILE_SPECIFIER = mxf_dev;
 			};
 			name = Release;
 		};

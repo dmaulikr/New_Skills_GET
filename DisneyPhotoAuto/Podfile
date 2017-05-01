@@ -9,4 +9,6 @@ target "DisneyPhotoAuto" do
   pod 'SDWebImage', '~>3.7'
   pod 'LBXScan', '~> 2.0'
   pod 'Masonry', '~> 1.0.2'
+  pod 'ESPictureBrowser'
+  
 end
