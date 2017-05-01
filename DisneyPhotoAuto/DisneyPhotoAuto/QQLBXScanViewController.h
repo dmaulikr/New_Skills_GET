@@ -13,12 +13,6 @@
 //继承LBXScanViewController,在界面上绘制想要的按钮，提示语等
 @interface QQLBXScanViewController : LBXScanViewController
 
-
-
-
-
-
-
 /**
  @brief  扫码区域上方提示文字
  */
@@ -36,9 +30,8 @@
 @property (nonatomic, strong) UIButton *btnFlash;
 //我的二维码
 @property (nonatomic, strong) UIButton *btnMyQR;
-
-
-
+@property (nonatomic, strong) UIButton *btnInput;
+@property (nonatomic, strong) void(^scanSuccess)(NSArray <NSString*> *cardIds);
 
 
 

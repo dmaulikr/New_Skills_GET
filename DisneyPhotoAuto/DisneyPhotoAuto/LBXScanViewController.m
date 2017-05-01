@@ -31,30 +31,17 @@
     
     self.view.backgroundColor = [UIColor blackColor];
     
-
-    switch ([Global sharedManager].libraryType) {
-        case SLT_Native:
-            self.title = @"native";
-            break;
-        case SLT_ZXing:
-            self.title = @"ZXing";
-            break;
-        case SLT_ZBar:
-            self.title = @"ZBar";
-            break;
-        default:
-            break;
-    }
+    [self drawScanView];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     
-    [self drawScanView];
     
     //不延时，可能会导致界面黑屏并卡住一会
-    [self performSelector:@selector(startScan) withObject:nil afterDelay:0.2];
+    [self startScan];
+//    [self performSelector:@selector(startScan) withObject:nil afterDelay:0.2];
 }
 
 //绘制扫描区域
@@ -136,7 +123,7 @@
                     
                     [weakSelf scanResultWithArray:array];
                 }];
-                [_scanObj setNeedCaptureImage:_isNeedScanImage];
+//                [_scanObj setNeedCaptureImage:_isNeedScanImage];
             }
             [_scanObj startScan];
 

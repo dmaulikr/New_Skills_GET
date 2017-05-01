@@ -42,7 +42,6 @@
 /// 消失的 tap 手势
 @property (nonatomic, weak) UITapGestureRecognizer *dismissTapGes;
 
-
 @end
 
 @implementation ESPictureBrowser
@@ -93,6 +92,7 @@
     UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGes:)];
     [self addGestureRecognizer:tapGes];
     self.dismissTapGes = tapGes;
+    
 }
 
 - (void)showFromView:(UIView *)fromView picturesCount:(NSInteger)picturesCount currentPictureIndex:(NSInteger)currentPictureIndex {

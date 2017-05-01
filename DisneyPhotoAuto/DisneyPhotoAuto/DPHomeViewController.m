@@ -12,6 +12,10 @@
 #import "ESPictureBrowser.h"
 #import "QQLBXScanViewController.h"
 #import "StyleDIY.h"
+#import "LBXAlertAction.h"
+#import <Masonry/Masonry.h>
+#import "UIColor+Hex.h"
+#import <MBProgressHUD/MBProgressHUD.h>
 #define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
 #define IMAGES_CARD_ID_CACHE_KEY @"IMAGES_CARD_ID_CACHE_KEY"
 @interface DPHomeViewController ()<ESPictureBrowserDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
@@ -20,6 +24,9 @@
 @property (nonatomic, strong)NSMutableDictionary *imageDataCache;
 @property (nonatomic, strong)NSMutableArray *cardIds;
 @property (nonatomic, strong)NSArray *photoBrowserImages;
+@property (nonatomic, weak)ESPictureBrowser *browser;
+@property (nonatomic, strong)NSMutableArray *bashSaveImages;
+@property (nonatomic, assign)BOOL bashSaveProcessing;
 @end
 
 @implementation DPHomeViewController
@@ -170,6 +177,12 @@
             [weakSelf cacheCardId:cardId];
         }
         NSLog(@"-------%@------",cardId);
+        if (PhotoAlbums.count < 1) {
+            __weak __typeof(self) weakSelf = self;
+            [LBXAlertAction showAlertWithTitle:[NSString stringWithFormat:@"卡号:%@",cardId] msg:@"这张卡中没有照片呦！" buttonsStatement:@[@"知道了"] chooseBlock:^(NSInteger buttonIdx) {
+            }];
+            return ;
+        }
         for (NSString *url in PhotoAlbums) {
             [DPNetWorkingManager downloadImage:url cachePath:cachePath success:^(NSString *path) {
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
@@ -222,6 +235,101 @@
 }
 
 
+- (void)saveImages
+{
+    if (_bashSaveProcessing) {
+        [self showAllTextDialog:@"保存中..."];
+        return;
+    }
+    [self showAllTextDialog:@"保存中..."];
+    _bashSaveProcessing = YES;
+    if (_bashSaveImages.count < 1) {
+        _bashSaveImages = [[NSMutableArray alloc] initWithArray:[self getTotalImages]];
+    }
+    [self saveNext];
+    
+}
+
+-(void)saveNext
+{
+    if (_bashSaveImages.count > 0) {
+        UIImage *image = [_bashSaveImages objectAtIndex:0];
+        UIImageWriteToSavedPhotosAlbum(image, self, @selector(savedPhotoImage:didFinishSavingWithError:contextInfo:), nil);
+    }
+    else {
+        [self allImagesSaveDone];
+    }
+}
+
+- (void)allImagesSaveDone
+{
+    _bashSaveProcessing = NO;
+    [self showSaveSuccessMessage];
+}
+
+
+
+- (void)saveImageByIndex:(NSInteger)index
+{
+    UIImage *image = [_photoBrowserImages objectAtIndex:index];
+    _bashSaveImages = [[NSMutableArray alloc]initWithObjects:image, nil];
+    [self saveImages];
+}
+
+-(void)saveImage
+{
+    [self saveImageByIndex:_browser.currentPage];
+}
+
+-(void)savedPhotoImage:(UIImage*)image didFinishSavingWithError: (NSError *)error contextInfo: (void *)contextInfo {
+    if (error) {
+        NSLog(@"%@", error.localizedDescription);
+    }
+    else {
+        [_bashSaveImages removeObjectAtIndex:0];
+    }
+    [self saveNext];
+}
+
+
+- (void)showSaveSuccessMessage
+{
+    [self showAllTextDialog:@"保存成功"];
+}
+
+
+- (void)showProcessDialog:(NSString *)message
+{
+    MBProgressHUD * HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [[UIApplication sharedApplication].keyWindow addSubview:HUD];
+    HUD.label.text = message;
+    HUD.mode = MBProgressHUDModeText;
+    HUD.userInteractionEnabled = NO;
+    [HUD showAnimated:YES];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [HUD hideAnimated:YES];
+        
+    });
+    
+}
+
+- (void)showAllTextDialog:(NSString *)message
+{
+   MBProgressHUD * HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [[UIApplication sharedApplication].keyWindow addSubview:HUD];
+    HUD.label.text = message;
+    HUD.mode = MBProgressHUDModeText;
+    HUD.userInteractionEnabled = NO;
+    [HUD showAnimated:YES];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [HUD hideAnimated:YES];
+
+    });
+
+}
+
 - (void)addPhotos
 {
     //添加一些扫码或相册结果处理
@@ -230,15 +338,16 @@
     
     //镜头拉远拉近功能
     vc.isVideoZoom = YES;
-    
+    __weak typeof(self) weakSelf = self;
+    [vc setScanSuccess:^(NSArray<NSString *> *cardIds) {
+        for (NSString *cardId in cardIds) {
+            [weakSelf downloadImageByCardId:cardId];
+        }
+    }];
     [self presentViewController:vc animated:YES completion:^{
         
     }];
-//    [self.navigationController pushViewController:vc animated:YES];
-    
-    //add
-//    [self downloadImageByCardId:@"SHDR32GH7UW6HBT7"];
-//    [DPNetWorkingManager addCard:@"SHDR32HUF7FQHBT8" success:nil];
+
 }
 
 
@@ -255,7 +364,21 @@
     titleImageView.contentMode = UIViewContentModeScaleAspectFit;
     titleImageView.frame = CGRectMake(0, 0, 90, 23);
     [self.navigationItem setTitleView:titleImageView];
-    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addPhotos)]];
+    
+    UIButton * saveBtn = [[UIButton alloc] init];
+    [saveBtn setImage:[UIImage imageNamed:@"save_blue"] forState:UIControlStateNormal];
+    saveBtn.frame = CGRectMake(0, 0, 26, 26);
+    [saveBtn addTarget:self action:@selector(saveImages) forControlEvents:UIControlEventTouchUpInside];
+
+    UIButton * addBtn = [[UIButton alloc] init];
+    [addBtn setImage:[UIImage imageNamed:@"add"] forState:UIControlStateNormal];
+    addBtn.frame = CGRectMake(0, 0, 29, 29);
+    [addBtn addTarget:self action:@selector(addPhotos) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem * saveItem = [[UIBarButtonItem alloc] initWithCustomView:saveBtn];
+    UIBarButtonItem * addItem = [[UIBarButtonItem alloc] initWithCustomView:addBtn];
+
+    [self.navigationItem setRightBarButtonItems:@[addItem,[UIBarButtonItem new],saveItem]];
     
     UICollectionViewFlowLayout *layoutView = [[UICollectionViewFlowLayout alloc] init];
     layoutView.scrollDirection = UICollectionViewScrollDirectionVertical;
@@ -271,7 +394,6 @@
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([DPCollectionReusableView class]) bundle:[NSBundle mainBundle]] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
     layoutView.headerReferenceSize = CGSizeMake(self.view.bounds.size.width, 30);
 
-    
 }
 
 
@@ -332,11 +454,26 @@
 
     ESPictureBrowser *browser = [[ESPictureBrowser alloc] init];
     [browser setDelegate:self];
+    __weak typeof(self) weakSelf = self;
     [browser setLongPressBlock:^(NSInteger index) {
         NSLog(@"%zd", index);
+        [weakSelf saveImageByIndex:index];
+        
     }];
     _photoBrowserImages = [self getTotalImages];
-    [browser showFromView:self.view picturesCount:_photoBrowserImages.count currentPictureIndex:[self indexPathToIndex:indexPath]];
+    UIView * view = [_collectionView cellForItemAtIndexPath:indexPath];
+    [browser showFromView:view picturesCount:_photoBrowserImages.count currentPictureIndex:[self indexPathToIndex:indexPath]];
+    
+    UIButton * saveButton = [[UIButton alloc] init];
+    [saveButton setImage:[UIImage imageNamed:@"save_white"] forState:UIControlStateNormal];
+    [saveButton addTarget:self action:@selector(saveImage) forControlEvents:UIControlEventTouchUpInside];
+    [browser addSubview:saveButton];
+    
+    [saveButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(50, 50));
+        make.trailing.equalTo(browser.mas_trailing).mas_offset(-20);
+        make.bottom.equalTo(browser.mas_bottom).mas_offset(-60);
+    }];
 }
 
 #pragma mark - ESPictureBrowserDelegate

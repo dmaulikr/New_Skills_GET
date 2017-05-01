@@ -30,6 +30,7 @@
             <connections>
                 <outlet property="titleLabel" destination="upB-rl-8JC" id="nur-yK-BBV"/>
             </connections>
+            <point key="canvasLocation" x="-28" y="-44"/>
         </collectionReusableView>
     </objects>
 </document>

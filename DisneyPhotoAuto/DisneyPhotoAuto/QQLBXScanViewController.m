@@ -11,8 +11,10 @@
 #import "ScanResultViewController.h"
 #import "LBXScanVideoZoomView.h"
 #import <Masonry/Masonry.h>
-@interface QQLBXScanViewController ()
+#import "UIColor+Hex.h"
+@interface QQLBXScanViewController ()<UITextFieldDelegate>
 @property (nonatomic, strong) LBXScanVideoZoomView *zoomView;
+@property (nonatomic, strong) UITextField *codeInputField;
 @end
 
 @implementation QQLBXScanViewController
@@ -27,40 +29,61 @@
         
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
-    self.view.backgroundColor = [UIColor blackColor];
+    self.view.backgroundColor = [UIColor whiteColor];
     
     //设置扫码后需要扫码图像
     self.isNeedScanImage = YES;
+    [self.view addSubview:_topTitle];
+    [self drawBottomItems];
+    [self drawTitle];
+    [self drawCloseButton];
+    [self drawTextField];
+    
 }
 
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    [self drawBottomItems];
-    [self drawTitle];
-    [self drawCloseButton];
-    [self.view bringSubviewToFront:_topTitle];
-    
-    
+}
+
+- (void)drawTextField
+{
+    self.codeInputField = [[UITextField alloc] init];
+    _codeInputField.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:self.codeInputField];
+    [_codeInputField mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view);
+        make.centerY.equalTo(self.view.mas_centerY).mas_offset(-50);
+        make.width.equalTo(self.view);
+        make.height.mas_equalTo(40);
+    }];
+    _codeInputField.textColor = [UIColor colorWithHexString:@"1ca8e4"];
+    _codeInputField.textAlignment = NSTextAlignmentCenter;
+    _codeInputField.font = [UIFont boldSystemFontOfSize:20];
+    _codeInputField.delegate = self;
+    _codeInputField.returnKeyType = UIReturnKeyDone;
+    _codeInputField.userInteractionEnabled = NO;
+    _codeInputField.keyboardType = UIKeyboardTypeASCIICapable;
 }
 
 - (void)drawCloseButton
 {
     UIButton * closeButton = [[UIButton alloc]init];
+    [closeButton setImage:[UIImage imageNamed:@"CodeScan.bundle/qrcode_close"] forState:UIControlStateNormal];
+
     [self.view addSubview: closeButton];
     [closeButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view.mas_top).mas_offset(30);
-        make.trailing.equalTo(self.view.mas_trailing).mas_offset(20);
+        make.trailing.equalTo(self.view.mas_trailing).mas_offset(-20);
         make.size.mas_equalTo(CGSizeMake(30, 30));
     }];
-    closeButton.backgroundColor = [UIColor redColor];
     [closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)close
 {
+    [_codeInputField resignFirstResponder];
     [self dismissViewControllerAnimated:YES completion:^{
         
     }];
@@ -71,23 +94,18 @@
     if (!_topTitle)
     {
         self.topTitle = [[UILabel alloc]init];
-        _topTitle.bounds = CGRectMake(0, 0, 145, 60);
-        _topTitle.center = CGPointMake(CGRectGetWidth(self.view.frame)/2, 50);
-        
-        //3.5inch iphone
-        if ([UIScreen mainScreen].bounds.size.height <= 568 )
-        {
-            _topTitle.center = CGPointMake(CGRectGetWidth(self.view.frame)/2, 38);
-            _topTitle.font = [UIFont systemFontOfSize:14];
-        }
+        [self.view addSubview:_topTitle];
+        [_topTitle mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.view.mas_top).mas_offset(30);
+            make.centerX.equalTo(self.view.mas_centerX);
+        }];
         
         
         _topTitle.textAlignment = NSTextAlignmentCenter;
         _topTitle.numberOfLines = 0;
-        _topTitle.text = @"将取景框对准二维码即可自动扫描";
+        _topTitle.text = @"请扫描您的乐拍通二维码\n或者迪士尼门票二维码";
         _topTitle.textColor = [UIColor whiteColor];
-        [self.view addSubview:_topTitle];
-    }    
+    }
 }
 
 - (void)cameraInitOver
@@ -167,28 +185,27 @@
     
     CGSize size = CGSizeMake(65, 87);
     self.btnFlash = [[UIButton alloc]init];
-    _btnFlash.bounds = CGRectMake(0, 0, size.width, size.height);
-    _btnFlash.center = CGPointMake(CGRectGetWidth(_bottomItemsView.frame)/2, CGRectGetHeight(_bottomItemsView.frame)/2);
+    [_bottomItemsView addSubview:_btnFlash];
+    [_btnFlash mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(size);
+        make.leading.equalTo(_bottomItemsView.mas_leading).mas_offset(50);
+        make.centerY.equalTo(_bottomItemsView.mas_centerY);
+    }];
      [_btnFlash setImage:[UIImage imageNamed:@"CodeScan.bundle/qrcode_scan_btn_flash_nor"] forState:UIControlStateNormal];
     [_btnFlash addTarget:self action:@selector(openOrCloseFlash) forControlEvents:UIControlEventTouchUpInside];
     
-    self.btnPhoto = [[UIButton alloc]init];
-    _btnPhoto.bounds = _btnFlash.bounds;
-    _btnPhoto.center = CGPointMake(CGRectGetWidth(_bottomItemsView.frame)/4, CGRectGetHeight(_bottomItemsView.frame)/2);
-    [_btnPhoto setImage:[UIImage imageNamed:@"CodeScan.bundle/qrcode_scan_btn_photo_nor"] forState:UIControlStateNormal];
-    [_btnPhoto setImage:[UIImage imageNamed:@"CodeScan.bundle/qrcode_scan_btn_photo_down"] forState:UIControlStateHighlighted];
-    [_btnPhoto addTarget:self action:@selector(openPhoto) forControlEvents:UIControlEventTouchUpInside];
+    self.btnInput = [[UIButton alloc]init];
+    [_bottomItemsView addSubview:_btnInput];
+    [_btnInput mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(size);
+        make.trailing.equalTo(_bottomItemsView.mas_trailing).mas_offset(-50);
+        make.centerY.equalTo(_bottomItemsView.mas_centerY);
+    }];
+    [_btnInput setImage:[UIImage imageNamed:@"CodeScan.bundle/qrcode_input_btn_photo_nor"] forState:UIControlStateNormal];
+    [_btnInput setImage:[UIImage imageNamed:@"CodeScan.bundle/qrcode_input_btn_photo_down"] forState:UIControlStateHighlighted];
+    [_btnInput addTarget:self action:@selector(inputCode) forControlEvents:UIControlEventTouchUpInside];
     
-    self.btnMyQR = [[UIButton alloc]init];
-    _btnMyQR.bounds = _btnFlash.bounds;
-    _btnMyQR.center = CGPointMake(CGRectGetWidth(_bottomItemsView.frame) * 3/4, CGRectGetHeight(_bottomItemsView.frame)/2);
-    [_btnMyQR setImage:[UIImage imageNamed:@"CodeScan.bundle/qrcode_scan_btn_myqrcode_nor"] forState:UIControlStateNormal];
-    [_btnMyQR setImage:[UIImage imageNamed:@"CodeScan.bundle/qrcode_scan_btn_myqrcode_down"] forState:UIControlStateHighlighted];
-    [_btnMyQR addTarget:self action:@selector(myQRCode) forControlEvents:UIControlEventTouchUpInside];
     
-    [_bottomItemsView addSubview:_btnFlash];
-    [_bottomItemsView addSubview:_btnPhoto];
-    [_bottomItemsView addSubview:_btnMyQR];   
     
 }
 
@@ -207,38 +224,33 @@
     }
     
     //经测试，可以同时识别2个二维码，不能同时识别二维码和条形码
+    
+    NSMutableArray * cardIds = [NSMutableArray new];
     for (LBXScanResult *result in array) {
-        
-        NSLog(@"scanResult:%@",result.strScanned);
+        if (result.strScanned != nil) {
+            NSArray * tmp = [result.strScanned componentsSeparatedByString:@"="];
+            NSString * cardId = [tmp lastObject];
+            if (cardId != nil) {
+                [cardIds addObject:cardId];
+                NSLog(@"scanResult:%@",cardId);
+            }
+        }
     }
-    
-    LBXScanResult *scanResult = array[0];
-    
-    NSString*strResult = scanResult.strScanned;
-    
-    self.scanImage = scanResult.imgScanned;
-    
-    if (!strResult) {
-        
-        [self popAlertMsgWithScanResult:nil];
-        
+    __weak __typeof(self) weakSelf = self;
+
+    if (_scanSuccess != nil) {
+        [self dismissViewControllerAnimated:YES completion:^{
+            weakSelf.scanSuccess(cardIds);
+        }];
         return;
     }
-    
-    //震动提醒
-   // [LBXScanWrapper systemVibrate];
-    //声音提醒
-    //[LBXScanWrapper systemSound];
-    
-    [self showNextVCWithScanResult:scanResult];
-   
+
 }
 
 - (void)popAlertMsgWithScanResult:(NSString*)strResult
 {
     if (!strResult) {
-        
-        strResult = @"识别失败";
+        strResult = @"抱歉,我还没看清...";
     }
     
     __weak __typeof(self) weakSelf = self;
@@ -248,29 +260,20 @@
     }];
 }
 
-- (void)showNextVCWithScanResult:(LBXScanResult*)strResult
-{
-    ScanResultViewController *vc = [ScanResultViewController new];
-    vc.imgScan = strResult.imgScanned;
-    
-    vc.strScan = strResult.strScanned;
-    
-    vc.strCodeType = strResult.strBarCodeType;
-    
-    [self.navigationController pushViewController:vc animated:YES];
-}
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    if (_codeInputField.isFirstResponder == YES) {
+        [_codeInputField resignFirstResponder];
+        _codeInputField.userInteractionEnabled = NO;
+        _codeInputField.text = @"";
+    }
+}
 
 #pragma mark -底部功能项
 //打开相册
 - (void)openPhoto
 {
-    if ([LBXScanPermissions cameraPemission])
-        [self openLocalPhoto];
-    else
-    {
-        [self showError:@"      请到设置->隐私中开启本程序相册权限     "];
-    }
 }
 
 //开关闪光灯
@@ -298,6 +301,44 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+- (void)inputCode
+{
+    _codeInputField.userInteractionEnabled = YES;
+    [_codeInputField becomeFirstResponder];
+}
+
+#pragma mark -textField delegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    NSString * cardId = textField.text;
+    
+    NSCharacterSet *setToRemove =
+    [[ NSCharacterSet characterSetWithCharactersInString:@"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"]
+     invertedSet ];
+    
+    cardId  = [[cardId componentsSeparatedByCharactersInSet:setToRemove] componentsJoinedByString:@""];
+    ////////////////////////////////////////////////////////////////////////
+    if (cardId != nil && cardId.length > 4) {
+        if (_scanSuccess != nil) {
+            __weak typeof(self) weakSelf = self;
+            [self dismissViewControllerAnimated:YES completion:^{
+                weakSelf.scanSuccess(@[cardId.uppercaseString]);
+            }];
+        }
+    }
 
 
+    [textField resignFirstResponder];
+    _codeInputField.userInteractionEnabled = NO;
+    _codeInputField.text = @"";
+
+    return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    _codeInputField.userInteractionEnabled = NO;
+    _codeInputField.text = @"";
+}
 @end

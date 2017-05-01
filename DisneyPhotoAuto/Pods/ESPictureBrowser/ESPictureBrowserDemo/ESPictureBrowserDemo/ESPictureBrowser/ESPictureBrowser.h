@@ -109,6 +109,9 @@
  长按图片要执行的事件，将长按图片索引回调
  */
 @property (nonatomic, copy) void(^longPressBlock)(NSInteger);
+/// 当前页数
+
+@property (nonatomic, assign,readonly) NSInteger currentPage;
 
 /**
  显示图片浏览器
