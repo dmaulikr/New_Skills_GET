@@ -8,7 +8,23 @@
 
 #import <Foundation/Foundation.h>
 #import "AFNetworking/AFNetworking/AFNetworking.h"
-const static NSString * tokenId = @"5913ca10-2ca3-11e7-a67d-6b4caa5d78a0";
+#define API_DOMAIN      SH_API_DOMAIN
+#define IMAGE_DOMAIN    SH_IMAGE_DOMAIN
+#define TOKENID         SH_TOKENID
+
+//#define API_DOMAIN      HK_API_DOMAIN
+//#define IMAGE_DOMAIN    HK_IMAGE_DOMAIN
+//#define TOKENID         HK_TOKENID
+
+#define SH_API_DOMAIN  @"http://api.disneyphotopass.com.cn:3006/"
+#define HK_API_DOMAIN  @"http://api.disneyphotopass.com.hk:3006/"
+
+#define SH_IMAGE_DOMAIN  @"http://www.disneyphotopass.com.cn:4000/"
+#define HK_IMAGE_DOMAIN  @"http://www.disneyphotopass.com.hk:4000/"
+
+
+#define SH_TOKENID      @"5913ca10-2ca3-11e7-a67d-6b4caa5d78a0"
+#define HK_TOKENID      @"b8042880-2cc1-11e7-8ae6-e1e6aeaced20"
 static const NSString *PHOTOES_CACHE_PATH = @"/Users/maxiaofen/Desktop/Disney_photoes";
 
 @interface DPNetWorkingManager : NSObject

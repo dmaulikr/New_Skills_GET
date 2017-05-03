@@ -21,27 +21,81 @@
     //
     //    }];
     // [DPNetWorkingManager getPhotoRequest:nil success:nil];
+// [DPNetWorkingManager addCard:@"SHDR3258NFHQHD76" success:nil];
+  // [DPNetWorkingManager addCard:@"hkdl326p4wnqhcy7" success:nil];
     __weak typeof(self) weakSelf = self;
-    [DPNetWorkingManager getCardList:^(NSArray *cards) {
-        NSLog(@"cardList");
-        
-        for (NSString * cardId in cards) {
-//            [DPNetWorkingManager removeCard:cardId];
-             NSString * destinationPath = [weakSelf createLocalPath:cardId];
-            [DPNetWorkingManager getPhotoRequest:cardId success:^(NSArray<NSString *> *PhotoAlbums) {
-                [self.cardPhotoesCountCahce setObject:PhotoAlbums forKey:cardId];
-                NSLog(@"-------%@------",cardId);
-                for (NSString *url in PhotoAlbums) {
-                    [DPNetWorkingManager downloadImage:url success:^(NSString *path) {
-                        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-                        [weakSelf transformImage:path destinationPath:destinationPath];
-                        });
-                        
-                    }];
-                }
+//    shdr32Gzdajyhbta@
+//    NSArray * ARR = @[@"shdr32Gzdajyhbta",@"SHDR328DX38UHD75"
+//                        ,@"sHDR327BC4DNHD76"
+//                        ,@"sHDR32KTSUP4HBTA"
+//                        ,@"shdr3249ux6ahbt7"
+//                        ,@"shdr32tqce3rhbt8"
+//                        ,@"sHDR3256SNUHHD7A"
+//                        ,@"sHDR3247MYFWHD72"
+//                        ,@"sHDR325E8ZVXHD79"
+//                        ,@"sHDR32RMNYJVHBT4"
+//                        ,@"shdr322rwymghd7b"
+//                        ,@"shdr32wguztqhbt8"
+    //                        ,@"sHDR322K7VFKHD74",
+//    @"sHDR3247MYFWHD72",
+//    @"SHDR328DX38UHD75",
+//    @"SHDR3277H8WFHD79"
+//    @"shdr325y7w5jhd7b",
+//    @"SHDR327BC4DNHD76",
+//    @"shdr32tqce3rhbt8",
+//                      ];
+    
+    
+//    shdr32tqce3rhbt8
+    NSArray *ARR = @[
+                     @"SHDR329XYWFEHD76"];
+    for (NSString * cardId in ARR) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [DPNetWorkingManager addCard:cardId success:^{
+                    NSLog(@"cardList");
+                    
+                        NSString * destinationPath = [weakSelf createLocalPath:cardId];
+                        [DPNetWorkingManager getPhotoRequest:cardId success:^(NSArray<NSString *> *PhotoAlbums) {
+                            [self.cardPhotoesCountCahce setObject:PhotoAlbums forKey:cardId];
+                            NSLog(@"-------%@------",cardId);
+//                            [DPNetWorkingManager removeCard:cardId];
+
+                            for (NSString *url in PhotoAlbums) {
+                                [DPNetWorkingManager downloadImage:url success:^(NSString *path) {
+                                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+                                        [weakSelf transformImage:path destinationPath:destinationPath];
+                                    });
+                                    
+                                }];
+                            }
+                        }];
             }];
-        }
-    }];
+        });
+
+    }
+
+//        [DPNetWorkingManager getCardList:^(NSArray *cards) {
+//            NSLog(@"cardList");
+    
+//            for (NSString * cardId in cards) {
+//                //            [DPNetWorkingManager removeCard:cardId];
+//                NSString * destinationPath = [weakSelf createLocalPath:cardId];
+//                [DPNetWorkingManager getPhotoRequest:cardId success:^(NSArray<NSString *> *PhotoAlbums) {
+//                    [self.cardPhotoesCountCahce setObject:PhotoAlbums forKey:cardId];
+//                    NSLog(@"-------%@------",cardId);
+//                    for (NSString *url in PhotoAlbums) {
+//                        [DPNetWorkingManager downloadImage:url success:^(NSString *path) {
+//                            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+//                                [weakSelf transformImage:path destinationPath:destinationPath];
+//                            });
+//                            
+//                        }];
+//                    }
+//                }];
+//            }
+//        }];
+
 }
 
 - (void)transformImage:(NSString *)imagePath destinationPath:(NSString *)destinationPath

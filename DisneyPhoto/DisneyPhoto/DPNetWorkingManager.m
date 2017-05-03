@@ -7,7 +7,8 @@
 //
 
 #import "DPNetWorkingManager.h"
-static const NSString * imageDownLoadUrl = @"http://www.disneyphotopass.com.cn:4000/";
+
+
 //@"http://api.disneyphotopass.com.cn:3006/p/getLocationPhoto?tokenId=a3540150-2b02-11e7-a47f-651e419c9bc5";
 static NSArray * _cards = nil;
 
@@ -18,14 +19,15 @@ static NSArray * _cards = nil;
     if (cardId == nil) {
         return ;
     }
-    NSString * URLString = @"http://api.disneyphotopass.com.cn:3006/user/addCodeToUser";
-    [[AFHTTPSessionManager manager] POST:URLString
-                              parameters:@{@"tokenId":tokenId,
+    NSString * url = [NSString stringWithFormat:@"%@user/addCodeToUser",API_DOMAIN];
+    //NSString * url = @"http://api.disneyphotopass.com.cn:3006/user/addCodeToUser";
+    [[AFHTTPSessionManager manager] POST:url
+                              parameters:@{@"tokenId":TOKENID,
                                            @"customerId":cardId}
                                 progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
+        success();
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
     }];
@@ -33,7 +35,9 @@ static NSArray * _cards = nil;
 
 + (void)getCardList:(void (^)(NSArray *cards))success
 {
-    NSString * url = [NSString stringWithFormat:@"http://api.disneyphotopass.com.cn:3006/p/getLocationPhoto?tokenId=%@",tokenId];
+    NSString * url = [NSString stringWithFormat:@"%@p/getLocationPhoto?tokenId=%@",API_DOMAIN,TOKENID];
+
+    //NSString * url = [NSString stringWithFormat:@"http://api.disneyphotopass.com.cn:3006/p/getLocationPhoto?tokenId=%@",tokenId];
     [[AFHTTPSessionManager manager] GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -53,7 +57,7 @@ static NSArray * _cards = nil;
 
 + (void)getPhotoRequest:(NSString *)cardId success:(void (^)(NSArray <NSString *> *PhotoAlbums))success;
 {
-    NSString * URLString = [NSString stringWithFormat:@"http://api.disneyphotopass.com.cn:3006/p/getPhotosByConditions?customerId=%@&tokenId=%@",cardId,tokenId];
+    NSString * URLString = [NSString stringWithFormat:@"%@p/getPhotosByConditions?customerId=%@&tokenId=%@",API_DOMAIN,cardId,TOKENID];
     
     [[AFHTTPSessionManager manager] GET:URLString parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
@@ -68,7 +72,7 @@ static NSArray * _cards = nil;
             if(thumbnailUrl == nil) {
                 thumbnailUrl =  thumbnail[@"x1024"];
             }
-            NSString * url = thumbnailUrl[@"url"];//[NSString stringWithFormat:@"%@%@",imageDownLoadUrl,dict[@"url"]];
+            NSString * url = thumbnailUrl[@"url"];
             [photoUrls addObject:url];
         }
         success(photoUrls);
@@ -86,7 +90,7 @@ static NSArray * _cards = nil;
 //    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
     
 
-    NSString * imageUrl = [NSString stringWithFormat:@"%@%@",imageDownLoadUrl,url];
+    NSString * imageUrl = [NSString stringWithFormat:@"%@%@",IMAGE_DOMAIN,url];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:imageUrl]];
     
     NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
@@ -114,9 +118,11 @@ static NSArray * _cards = nil;
     if (cardId == nil) {
         return ;
     }
-    NSString * URLString = @"http://api.disneyphotopass.com.cn:3006/user/removePPFromUser";
-    [[AFHTTPSessionManager manager] POST:URLString
-                              parameters:@{@"tokenId":tokenId,
+    NSString * url = [NSString stringWithFormat:@"%@user/user/removePPFromUser",API_DOMAIN];
+
+//    NSString * url = @"http://api.disneyphotopass.com.cn:3006/user/removePPFromUser";
+    [[AFHTTPSessionManager manager] POST:url
+                              parameters:@{@"tokenId":TOKENID,
                                            @"customerId":cardId}
                                 progress:^(NSProgress * _Nonnull uploadProgress) {
                                     
