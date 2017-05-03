@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 
 @interface AppDelegate ()
+@property (nonatomic, weak)DPTabBarControllerViewController * tabbarController;
 
 @end
 
@@ -16,6 +17,16 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [self.window setBackgroundColor:[UIColor whiteColor]];
+    
+    //introVC
+    DPTabBarControllerViewController * tabbarController = [[DPTabBarControllerViewController alloc] init];
+    DPNavigationController * navigationController = [[DPNavigationController alloc] initWithRootViewController:[[DPHomeViewController alloc] init]];
+    [tabbarController setViewControllers:@[navigationController]];
+    tabbarController.tabBar.hidden = YES;
+    [self.window setRootViewController:tabbarController];
+    _tabbarController = tabbarController;
     // Override point for customization after application launch.
     return YES;
 }

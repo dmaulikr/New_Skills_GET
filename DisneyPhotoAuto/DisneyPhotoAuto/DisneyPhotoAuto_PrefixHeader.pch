@@ -11,5 +11,8 @@
 #import "DPPhoto.h"
 #import "DPPhotoAlbum.h"
 #import "DPNetWorkingManager.h"
+#import "DPTabBarControllerViewController.h"
+#import "DPNavigationController.h"
+#import "DPHomeViewController.h"
 #define DisneyPhotoAuto_PrefixHeader
 #endif /* PrefixHeader_pch */
