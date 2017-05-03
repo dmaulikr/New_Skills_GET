@@ -237,16 +237,26 @@
 
 - (void)saveImages
 {
-    if (_bashSaveProcessing) {
-        [self showAllTextDialog:@"保存中..."];
-        return;
-    }
-    [self showAllTextDialog:@"保存中..."];
-    _bashSaveProcessing = YES;
-    if (_bashSaveImages.count < 1) {
-        _bashSaveImages = [[NSMutableArray alloc] initWithArray:[self getTotalImages]];
-    }
-    [self saveNext];
+    
+    __weak __typeof(self) weakSelf = self;
+    [LBXAlertAction showAlertWithTitle:@"保存全部照片" msg:@"你是不是要保存全部照片？" buttonsStatement:@[@"我再想想",@"是的"] chooseBlock:^(NSInteger buttonIdx) {
+        if (buttonIdx == 0) {
+            
+        } else if (buttonIdx == 1) {
+            if (weakSelf.bashSaveProcessing) {
+                [weakSelf showAllTextDialog:@"保存中..."];
+                return;
+            }
+            [weakSelf showAllTextDialog:@"保存中..."];
+            weakSelf.bashSaveProcessing = YES;
+            if (weakSelf.bashSaveImages.count < 1) {
+                weakSelf.bashSaveImages = [[NSMutableArray alloc] initWithArray:[self getTotalImages]];
+            }
+            [self saveNext];
+        }
+    }];
+    
+   
     
 }
 
@@ -427,7 +437,7 @@
     NSString * cardId = [_cardIds objectAtIndex:indexPath.section];
     NSArray * images = [_imageDataCache objectForKey:cardId];
     NSInteger imageCount = images.count;
-    headerView.titleLabel.text = [NSString stringWithFormat:@"卡号:%@/照片数量:%ld",cardId,imageCount];
+    headerView.titleLabel.text = [NSString stringWithFormat:@"卡号:%@/照片数量:%d",cardId,imageCount];
     
     return headerView;
     
@@ -463,12 +473,12 @@
     _photoBrowserImages = [self getTotalImages];
     UIView * view = [_collectionView cellForItemAtIndexPath:indexPath];
     [browser showFromView:view picturesCount:_photoBrowserImages.count currentPictureIndex:[self indexPathToIndex:indexPath]];
-    
+    _browser = browser;
     UIButton * saveButton = [[UIButton alloc] init];
     [saveButton setImage:[UIImage imageNamed:@"save_white"] forState:UIControlStateNormal];
     [saveButton addTarget:self action:@selector(saveImage) forControlEvents:UIControlEventTouchUpInside];
     [browser addSubview:saveButton];
-    
+    _browser = browser;
     [saveButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(50, 50));
         make.trailing.equalTo(browser.mas_trailing).mas_offset(-20);
