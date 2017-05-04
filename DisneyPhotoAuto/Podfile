@@ -11,4 +11,5 @@ target "DisneyPhotoAuto" do
   pod 'Masonry', '~> 1.0.2'
   pod 'ESPictureBrowser'
   pod 'MBProgressHUD'
+  pod 'BmobSDK'
 end

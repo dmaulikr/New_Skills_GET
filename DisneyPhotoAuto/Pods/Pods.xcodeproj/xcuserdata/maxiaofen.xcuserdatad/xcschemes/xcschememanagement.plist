@@ -9,7 +9,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>ESPictureBrowser.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>LBXScan.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>MBProgressHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Masonry.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -24,6 +39,21 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>YYCache.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>YYImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>YYWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>ZBarSDK.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,7 +62,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>4DFAD5F8E7D8B106A3DCFAA97417626A</key>
+		<key>34AE54BF332FE691FE08C119EA8743CA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>41FA54D12162DAD51D02FC58A2CD5034</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7CEB4DF02261A8CACC05FCE64E16BA42</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8C8688733CF47E41494130BC28221750</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8F93285A66C1B37B5535E68B9F7CE5F9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9D7FBD1039D26157B6C1E80667DE57C6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -52,7 +107,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DE594182C92654024905FF0F4AE8013B</key>
+		<key>D52144DE9D7255DE912490FF5A806573</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EEC69AF3EBEE1094001914FD15BEF8BA</key>
 		<dict>
 			<key>primary</key>
 			<true/>

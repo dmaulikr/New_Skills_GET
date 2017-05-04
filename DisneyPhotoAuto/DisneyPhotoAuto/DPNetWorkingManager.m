@@ -7,6 +7,8 @@
 //
 
 #import "DPNetWorkingManager.h"
+#import <MBProgressHUD/MBProgressHUD.h>
+
 static const NSString * imageDownLoadUrl = @"http://www.disneyphotopass.com.cn:4000/";
 static NSArray * _cards = nil;
 
@@ -80,12 +82,19 @@ static NSArray * _cards = nil;
     if ( cardId == nil) {
         return;
     }
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow  animated:YES];
+    
+    // Set the label text.
+    hud.label.text = NSLocalizedString(@"加载中...", @"HUD loading title");
+    //
     [DPNetWorkingManager addCard:cardId success:^{
         NSString * URLString = [NSString stringWithFormat:@"http://api.disneyphotopass.com.cn:3006/p/getPhotosByConditions?customerId=%@&tokenId=%@",cardId,tokenId];
         
         [[AFHTTPSessionManager manager] GET:URLString parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
-            
+
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            [hud hideAnimated:YES];
+
             [DPNetWorkingManager removeCard:cardId];
             if (responseObject == nil) {
                 return ;

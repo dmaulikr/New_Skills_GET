@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - BmobSDK (2.1.7)
   - ESPictureBrowser (0.4.4):
     - YYWebImage (~> 1.0.5)
   - LBXScan (2.0):
@@ -36,6 +37,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
+  - BmobSDK
   - ESPictureBrowser
   - LBXScan (~> 2.0)
   - Masonry (~> 1.0.2)
@@ -44,6 +46,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  BmobSDK: 23cbfbde2a7cfaeb0c8a946953a266fe5211e7f6
   ESPictureBrowser: 2e9bb9dd2fc3c26a42d535e06df49981c5a8a2e2
   LBXScan: 458f4b7a6688504a1415dc4a0f9822100e099f66
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
@@ -54,6 +57,6 @@ SPEC CHECKSUMS:
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
   ZBarSDK: 4c1b5daeb7d6cc67dc9355e690af0230a661f6ec
 
-PODFILE CHECKSUM: 803091e85979ba983072221493c490bec644ee83
+PODFILE CHECKSUM: da07ab7ada29f233099b2082486a5e422b7e9f05
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.1.1

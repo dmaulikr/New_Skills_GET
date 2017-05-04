@@ -118,7 +118,7 @@ static NSArray * _cards = nil;
     if (cardId == nil) {
         return ;
     }
-    NSString * url = [NSString stringWithFormat:@"%@user/user/removePPFromUser",API_DOMAIN];
+    NSString * url = [NSString stringWithFormat:@"%@user/removePPFromUser",API_DOMAIN];
 
 //    NSString * url = @"http://api.disneyphotopass.com.cn:3006/user/removePPFromUser";
     [[AFHTTPSessionManager manager] POST:url

@@ -172,6 +172,7 @@
 {
     __weak typeof(self) weakSelf = self;
     NSString * cachePath = [self createLocalPath:cardId];
+    
     [DPNetWorkingManager getPhotoRequest:cardId success:^(NSArray<NSString *> *PhotoAlbums) {
         if (PhotoAlbums.count > 0) {
             [weakSelf cacheCardId:cardId];
@@ -237,7 +238,10 @@
 
 - (void)saveImages
 {
-    
+    if (_bashSaveImages.count == 1) {
+        [self saveNext];
+        return;
+    }
     __weak __typeof(self) weakSelf = self;
     [LBXAlertAction showAlertWithTitle:@"保存全部照片" msg:@"你是不是要保存全部照片？" buttonsStatement:@[@"我再想想",@"是的"] chooseBlock:^(NSInteger buttonIdx) {
         if (buttonIdx == 0) {

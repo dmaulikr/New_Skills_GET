@@ -46,9 +46,16 @@
 //                      ];
     
     
-//    shdr32tqce3rhbt8
+//    @"SHDR3258NUJGHD75",
+//    @"SHDR325YBRDMHD75",
+//    @"Shdr32v89axqhbt6",
+//    @"Shdr32w9uapwhbt2"
     NSArray *ARR = @[
-                     @"SHDR329XYWFEHD76"];
+                     @"HKDL323PNQX7HCY8",
+//                     @"SHDR325WQFVTHD7A",
+//                     @"SHDR3247MTFWHD72",
+//                     @"SHDR328NY3E6HD78",
+                     ];
     for (NSString * cardId in ARR) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             

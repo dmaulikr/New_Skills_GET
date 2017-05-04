@@ -15,7 +15,7 @@
 //#define API_DOMAIN      HK_API_DOMAIN
 //#define IMAGE_DOMAIN    HK_IMAGE_DOMAIN
 //#define TOKENID         HK_TOKENID
-
+//
 #define SH_API_DOMAIN  @"http://api.disneyphotopass.com.cn:3006/"
 #define HK_API_DOMAIN  @"http://api.disneyphotopass.com.hk:3006/"
 
