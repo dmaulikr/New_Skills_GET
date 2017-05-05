@@ -19,7 +19,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window setBackgroundColor:[UIColor whiteColor]];
-    
+    [Bmob registerWithAppKey:@"c5a8fb5a21bb4fed0c27539e6c72a5d5"];
+
     //introVC
     DPTabBarControllerViewController * tabbarController = [[DPTabBarControllerViewController alloc] init];
     DPNavigationController * navigationController = [[DPNavigationController alloc] initWithRootViewController:[[DPHomeViewController alloc] init]];

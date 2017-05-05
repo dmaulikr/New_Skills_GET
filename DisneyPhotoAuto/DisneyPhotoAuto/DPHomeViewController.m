@@ -35,14 +35,39 @@
 {
     self = [super init];
     if (self) {
-        [self initImageCache];
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    BmobObject *gameScore = [BmobObject objectWithClassName:@"GameScore"];
+    [gameScore setObject:@"小明" forKey:@"playerName"];
+    [gameScore setObject:@78 forKey:@"score"];
+    [gameScore setObject:[NSNumber numberWithBool:YES] forKey:@"paied"];
+    [gameScore setObject:[NSNumber numberWithBool:YES] forKey:@"cheatMode"];
+    [gameScore saveInBackgroundWithResultBlock:^(BOOL isSuccessful, NSError *error) {
+        //进行操作
+    }];
+    
+    BmobQuery   *bquery = [BmobQuery queryWithClassName:@"GameScore"];
+    //查找GameScore表里面id为0c6db13c的数据
+    [bquery getObjectInBackgroundWithId:@"0c6db13c" block:^(BmobObject *object,NSError *error){
+        if (error){
+            //进行错误处理
+        }else{
+            //表里有id为0c6db13c的数据
+            if (object) {
+                //得到playerName和cheatMode
+                NSString *playerName = [object objectForKey:@"playerName"];
+                BOOL cheatMode = [[object objectForKey:@"cheatMode"] boolValue];
+                NSLog(@"%@----%i",playerName,cheatMode);
+            }
+        }
+    }];
+    [self initImageCache];
     [self setUpViews];
+    
     // Do any additional setup after loading the view, typically from a nib.
 }
 

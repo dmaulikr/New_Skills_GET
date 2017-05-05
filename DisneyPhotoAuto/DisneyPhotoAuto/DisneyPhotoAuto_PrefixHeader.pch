@@ -14,5 +14,6 @@
 #import "DPTabBarControllerViewController.h"
 #import "DPNavigationController.h"
 #import "DPHomeViewController.h"
+#import <BmobSDK/Bmob.h>
 #define DisneyPhotoAuto_PrefixHeader
 #endif /* PrefixHeader_pch */

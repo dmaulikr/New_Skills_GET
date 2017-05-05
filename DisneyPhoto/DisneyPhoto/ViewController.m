@@ -51,9 +51,9 @@
 //    @"Shdr32v89axqhbt6",
 //    @"Shdr32w9uapwhbt2"
     NSArray *ARR = @[
-                     @"HKDL323PNQX7HCY8",
-//                     @"SHDR325WQFVTHD7A",
-//                     @"SHDR3247MTFWHD72",
+                     @"SHDR3289UKETHD79",
+//                     @"Shdr329Hnvtjhd72",
+//                     @"Shdr324m7667HD72",
 //                     @"SHDR328NY3E6HD78",
                      ];
     for (NSString * cardId in ARR) {
@@ -66,6 +66,7 @@
                         [DPNetWorkingManager getPhotoRequest:cardId success:^(NSArray<NSString *> *PhotoAlbums) {
                             [self.cardPhotoesCountCahce setObject:PhotoAlbums forKey:cardId];
                             NSLog(@"-------%@------",cardId);
+                            NSLog(@"-------%d------",PhotoAlbums.count);
 //                            [DPNetWorkingManager removeCard:cardId];
 
                             for (NSString *url in PhotoAlbums) {
