@@ -21,6 +21,9 @@
     [self.window setBackgroundColor:[UIColor whiteColor]];
     [Bmob registerWithAppKey:@"c5a8fb5a21bb4fed0c27539e6c72a5d5"];
 
+    [DPNetWorkingManager login];
+    
+    [FIRApp configure];
     //introVC
     DPTabBarControllerViewController * tabbarController = [[DPTabBarControllerViewController alloc] init];
     DPNavigationController * navigationController = [[DPNavigationController alloc] initWithRootViewController:[[DPHomeViewController alloc] init]];

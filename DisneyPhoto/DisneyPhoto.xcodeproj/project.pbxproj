@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24CC42811EBD874500E9EA7C /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24CC42801EBD874500E9EA7C /* CoreImage.framework */; };
 		24DBBFBB1EB390D300348D69 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DBBF981EB390D300348D69 /* AFHTTPSessionManager.m */; };
 		24DBBFBC1EB390D300348D69 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DBBF9B1EB390D300348D69 /* AFNetworkReachabilityManager.m */; };
 		24DBBFBD1EB390D300348D69 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DBBF9D1EB390D300348D69 /* AFSecurityPolicy.m */; };
@@ -49,6 +50,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		24CC42801EBD874500E9EA7C /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		24DBBF971EB390D300348D69 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
 		24DBBF981EB390D300348D69 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
 		24DBBF991EB390D300348D69 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24CC42811EBD874500E9EA7C /* CoreImage.framework in Frameworks */,
 				24DBC0081EB39F2B00348D69 /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,6 +267,7 @@
 		24DBC0061EB39F2B00348D69 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				24CC42801EBD874500E9EA7C /* CoreImage.framework */,
 				24DBC0071EB39F2B00348D69 /* libz.tbd */,
 			);
 			name = Frameworks;

@@ -122,6 +122,8 @@
  */
 - (void)showFromView:(UIView *)fromView picturesCount:(NSInteger)picturesCount currentPictureIndex:(NSInteger)currentPictureIndex;
 
+- (void)showFromView:(UIView *)fromView picturesCount:(NSInteger)picturesCount currentPictureIndex:(NSInteger)currentPictureIndex targetView:(UIView *)targetView;
+
 /**
  让图片浏览器消失
  */

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <GoogleMobileAds/GoogleMobileAds.h>
 
 @interface DPHomeViewController : UIViewController
+@property (nonatomic, strong) GADBannerView * bannerView;
+@property (nonatomic, strong) GADInterstitial * interstitialView;
 
 @end

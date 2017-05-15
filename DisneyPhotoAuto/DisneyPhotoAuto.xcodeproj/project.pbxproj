@@ -8,10 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		09EF530431979556102276EC /* Pods_DisneyPhotoAuto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AA2BD116EE4E083D75CDA35 /* Pods_DisneyPhotoAuto.framework */; };
+		242EA2571EBF481300463AB6 /* DPPayChoiceVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 242EA2561EBF481300463AB6 /* DPPayChoiceVIew.m */; };
+		24480CA01EBF401F008155E2 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24480C9F1EBF401F008155E2 /* CoreTelephony.framework */; };
+		24480CA21EBF402A008155E2 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 24480CA11EBF402A008155E2 /* libz.1.2.5.tbd */; };
+		24480CA41EBF4038008155E2 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 24480CA31EBF4038008155E2 /* libsqlite3.tbd */; };
+		24480CA61EBF4044008155E2 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 24480CA51EBF4044008155E2 /* libc++.tbd */; };
+		24CC42851EBDAD6000E9EA7C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24CC42841EBDAD6000E9EA7C /* GoogleService-Info.plist */; };
+		24CC42901EBEE45400E9EA7C /* DPHomeViewController+AD.m in Sources */ = {isa = PBXBuildFile; fileRef = 24CC428F1EBEE45400E9EA7C /* DPHomeViewController+AD.m */; };
+		24CC42971EBEFECC00E9EA7C /* GSKeyChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 24CC42941EBEFECC00E9EA7C /* GSKeyChain.m */; };
+		24CC42981EBEFECC00E9EA7C /* GSKeyChainDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 24CC42961EBEFECC00E9EA7C /* GSKeyChainDataManager.m */; };
+		24CC429F1EBF0D1800E9EA7C /* KeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 24CC429E1EBF0D1800E9EA7C /* KeyChainStore.m */; };
 		28C306861EB58B0C00CAF0AD /* DPTabBarControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C306841EB58B0C00CAF0AD /* DPTabBarControllerViewController.m */; };
 		28C3068A1EB58B6D00CAF0AD /* DPNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C306891EB58B6C00CAF0AD /* DPNavigationController.m */; };
 		28C3068D1EB58EF800CAF0AD /* DPHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C3068C1EB58EF800CAF0AD /* DPHomeViewController.m */; };
-		28C3068F1EB5939800CAF0AD /* WX20170430-113741@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28C3068E1EB5939800CAF0AD /* WX20170430-113741@2x.png */; };
 		28C306BC1EB599FE00CAF0AD /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C3069D1EB599FE00CAF0AD /* UIColor+Hex.m */; };
 		28C306CD1EB5A56D00CAF0AD /* CGQCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C306CB1EB5A56D00CAF0AD /* CGQCollectionViewCell.m */; };
 		28C306CE1EB5A56D00CAF0AD /* CGQCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28C306CC1EB5A56D00CAF0AD /* CGQCollectionViewCell.xib */; };
@@ -45,13 +54,29 @@
 
 /* Begin PBXFileReference section */
 		1AA2BD116EE4E083D75CDA35 /* Pods_DisneyPhotoAuto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DisneyPhotoAuto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		242EA2551EBF481300463AB6 /* DPPayChoiceVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPPayChoiceVIew.h; sourceTree = "<group>"; };
+		242EA2561EBF481300463AB6 /* DPPayChoiceVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPPayChoiceVIew.m; sourceTree = "<group>"; };
+		24480C9F1EBF401F008155E2 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		24480CA11EBF402A008155E2 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
+		24480CA31EBF4038008155E2 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		24480CA51EBF4044008155E2 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		24CC42841EBDAD6000E9EA7C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		24CC428E1EBEE45400E9EA7C /* DPHomeViewController+AD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DPHomeViewController+AD.h"; sourceTree = "<group>"; };
+		24CC428F1EBEE45400E9EA7C /* DPHomeViewController+AD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DPHomeViewController+AD.m"; sourceTree = "<group>"; };
+		24CC42911EBEE96000E9EA7C /* DPDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPDefine.h; sourceTree = "<group>"; };
+		24CC42931EBEFECC00E9EA7C /* GSKeyChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSKeyChain.h; sourceTree = "<group>"; };
+		24CC42941EBEFECC00E9EA7C /* GSKeyChain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSKeyChain.m; sourceTree = "<group>"; };
+		24CC42951EBEFECC00E9EA7C /* GSKeyChainDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSKeyChainDataManager.h; sourceTree = "<group>"; };
+		24CC42961EBEFECC00E9EA7C /* GSKeyChainDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSKeyChainDataManager.m; sourceTree = "<group>"; };
+		24CC42991EBF059600E9EA7C /* DisneyPhotoAuto.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DisneyPhotoAuto.entitlements; sourceTree = "<group>"; };
+		24CC429D1EBF0D1800E9EA7C /* KeyChainStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyChainStore.h; sourceTree = "<group>"; };
+		24CC429E1EBF0D1800E9EA7C /* KeyChainStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyChainStore.m; sourceTree = "<group>"; };
 		28C306831EB58B0C00CAF0AD /* DPTabBarControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPTabBarControllerViewController.h; sourceTree = "<group>"; };
 		28C306841EB58B0C00CAF0AD /* DPTabBarControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPTabBarControllerViewController.m; sourceTree = "<group>"; };
 		28C306881EB58B6C00CAF0AD /* DPNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPNavigationController.h; sourceTree = "<group>"; };
 		28C306891EB58B6C00CAF0AD /* DPNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPNavigationController.m; sourceTree = "<group>"; };
 		28C3068B1EB58EF800CAF0AD /* DPHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPHomeViewController.h; sourceTree = "<group>"; };
 		28C3068C1EB58EF800CAF0AD /* DPHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPHomeViewController.m; sourceTree = "<group>"; };
-		28C3068E1EB5939800CAF0AD /* WX20170430-113741@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "WX20170430-113741@2x.png"; sourceTree = "<group>"; };
 		28C3069C1EB599FE00CAF0AD /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
 		28C3069D1EB599FE00CAF0AD /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		28C306CA1EB5A56D00CAF0AD /* CGQCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGQCollectionViewCell.h; sourceTree = "<group>"; };
@@ -114,6 +139,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24480CA61EBF4044008155E2 /* libc++.tbd in Frameworks */,
+				24480CA41EBF4038008155E2 /* libsqlite3.tbd in Frameworks */,
+				24480CA21EBF402A008155E2 /* libz.1.2.5.tbd in Frameworks */,
+				24480CA01EBF401F008155E2 /* CoreTelephony.framework in Frameworks */,
 				09EF530431979556102276EC /* Pods_DisneyPhotoAuto.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -121,6 +150,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		24CC42921EBEFEA300E9EA7C /* KeyChain */ = {
+			isa = PBXGroup;
+			children = (
+				24CC429D1EBF0D1800E9EA7C /* KeyChainStore.h */,
+				24CC429E1EBF0D1800E9EA7C /* KeyChainStore.m */,
+				24CC42931EBEFECC00E9EA7C /* GSKeyChain.h */,
+				24CC42941EBEFECC00E9EA7C /* GSKeyChain.m */,
+				24CC42951EBEFECC00E9EA7C /* GSKeyChainDataManager.h */,
+				24CC42961EBEFECC00E9EA7C /* GSKeyChainDataManager.m */,
+			);
+			name = KeyChain;
+			sourceTree = "<group>";
+		};
 		28C306821EB58A1E00CAF0AD /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +172,8 @@
 				28C306891EB58B6C00CAF0AD /* DPNavigationController.m */,
 				28C3068B1EB58EF800CAF0AD /* DPHomeViewController.h */,
 				28C3068C1EB58EF800CAF0AD /* DPHomeViewController.m */,
+				24CC428E1EBEE45400E9EA7C /* DPHomeViewController+AD.h */,
+				24CC428F1EBEE45400E9EA7C /* DPHomeViewController+AD.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -223,11 +267,17 @@
 		28E3E6181EB1AF88008093B7 /* DisneyPhotoAuto */ = {
 			isa = PBXGroup;
 			children = (
+				24CC42991EBF059600E9EA7C /* DisneyPhotoAuto.entitlements */,
 				28C306901EB599FE00CAF0AD /* Category_Extension */,
 				28E3E61C1EB1AF88008093B7 /* AppDelegate.h */,
 				28E3E61D1EB1AF88008093B7 /* AppDelegate.m */,
 				28C306FD1EB6C14B00CAF0AD /* QR */,
 				28C306821EB58A1E00CAF0AD /* Controller */,
+				28E3E6311EB1B583008093B7 /* DPNetWorkingManager.h */,
+				28E3E6321EB1B584008093B7 /* DPNetWorkingManager.m */,
+				242EA2551EBF481300463AB6 /* DPPayChoiceVIew.h */,
+				242EA2561EBF481300463AB6 /* DPPayChoiceVIew.m */,
+				24CC42921EBEFEA300E9EA7C /* KeyChain */,
 				28E3E61F1EB1AF88008093B7 /* ViewController.h */,
 				28E3E6201EB1AF88008093B7 /* ViewController.m */,
 				28C306CA1EB5A56D00CAF0AD /* CGQCollectionViewCell.h */,
@@ -236,15 +286,13 @@
 				28C306CF1EB5CD2A00CAF0AD /* DPCollectionReusableView.h */,
 				28C306D01EB5CD2A00CAF0AD /* DPCollectionReusableView.m */,
 				28C306D11EB5CD2A00CAF0AD /* DPCollectionReusableView.xib */,
-				28E3E6311EB1B583008093B7 /* DPNetWorkingManager.h */,
-				28E3E6321EB1B584008093B7 /* DPNetWorkingManager.m */,
 				28E3E6341EB1B758008093B7 /* DPPhotoAlbum.h */,
 				28E3E6351EB1B758008093B7 /* DPPhotoAlbum.m */,
 				28E3E6371EB1B768008093B7 /* DPPhoto.h */,
 				28E3E6381EB1B768008093B7 /* DPPhoto.m */,
+				24CC42911EBEE96000E9EA7C /* DPDefine.h */,
 				28E3E6221EB1AF88008093B7 /* Main.storyboard */,
 				28E3E6251EB1AF88008093B7 /* Assets.xcassets */,
-				28C3068E1EB5939800CAF0AD /* WX20170430-113741@2x.png */,
 				28E3E6271EB1AF88008093B7 /* LaunchScreen.storyboard */,
 				28E3E62A1EB1AF88008093B7 /* Info.plist */,
 				28E3E6191EB1AF88008093B7 /* Supporting Files */,
@@ -255,6 +303,7 @@
 		28E3E6191EB1AF88008093B7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				24CC42841EBDAD6000E9EA7C /* GoogleService-Info.plist */,
 				28E3E61A1EB1AF88008093B7 /* main.m */,
 				28E3E6301EB1B323008093B7 /* DisneyPhotoAuto_PrefixHeader.pch */,
 			);
@@ -264,6 +313,10 @@
 		B005515951480D0EF3F236ED /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				24480CA51EBF4044008155E2 /* libc++.tbd */,
+				24480CA31EBF4038008155E2 /* libsqlite3.tbd */,
+				24480CA11EBF402A008155E2 /* libz.1.2.5.tbd */,
+				24480C9F1EBF401F008155E2 /* CoreTelephony.framework */,
 				1AA2BD116EE4E083D75CDA35 /* Pods_DisneyPhotoAuto.framework */,
 			);
 			name = Frameworks;
@@ -314,6 +367,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 4H22C2CRLW;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -342,11 +400,11 @@
 			files = (
 				28C306CE1EB5A56D00CAF0AD /* CGQCollectionViewCell.xib in Resources */,
 				28C306F11EB6BF9800CAF0AD /* ScanResultViewController.xib in Resources */,
+				24CC42851EBDAD6000E9EA7C /* GoogleService-Info.plist in Resources */,
 				28C306D31EB5CD2A00CAF0AD /* DPCollectionReusableView.xib in Resources */,
 				28E3E6291EB1AF88008093B7 /* LaunchScreen.storyboard in Resources */,
 				28E3E6261EB1AF88008093B7 /* Assets.xcassets in Resources */,
 				28E3E6241EB1AF88008093B7 /* Main.storyboard in Resources */,
-				28C3068F1EB5939800CAF0AD /* WX20170430-113741@2x.png in Resources */,
 				28C307021EB6D97F00CAF0AD /* CodeScan.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,15 +469,20 @@
 				28C3068D1EB58EF800CAF0AD /* DPHomeViewController.m in Sources */,
 				28C306F21EB6BF9800CAF0AD /* Global.m in Sources */,
 				28C306E31EB6BF6200CAF0AD /* UIActionSheet+LBXAlertAction.m in Sources */,
+				24CC429F1EBF0D1800E9EA7C /* KeyChainStore.m in Sources */,
 				28C306FC1EB6C06800CAF0AD /* UIImageView+CornerRadius.m in Sources */,
 				28C306BC1EB599FE00CAF0AD /* UIColor+Hex.m in Sources */,
+				24CC42971EBEFECC00E9EA7C /* GSKeyChain.m in Sources */,
 				28E3E6391EB1B768008093B7 /* DPPhoto.m in Sources */,
 				28E3E6211EB1AF88008093B7 /* ViewController.m in Sources */,
 				28C306E41EB6BF6200CAF0AD /* UIAlertController+supportedInterfaceOrientations.m in Sources */,
 				28C306EF1EB6BF9800CAF0AD /* LBXScanViewController.m in Sources */,
 				28C306F81EB6C04300CAF0AD /* CreateBarCodeViewController.m in Sources */,
+				242EA2571EBF481300463AB6 /* DPPayChoiceVIew.m in Sources */,
+				24CC42981EBEFECC00E9EA7C /* GSKeyChainDataManager.m in Sources */,
 				28C306D61EB6BF1500CAF0AD /* QQLBXScanViewController.m in Sources */,
 				28E3E61E1EB1AF88008093B7 /* AppDelegate.m in Sources */,
+				24CC42901EBEE45400E9EA7C /* DPHomeViewController+AD.m in Sources */,
 				28C306CD1EB5A56D00CAF0AD /* CGQCollectionViewCell.m in Sources */,
 				28C3068A1EB58B6D00CAF0AD /* DPNavigationController.m in Sources */,
 				28C307001EB6C1EE00CAF0AD /* StyleDIY.m in Sources */,
@@ -551,7 +614,13 @@
 			baseConfigurationReference = F1026624EE1AB9CB14C5C554 /* Pods-DisneyPhotoAuto.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DisneyPhotoAuto/DisneyPhotoAuto.entitlements;
 				DEVELOPMENT_TEAM = 4H22C2CRLW;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/DisneyPhotoAuto",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DisneyPhotoAuto/DisneyPhotoAuto_PrefixHeader.pch;
 				INFOPLIST_FILE = DisneyPhotoAuto/Info.plist;
@@ -568,7 +637,13 @@
 			baseConfigurationReference = 32ABED7CB70CBD278782E435 /* Pods-DisneyPhotoAuto.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DisneyPhotoAuto/DisneyPhotoAuto.entitlements;
 				DEVELOPMENT_TEAM = 4H22C2CRLW;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/DisneyPhotoAuto",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DisneyPhotoAuto/DisneyPhotoAuto_PrefixHeader.pch;
 				INFOPLIST_FILE = DisneyPhotoAuto/Info.plist;

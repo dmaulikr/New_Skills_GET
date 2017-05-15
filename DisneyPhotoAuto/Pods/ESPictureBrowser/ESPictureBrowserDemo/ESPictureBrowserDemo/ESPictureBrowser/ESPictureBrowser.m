@@ -95,8 +95,12 @@
     
 }
 
-- (void)showFromView:(UIView *)fromView picturesCount:(NSInteger)picturesCount currentPictureIndex:(NSInteger)currentPictureIndex {
-    
+- (void)showFromView:(UIView *)fromView picturesCount:(NSInteger)picturesCount currentPictureIndex:(NSInteger)currentPictureIndex {    
+    [self showFromView:fromView picturesCount:picturesCount currentPictureIndex:currentPictureIndex targetView:nil];
+}
+
+- (void)showFromView:(UIView *)fromView picturesCount:(NSInteger)picturesCount currentPictureIndex:(NSInteger)currentPictureIndex targetView:(UIView *)targetView
+{
     NSString *errorStr = [NSString stringWithFormat:@"Parameter is not correct, pictureCount is %zd, currentPictureIndex is %zd", picturesCount, currentPictureIndex];
     NSAssert(picturesCount > 0 && currentPictureIndex < picturesCount, errorStr);
     NSAssert(self.delegate != nil, @"Please set up delegate for pictureBrowser");
@@ -106,7 +110,10 @@
     self.picturesCount = picturesCount;
     [self setPageText:currentPictureIndex];
     // 添加到 window 上
-    [[UIApplication sharedApplication].keyWindow addSubview:self];
+    if (targetView == nil) {
+        targetView = [UIApplication sharedApplication].keyWindow;
+    }
+    [targetView addSubview:self];
     // 计算 scrollView 的 contentSize
     self.scrollView.contentSize = CGSizeMake(picturesCount * _scrollView.frame.size.width, _scrollView.frame.size.height);
     // 滚动到指定位置

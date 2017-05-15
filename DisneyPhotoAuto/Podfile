@@ -12,4 +12,6 @@ target "DisneyPhotoAuto" do
   pod 'ESPictureBrowser'
   pod 'MBProgressHUD'
   pod 'BmobSDK'
+  pod 'Firebase/Core'
+  pod 'Firebase/AdMob'
 end

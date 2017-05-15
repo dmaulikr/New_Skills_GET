@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8C8688733CF47E41494130BC28221750"
+               BlueprintIdentifier = "48F59B43E7EF830A954C36079C12AF99"
                BuildableName = "Pods_DisneyPhotoAuto.framework"
                BlueprintName = "Pods-DisneyPhotoAuto"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8C8688733CF47E41494130BC28221750"
+            BlueprintIdentifier = "48F59B43E7EF830A954C36079C12AF99"
             BuildableName = "Pods_DisneyPhotoAuto.framework"
             BlueprintName = "Pods-DisneyPhotoAuto"
             ReferencedContainer = "container:Pods.xcodeproj">

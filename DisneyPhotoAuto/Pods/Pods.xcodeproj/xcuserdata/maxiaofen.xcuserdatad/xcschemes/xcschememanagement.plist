@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>GoogleToolboxForMac.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>LBXScan.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -62,7 +67,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>34AE54BF332FE691FE08C119EA8743CA</key>
+		<key>00103D6C821BE85971C563025527BA5D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>018A953B4D112FC1658DFA4B73EDCCF2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -72,12 +82,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7CEB4DF02261A8CACC05FCE64E16BA42</key>
+		<key>48F59B43E7EF830A954C36079C12AF99</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8C8688733CF47E41494130BC28221750</key>
+		<key>7CEB4DF02261A8CACC05FCE64E16BA42</key>
 		<dict>
 			<key>primary</key>
 			<true/>

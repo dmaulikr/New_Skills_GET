@@ -16,7 +16,10 @@
 #import <Masonry/Masonry.h>
 #import "UIColor+Hex.h"
 #import <MBProgressHUD/MBProgressHUD.h>
-#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
+#import "DPHomeViewController+AD.h"
+#import "GSKeyChainDataManager.h"
+#import "DPPayChoiceVIew.h"
+
 #define IMAGES_CARD_ID_CACHE_KEY @"IMAGES_CARD_ID_CACHE_KEY"
 @interface DPHomeViewController ()<ESPictureBrowserDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 @property (nonatomic, strong)UICollectionView * collectionView;
@@ -27,6 +30,7 @@
 @property (nonatomic, weak)ESPictureBrowser *browser;
 @property (nonatomic, strong)NSMutableArray *bashSaveImages;
 @property (nonatomic, assign)BOOL bashSaveProcessing;
+@property (nonatomic, weak)DPPayChoiceVIew * payView;
 @end
 
 @implementation DPHomeViewController
@@ -35,36 +39,14 @@
 {
     self = [super init];
     if (self) {
+        
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    BmobObject *gameScore = [BmobObject objectWithClassName:@"GameScore"];
-    [gameScore setObject:@"小明" forKey:@"playerName"];
-    [gameScore setObject:@78 forKey:@"score"];
-    [gameScore setObject:[NSNumber numberWithBool:YES] forKey:@"paied"];
-    [gameScore setObject:[NSNumber numberWithBool:YES] forKey:@"cheatMode"];
-    [gameScore saveInBackgroundWithResultBlock:^(BOOL isSuccessful, NSError *error) {
-        //进行操作
-    }];
     
-    BmobQuery   *bquery = [BmobQuery queryWithClassName:@"GameScore"];
-    //查找GameScore表里面id为0c6db13c的数据
-    [bquery getObjectInBackgroundWithId:@"0c6db13c" block:^(BmobObject *object,NSError *error){
-        if (error){
-            //进行错误处理
-        }else{
-            //表里有id为0c6db13c的数据
-            if (object) {
-                //得到playerName和cheatMode
-                NSString *playerName = [object objectForKey:@"playerName"];
-                BOOL cheatMode = [[object objectForKey:@"cheatMode"] boolValue];
-                NSLog(@"%@----%i",playerName,cheatMode);
-            }
-        }
-    }];
     [self initImageCache];
     [self setUpViews];
     
@@ -263,7 +245,9 @@
 
 - (void)saveImages
 {
+
     if (_bashSaveImages.count == 1) {
+        [self popUpInterstitialView];
         [self saveNext];
         return;
     }
@@ -272,21 +256,30 @@
         if (buttonIdx == 0) {
             
         } else if (buttonIdx == 1) {
-            if (weakSelf.bashSaveProcessing) {
+            
+            if ([DPNetWorkingManager paidCheck]) {
+                if (weakSelf.bashSaveProcessing) {
+                    [weakSelf showAllTextDialog:@"保存中..."];
+                    return;
+                }
                 [weakSelf showAllTextDialog:@"保存中..."];
-                return;
+                weakSelf.bashSaveProcessing = YES;
+                if (weakSelf.bashSaveImages.count < 1) {
+                    weakSelf.bashSaveImages = [[NSMutableArray alloc] initWithArray:[self getTotalImages]];
+                }
+                [weakSelf saveNext];
+            } else {
+                [weakSelf showPayView];
             }
-            [weakSelf showAllTextDialog:@"保存中..."];
-            weakSelf.bashSaveProcessing = YES;
-            if (weakSelf.bashSaveImages.count < 1) {
-                weakSelf.bashSaveImages = [[NSMutableArray alloc] initWithArray:[self getTotalImages]];
-            }
-            [self saveNext];
         }
     }];
-    
-   
-    
+}
+
+- (void)showPayView
+{
+    [UIView animateWithDuration:0.5 animations:^{
+        self.payView.alpha = 1;
+    }];
 }
 
 -(void)saveNext
@@ -433,6 +426,38 @@
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([DPCollectionReusableView class]) bundle:[NSBundle mainBundle]] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
     layoutView.headerReferenceSize = CGSizeMake(self.view.bounds.size.width, 30);
 
+    [self createBannerView];
+    [self createInterstitialView];
+    [self createPayView];
+}
+
+
+- (void)createPayView
+{
+    DPPayChoiceVIew * payView = [[DPPayChoiceVIew alloc] init];
+    payView.alpha = 0;
+    [[UIApplication sharedApplication].keyWindow addSubview:payView];
+    [payView setAliPay:^{
+        NSLog(@"ali");
+        [DPNetWorkingManager payForDownloadImages:BmobAlipay Success:^(BOOL success) {
+            if (success) {
+                NSLog(@"pay ali");
+            }
+        }];
+    }];
+    [payView setWechatPay:^{
+        [DPNetWorkingManager payForDownloadImages:BmobWechat Success:^(BOOL success) {
+            if (success) {
+                NSLog(@"pay wechat");
+            }
+        }];
+        NSLog(@"wechat");
+    }];
+    _payView = payView;
+    [payView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(payView.superview);
+    }];
+    
 }
 
 
@@ -466,7 +491,7 @@
     NSString * cardId = [_cardIds objectAtIndex:indexPath.section];
     NSArray * images = [_imageDataCache objectForKey:cardId];
     NSInteger imageCount = images.count;
-    headerView.titleLabel.text = [NSString stringWithFormat:@"卡号:%@/照片数量:%d",cardId,imageCount];
+    headerView.titleLabel.text = [NSString stringWithFormat:@"卡号:%@/照片数量:%ld",cardId,(long)imageCount];
     
     return headerView;
     
@@ -501,7 +526,7 @@
     }];
     _photoBrowserImages = [self getTotalImages];
     UIView * view = [_collectionView cellForItemAtIndexPath:indexPath];
-    [browser showFromView:view picturesCount:_photoBrowserImages.count currentPictureIndex:[self indexPathToIndex:indexPath]];
+    [browser showFromView:view picturesCount:_photoBrowserImages.count currentPictureIndex:[self indexPathToIndex:indexPath] targetView:self.navigationController.view];
     _browser = browser;
     UIButton * saveButton = [[UIButton alloc] init];
     [saveButton setImage:[UIImage imageNamed:@"save_white"] forState:UIControlStateNormal];

@@ -15,5 +15,10 @@
 #import "DPNavigationController.h"
 #import "DPHomeViewController.h"
 #import <BmobSDK/Bmob.h>
+#import <GoogleMobileAds/GoogleMobileAds.h>
+#import <Firebase/Firebase.h>
+#import "DPDefine.h"
+#import "KeyChainStore.h"
+#import "UIColor+Hex.h"
 #define DisneyPhotoAuto_PrefixHeader
 #endif /* PrefixHeader_pch */
