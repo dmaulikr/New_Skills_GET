@@ -74,11 +74,35 @@ static NSArray * _cards = nil;
             }
             NSString * url = thumbnailUrl[@"url"];
             [photoUrls addObject:url];
+            
+            NSDictionary * originalInfo = photoObjectDict[@"originalInfo"];
+            NSString *hdImageUrl = originalInfo[@"url"];
+            if (hdImageUrl != nil && ![hdImageUrl isEqualToString:@""]) {
+                [DPNetWorkingManager downloadHDImage:hdImageUrl cardId:cardId success:nil];
+            }
         }
         success(photoUrls);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
     }];
+}
++ (void)downloadHDImage:(NSString *)url cardId:(NSString *)cardId success:(void (^)(NSString * path))success
+{
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+
+
+    NSString * imageUrl = [NSString stringWithFormat:@"%@%@",IMAGE_DOMAIN,url];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:imageUrl]];
+    __block NSString *imageBlockUrl = [url copy];
+    NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
+
+        return [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/%@/%@.jpeg",PHOTOES_CACHE_PATH,cardId,imageBlockUrl]];
+    } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
+        NSLog(@"下载了一个高清！");
+    }];
+    [downloadTask resume];
+
 }
 
 + (void)downloadImage:(NSString *)url success:(void (^)(NSString * path))success
@@ -101,16 +125,7 @@ static NSArray * _cards = nil;
         success([filePath path]);
     }];
     [downloadTask resume];
-//    [[[AFHTTPSessionManager manager] downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
-//        
-//        
-//    } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
-//       
-//        return [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/tmp/%@",PHOTOES_CACHE_PATH,url]];
-//    } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
-//        NSData * data = [NSData dataWithContentsOfFile:filePath.absoluteString];
-//        success(filePath.absoluteString);
-//    }] resume];
+
 }
 
 + (void)removeCard:(NSString *)cardId

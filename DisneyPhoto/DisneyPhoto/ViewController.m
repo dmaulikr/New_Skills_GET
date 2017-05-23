@@ -20,12 +20,11 @@
     _cardPhotoesCountCahce = [[NSMutableDictionary alloc] init];
     __weak typeof(self) weakSelf = self;
     NSArray *ARR = @[
-//                     @"shdr322sdfg4hd78",
-//                     @"shdr327ekx55hd77",
-                     @"SHDRN2YKSCG5J5NB",
-//                     @"SHDR328CA7GVHD78",
-//                     @"SHDRN2QPBBWCJ5NB",
-//                     @"shdr328hxb4qhd78",
+//                     @"hkdl327k2tbmhcy7",
+                     @"SHDR32UZ8GSAHBT6",
+//                     @"SHDRN2FBQCB7J5N6",
+//                     @"SHDR32ETBYFZHBT7",
+//                     @"shdrn27nvxxgj5n5"
                      ];
     for (NSString * cardId in ARR) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -189,6 +188,7 @@
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString *directPath = [PHOTOES_CACHE_PATH stringByAppendingPathComponent:cardId];
     [fileManager createDirectoryAtPath:directPath withIntermediateDirectories:YES attributes:nil error:nil];
+    [fileManager createDirectoryAtPath:[NSString stringWithFormat:@"%@/media",directPath] withIntermediateDirectories:YES attributes:nil error:nil];
     return directPath;
     
 }
