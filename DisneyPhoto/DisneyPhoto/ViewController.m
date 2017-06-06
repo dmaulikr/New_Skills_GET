@@ -35,16 +35,7 @@
     NSString * ids =  [_idsText.string stringByReplacingOccurrencesOfString:@" " withString:@""];
     [[NSUserDefaults standardUserDefaults] setObject:ids forKey:@"ids"];
     NSArray *ARR =[ids componentsSeparatedByString:@"\n"];
-//  @[
-//                     @"SHDRN23U73KJJ5NB",
-//                     //                     @"SHDRN24D7MQ5J5NA",
-//                     //                     @"SHDRN2H2XC64J5N5",
-//                     //                     @"SHDR32EZ65Q5HBT5",
-//                     //                     @"SHDR3273WDW5HD76",
-//                     //                     @"shdrn2h58uqhj5nb",
-//                     //                     @"SHDRN26WBPYHJ5N9",
-//                     //                     @"shdr324gz8j9hd72",
-//                     ];
+
     for (NSString * cardId in ARR) {
         if ([cardId containsString:@"//"]) {
             continue;
@@ -104,18 +95,18 @@
     __weak typeof(self) weakSelf = self;
     _cardPhotoesCountCahce = [[NSMutableDictionary alloc] init];
     _idsText.string = [[NSUserDefaults standardUserDefaults] objectForKey:@"ids"] == nil ? @"": [[NSUserDefaults standardUserDefaults] objectForKey:@"ids"];
-    NSString * cardId = @"SHDR32YG94KZHBT8";
-    [DPNetWorkingManager getCardList:^(NSArray *PhotoAlbums) {
-        NSString * destinationPath = [weakSelf createLocalPath:[NSString stringWithFormat:@"%@_(%ld)",cardId,PhotoAlbums.count]];
-        
-        [self.cardPhotoesCountCahce setObject:PhotoAlbums forKey:destinationPath];
-        NSLog(@"-------%@------",cardId);
-        NSLog(@"-------%ld------",PhotoAlbums.count);
-//        [DPNetWorkingManager removeCard:cardId];
-        
-        [weakSelf dowmloadImage:destinationPath PhotoAlbums:PhotoAlbums];
-
-    }];
+//    NSString * cardId = @"SHDR32YG94KZHBT8";
+//    [DPNetWorkingManager getCardList:^(NSArray *PhotoAlbums) {
+//        NSString * destinationPath = [weakSelf createLocalPath:[NSString stringWithFormat:@"%@_(%ld)",cardId,PhotoAlbums.count]];
+//        
+//        [self.cardPhotoesCountCahce setObject:PhotoAlbums forKey:destinationPath];
+//        NSLog(@"-------%@------",cardId);
+//        NSLog(@"-------%ld------",PhotoAlbums.count);
+////        [DPNetWorkingManager removeCard:cardId];
+//        
+//        [weakSelf dowmloadImage:destinationPath PhotoAlbums:PhotoAlbums];
+//
+//    }];
     
 //    NSArray *ARR =
 //      @[
@@ -320,6 +311,7 @@
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString *directPath = [PHOTOES_CACHE_PATH stringByAppendingPathComponent:cardId];
     [fileManager createDirectoryAtPath:directPath withIntermediateDirectories:YES attributes:nil error:nil];
+    [fileManager createDirectoryAtPath:[NSString stringWithFormat:@"%@/media",directPath] withIntermediateDirectories:YES attributes:nil error:nil];
     return directPath;
     
 }
