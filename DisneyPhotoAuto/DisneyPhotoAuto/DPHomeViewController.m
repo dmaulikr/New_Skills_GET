@@ -23,7 +23,6 @@
 #define IMAGES_CARD_ID_CACHE_KEY @"IMAGES_CARD_ID_CACHE_KEY"
 @interface DPHomeViewController ()<ESPictureBrowserDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 @property (nonatomic, strong)UICollectionView * collectionView;
-@property (nonatomic, strong)UICollectionView * imageBrowserCollectionView;
 @property (nonatomic, strong)NSMutableDictionary *imageDataCache;
 @property (nonatomic, strong)NSMutableArray *cardIds;
 @property (nonatomic, strong)NSArray *photoBrowserImages;
@@ -122,7 +121,7 @@
         return;
     }
     
-    if (count != imageUrls.count) {
+    if (count < imageUrls.count) {
         [self downloadImageByCardId:cardId];
     }
 }
@@ -216,6 +215,16 @@
     [cIds addObject:cardId];
     [[NSUserDefaults standardUserDefaults] setObject:[cIds copy] forKey:IMAGES_CARD_ID_CACHE_KEY];
     _cardIds = [cIds copy];
+}
+
+
+- (void)removeCardFromCache:(NSString *)cardId
+{
+    NSMutableArray * cIds = [NSMutableArray new];
+    [cIds addObjectsFromArray:_cardIds];
+    [cIds removeObject:cardId];
+    [[NSUserDefaults standardUserDefaults] setObject:[cIds copy] forKey:IMAGES_CARD_ID_CACHE_KEY];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:cardId];
 }
 
 //下载好的图片解析后放入数据源
@@ -383,6 +392,25 @@
 }
 
 
+- (void)removeCardByIndex:(NSInteger)index
+{
+    NSLog(@"%d",index);
+    NSString * cardId = [_cardIds objectAtIndex:index];
+    __weak __typeof(self) weakSelf = self;
+    [LBXAlertAction showAlertWithTitle:@"删除照片" msg:[NSString stringWithFormat:@"删除卡号:%@\n只会删除应用内部的照片不会影响您已经保存和卡内的照片请放心",cardId] buttonsStatement:@[@"我再想想",@"是的"] chooseBlock:^(NSInteger buttonIdx) {
+        if (buttonIdx == 0) {
+            
+        } else if (buttonIdx == 1) {
+            
+
+            [self removeCardFromCache:cardId];
+            [self initImageCache];
+            [_collectionView reloadData];
+        }
+    }];
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -438,20 +466,20 @@
     payView.alpha = 0;
     [[UIApplication sharedApplication].keyWindow addSubview:payView];
     [payView setAliPay:^{
-        NSLog(@"ali");
-        [DPNetWorkingManager payForDownloadImages:BmobAlipay Success:^(BOOL success) {
-            if (success) {
-                NSLog(@"pay ali");
-            }
-        }];
+//        NSLog(@"ali");
+//        [DPNetWorkingManager payForDownloadImages:BmobAlipay Success:^(BOOL success) {
+//            if (success) {
+//                NSLog(@"pay ali");
+//            }
+//        }];
     }];
     [payView setWechatPay:^{
-        [DPNetWorkingManager payForDownloadImages:BmobWechat Success:^(BOOL success) {
-            if (success) {
-                NSLog(@"pay wechat");
-            }
-        }];
-        NSLog(@"wechat");
+//        [DPNetWorkingManager payForDownloadImages:BmobWechat Success:^(BOOL success) {
+//            if (success) {
+//                NSLog(@"pay wechat");
+//            }
+//        }];
+//        NSLog(@"wechat");
     }];
     _payView = payView;
     [payView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -492,9 +520,12 @@
     NSArray * images = [_imageDataCache objectForKey:cardId];
     NSInteger imageCount = images.count;
     headerView.titleLabel.text = [NSString stringWithFormat:@"卡号:%@/照片数量:%ld",cardId,(long)imageCount];
+    __weak typeof(self) weakSelf = self;
+    [headerView setRemoveBlock:^{
+        [weakSelf removeCardByIndex:indexPath.section];
+    }];
     
     return headerView;
-    
 }
 
 //设置每个item的UIEdgeInsets

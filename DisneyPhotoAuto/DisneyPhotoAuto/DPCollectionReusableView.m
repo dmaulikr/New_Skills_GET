@@ -14,5 +14,10 @@
     [super awakeFromNib];
     // Initialization code
 }
+- (IBAction)remove:(id)sender {
+    if (_removeBlock) {
+        _removeBlock();
+    }
+}
 
 @end

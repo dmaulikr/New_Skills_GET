@@ -48,20 +48,50 @@ static NSArray * _cards = nil;
         for (NSDictionary * cardObjectDict in cardObjects) {
             NSString * cardId = cardObjectDict[@"PPCode"];
             [cards addObject:cardId];
+            [DPNetWorkingManager getPhotoRequest:cardId date:cardObjectDict[@"shootOnDate"] success:^(NSArray<NSString *> *PhotoAlbums) {
+                success([PhotoAlbums copy]);
+            }];
         }
-        success([cards copy]);
+//        success([cards copy]);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
     }];
 }
 
-+ (void)getPhotoRequest:(NSString *)cardId success:(void (^)(NSArray <NSString *> *PhotoAlbums))success;
++ (void)getPhotoRequest:(NSString *)cardId date:(NSString *)date success:(void (^)(NSArray <NSString *> *PhotoAlbums))success;
 {
-    NSString * URLString = [NSString stringWithFormat:@"%@p/getPhotosByConditions?customerId=%@&tokenId=%@",API_DOMAIN,cardId,TOKENID];
+    NSString * URLString = [NSString stringWithFormat:@"%@p/getPhotosByConditions?customerId=%@&tokenId=%@&shootDate=%@",API_DOMAIN,cardId,TOKENID,date];
+    __weak typeof(self) weakSelf = self;
+    id cacheResponse = [[NSUserDefaults standardUserDefaults] objectForKey:URLString];
+    if ( cacheResponse != nil) {
+        NSDictionary * dict = cacheResponse;
+        NSDictionary * result = dict[@"result"];
+        NSArray * photoes = result[@"photos"];
+        if (photoes.count == 750) {
+            return;
+        }
+        NSMutableArray * photoUrls = [NSMutableArray new];
+        for (NSDictionary * photoObjectDict in photoes) {
+            NSDictionary * thumbnail = photoObjectDict[@"thumbnail"];
+            NSDictionary * thumbnailUrl = thumbnail[@"en1024"];
+            if(thumbnailUrl == nil) {
+                thumbnailUrl =  thumbnail[@"x1024"];
+            }
+            NSString * url = thumbnailUrl[@"url"];
+            [photoUrls addObject:url];
+        }
+        success(photoUrls);
+        NSLog(@"使用缓存数据");
+        if(photoes.count != 0) {
+        return;    
+        }
+        
+    }
     
     [[AFHTTPSessionManager manager] GET:URLString parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [[NSUserDefaults standardUserDefaults] setObject:responseObject forKey:URLString];
         NSDictionary * dict = responseObject;
         NSDictionary * result = dict[@"result"];
         NSArray * photoes = result[@"photos"];
@@ -77,7 +107,55 @@ static NSArray * _cards = nil;
         }
         success(photoUrls);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [weakSelf getPhotoRequest:cardId success:success];
+    }];
+}
+
+
++ (void)getPhotoRequest:(NSString *)cardId success:(void (^)(NSArray <NSString *> *PhotoAlbums))success;
+{
+    NSString * URLString = [NSString stringWithFormat:@"%@p/getPhotosByConditions?customerId=%@&tokenId=%@",API_DOMAIN,cardId,TOKENID];
+    __weak typeof(self) weakSelf = self;
+    id cacheResponse = [[NSUserDefaults standardUserDefaults] objectForKey:cardId];
+    if ( cacheResponse != nil) {
+        NSDictionary * dict = cacheResponse;
+        NSDictionary * result = dict[@"result"];
+        NSArray * photoes = result[@"photos"];
+        NSMutableArray * photoUrls = [NSMutableArray new];
+        for (NSDictionary * photoObjectDict in photoes) {
+            NSDictionary * thumbnail = photoObjectDict[@"thumbnail"];
+            NSDictionary * thumbnailUrl = thumbnail[@"en1024"];
+            if(thumbnailUrl == nil) {
+                thumbnailUrl =  thumbnail[@"x1024"];
+            }
+            NSString * url = thumbnailUrl[@"url"];
+            [photoUrls addObject:url];
+        }
+        success(photoUrls);
+        NSLog(@"使用缓存数据");
+        return;
+    }
+
+    [[AFHTTPSessionManager manager] GET:URLString parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [[NSUserDefaults standardUserDefaults] setObject:responseObject forKey:cardId];
+        NSDictionary * dict = responseObject;
+        NSDictionary * result = dict[@"result"];
+        NSArray * photoes = result[@"photos"];
+        NSMutableArray * photoUrls = [NSMutableArray new];
+        for (NSDictionary * photoObjectDict in photoes) {
+            NSDictionary * thumbnail = photoObjectDict[@"thumbnail"];
+            NSDictionary * thumbnailUrl = thumbnail[@"en1024"];
+            if(thumbnailUrl == nil) {
+                thumbnailUrl =  thumbnail[@"x1024"];
+            }
+            NSString * url = thumbnailUrl[@"url"];
+            [photoUrls addObject:url];
+        }
+        success(photoUrls);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [weakSelf getPhotoRequest:cardId success:success];
     }];
 }
 
@@ -92,7 +170,7 @@ static NSArray * _cards = nil;
 
     NSString * imageUrl = [NSString stringWithFormat:@"%@%@",IMAGE_DOMAIN,url];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:imageUrl]];
-    
+
     NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
 //        NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
                 return [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/tmp/%@.jpeg",PHOTOES_CACHE_PATH,url]];

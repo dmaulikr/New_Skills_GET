@@ -10,5 +10,6 @@
 
 @interface DPCollectionReusableView : UICollectionReusableView
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-
+@property (weak, nonatomic) IBOutlet UIButton *removeButton;
+@property (strong, nonatomic)void (^removeBlock)(void);
 @end

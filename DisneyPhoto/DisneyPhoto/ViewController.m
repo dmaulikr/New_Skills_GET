@@ -12,52 +12,144 @@
 #import <CoreImage/CoreImage.h>
 @interface ViewController ()
 @property (nonatomic , strong) NSMutableDictionary * cardPhotoesCountCahce;
+@property (unsafe_unretained) IBOutlet NSTextView *idsText;
 
 @end
 @implementation ViewController
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    _cardPhotoesCountCahce = [[NSMutableDictionary alloc] init];
+- (IBAction)zip:(id)sender {
+    NSArray * cacheCardPaths = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:PHOTOES_CACHE_PATH error:nil];
+    for (NSString *path in cacheCardPaths) {
+        NSString *destinationPath = [NSString stringWithFormat:@"%@/%@",PHOTOES_CACHE_PATH,path];
+        if ([destinationPath hasSuffix:@"zip"]) {
+            continue;
+        }
+        if ([path hasPrefix:@"SH"] || [path hasPrefix:@"sh"]) {
+            NSLog(@"%@",destinationPath);
+            [self zipImages:destinationPath];
+            //            [SSZipArchive createZipFileAtPath:[NSString stringWithFormat:@"%@.zip",destinationPath] withContentsOfDirectory:destinationPath];
+        }
+    }
+}
+- (IBAction)download:(id)sender {
     __weak typeof(self) weakSelf = self;
-    NSArray *ARR = @[
-//                     @"shdr322sdfg4hd78",
-//                     @"shdr327ekx55hd77",
-                     @"SHDRN2YKSCG5J5NB",
-//                     @"SHDR328CA7GVHD78",
-//                     @"SHDRN2QPBBWCJ5NB",
-//                     @"shdr328hxb4qhd78",
-                     ];
+    NSString * ids =  [_idsText.string stringByReplacingOccurrencesOfString:@" " withString:@""];
+    [[NSUserDefaults standardUserDefaults] setObject:ids forKey:@"ids"];
+    NSArray *ARR =[ids componentsSeparatedByString:@"\n"];
+//  @[
+//                     @"SHDRN23U73KJJ5NB",
+//                     //                     @"SHDRN24D7MQ5J5NA",
+//                     //                     @"SHDRN2H2XC64J5N5",
+//                     //                     @"SHDR32EZ65Q5HBT5",
+//                     //                     @"SHDR3273WDW5HD76",
+//                     //                     @"shdrn2h58uqhj5nb",
+//                     //                     @"SHDRN26WBPYHJ5N9",
+//                     //                     @"shdr324gz8j9hd72",
+//                     ];
     for (NSString * cardId in ARR) {
+        if ([cardId containsString:@"//"]) {
+            continue;
+        }
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             
             [DPNetWorkingManager addCard:cardId success:^{
+                
+                [DPNetWorkingManager getPhotoRequest:cardId success:^(NSArray<NSString *> *PhotoAlbums) {
+                    NSString * destinationPath = [weakSelf createLocalPath:[NSString stringWithFormat:@"%@_(%ld)",cardId,PhotoAlbums.count]];
                     
-                        NSString * destinationPath = [weakSelf createLocalPath:cardId];
-                        [DPNetWorkingManager getPhotoRequest:cardId success:^(NSArray<NSString *> *PhotoAlbums) {
-                            [self.cardPhotoesCountCahce setObject:PhotoAlbums forKey:cardId];
-                            NSLog(@"-------%@------",cardId);
-                            NSLog(@"-------%d------",PhotoAlbums.count);
-                            [DPNetWorkingManager removeCard:cardId];
-                            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-
-                                for (NSString *url in PhotoAlbums) {
-                                    [NSThread sleepForTimeInterval:1];
-                                    
-                                    [DPNetWorkingManager downloadImage:url success:^(NSString *path) {
-                                        
-                                            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-                                                [weakSelf transformImage:path destinationPath:destinationPath];
-                                            });
-                                            
-                                    }];
-                                }
-                            });
-
-                        }];
+                    [self.cardPhotoesCountCahce setObject:PhotoAlbums forKey:destinationPath];
+                    NSLog(@"-------%@------",cardId);
+                    NSLog(@"-------%ld------",PhotoAlbums.count);
+                    [DPNetWorkingManager removeCard:cardId];
+                    
+                    [weakSelf dowmloadImage:destinationPath PhotoAlbums:PhotoAlbums];
+                }];
             }];
         });
-
     }
+
+}
+
+- (void)zipImages:(NSString *)destinationPath
+{
+    NSArray * strs = [destinationPath componentsSeparatedByString:@"/"];
+    NSString * cardId = [strs lastObject];
+    NSArray *  cachedImages = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:destinationPath error:nil];
+    NSInteger zipPackages = cachedImages.count / 100 + 1;
+    NSMutableArray * tmp = [NSMutableArray new];
+    for (NSString *path in cachedImages) {
+        if ([path hasSuffix:@"zip"]) {
+            continue;
+        }
+        [tmp addObject: [NSString stringWithFormat:@"%@/%@",destinationPath,path]];
+    }
+    cachedImages = tmp;
+    for (NSInteger index = 0; index < zipPackages; index++) {
+        if (index == zipPackages - 1) {
+            NSArray * zipImages = [cachedImages subarrayWithRange:NSMakeRange(index * 100, cachedImages.count % 100)];
+            [SSZipArchive createZipFileAtPath:[NSString stringWithFormat:@"%@/%@_%ld.zip",destinationPath,cardId,index+1] withFilesAtPaths:zipImages];
+        } else {
+            NSArray * zipImages = [cachedImages subarrayWithRange:NSMakeRange(index * 100, 100)];
+            [SSZipArchive createZipFileAtPath:[NSString stringWithFormat:@"%@/%@_%ld.zip",destinationPath,cardId,index+1] withFilesAtPaths:zipImages];
+        }
+    }
+//    if (imageCount == cachedCount) {
+//        [SSZipArchive createZipFileAtPath:[NSString stringWithFormat:@"%@.zip",destinationPath] withContentsOfDirectory:destinationPath];
+//    }
+    
+}
+
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    __weak typeof(self) weakSelf = self;
+    _cardPhotoesCountCahce = [[NSMutableDictionary alloc] init];
+    _idsText.string = [[NSUserDefaults standardUserDefaults] objectForKey:@"ids"] == nil ? @"": [[NSUserDefaults standardUserDefaults] objectForKey:@"ids"];
+    NSString * cardId = @"SHDR32YG94KZHBT8";
+    [DPNetWorkingManager getCardList:^(NSArray *PhotoAlbums) {
+        NSString * destinationPath = [weakSelf createLocalPath:[NSString stringWithFormat:@"%@_(%ld)",cardId,PhotoAlbums.count]];
+        
+        [self.cardPhotoesCountCahce setObject:PhotoAlbums forKey:destinationPath];
+        NSLog(@"-------%@------",cardId);
+        NSLog(@"-------%ld------",PhotoAlbums.count);
+//        [DPNetWorkingManager removeCard:cardId];
+        
+        [weakSelf dowmloadImage:destinationPath PhotoAlbums:PhotoAlbums];
+
+    }];
+    
+//    NSArray *ARR =
+//      @[
+//                         @"shdr32yg94kzhbt8",
+//     //                     @"SHDRN24D7MQ5J5NA",
+//     //                     @"SHDRN2H2XC64J5N5",
+//     //                     @"SHDR32EZ65Q5HBT5",
+//     //                     @"SHDR3273WDW5HD76",
+//     //                     @"shdrn2h58uqhj5nb",
+//     //                     @"SHDRN26WBPYHJ5N9",
+//     //                     @"shdr324gz8j9hd72",
+//                         ];
+//    for (NSString * cardId in ARR) {
+//        if ([cardId containsString:@"//"]) {
+//            continue;
+//        }
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            
+//    [DPNetWorkingManager addCard:cardId success:^{}];
+//
+//                [DPNetWorkingManager getPhotoRequest:cardId success:^(NSArray<NSString *> *PhotoAlbums) {
+//                    NSString * destinationPath = [weakSelf createLocalPath:[NSString stringWithFormat:@"%@_(%ld)",cardId,PhotoAlbums.count]];
+//                    
+//                    [self.cardPhotoesCountCahce setObject:PhotoAlbums forKey:destinationPath];
+//                    NSLog(@"-------%@------",cardId);
+//                    NSLog(@"-------%ld------",PhotoAlbums.count);
+////                    [DPNetWorkingManager removeCard:cardId];
+//                    
+//                    [weakSelf dowmloadImage:destinationPath PhotoAlbums:PhotoAlbums];
+//                }];
+//            }];
+//        });
+//    }
+//    
 
 //        [DPNetWorkingManager getCardList:^(NSArray *cards) {
 //            NSLog(@"cardList");
@@ -82,9 +174,44 @@
 
 }
 
+- (void)dowmloadImage:(NSString*)destinationPath PhotoAlbums:(NSArray *)PhotoAlbums
+{
+    __weak typeof(self) weakSelf = self;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSArray *cachedImageList = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:destinationPath error:nil];
+        for (NSString *url in PhotoAlbums) {
+            NSString * imageFileName = [NSString stringWithFormat:@"%@.jpeg",[[url componentsSeparatedByString:@"/"] lastObject]];
+            
+            if ([cachedImageList containsObject:imageFileName]) {
+                continue;
+            }
+//            [NSThread sleepForTimeInterval:1];
+            [DPNetWorkingManager downloadImage:url success:^(NSString *path) {
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+                    [weakSelf transformImage:path destinationPath:destinationPath];
+                });
+                
+            }];
+        }
+        __block NSInteger retryTimes = 100;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            NSArray *cachedImageList = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:destinationPath error:nil];
+            if (retryTimes < 0) {
+                return ;
+            }
+            NSLog(@"retryTimes%ld",retryTimes);
+            if (cachedImageList.count < PhotoAlbums.count) {
+                retryTimes--;
+                [weakSelf dowmloadImage:destinationPath PhotoAlbums:PhotoAlbums];
+            }
+            
+        });
+    });
+}
 - (void)transformImage:(NSString *)imagePath destinationPath:(NSString *)destinationPath
 {
-    NSLog(@"%@",[NSThread currentThread]);
+    @synchronized (self) {
+//    NSLog(@"%@",[NSThread currentThread]);
     char arr[] ={0xff, 0xd8, 0xff};
     char mp4Arr[] ={0x00,0x00,0x00,0x20,0x66,0x74,0x79,0x70,0x69,0x73,0x6F,0x6D};
 
@@ -103,17 +230,21 @@
         if (range1.length==0 || range2.length==0 || data2.length < 20000)
             return;
         [data2 replaceBytesInRange:NSMakeRange(range1.location, range2.location) withBytes:NULL length:0];
-        NSDate * date = [NSDate date];
-        NSString * fileName = [NSString stringWithFormat:@"%f%ld.mp4",[date timeIntervalSince1970],random()];
+//        NSDate * date = [NSDate date];
+        NSString * fileName = [NSString stringWithFormat:@"%@.mp4",imageName];
         NSString *outImagePath = [NSString stringWithFormat:@"%@/%@",destinationPath,fileName];
         [data2 writeToFile: outImagePath atomically: NO];
+        NSLog(@"下载成功");
+
     } else{
         [data2 replaceBytesInRange:NSMakeRange(range1.location, range2.location) withBytes:NULL length:0];
-        NSDate * date = [NSDate date];
-        NSString * fileName = [NSString stringWithFormat:@"%f%ld.jpeg",[date timeIntervalSince1970],random()];
+//        NSDate * date = [NSDate date];
+        NSString * fileName = [NSString stringWithFormat:@"%@",imageName];
         NSString *outImagePath = [NSString stringWithFormat:@"%@/%@",destinationPath,fileName];
         [data2 writeToFile: outImagePath atomically: NO];
+        NSLog(@"下载成功");
 
+    }
     }
         [self zipFileCheck:destinationPath];
     // Do any additional setup after loading the view.
