@@ -213,8 +213,15 @@
     NSRange range1 = [data2 rangeOfData:data options:NSDataSearchAnchored range:NSMakeRange(0, data2.length)];
     
     NSRange range2 = [data2 rangeOfData:data options:NSDataSearchBackwards range:NSMakeRange(0, data2.length)];
-    if (range1.length==0 || range2.length==0 || data2.length < 20000)
+    if (range1.length==0 || range2.length==0 || data2.length < 20000) {
         return;
+    }
+        
+    if (NSEqualRanges(range1,range2)) {
+        NSString * fileName = [NSString stringWithFormat:@"%@",imageName];
+        NSString *outImagePath = [NSString stringWithFormat:@"%@/%@",destinationPath,fileName];
+        [data2 writeToFile: outImagePath atomically: NO];
+    }
     if (NSEqualRanges(range1,range2)) {
         data = [NSData dataWithBytes:mp4Arr length:12];
         range2 = [data2 rangeOfData:data options:NSDataSearchBackwards range:NSMakeRange(0, data2.length)];
