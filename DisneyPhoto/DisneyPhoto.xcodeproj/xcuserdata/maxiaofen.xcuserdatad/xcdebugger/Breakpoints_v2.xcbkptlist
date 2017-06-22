@@ -16,32 +16,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DisneyPhoto/ViewController.m"
-            timestampString = "518405731.054147"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DisneyPhoto/ViewController.m"
-            timestampString = "518405731.054147"
+            filePath = "DisneyPhoto/DPNetWorkingManager.m"
+            timestampString = "519649988.883137"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "206"
             endingLineNumber = "206"
-            landmarkName = "-transformImage:destinationPath:"
+            landmarkName = "+downloadImage:success:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -51,13 +35,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DisneyPhoto/ViewController.m"
-            timestampString = "518762692.480562"
+            filePath = "DisneyPhoto/DPNetWorkingManager.m"
+            timestampString = "519364661.164402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "216"
-            endingLineNumber = "216"
-            landmarkName = "-transformImage:destinationPath:"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "+getPhotoRequest:date:success:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

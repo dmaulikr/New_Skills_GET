@@ -13,6 +13,7 @@
 @interface ViewController ()
 @property (nonatomic , strong) NSMutableDictionary * cardPhotoesCountCahce;
 @property (unsafe_unretained) IBOutlet NSTextView *idsText;
+@property (unsafe_unretained) IBOutlet NSTextView *maxIdsText;
 
 @end
 @implementation ViewController
@@ -26,13 +27,14 @@
         if ([path hasPrefix:@"SH"] || [path hasPrefix:@"sh"]) {
             NSLog(@"%@",destinationPath);
             [self zipImages:destinationPath];
-            //            [SSZipArchive createZipFileAtPath:[NSString stringWithFormat:@"%@.zip",destinationPath] withContentsOfDirectory:destinationPath];
         }
     }
 }
 - (IBAction)download:(id)sender {
     __weak typeof(self) weakSelf = self;
     NSString * ids =  [_idsText.string stringByReplacingOccurrencesOfString:@" " withString:@""];
+    ids =  [ids stringByReplacingOccurrencesOfString:@"-" withString:@""];
+//    _idsText.string = ids;
     [[NSUserDefaults standardUserDefaults] setObject:ids forKey:@"ids"];
     NSArray *ARR =[ids componentsSeparatedByString:@"\n"];
 
@@ -57,6 +59,37 @@
             }];
         });
     }
+//    NSString * maxIds =  [_maxIdsText.string stringByReplacingOccurrencesOfString:@" " withString:@""];
+//    maxIds = [maxIds stringByReplacingOccurrencesOfString:@"-" withString:@""];
+//    _maxIdsText.string = maxIds;
+//    [[NSUserDefaults standardUserDefaults] setObject:maxIds forKey:@"max_ids"];
+//    ARR =[maxIds componentsSeparatedByString:@"\n"];
+//    
+//    for (NSString * cardId in ARR) {
+//        if ([cardId containsString:@"//"]) {
+//            continue;
+//        }
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            
+//            [DPNetWorkingManager addCard:cardId success:^{
+//                
+//                [DPNetWorkingManager getCardList:^(NSArray *PhotoAlbums) {
+//                    NSString * destinationPath = [weakSelf createLocalPath:[NSString stringWithFormat:@"%@_(%ld)",cardId,PhotoAlbums.count]];
+//                    
+//                    [self.cardPhotoesCountCahce setObject:PhotoAlbums forKey:destinationPath];
+//                    NSLog(@"-------%@------",cardId);
+//                    NSLog(@"-------%ld------",PhotoAlbums.count);
+//                    //        [DPNetWorkingManager removeCard:cardId];
+//                    
+//                    [weakSelf dowmloadImage:destinationPath PhotoAlbums:PhotoAlbums];
+//                    
+//                }];
+//                
+//            }];
+//
+//        });
+//    }
+//
 
 }
 
@@ -77,10 +110,10 @@
     for (NSInteger index = 0; index < zipPackages; index++) {
         if (index == zipPackages - 1) {
             NSArray * zipImages = [cachedImages subarrayWithRange:NSMakeRange(index * 100, cachedImages.count % 100)];
-            [SSZipArchive createZipFileAtPath:[NSString stringWithFormat:@"%@/%@_%ld.zip",destinationPath,cardId,index+1] withFilesAtPaths:zipImages];
+            [SSZipArchive createZipFileAtPath:[NSString stringWithFormat:@"%@/迪士尼照片—%@_%ld.zip",destinationPath,cardId,index+1] withFilesAtPaths:zipImages];
         } else {
             NSArray * zipImages = [cachedImages subarrayWithRange:NSMakeRange(index * 100, 100)];
-            [SSZipArchive createZipFileAtPath:[NSString stringWithFormat:@"%@/%@_%ld.zip",destinationPath,cardId,index+1] withFilesAtPaths:zipImages];
+            [SSZipArchive createZipFileAtPath:[NSString stringWithFormat:@"%@/迪士尼照片-%@_%ld.zip",destinationPath,cardId,index+1] withFilesAtPaths:zipImages];
         }
     }
 //    if (imageCount == cachedCount) {
@@ -89,80 +122,28 @@
     
 }
 
+- (IBAction)clear:(id)sender {
+    NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
+    
+    NSDictionary* dict = [defs dictionaryRepresentation];
+    
+    for(id key in dict) {
+        
+        [defs removeObjectForKey:key];
+        
+    }
+    
+    [defs synchronize];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     __weak typeof(self) weakSelf = self;
+
+
     _cardPhotoesCountCahce = [[NSMutableDictionary alloc] init];
     _idsText.string = [[NSUserDefaults standardUserDefaults] objectForKey:@"ids"] == nil ? @"": [[NSUserDefaults standardUserDefaults] objectForKey:@"ids"];
-//    NSString * cardId = @"SHDR32YG94KZHBT8";
-//    [DPNetWorkingManager getCardList:^(NSArray *PhotoAlbums) {
-//        NSString * destinationPath = [weakSelf createLocalPath:[NSString stringWithFormat:@"%@_(%ld)",cardId,PhotoAlbums.count]];
-//        
-//        [self.cardPhotoesCountCahce setObject:PhotoAlbums forKey:destinationPath];
-//        NSLog(@"-------%@------",cardId);
-//        NSLog(@"-------%ld------",PhotoAlbums.count);
-////        [DPNetWorkingManager removeCard:cardId];
-//        
-//        [weakSelf dowmloadImage:destinationPath PhotoAlbums:PhotoAlbums];
-//
-//    }];
-    
-//    NSArray *ARR =
-//      @[
-//                         @"shdr32yg94kzhbt8",
-//     //                     @"SHDRN24D7MQ5J5NA",
-//     //                     @"SHDRN2H2XC64J5N5",
-//     //                     @"SHDR32EZ65Q5HBT5",
-//     //                     @"SHDR3273WDW5HD76",
-//     //                     @"shdrn2h58uqhj5nb",
-//     //                     @"SHDRN26WBPYHJ5N9",
-//     //                     @"shdr324gz8j9hd72",
-//                         ];
-//    for (NSString * cardId in ARR) {
-//        if ([cardId containsString:@"//"]) {
-//            continue;
-//        }
-//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//            
-//    [DPNetWorkingManager addCard:cardId success:^{}];
-//
-//                [DPNetWorkingManager getPhotoRequest:cardId success:^(NSArray<NSString *> *PhotoAlbums) {
-//                    NSString * destinationPath = [weakSelf createLocalPath:[NSString stringWithFormat:@"%@_(%ld)",cardId,PhotoAlbums.count]];
-//                    
-//                    [self.cardPhotoesCountCahce setObject:PhotoAlbums forKey:destinationPath];
-//                    NSLog(@"-------%@------",cardId);
-//                    NSLog(@"-------%ld------",PhotoAlbums.count);
-////                    [DPNetWorkingManager removeCard:cardId];
-//                    
-//                    [weakSelf dowmloadImage:destinationPath PhotoAlbums:PhotoAlbums];
-//                }];
-//            }];
-//        });
-//    }
-//    
-
-//        [DPNetWorkingManager getCardList:^(NSArray *cards) {
-//            NSLog(@"cardList");
-    
-//            for (NSString * cardId in cards) {
-//                //            [DPNetWorkingManager removeCard:cardId];
-//                NSString * destinationPath = [weakSelf createLocalPath:cardId];
-//                [DPNetWorkingManager getPhotoRequest:cardId success:^(NSArray<NSString *> *PhotoAlbums) {
-//                    [self.cardPhotoesCountCahce setObject:PhotoAlbums forKey:cardId];
-//                    NSLog(@"-------%@------",cardId);
-//                    for (NSString *url in PhotoAlbums) {
-//                        [DPNetWorkingManager downloadImage:url success:^(NSString *path) {
-//                            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-//                                [weakSelf transformImage:path destinationPath:destinationPath];
-//                            });
-//                            
-//                        }];
-//                    }
-//                }];
-//            }
-//        }];
-
+    _maxIdsText.string = [[NSUserDefaults standardUserDefaults] objectForKey:@"max_ids"] == nil ? @"": [[NSUserDefaults standardUserDefaults] objectForKey:@"max_ids"];
 }
 
 - (void)dowmloadImage:(NSString*)destinationPath PhotoAlbums:(NSArray *)PhotoAlbums
@@ -171,6 +152,8 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSArray *cachedImageList = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:destinationPath error:nil];
         for (NSString *url in PhotoAlbums) {
+//        for (NSInteger i = 249; i < 600; i++){
+//            NSString * url = [PhotoAlbums objectAtIndex:i];
             NSString * imageFileName = [NSString stringWithFormat:@"%@.jpeg",[[url componentsSeparatedByString:@"/"] lastObject]];
             
             if ([cachedImageList containsObject:imageFileName]) {
@@ -184,6 +167,7 @@
                 
             }];
         }
+//        重试
         __block NSInteger retryTimes = 100;
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             NSArray *cachedImageList = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:destinationPath error:nil];
@@ -304,13 +288,13 @@
 
 - (void)zipFileCheck:(NSString *)destinationPath
 {
-    NSArray * strs = [destinationPath componentsSeparatedByString:@"/"];
-    NSString * cardId = [strs lastObject];
-    NSInteger  imageCount = ((NSArray *)[_cardPhotoesCountCahce objectForKey:cardId]).count;
-    NSInteger  cachedCount = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:destinationPath error:nil].count;
-    if (imageCount == cachedCount) {
-        [SSZipArchive createZipFileAtPath:[NSString stringWithFormat:@"%@.zip",destinationPath] withContentsOfDirectory:destinationPath];
-    }
+//    NSArray * strs = [destinationPath componentsSeparatedByString:@"/"];
+//    NSString * cardId = [strs lastObject];
+//    NSInteger  imageCount = ((NSArray *)[_cardPhotoesCountCahce objectForKey:cardId]).count;
+//    NSInteger  cachedCount = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:destinationPath error:nil].count;
+//    if (imageCount == cachedCount) {
+//        [SSZipArchive createZipFileAtPath:[NSString stringWithFormat:@"%@.zip",destinationPath] withContentsOfDirectory:destinationPath];
+//    }
 }
 
 - (NSString *)createLocalPath:(NSString *)cardId
@@ -322,33 +306,6 @@
     return directPath;
     
 }
-//- (void)viewDidLoad {
-//    [super viewDidLoad];
-//    char arr[] ={0xff, 0xd8, 0xff};
-//    NSData * data = [NSData dataWithBytes:arr length:3];
-//    NSString *sourcePath =  @"/Users/maxiaofen/New_Skills_GET/DisneyPhoto/photoSource";
-//    
-//    NSString * outPath = @"/Users/maxiaofen/New_Skills_GET/DisneyPhoto/out_photoes";
-//    
-//    NSArray * fileList = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:sourcePath error:nil];
-//    NSMutableArray * imagePaths = [NSMutableArray new];
-//    for (NSString * imageName in fileList) {
-//        NSLog(@"%@",imageName);
-//        NSString *imagePath = [NSString stringWithFormat:@"%@/%@",sourcePath,imageName];
-//        NSMutableData * data2 = [NSMutableData dataWithContentsOfFile:imagePath];
-//        NSRange range1 = [data2 rangeOfData:data options:NSDataSearchAnchored range:NSMakeRange(0, data2.length)];
-//        
-//        NSRange range2 = [data2 rangeOfData:data options:NSDataSearchBackwards range:NSMakeRange(0, data2.length)];
-//        if (range1.length==0 || range2.length==0 ||[imageName containsString:@"("] || data2.length < 20000)
-//            continue;
-//        [data2 replaceBytesInRange:NSMakeRange(range1.location, range2.location) withBytes:NULL length:0];
-//        
-//        NSString *outImagePath = [NSString stringWithFormat:@"%@/%@",outPath,imageName];
-//        [data2 writeToFile: outImagePath atomically: NO];
-//    }
-//    
-//    // Do any additional setup after loading the view.
-//}
 
 
 - (void)setRepresentedObject:(id)representedObject {
