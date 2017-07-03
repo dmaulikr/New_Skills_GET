@@ -228,7 +228,6 @@
 
     }
     }
-        [self zipFileCheck:destinationPath];
     // Do any additional setup after loading the view.
 }
 
@@ -302,7 +301,11 @@
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString *directPath = [PHOTOES_CACHE_PATH stringByAppendingPathComponent:cardId];
     [fileManager createDirectoryAtPath:directPath withIntermediateDirectories:YES attributes:nil error:nil];
-    [fileManager createDirectoryAtPath:[NSString stringWithFormat:@"%@/media",directPath] withIntermediateDirectories:YES attributes:nil error:nil];
+//    [fileManager removeItemAtPath:[NSString stringWithFormat:@"%@/tmp/media",PHOTOES_CACHE_PATH] error:nil];
+    NSDirectoryEnumerator *enumerator = [[NSFileManager defaultManager] enumeratorAtPath:[NSString stringWithFormat:@"%@/tmp/media",PHOTOES_CACHE_PATH]];
+    for (NSString *fileName in enumerator) {
+        [[NSFileManager defaultManager] removeItemAtPath:[[NSString stringWithFormat:@"%@/tmp/media",PHOTOES_CACHE_PATH] stringByAppendingPathComponent:fileName] error:nil];
+    }
     return directPath;
     
 }
