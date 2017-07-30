@@ -59,36 +59,36 @@
             }];
         });
     }
-//    NSString * maxIds =  [_maxIdsText.string stringByReplacingOccurrencesOfString:@" " withString:@""];
-//    maxIds = [maxIds stringByReplacingOccurrencesOfString:@"-" withString:@""];
-//    _maxIdsText.string = maxIds;
-//    [[NSUserDefaults standardUserDefaults] setObject:maxIds forKey:@"max_ids"];
-//    ARR =[maxIds componentsSeparatedByString:@"\n"];
-//    
-//    for (NSString * cardId in ARR) {
-//        if ([cardId containsString:@"//"]) {
-//            continue;
-//        }
-//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//            
-//            [DPNetWorkingManager addCard:cardId success:^{
-//                
-//                [DPNetWorkingManager getCardList:^(NSArray *PhotoAlbums) {
-//                    NSString * destinationPath = [weakSelf createLocalPath:[NSString stringWithFormat:@"%@_(%ld)",cardId,PhotoAlbums.count]];
-//                    
-//                    [self.cardPhotoesCountCahce setObject:PhotoAlbums forKey:destinationPath];
-//                    NSLog(@"-------%@------",cardId);
-//                    NSLog(@"-------%ld------",PhotoAlbums.count);
-//                    //        [DPNetWorkingManager removeCard:cardId];
-//                    
-//                    [weakSelf dowmloadImage:destinationPath PhotoAlbums:PhotoAlbums];
-//                    
-//                }];
-//                
-//            }];
-//
-//        });
-//    }
+    NSString * maxIds =  [_maxIdsText.string stringByReplacingOccurrencesOfString:@" " withString:@""];
+    maxIds = [maxIds stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    _maxIdsText.string = maxIds;
+    [[NSUserDefaults standardUserDefaults] setObject:maxIds forKey:@"max_ids"];
+    ARR =[maxIds componentsSeparatedByString:@"\n"];
+    
+    for (NSString * cardId in ARR) {
+        if ([cardId containsString:@"//"]) {
+            continue;
+        }
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [DPNetWorkingManager addCard:cardId success:^{
+                
+                [DPNetWorkingManager getCardList:^(NSArray *PhotoAlbums) {
+                    NSString * destinationPath = [weakSelf createLocalPath:[NSString stringWithFormat:@"%@_(%ld)",cardId,PhotoAlbums.count]];
+                    
+                    [self.cardPhotoesCountCahce setObject:PhotoAlbums forKey:destinationPath];
+                    NSLog(@"-------%@------",cardId);
+                    NSLog(@"-------%ld------",PhotoAlbums.count);
+                    //        [DPNetWorkingManager removeCard:cardId];
+                    
+                    [weakSelf dowmloadImage:destinationPath PhotoAlbums:PhotoAlbums];
+                    
+                }];
+                
+            }];
+
+        });
+    }
 //
 
 }

@@ -7,6 +7,7 @@
 //
 
 #import "DPNetWorkingManager.h"
+#import "NSMutableArray+Safe.h"
 
 
 //@"http://api.disneyphotopass.com.cn:3006/p/getLocationPhoto?tokenId=a3540150-2b02-11e7-a47f-651e419c9bc5";
@@ -16,7 +17,7 @@ static NSArray * _cards = nil;
 
 + (void)addCard:(NSString *)cardId success:(void(^)(void))success
 {
-    if (cardId == nil) {
+    if ([cardId isEmpty]) {
         return ;
     }
     id cacheResponse = [[NSUserDefaults standardUserDefaults] objectForKey:cardId];
@@ -52,7 +53,7 @@ static NSArray * _cards = nil;
         NSMutableArray * cards = [NSMutableArray new];
         for (NSDictionary * cardObjectDict in cardObjects) {
             NSString * cardId = cardObjectDict[@"PPCode"];
-            [cards addObject:cardId];
+            [cards addObjectSafe:cardId];
             [DPNetWorkingManager getPhotoRequest:cardId date:cardObjectDict[@"shootOnDate"] success:^(NSArray<NSString *> *PhotoAlbums) {
                 success([PhotoAlbums copy]);
             }];
@@ -68,7 +69,7 @@ static NSArray * _cards = nil;
 {
     NSString * URLString = [NSString stringWithFormat:@"%@p/getPhotosByConditions?customerId=%@&tokenId=%@&shootDate=%@",API_DOMAIN,cardId,TOKENID,date];
     static NSInteger num = 0;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(60 * 2 * num * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * 2 * num * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         __weak typeof(self) weakSelf = self;
         id cacheResponse = [[NSUserDefaults standardUserDefaults] objectForKey:URLString];
             NSLog(@"开始%@",URLString);
@@ -82,12 +83,24 @@ static NSArray * _cards = nil;
             for (NSDictionary * photoObjectDict in photoes) {
                 NSDictionary * thumbnail = photoObjectDict[@"thumbnail"];
                 NSDictionary * thumbnailUrl = thumbnail[@"en1024"];
-                if(thumbnailUrl == nil) {
-                    thumbnailUrl =  thumbnail[@"x1024"];
-                }
+                NSDictionary * thumbnailUrl_1 = thumbnail[@"x1024"];
+                NSDictionary * original = photoObjectDict[@"originalInfo"];
+                NSString * originalurl = original[@"url"];
+
                 NSString * url = thumbnailUrl[@"url"];
-                
-                [photoUrls addObject:url];
+                NSString * url_1 = thumbnailUrl_1[@"url"];
+                if ([url_1 isEqualToString:url]) {
+                    url_1 = nil;
+                }
+                if (![url isEmpty]) {
+                    [photoUrls addObjectSafe:url];
+                }
+                if (![url_1 isEmpty]) {
+                    [photoUrls addObjectSafe:url_1];
+                }
+                if (![originalurl isEmpty]) {
+                    [photoUrls addObjectSafe:originalurl];
+                }
             }
             success(photoUrls);
             NSLog(@"使用缓存数据");
@@ -107,17 +120,25 @@ static NSArray * _cards = nil;
         for (NSDictionary * photoObjectDict in photoes) {
             NSDictionary * thumbnail = photoObjectDict[@"thumbnail"];
             NSDictionary * thumbnailUrl = thumbnail[@"en1024"];
-            if(thumbnailUrl == nil) {
-                thumbnailUrl =  thumbnail[@"x1024"];
-            }
-            NSString * url = thumbnailUrl[@"url"];
-            [photoUrls addObject:url];
+            NSDictionary * thumbnailUrl_1 = thumbnail[@"x1024"];
+            NSDictionary * original = photoObjectDict[@"originalInfo"];
+            NSString * originalurl = original[@"url"];
             
-            NSDictionary * originalInfo = photoObjectDict[@"originalInfo"];
-            NSString *hdImageUrl = originalInfo[@"url"];
-            if (hdImageUrl != nil && ![hdImageUrl isEqualToString:@""]) {
-                [DPNetWorkingManager downloadHDImage:hdImageUrl cardId:cardId success:nil];
+            NSString * url = thumbnailUrl[@"url"];
+            NSString * url_1 = thumbnailUrl_1[@"url"];
+            if ([url_1 isEqualToString:url]) {
+                url_1 = nil;
             }
+            if (![url isEmpty]) {
+                [photoUrls addObjectSafe:url];
+            }
+            if (![url_1 isEmpty]) {
+                [photoUrls addObjectSafe:url_1];
+            }
+            if (![originalurl isEmpty]) {
+                [photoUrls addObjectSafe:originalurl];
+            }
+
         }
         success(photoUrls);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -142,11 +163,24 @@ static NSArray * _cards = nil;
         for (NSDictionary * photoObjectDict in photoes) {
             NSDictionary * thumbnail = photoObjectDict[@"thumbnail"];
             NSDictionary * thumbnailUrl = thumbnail[@"en1024"];
-            if(thumbnailUrl == nil) {
-                thumbnailUrl =  thumbnail[@"x1024"];
-            }
+            NSDictionary * thumbnailUrl_1 = thumbnail[@"x1024"];
+            NSDictionary * original = photoObjectDict[@"originalInfo"];
+            NSString * originalurl = original[@"url"];
+            
             NSString * url = thumbnailUrl[@"url"];
-            [photoUrls addObject:url];
+            NSString * url_1 = thumbnailUrl_1[@"url"];
+            if ([url_1 isEqualToString:url]) {
+                url_1 = nil;
+            }
+            if (![url isEmpty]) {
+                [photoUrls addObjectSafe:url];
+            }
+            if (![url_1 isEmpty]) {
+                [photoUrls addObjectSafe:url_1];
+            }
+            if (![originalurl isEmpty]) {
+                [photoUrls addObjectSafe:originalurl];
+            }
         }
         success(photoUrls);
         NSLog(@"使用缓存数据");
@@ -164,11 +198,24 @@ static NSArray * _cards = nil;
         for (NSDictionary * photoObjectDict in photoes) {
             NSDictionary * thumbnail = photoObjectDict[@"thumbnail"];
             NSDictionary * thumbnailUrl = thumbnail[@"en1024"];
-            if(thumbnailUrl == nil) {
-                thumbnailUrl =  thumbnail[@"x1024"];
-            }
+            NSDictionary * thumbnailUrl_1 = thumbnail[@"x1024"];
+            NSDictionary * original = photoObjectDict[@"originalInfo"];
+            NSString * originalurl = original[@"url"];
+            
             NSString * url = thumbnailUrl[@"url"];
-            [photoUrls addObject:url];
+            NSString * url_1 = thumbnailUrl_1[@"url"];
+            if ([url_1 isEqualToString:url]) {
+                url_1 = nil;
+            }
+            if (![url isEmpty]) {
+                [photoUrls addObjectSafe:url];
+            }
+            if (![url_1 isEmpty]) {
+                [photoUrls addObjectSafe:url_1];
+            }
+            if (![originalurl isEmpty]) {
+                [photoUrls addObjectSafe:originalurl];
+            }
         }
         success(photoUrls);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -219,7 +266,7 @@ static NSArray * _cards = nil;
 
 + (void)removeCard:(NSString *)cardId
 {
-    if (cardId == nil) {
+    if ([cardId isEmpty]) {
         return ;
     }
     NSString * url = [NSString stringWithFormat:@"%@user/removePPFromUser",API_DOMAIN];
@@ -238,3 +285,4 @@ static NSArray * _cards = nil;
 }
 
 @end
+

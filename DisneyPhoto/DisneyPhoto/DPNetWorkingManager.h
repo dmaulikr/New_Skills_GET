@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NSString+Empty.h"
+
 #import "AFNetworking/AFNetworking/AFNetworking.h"
 #define API_DOMAIN      SH_API_DOMAIN
 #define IMAGE_DOMAIN    SH_IMAGE_DOMAIN
@@ -37,4 +39,6 @@ static const NSString *PHOTOES_CACHE_PATH = @"/Users/maxiaofen/Desktop/Disney_ph
 + (void)getCardList:(void (^)(NSArray *cards))success;
 
 + (void)downloadImage:(NSString *)url success:(void (^)(NSString * path))success;
+//+ (void)getPhotoRequest:(NSString *)URLString success:(void (^)(NSArray <NSString *> *PhotoAlbums))success;
+
 @end

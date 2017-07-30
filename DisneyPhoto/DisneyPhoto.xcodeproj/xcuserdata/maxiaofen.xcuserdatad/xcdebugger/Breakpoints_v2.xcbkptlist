@@ -16,16 +16,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DisneyPhoto/DPNetWorkingManager.m"
-            timestampString = "519649988.883137"
+            timestampString = "523021886.236345"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
-            landmarkName = "+downloadImage:success:"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "+getPhotoRequest:date:success:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -36,12 +36,76 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DisneyPhoto/DPNetWorkingManager.m"
-            timestampString = "519364661.164402"
+            timestampString = "523021886.236345"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
             landmarkName = "+getPhotoRequest:date:success:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DisneyPhoto/DPNetWorkingManager.m"
+            timestampString = "523021886.236345"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "+getPhotoRequest:date:success:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "+[DPNetWorkingManager getPhotoRequest:date:success:]"
+                  moduleName = "DisneyPhoto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/maxiaofen/New_Skills_GET/DisneyPhoto/DisneyPhoto/DPNetWorkingManager.m"
+                  timestampString = "522986224.521464"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "217">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__52+[DPNetWorkingManager getPhotoRequest:date:success:]_block_invoke"
+                  moduleName = "DisneyPhoto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/maxiaofen/New_Skills_GET/DisneyPhoto/DisneyPhoto/DPNetWorkingManager.m"
+                  timestampString = "522986224.52264"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DisneyPhoto/ViewController.m"
+            timestampString = "522987638.743909"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "-download:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
